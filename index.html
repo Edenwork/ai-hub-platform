@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <title>Dashboard-index chat</title>
+  <!-- <script src="../assets/js/color-modes.js"></script> -->
+  <!-- <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/dropdowns/">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3"> -->
+
+  <link href="./css/bootstrap.min.css" rel="stylesheet">
+  <link href="./css/style.css" rel="stylesheet">
+
+  <style>
+
+  </style>
+
+
+  <!-- Custom styles -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="./css/dashboard.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <header class="navbar sticky-top- navbar-expand-lg bg-body-tertiary rounded" aria-label="Thirteenth navbar example">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample11"
+        aria-controls="navbarsExample11" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse d-lg-flex" id="navbarsExample11">
+        <a class="navbar-brand col-lg-3 me-0 sidebar-pl" href="index.html"><img src="./images/icon_logo.png"></a>
+        <ul class="navbar-nav col-lg-8 justify-content-lg-center- justify-content-lg-end">
+          <!-- <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+          </li> -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false"><img src="./images/icon-language.png"></a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#"><!--<img src="./images/icon-manage.png">--> 中文</a></li>
+              <li><a class="dropdown-item" href="#"><!--<img src="./images/icon-password.png">-->  English</a></li>
+            </ul>
+          </li>
+
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Novia Yang</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="model-manage.html"><img src="./images/icon-manage.png"> 平台管理</a></li>
+              <li><a class="dropdown-item" href="#"><img src="./images/icon-password.png"> 修改密碼</a></li>
+              <li><a class="dropdown-item" href="#"><img src="./images/icon-info.png"> v1.0.0 5678 <img
+                    src="./images/icon-paste.png"></a>
+              </li>
+              <li><a class="dropdown-item" href="sign-in.html" target="_blank"><img src="./images/icon-logout.png"> 登出</a></li>
+            </ul>
+          </li>
+
+        </ul>
+
+      </div>
+
+
+
+    </div>
+  </header>
+
+
+  <div class="container-fluid">
+    <div class="row">
+
+      <div class="sidebar border- border-right col-md-3 col-lg-2 p-0 bg-body-tertiary">
+        <div class="sidebar-pl offcanvas-md offcanvas-end bg-body-tertiary" tabindex="-1" id="sidebarMenu"
+          aria-labelledby="sidebarMenuLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="sidebarMenuLabel">FFM Hub</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebarMenu"
+              aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
+            <ul class="nav flex-column">
+
+              <li class="nav-item">
+                <a class="nav-link nav-recommend-color color-attention d-flex align-items-center gap-2">
+                  <img src="./images/icon-newchat.png">
+                   開始新的對話
+                </a>
+              </li>
+            </ul>
+
+            <hr class="my-3">
+
+            <ul class="nav flex-column mb-auto">
+              <li class="nav-item">
+                <a class="nav-link d-flex align-items-center gap-2" href="#">
+                  <img src="./images/icon-history.png">
+                  LLM生成紀錄標題08
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link d-flex align-items-center gap-2" href="#">
+                  <img src="./images/icon-history.png">
+                  LLM生成紀錄標題02
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link d-flex align-items-center gap-2" href="#">
+                  <img src="./images/icon-history.png">
+                  LLM生成紀錄標題01
+                </a>
+              </li>
+
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 dashboard-round-bg">
+        <section class="container-chat">
+          <div class="title text-center">
+            <h2>您好，歡迎使用 FFM Hub!</h2>
+            <h6 class="pt-3 pb-4">想輕鬆搞定撰寫文章、翻譯或程式碼？現在就開始向我提問吧！</h6>
+          </div>
+
+
+          <div class="container mt-5">
+            <div class="question-dialog p-3">
+              <div class="d-flex flex-column h-100">
+                <!-- 輸入框 -->
+                <textarea class="form-control-chat mb-3" placeholder="詢問任何問題" aria-label="Question" rows="3"></textarea>
+
+                <div class="d-flex justify-content-end align-items-end gap-2">
+                  <div class="dropdown">
+                    <button class="btn btn-select-model dropdown-toggle" type="button" id="modelDropdown"
+                      data-bs-toggle="dropdown" aria-expanded="false">
+                      Llama3.1-FFM-70B
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="modelDropdown">
+                      <li>
+                        <a class="dropdown-item active-" href="#">
+                          <div class="content-box">
+                            <span class="dropdown-text">Llama3.1-FFM-88</span><br>
+                            <mediuam class="text-muted">適合短文本推理對話</mediuam>
+                          </div>
+                          <br>
+                          <span class="checkmark ms-2">
+                            <img src="./images/icon-check.png">
+                          </span>
+                        </a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item active" href="#">
+                          <div class="content-box">
+                            <span class="dropdown-text">Llama3.1-FFM-70B</span><br>
+                            <mediuam class="text-muted">適合複雜的任務與對話</mediuam>
+                          </div>
+                          <br>
+                          <span class="checkmark ms-2">
+                            <img src="./images/icon-check.png">
+                          </span>
+                        </a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item active-" href="#">
+                          <div class="content-box">
+                            <span class="dropdown-text">TAIDE-LX-7B</span><br>
+                            <mediuam class="text-muted">強化台灣文化理解與繁體中文處理</mediuam>
+                          </div>
+                          <br>
+                          <span class="checkmark ms-2">
+                            <img src="./images/icon-check.png">
+                          </span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <!-- 送出按鈕 -->
+                  <button class="btn btn-chat-send">
+                    <img src="./images/btn-chat-send.png">
+                  </button>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+
+
+
+        </section>
+
+      </main>
+    </div>
+  </div>
+ <script src="./js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom JS for dropdown selection -->
+  <script>
+    document.querySelectorAll('.dropdown-item').forEach(item => {
+      item.addEventListener('click', function (e) {
+        //e.preventDefault();
+        // 移除所有選項的 active 類別和勾勾
+        document.querySelectorAll('.dropdown-item').forEach(i => {
+          i.classList.remove('active');
+          i.querySelector('.checkmark').style.display = 'none';
+        });
+        // 為當前選項添加 active 類別和顯示勾勾
+        this.classList.add('active');
+        this.querySelector('.checkmark').style.display = 'inline-block';
+        // 更新按鈕文字
+        const selectedText = this.querySelector('span').textContent;
+        document.querySelector('#modelDropdown').textContent = selectedText;
+      });
+    });
+  </script>
+
+
+</body>
+
+</html>
