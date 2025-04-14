@@ -116,29 +116,29 @@
       <div class="modal-body align-items-center">
         <form class="">
           <div class="row mb-3 align-items-center">
-              <label for="account" class="col-3 form-label">帳號 <span class="text-danger">*</span></label>
+              <label for="account" class="col-3 form-label">帳號 <span class="text-danger-">*</span></label>
               <div class="col-9">
                   <input type="email" class="form-control" id="account" value="account01@gmail.com" required>
               </div>
           </div>
 
-          <div class="container mt-5">
+      
             <div class="row mb-3 align-items-center">
-                <label for="password" class="col-3 form-label">密碼 <span class="text-danger">*</span></label>
+                <label for="password" class="col-3 form-label">密碼 <span class="text-danger-">*</span></label>
                 <div class="col-9 position-relative d-flex align-items-center">
                     <input type="password" class="form-control password-input" id="password" value="password123" required>
                     <span class="position-absolute toggle-password">
                         <!-- <i class="fa fa-eye"></i> -->
                         <img src="./images/icon-eye.png">
                     </span>
-                    <button class="btn btn-default" style="margin-left: 12px;">
-                      <span class=""> 產生</span>
+                    <button class="btn btn-default m-2">
+                      <span class="fs-6"> 產生</span>
                       <img src="./images/icon-key.png">
                       <!-- 產生 <i class="fa fa-plus me-2"></i> -->
                     </button>
                 </div>
             </div>
-        </div>
+  
 
         
           <div class="row mb-3 align-items-center">
@@ -161,25 +161,29 @@
               </div>
           </div>
           <div class="row mb-3 align-items-center">
-              <label for="firstName" class="col-3 form-label">名字</label>
+              <label for="firstName" class="col-3 form-label">名字 <span class="text-danger-">*</span></label>
               <div class="col-9">
                   <input type="text" class="form-control" id="firstName" value="novia">
               </div>
           </div>
           <div class="row mb-3 align-items-center">
-              <label for="email" class="col-3 form-label">電子郵件 <span class="text-danger">*</span></label>
+              <label for="email" class="col-3 form-label">電子郵件 <span class="text-danger-">*</span></label>
               <div class="col-9">
                   <input type="email" class="form-control" id="email" value="novia.yang@twsc.io" required>
               </div>
           </div>
-          <div class="mb-3 form-text text-danger">
-            不可與前 3 次使用的密碼相同
-          </div>
+
       </form>
       </div>
+
+      <div class="modal-info d-flex mb-3 form-text text-danger">
+        <img class="m-2" src="./images/icon-input-hint.png">
+         不可與前 3 次使用的密碼相同
+      </div>
+
       <div class="modal-footer d-flex justify-content-between">
-        <button type="button" class="btn btn-modal-outline" data-bs-dismiss="modal">取消</button>
-        <button type="button" class="btn btn-modal-default">送出</button>
+        <button type="button" class="btn btn-modal-outline fs-6" data-bs-dismiss="modal">取消</button>
+        <button type="button" class="btn btn-modal-default fs-6">送出</button>
       </div>
     </div>
   </div>
