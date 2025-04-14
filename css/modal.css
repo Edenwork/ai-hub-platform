@@ -23,6 +23,29 @@
     border-radius: var(--bs-modal-border-radius);
     outline: 0;
 }
+.modal-info {
+    display: flex;
+    flex-shrink: 0;
+    padding: 0% 8% !important;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.modal-footer {
+    display: flex;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    /* padding: calc(var(--bs-modal-padding) - var(--bs-modal-footer-gap) * .5); */
+    padding: 4% 8% !important;
+    background-color: var(--bs-modal-footer-bg);
+    border-top:0;
+    /* border-top: var(--bs-modal-footer-border-width) solid var(--bs-modal-footer-border-color); */
+    border-bottom-right-radius: var(--bs-modal-inner-border-radius);
+    border-bottom-left-radius: var(--bs-modal-inner-border-radius);
+}
+
 .form-label {
     /* color: #333; */
     margin-bottom: 0; /* 移除底部間距，因為 label 和 input 在同一列 */
@@ -94,9 +117,9 @@
     background-color: transparent;
     color:#07263B; /* #0D99C8; */
     border: 1px solid #07263B;
-    padding: 8px 58px;
+    padding: 6px 58px;
     border-radius: 5px;
-    font-size: 16px;
+    /* font-size: 16px; */
     display: flex;
     align-items: center;
     transition: background-color 0.3s ease;
@@ -106,9 +129,9 @@
     background-color: #07263B;
     color: #31CDE5; 
     border: none;
-    padding: 8px 58px;
+    padding: 7px 58px;
     border-radius: 5px;
-    font-size: 16px;
+    /* font-size: 16px; */
     display: flex;
     align-items: center;
     transition: background-color 0.3s ease;

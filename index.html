@@ -12,6 +12,8 @@
 
   <link href="./css/bootstrap.min.css" rel="stylesheet">
   <link href="./css/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
 
   <style>
 
@@ -45,10 +47,11 @@
             <a class="nav-link disabled" aria-disabled="true">Disabled</a>
           </li> -->
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false"><img src="./images/icon-language.png"></a>
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false"><img
+                src="./images/icon-language.png"></a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="#"><!--<img src="./images/icon-manage.png">--> 中文</a></li>
-              <li><a class="dropdown-item" href="#"><!--<img src="./images/icon-password.png">-->  English</a></li>
+              <li><a class="dropdown-item" href="#"><!--<img src="./images/icon-password.png">--> English</a></li>
             </ul>
           </li>
 
@@ -61,7 +64,8 @@
               <li><a class="dropdown-item" href="#"><img src="./images/icon-info.png"> v1.0.0 5678 <img
                     src="./images/icon-paste.png"></a>
               </li>
-              <li><a class="dropdown-item" href="sign-in.html" target="_blank"><img src="./images/icon-logout.png"> 登出</a></li>
+              <li><a class="dropdown-item" href="sign-in.html" target="_blank"><img src="./images/icon-logout.png">
+                  登出</a></li>
             </ul>
           </li>
 
@@ -78,6 +82,7 @@
   <div class="container-fluid">
     <div class="row">
 
+
       <div class="sidebar border- border-right col-md-3 col-lg-2 p-0 bg-body-tertiary">
         <div class="sidebar-pl offcanvas-md offcanvas-end bg-body-tertiary" tabindex="-1" id="sidebarMenu"
           aria-labelledby="sidebarMenuLabel">
@@ -86,13 +91,13 @@
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebarMenu"
               aria-label="Close"></button>
           </div>
-          <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
+          <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3">
             <ul class="nav flex-column">
 
               <li class="nav-item">
                 <a class="nav-link nav-recommend-color color-attention d-flex align-items-center gap-2">
                   <img src="./images/icon-newchat.png">
-                   開始新的對話
+                  開始新的對話
                 </a>
               </li>
             </ul>
@@ -101,22 +106,85 @@
 
             <ul class="nav flex-column mb-auto">
               <li class="nav-item">
-                <a class="nav-link d-flex align-items-center gap-2" href="#">
-                  <img src="./images/icon-history.png">
-                  LLM生成紀錄標題08
-                </a>
+                <div class="nav-link d-flex align-items-center gap-2" href="#">
+                  <div class="dropdown">
+                    <!-- <img src="./images/icon-history.png"> -->
+                    <span class="sidebar-history-">FFM Hub 對話長度限制2</span>
+                    <button class="btn btn-history" type="button" id="actionDropdown" data-bs-toggle="dropdown"
+                      aria-expanded="false">
+                      <i class="fa fa-ellipsis-h"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="actionDropdown">
+                      <li>
+                        <a class="dropdown-item" href="#">
+                          <img src="./images/icon_edit.png">
+                          <span class="dropdown-mg"> 重新命名</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="#">
+                          <img src="./images/icon_delete.png">
+                          <span class="text-danger dropdown-mg"> 刪除對話</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
               </li>
               <li class="nav-item">
-                <a class="nav-link d-flex align-items-center gap-2" href="#">
-                  <img src="./images/icon-history.png">
-                  LLM生成紀錄標題02
-                </a>
+                <div class="nav-link d-flex align-items-center gap-2" href="#">
+                  <div class="dropdown">
+                    <!-- <img src="./images/icon-history.png"> -->
+                    <span class="sidebar-history-">FFM Hub 對話長度限制</span>
+                    <button class="btn btn-history" type="button" id="actionDropdown" data-bs-toggle="dropdown"
+                      aria-expanded="false-">
+                      <i class="fa fa-ellipsis-h"></i>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="actionDropdown">
+                      <li>
+                        <a class="dropdown-item" href="#">
+                          <img src="./images/icon_edit.png">
+                          <span class="dropdown-mg"> 重新命名</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="#">
+                          <img src="./images/icon_delete.png">
+                          <span class="text-danger dropdown-mg"> 刪除對話</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
               </li>
               <li class="nav-item">
-                <a class="nav-link d-flex align-items-center gap-2" href="#">
-                  <img src="./images/icon-history.png">
-                  LLM生成紀錄標題01
-                </a>
+                <div class="nav-link d-flex align-items-center gap-2" href="#">
+                  <div class="dropdown">
+                    <!-- <img src="./images/icon-history.png"> -->
+                    <span class="sidebar-history-">LLM生成紀錄標題01</span>
+                    <button class="btn btn-history" type="button" id="actionDropdown" data-bs-toggle="dropdown"
+                      aria-expanded="false-">
+                      <i class="fa fa-ellipsis-h"></i>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="actionDropdown">
+                      <li>
+                        <a class="dropdown-item" href="#">
+                          <img src="./images/icon_edit.png">
+                          <span class="dropdown-mg"> 重新命名</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="#">
+                          <img src="./images/icon_delete.png">
+                          <span class="text-danger dropdown-mg"> 刪除對話</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
               </li>
 
             </ul>
@@ -126,7 +194,7 @@
 
       <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 dashboard-round-bg">
         <section class="container-chat">
-          <div class="title text-center" style="margin-top:5%">
+          <div class="title text-center" style="margin-top: 10%">
             <h2>您好，歡迎使用 FFM Hub!</h2>
             <h6 class="pt-3 pb-4">想輕鬆搞定撰寫文章、翻譯或程式碼？現在就開始向我提問吧！</h6>
           </div>
@@ -140,7 +208,7 @@
 
                 <div class="d-flex justify-content-end align-items-end gap-2">
                   <div class="dropdown">
-                    <button class="btn btn-select-model dropdown-toggle" type="button" id="modelDropdown"
+                    <button class="btn btn-select-model dropdown-toggle fs-6" type="button" id="modelDropdown"
                       data-bs-toggle="dropdown" aria-expanded="false">
                       Llama3.1-FFM-70B
                     </button>
@@ -204,7 +272,7 @@
       </main>
     </div>
   </div>
- <script src="./js/bootstrap.bundle.min.js"></script>
+  <script src="./js/bootstrap.bundle.min.js"></script>
 
   <!-- Custom JS for dropdown selection -->
   <script>
