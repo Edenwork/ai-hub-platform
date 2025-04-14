@@ -297,11 +297,24 @@ body {
   color: #fff;
 }
 
-.btn-more-action:active {
-  background-color: #0D99C8 !important;
+.btn-more-action:active,.btn-history:active {
+    background-color: #0D99C8 !important;
+    color: white;
     outline: none !important;
     box-shadow: none !important;
 }
+
+.btn-history{
+    background-color: transparent;
+    border: none;
+    padding: 4px 8px;
+    border-radius: 5px;
+    color: #000;
+}
+span.sidebar-history{
+  cursor: pointer;
+}
+
 
 #modelmanageTable {
   border-collapse: collapse;
