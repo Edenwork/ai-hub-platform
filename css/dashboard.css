@@ -32,7 +32,7 @@ body {
 }
 
 .sidebar .nav-link {
-  font-size: .875rem;
+  font-size: 1rem;
   font-weight: 500;
 }
 
@@ -147,7 +147,7 @@ body {
 } */
 
 .question-dialog {
-  background: linear-gradient(to right, #e6f0fa, #f5f5f5);
+  background-image: linear-gradient(268deg, #dbf2f6 0%, #f8f1f1 30%, #d7eaf2 100%);
   border-radius: 30px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   padding: 15px;
@@ -163,7 +163,8 @@ body {
   /* background-color: var(--bs-btn-active-bg); 
   border-color: var(--bs-btn-active-border-color);*/
   background-color: #fff;
-  border-color:#0D99C8;
+  /* border-color:#0D99C8; */
+  border-color:transparent;
 }
 
 .dropdown-menu {
@@ -185,7 +186,7 @@ body {
 }
 
 .dropdown-item.active {
-  background-color: #e6f0fa;
+  background-color: #fefeff;
   color: #000;
 }
 

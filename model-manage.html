@@ -30,7 +30,7 @@
       </button>
 
       <div class="collapse navbar-collapse d-lg-flex" id="navbarsExample11">
-        <a class="navbar-brand col-lg-3 me-0 sidebar-pl" href="sign-in.html"><img src="./images/icon_logo.png"></a>
+        <a class="navbar-brand col-lg-3 me-0 sidebar-pl" href="index.html"><img src="./images/icon_logo.png"></a>
         <ul class="navbar-nav col-lg-8 justify-content-lg-center- justify-content-lg-end">
           <!-- <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">Home</a>
@@ -55,19 +55,19 @@
             <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Novia Yang</a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="model-manage.html">
-                <img src="./images/icon-manage.png"> 平台管理</a>
+                  <img src="./images/icon-manage.png"> 平台管理</a>
               </li>
               <li><a class="dropdown-item" href="#">
-                <img src="./images/icon-password.png"> 修改密碼</a>
+                  <img src="./images/icon-password.png"> 修改密碼</a>
               </li>
               <li><a class="dropdown-item" href="#">
-                <img src="./images/icon-info.png"> v1.0.0 5678 
-                <img src="./images/icon-paste.png"></a>
+                  <img src="./images/icon-info.png"> v1.0.0 5678
+                  <img src="./images/icon-paste.png"></a>
               </li>
               <li><a class="dropdown-item" href="sign-in.html" target="_blank">
-                <img src="./images/icon-logout.png">
+                  <img src="./images/icon-logout.png">
                   登出</a>
-                </li>
+              </li>
             </ul>
           </li>
 
@@ -92,13 +92,18 @@
           <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a class="nav-link d-flex align-items-center gap-2">
-                <img src="./images/tag-admin.png">
-              </a>
+
+                <button class="tag-admin">
+                  系統管理員專屬
+                </button>
+
+                <!-- <a class="nav-link d-flex align-items-center gap-2">
+                  <img src="./images/tag-admin.png">
+                </a> -->
               </li>
             </ul>
 
-            <ul class="nav flex-column mb-auto">
+            <ul class="nav flex-column mt-lg-3">
               <li class="nav-item">
                 <a class="nav-link d-flex align-items-center gap-2" href="model-manage.html">
                   <img src="./images/icon-manage-navbar.png">
@@ -120,26 +125,20 @@
 
       <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 dashboard-round-bg">
         <section class="container-chat">
-            <nav aria-label="breadcrumb">
-              <ol class="breadcrumb p-3 rounded-3">
-                <!-- <li class="breadcrumb-item">
-                 <a class="link-body-emphasis" href="#">
-                    <svg class="bi" width="16" height="16"><use xlink:href="#house-door-fill"></use></svg> 
-                    <span class="visually-hidden">Home</span>
-                  </a>
-                </li>-->
-                <li class="breadcrumb-item">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb rounded-3">
+              <!-- <li class="breadcrumb-item">
                   <a class="link-body-emphasis fw-semibold text-decoration-none" href="index.html"><img
                       src="./images/logo/icon-breadcrumb-logo.png"></a>
-                </li>
-                <li class="breadcrumb-item active">
-                  <a class="link-body-emphasis fw-bold text-decoration-none fs-4" href="#">模型管理</a>
-                </li>
-                <!-- <li class="breadcrumb-item text-decoration-none " aria-current="page">
+                </li> -->
+              <li class="breadcrumb-item active">
+                <a class="link-body-default fw-bold text-decoration-none fs-4" href="#">模型管理</a>
+              </li>
+              <!-- <li class="breadcrumb-item text-decoration-none " aria-current="page">
                   新增模型
                 </li> -->
-              </ol>
-            </nav>
+            </ol>
+          </nav>
 
 
         </section>
@@ -148,16 +147,14 @@
 
         <section>
           <div class="d-flex flex-row justify-content-between align-items-center" style="">
-            <!-- <button class="btn btn-chat-send" type="button">
-              <img src="./images/btn_add_user.png">
-            </button> -->
             <button class="btn btn-add-user">
               <i class="fa fa-plus me-2"></i> 新增模型
-          </button>
-            <div class="position-relative d-inline-block"><i class="fa fa-magnifying-glass position-absolute search-icon"></i><input type="text" id="tableSearchInput" onkeyup="myFunction()" placeholder="輸入模型名稱搜尋" title="Search model name" class="search-input- ps-5-"></div>
-
-          <!-- <input type="text" id="tableSearchInput" onkeyup="myFunction()" placeholder="輸入模型名稱搜尋"
-              title="Search model name"><i class="fa fa-search"></i> -->
+            </button>
+            <div class="position-relative d-inline-block"><i
+                class="fa fa-magnifying-glass position-absolute search-icon"></i>
+              <input type="text" id="tableSearchInput" onkeyup="myFunction()" placeholder="輸入模型名稱搜尋"
+                title="Search model name" class="search-input ps-5-">
+            </div>
           </div>
 
           <table id="modelmanageTable">
@@ -177,32 +174,33 @@
               <td>Novia Yang2</td>
               <td>yyyy-mm-dd，hh:mm:ss</td>
               <td>
-                  <div class="dropdown">
-                      <button class="btn btn-more-action" type="button" id="actionDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                          <i class="fa fa-ellipsis-h"></i>
-                      </button>
-                      <!-- 下拉選單 -->
-                      <ul class="dropdown-menu" aria-labelledby="actionDropdown">
-                          <li>
-                              <a class="dropdown-item" href="#">
-                                <img src="./images/icon-active.png">
-                                  <span class="dropdown-mg"> 啟用</span>
-                              </a>
-                          </li>
-                          <li>
-                              <a class="dropdown-item" href="#">
-                                <img src="./images/icon-stop.png">
-                                <span class="dropdown-mg"> 停用</span>
-                              </a>
-                          </li>
-                          <li>
-                              <a class="dropdown-item" href="#">
-                                <img src="./images/icon_delete.png">
-                                <span class="text-danger dropdown-mg"> 刪除</span>
-                              </a>
-                          </li>
-                      </ul>
-                  </div>
+                <div class="dropdown">
+                  <button class="btn btn-more-action" type="button" id="actionDropdown" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    <i class="fa fa-ellipsis-h"></i>
+                  </button>
+                  <!-- 下拉選單 -->
+                  <ul class="dropdown-menu" aria-labelledby="actionDropdown">
+                    <li>
+                      <a class="dropdown-item" href="#">
+                        <img src="./images/icon-active.png">
+                        <span class="dropdown-mg"> 啟用</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">
+                        <img src="./images/icon-stop.png">
+                        <span class="dropdown-mg"> 停用</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">
+                        <img src="./images/icon_delete.png">
+                        <span class="text-danger dropdown-mg"> 刪除</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
               </td>
             </tr>
 
@@ -213,68 +211,70 @@
               <td>Novia Yang3</td>
               <td>yyyy-mm-dd，hh:mm:ss</td>
               <td>
-              <div class="dropdown">
-                <button class="btn btn-more-action" type="button" id="actionDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                <div class="dropdown">
+                  <button class="btn btn-more-action" type="button" id="actionDropdown" data-bs-toggle="dropdown"
+                    aria-expanded="false">
                     <i class="fa fa-ellipsis-h"></i>
-                </button>
-                <!-- 下拉選單 -->
-                <ul class="dropdown-menu" aria-labelledby="actionDropdown">
+                  </button>
+                  <!-- 下拉選單 -->
+                  <ul class="dropdown-menu" aria-labelledby="actionDropdown">
                     <li>
-                        <a class="dropdown-item" href="#">
-                          <img src="./images/icon-active.png">
-                            <span class="dropdown-mg"> 啟用</span>
-                        </a>
+                      <a class="dropdown-item" href="#">
+                        <img src="./images/icon-active.png">
+                        <span class="dropdown-mg"> 啟用</span>
+                      </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="#">
-                          <img src="./images/icon-stop.png">
-                          <span class="dropdown-mg"> 停用</span>
-                        </a>
+                      <a class="dropdown-item" href="#">
+                        <img src="./images/icon-stop.png">
+                        <span class="dropdown-mg"> 停用</span>
+                      </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="#">
-                          <img src="./images/icon_delete.png">
-                          <span class="text-danger dropdown-mg"> 刪除</span>
-                        </a>
+                      <a class="dropdown-item" href="#">
+                        <img src="./images/icon_delete.png">
+                        <span class="text-danger dropdown-mg"> 刪除</span>
+                      </a>
                     </li>
-                </ul>
-            </div>
-            </td>
+                  </ul>
+                </div>
+              </td>
             </tr>
 
-                       <tr>
+            <tr>
               <td>Llama3.1-FFM-70B</td>
               <td>100000 GB/TB</td>
               <td>已啟用</td>
               <td>Novia Yang4</td>
               <td>yyyy-mm-dd，hh:mm:ss</td>
               <td>
-                  <div class="dropdown">
-                      <button class="btn btn-more-action" type="button" id="actionDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                          <i class="fa fa-ellipsis-h"></i>
-                      </button>
-                      <!-- 下拉選單 -->
-                      <ul class="dropdown-menu" aria-labelledby="actionDropdown">
-                          <li>
-                              <a class="dropdown-item" href="#">
-                                <img src="./images/icon-active.png">
-                                  <span class="dropdown-mg"> 啟用</span>
-                              </a>
-                          </li>
-                          <li>
-                              <a class="dropdown-item" href="#">
-                                <img src="./images/icon-stop.png">
-                                <span class="dropdown-mg"> 停用</span>
-                              </a>
-                          </li>
-                          <li>
-                              <a class="dropdown-item" href="#">
-                                <img src="./images/icon_delete.png">
-                                <span class="text-danger dropdown-mg"> 刪除</span>
-                              </a>
-                          </li>
-                      </ul>
-                  </div>
+                <div class="dropdown">
+                  <button class="btn btn-more-action" type="button" id="actionDropdown" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    <i class="fa fa-ellipsis-h"></i>
+                  </button>
+                  <!-- 下拉選單 -->
+                  <ul class="dropdown-menu" aria-labelledby="actionDropdown">
+                    <li>
+                      <a class="dropdown-item" href="#">
+                        <img src="./images/icon-active.png">
+                        <span class="dropdown-mg"> 啟用</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">
+                        <img src="./images/icon-stop.png">
+                        <span class="dropdown-mg"> 停用</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">
+                        <img src="./images/icon_delete.png">
+                        <span class="text-danger dropdown-mg"> 刪除</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
               </td>
             </tr>
 
@@ -285,33 +285,34 @@
               <td>Novia Yang7</td>
               <td>yyyy-mm-dd，hh:mm:ss</td>
               <td>
-              <div class="dropdown">
-                <button class="btn btn-more-action" type="button" id="actionDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                <div class="dropdown">
+                  <button class="btn btn-more-action" type="button" id="actionDropdown" data-bs-toggle="dropdown"
+                    aria-expanded="false">
                     <i class="fa fa-ellipsis-h"></i>
-                </button>
-                <!-- 下拉選單 -->
-                <ul class="dropdown-menu" aria-labelledby="actionDropdown">
+                  </button>
+                  <!-- 下拉選單 -->
+                  <ul class="dropdown-menu" aria-labelledby="actionDropdown">
                     <li>
-                        <a class="dropdown-item" href="#">
-                          <img src="./images/icon-active.png">
-                            <span class="dropdown-mg"> 啟用</span>
-                        </a>
+                      <a class="dropdown-item" href="#">
+                        <img src="./images/icon-active.png">
+                        <span class="dropdown-mg"> 啟用</span>
+                      </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="#">
-                          <img src="./images/icon-stop.png">
-                          <span class="dropdown-mg"> 停用</span>
-                        </a>
+                      <a class="dropdown-item" href="#">
+                        <img src="./images/icon-stop.png">
+                        <span class="dropdown-mg"> 停用</span>
+                      </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="#">
-                          <img src="./images/icon_delete.png">
-                          <span class="text-danger dropdown-mg"> 刪除</span>
-                        </a>
+                      <a class="dropdown-item" href="#">
+                        <img src="./images/icon_delete.png">
+                        <span class="text-danger dropdown-mg"> 刪除</span>
+                      </a>
                     </li>
-                </ul>
-            </div>
-            </td>
+                  </ul>
+                </div>
+              </td>
             </tr>
             <tr>
               <td>Meta-Llama3.3-70B</td>
@@ -320,32 +321,33 @@
               <td>Novia Yang9</td>
               <td>yyyy-mm-dd，hh:mm:ss</td>
               <td>
-                  <div class="dropdown">
-                      <button class="btn btn-more-action" type="button" id="actionDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                          <i class="fa fa-ellipsis-h"></i>
-                      </button>
-                      <!-- 下拉選單 -->
-                      <ul class="dropdown-menu" aria-labelledby="actionDropdown">
-                          <li>
-                              <a class="dropdown-item" href="#">
-                                <img src="./images/icon-active.png">
-                                  <span class="dropdown-mg"> 啟用</span>
-                              </a>
-                          </li>
-                          <li>
-                              <a class="dropdown-item" href="#">
-                                <img src="./images/icon-stop.png">
-                                <span class="dropdown-mg"> 停用</span>
-                              </a>
-                          </li>
-                          <li>
-                              <a class="dropdown-item" href="#">
-                                <img src="./images/icon_delete.png">
-                                <span class="text-danger dropdown-mg"> 刪除</span>
-                              </a>
-                          </li>
-                      </ul>
-                  </div>
+                <div class="dropdown">
+                  <button class="btn btn-more-action" type="button" id="actionDropdown" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    <i class="fa fa-ellipsis-h"></i>
+                  </button>
+                  <!-- 下拉選單 -->
+                  <ul class="dropdown-menu" aria-labelledby="actionDropdown">
+                    <li>
+                      <a class="dropdown-item" href="#">
+                        <img src="./images/icon-active.png">
+                        <span class="dropdown-mg"> 啟用</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">
+                        <img src="./images/icon-stop.png">
+                        <span class="dropdown-mg"> 停用</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">
+                        <img src="./images/icon_delete.png">
+                        <span class="text-danger dropdown-mg"> 刪除</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
               </td>
             </tr>
 
@@ -356,33 +358,34 @@
               <td>Novia Yang10</td>
               <td>yyyy-mm-dd，hh:mm:ss</td>
               <td>
-              <div class="dropdown">
-                <button class="btn btn-more-action" type="button" id="actionDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                <div class="dropdown">
+                  <button class="btn btn-more-action" type="button" id="actionDropdown" data-bs-toggle="dropdown"
+                    aria-expanded="false">
                     <i class="fa fa-ellipsis-h"></i>
-                </button>
-                <!-- 下拉選單 -->
-                <ul class="dropdown-menu" aria-labelledby="actionDropdown">
+                  </button>
+                  <!-- 下拉選單 -->
+                  <ul class="dropdown-menu" aria-labelledby="actionDropdown">
                     <li>
-                        <a class="dropdown-item" href="#">
-                          <img src="./images/icon-active.png">
-                            <span class="dropdown-mg"> 啟用</span>
-                        </a>
+                      <a class="dropdown-item" href="#">
+                        <img src="./images/icon-active.png">
+                        <span class="dropdown-mg"> 啟用</span>
+                      </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="#">
-                          <img src="./images/icon-stop.png">
-                          <span class="dropdown-mg"> 停用</span>
-                        </a>
+                      <a class="dropdown-item" href="#">
+                        <img src="./images/icon-stop.png">
+                        <span class="dropdown-mg"> 停用</span>
+                      </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="#">
-                          <img src="./images/icon_delete.png">
-                          <span class="text-danger dropdown-mg"> 刪除</span>
-                        </a>
+                      <a class="dropdown-item" href="#">
+                        <img src="./images/icon_delete.png">
+                        <span class="text-danger dropdown-mg"> 刪除</span>
+                      </a>
                     </li>
-                </ul>
-            </div>
-            </td>
+                  </ul>
+                </div>
+              </td>
             </tr>
           </table>
 

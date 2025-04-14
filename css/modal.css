@@ -1,0 +1,121 @@
+.modal-title {
+    /* line-height: var(--bs-modal-title-line-height); */
+}
+
+.modal-body {
+    position: relative;
+    /* flex: 1 1 auto; */
+    padding: 4% 8% !important;
+    /* padding: var(--bs-modal-padding); */
+}
+
+.modal-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 585px;
+    width: 100%;
+    color: var(--bs-modal-color);
+    pointer-events: auto;
+    background-color: var(--bs-modal-bg);
+    background-clip: padding-box;
+    border: var(--bs-modal-border-width) solid var(--bs-modal-border-color);
+    border-radius: var(--bs-modal-border-radius);
+    outline: 0;
+}
+.form-label {
+    /* color: #333; */
+    margin-bottom: 0; /* 移除底部間距，因為 label 和 input 在同一列 */
+}
+
+.form-control {
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    font-size: 14px;
+    padding: 8px 12px;
+}
+
+.form-control:focus {
+    outline: none;
+    box-shadow: none;
+    border-color: #007bff;
+}
+
+/* 密碼欄位的輸入框 */
+.password-input {
+    display: block;
+    width: 260px;
+    padding-right: 40px; /* 為眼睛圖標留出空間 */
+}
+
+/* 眼睛圖標 */
+.toggle-password {
+    position: absolute !important;
+    /* right: 40px; */
+    left: 236px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #6c757d;
+}
+
+.toggle-password i {
+    font-size: 16px;
+}
+
+/* 生成密碼按鈕 */
+.btn-generate-password {
+    background: none;
+    border: none;
+    padding: 0;
+    margin-left: 10px;
+}
+
+.btn-generate-password img {
+    width: 20px;
+    height: 20px;
+}
+
+.form-check-input {
+    margin-top: 2px;
+}
+
+.form-check-label {
+    /* font-size: 14px; */
+    color: #333;
+}
+
+.form-text {
+    font-size: 0.875rem; /*14px;*/
+}
+
+
+.btn-modal-outline{
+    background-color: transparent;
+    color:#07263B; /* #0D99C8; */
+    border: 1px solid #07263B;
+    padding: 8px 58px;
+    border-radius: 5px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s ease;
+    /* min-width: 148px; */
+  }
+  .btn-modal-default{
+    background-color: #07263B;
+    color: #31CDE5; 
+    border: none;
+    padding: 8px 58px;
+    border-radius: 5px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s ease;
+    /* width: 148px; */
+  }
+  
+  .btn-modal-default:hover,.btn-modal-outline:hover {
+    background-color: #0D99C8;
+    color: #fff;
+  }
