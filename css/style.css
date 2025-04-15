@@ -3,6 +3,13 @@ body {
   height: 100%;
   font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
 }
+
+.no-border{
+  border: 0 !important;
+}
+.fs-6{
+  line-height: 1.8rem;
+}
 .fs-7{
   font-size: 0.875rem;
 }
@@ -276,7 +283,7 @@ body {
   font-size: 16px;
   color: #6c757d;
 }
-.search-input:focus,.question-dialog textarea {
+.search-input:focus,.question-dialog textarea,.chat-dialog textarea{
   /* outline: 2px solid #007bff; /* 自定義聚焦外框 */
   outline: none;
   box-shadow: none;
@@ -333,10 +340,14 @@ span.sidebar-history{
   border-bottom: 1px solid #ddd;
 }
 
-#modelmanageTable tr.header, #modelmanageTable tr:hover {
-  background-color: #f1f1f1;
+#modelmanageTable tr.header{
+  background-color: #e4e4e4;
+  /* color:#fff; */
 }
-
+#modelmanageTable tr:hover {
+  background-color: #f7f7f7;
+  color:#000;
+}
 
 
 /* breadcrumbs */

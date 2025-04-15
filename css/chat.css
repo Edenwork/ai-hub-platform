@@ -1,0 +1,134 @@
+.chat-window {
+    padding: 20px;
+}
+
+.message {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 問題框置右 */
+.chat-user-message {
+    align-items: flex-end;
+}
+
+.chat-user-message .message-content {
+    background-color: #EBEBEB;
+    border-radius: 22px;
+    padding: 0.875rem 1.8rem;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); */
+    max-width: 70%; /* 最大寬度為螢幕的 70% */
+}
+
+/* 回覆框置左 */
+.chat-assistant-message {
+    align-items: flex-start;
+}
+
+.chat-assistant-message .message-content {
+    background-color: transparent;
+    border-radius: 10px;
+    padding: 15px;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); */
+    max-width: 70%; /* 最大寬度為螢幕的 70% */
+}
+
+.message-content p {
+    margin: 0;
+    color: #333;
+    /* white-space: pre-wrap; 支援換行 */
+}
+
+.btn-copy {
+    background: none;
+    border: none;
+    color: #6c757d;
+    font-size: 16px;
+    margin-left: 10px;
+}
+
+.btn-copy:hover {
+    color: #333;
+}
+
+.message-actions {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+.btn-action {
+    background: none;
+    color: #6c757d;
+    font-size: 16px;
+}
+
+.btn-action:hover {
+    color: #333;
+}
+
+.continue-conversation {
+    margin-top: 20px;
+}
+
+.btn-continue {
+    background-color: #e6f0fa;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 15px;
+    font-size: 14px;
+    color: #333;
+}
+
+.btn-continue:hover {
+    background-color: #d0e0f5;
+}
+.chat-dialog{
+    background-image: linear-gradient(268deg, #dbf2f6 0%, #f8f1f1 30%, #d7eaf2 100%);
+    border-radius: 30px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 0.4rem 1rem;
+    width: 100%;
+    height: 60px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ced4da;
+}
+.chat-textarea {
+    display: block;
+    width: 100%;
+    padding: 0.2rem 1rem ; /* .375rem .75rem; */
+    /* font-size: 1rem;
+    font-weight: 400; */
+    line-height: 2rem; /* 1.5 */
+    color: var(--bs-body-color);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    /* background-color: var(--bs-body-bg); */
+    background-clip: padding-box;
+    border: transparent;
+    /* border: var(--bs-border-width) solid var(--bs-border-color); */
+    border-radius: var(--bs-border-radius);
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    resize: none;
+}
+
+
+/* chat input */
+
+/* .form-text {
+    font-size: 12px;
+    color: #6c757d;
+    margin-left: 20px;
+} */
