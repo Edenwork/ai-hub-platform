@@ -172,9 +172,10 @@ body {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   padding: 10px;
   top: 100% !important; /* 強制從按鈕下方展開 */
-  transform: translateY(5px) !important; /* 向下偏移一點，避免與按鈕重疊 */
+  /* transform: translateY(5px) !important;  向下偏移一點，避免與按鈕重疊 */
   inset: auto !important; /* 覆蓋 Bootstrap 的自動定位 */
 }
+
 
 .dropdown-item {
   /* font-size: 14px; */

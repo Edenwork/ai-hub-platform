@@ -27,58 +27,11 @@
 
 <body>
 
-  <header class="navbar sticky-top- navbar-expand-lg bg-body-tertiary rounded" aria-label="Thirteenth navbar example">
-    <div class="container-fluid">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample11"
-        aria-controls="navbarsExample11" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse d-lg-flex" id="navbarsExample11">
-        <a class="navbar-brand col-lg-3 me-0 sidebar-pl" href="index.html"><img src="./images/icon_logo.png"></a>
-        <ul class="navbar-nav col-lg-8 justify-content-lg-center- justify-content-lg-end">
-          <!-- <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-          </li> -->
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false"><img
-                src="./images/icon-language.png"></a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#"><!--<img src="./images/icon-manage.png">--> 中文</a></li>
-              <li><a class="dropdown-item" href="#"><!--<img src="./images/icon-password.png">--> English</a></li>
-            </ul>
-          </li>
+ <!-- 動態載入 header -->
+ <div id="header-admin-placeholder"></div>
 
 
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Novia Yang</a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="model-manage.html"><img src="./images/icon-manage.png"> 平台管理</a></li>
-              <li><a class="dropdown-item" href="#"><img src="./images/icon-password.png"> 修改密碼</a></li>
-              <li><a class="dropdown-item" href="#"><img src="./images/icon-info.png"> v1.0.0 5678 <img
-                    src="./images/icon-paste.png"></a>
-              </li>
-              <li><a class="dropdown-item" href="sign-in.html" target="_blank"><img src="./images/icon-logout.png">
-                  登出</a></li>
-            </ul>
-          </li>
-
-        </ul>
-
-      </div>
-
-
-
-    </div>
-  </header>
-
-
+<!-- sidebar -->
   <div class="container-fluid">
     <div class="row">
 
@@ -106,15 +59,15 @@
 
             <ul class="nav flex-column mb-auto">
               <li class="nav-item">
-                <div class="nav-link d-flex align-items-center gap-2" href="#">
+                <div class="nav-link d-flex- align-items-center gap-2" href="#">
                   <div class="dropdown">
                     <!-- <img src="./images/icon-history.png"> -->
-                    <span class="sidebar-history-">FFM Hub 對話長度限制2</span>
+                    <span class="sidebar-history">FFM Hub 對話長度限制2...</span>
                     <button class="btn btn-history" type="button" id="actionDropdown" data-bs-toggle="dropdown"
                       aria-expanded="false">
-                      <i class="fa fa-ellipsis-h"></i>
+                      <i class="fa fa-ellipsis-v text-grey"></i>
                     </button>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="actionDropdown">
+                    <ul class="dropdown-menu dropdown-menu-end-" aria-labelledby="actionDropdown">
                       <li>
                         <a class="dropdown-item" href="#">
                           <img src="./images/icon_edit.png">
@@ -133,13 +86,13 @@
 
               </li>
               <li class="nav-item">
-                <div class="nav-link d-flex align-items-center gap-2" href="#">
+                <div class="nav-link d-flex- align-items-center gap-2" href="#">
                   <div class="dropdown">
                     <!-- <img src="./images/icon-history.png"> -->
-                    <span class="sidebar-history-">FFM Hub 對話長度限制</span>
+                    <span class="sidebar-history">FFM Hub 對話長度限制</span>
                     <button class="btn btn-history" type="button" id="actionDropdown" data-bs-toggle="dropdown"
                       aria-expanded="false-">
-                      <i class="fa fa-ellipsis-h"></i>
+                      <i class="fa fa-ellipsis-v text-grey"></i>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="actionDropdown">
                       <li>
@@ -160,13 +113,13 @@
 
               </li>
               <li class="nav-item">
-                <div class="nav-link d-flex align-items-center gap-2" href="#">
+                <div class="nav-link d-flex- align-items-center gap-2" href="#">
                   <div class="dropdown">
                     <!-- <img src="./images/icon-history.png"> -->
-                    <span class="sidebar-history-">LLM生成紀錄標題01</span>
+                    <span class="sidebar-history">LLM生成紀錄標題01</span>
                     <button class="btn btn-history" type="button" id="actionDropdown" data-bs-toggle="dropdown"
                       aria-expanded="false-">
-                      <i class="fa fa-ellipsis-h"></i>
+                      <i class="fa fa-ellipsis-v text-grey"></i>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="actionDropdown">
                       <li>
@@ -275,6 +228,8 @@
   <script src="./js/bootstrap.bundle.min.js"></script>
 
   <!-- Custom JS for dropdown selection -->
+  <script src="./js/load-admin-header.js"></script>
+  <script src="./js/load-admin-sidebar.js"></script>
   <script>
     document.querySelectorAll('.dropdown-item').forEach(item => {
       item.addEventListener('click', function (e) {

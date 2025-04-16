@@ -17,6 +17,9 @@ body {
   background-color: #F0F0F0 !important;
 }
 
+.text-grey{
+  color: #6F6F6F;
+}
 .text-danger {
   color: #CA0729 !important;
 }
@@ -133,7 +136,9 @@ body {
     border: var(--bs-dropdown-border-width) solid var(--bs-dropdown-border-color);
     border-radius: var(--bs-dropdown-border-radius); */
 }
-
+.dropdown-menu-end{
+  right: 0; /* 確保下拉選單靠右對齊 */
+}
 
 
 /* --------------- nav --------------- */
@@ -168,7 +173,7 @@ body {
 }
 
 .nav-recommend-color{
-  color: #27AFD8;
+  color: #1595bc;
 }
 
  .dashboard-round-bg {
@@ -313,6 +318,8 @@ body {
 }
 
 .btn-history{
+  position: absolute;
+  right: 0;
     background-color: transparent;
     border: none;
     padding: 4px 8px;
@@ -321,6 +328,7 @@ body {
 }
 span.sidebar-history{
   cursor: pointer;
+  flex-grow: 1; /* 讓文字佔據剩餘空間，推擠按鈕到右邊 */
 }
 
 

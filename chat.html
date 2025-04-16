@@ -25,63 +25,15 @@
 
 <body>
 
-  <header class="navbar sticky-top- navbar-expand-lg bg-body-tertiary rounded" aria-label="Thirteenth navbar example">
-    <div class="container-fluid">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample11"
-        aria-controls="navbarsExample11" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse d-lg-flex" id="navbarsExample11">
-        <a class="navbar-brand col-lg-3 me-0 sidebar-pl" href="index.html"><img src="./images/icon_logo.png"></a>
-        <ul class="navbar-nav col-lg-8 justify-content-lg-center- justify-content-lg-end">
-          <!-- <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-          </li> -->
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false"><img
-                src="./images/icon-language.png"></a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#"><!--<img src="./images/icon-manage.png">--> 中文</a></li>
-              <li><a class="dropdown-item" href="#"><!--<img src="./images/icon-password.png">--> English</a></li>
-            </ul>
-          </li>
-
-
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Novia Yang</a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="model-manage.html"><img src="./images/icon-manage.png"> 平台管理</a></li>
-              <li><a class="dropdown-item" href="#"><img src="./images/icon-password.png"> 修改密碼</a></li>
-              <li><a class="dropdown-item" href="#"><img src="./images/icon-info.png"> v1.0.0 5678 <img
-                    src="./images/icon-paste.png"></a>
-              </li>
-              <li><a class="dropdown-item" href="sign-in.html" target="_blank"><img src="./images/icon-logout.png">
-                  登出</a></li>
-            </ul>
-          </li>
-
-        </ul>
-
-      </div>
-
-
-
-    </div>
-  </header>
+  <!-- 動態載入 header -->
+  <div id="header-admin-placeholder"></div>
 
 
   <div class="container-fluid">
     <div class="row">
 
 
-      <div class="sidebar border- border-right col-md-3 col-lg-2 p-0 bg-body-tertiary">
+      <div class="sidebar border- border-right col-md-3 col-lg-3 p-0 bg-body-tertiary">
         <div class="sidebar-pl offcanvas-md offcanvas-end bg-body-tertiary" tabindex="-1" id="sidebarMenu"
           aria-labelledby="sidebarMenuLabel">
           <div class="offcanvas-header">
@@ -105,15 +57,15 @@
 
             <ul class="nav flex-column mb-auto">
               <li class="nav-item">
-                <div class="nav-link d-flex align-items-center gap-2" href="#">
+                <div class="nav-link d-flex- align-items-center gap-2" href="#">
                   <div class="dropdown">
                     <!-- <img src="./images/icon-history.png"> -->
-                    <span class="sidebar-history-">FFM Hub 對話長度限制2</span>
+                    <span class="sidebar-history">FFM Hub 對話長度限制2...</span>
                     <button class="btn btn-history" type="button" id="actionDropdown" data-bs-toggle="dropdown"
                       aria-expanded="false">
-                      <i class="fa fa-ellipsis-h"></i>
+                      <i class="fa fa-ellipsis-v text-grey"></i>
                     </button>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="actionDropdown">
+                    <ul class="dropdown-menu dropdown-menu-end-" aria-labelledby="actionDropdown">
                       <li>
                         <a class="dropdown-item" href="#">
                           <img src="./images/icon_edit.png">
@@ -132,13 +84,13 @@
 
               </li>
               <li class="nav-item">
-                <div class="nav-link d-flex align-items-center gap-2" href="#">
+                <div class="nav-link d-flex- align-items-center gap-2" href="#">
                   <div class="dropdown">
                     <!-- <img src="./images/icon-history.png"> -->
-                    <span class="sidebar-history-">FFM Hub 對話長度限制</span>
+                    <span class="sidebar-history">FFM Hub 對話長度限制</span>
                     <button class="btn btn-history" type="button" id="actionDropdown" data-bs-toggle="dropdown"
                       aria-expanded="false-">
-                      <i class="fa fa-ellipsis-h"></i>
+                      <i class="fa fa-ellipsis-v text-grey"></i>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="actionDropdown">
                       <li>
@@ -159,13 +111,13 @@
 
               </li>
               <li class="nav-item">
-                <div class="nav-link d-flex align-items-center gap-2" href="#">
+                <div class="nav-link d-flex- align-items-center gap-2" href="#">
                   <div class="dropdown">
                     <!-- <img src="./images/icon-history.png"> -->
-                    <span class="sidebar-history-">LLM生成紀錄標題01</span>
+                    <span class="sidebar-history">LLM生成紀錄標題01</span>
                     <button class="btn btn-history" type="button" id="actionDropdown" data-bs-toggle="dropdown"
                       aria-expanded="false-">
-                      <i class="fa fa-ellipsis-h"></i>
+                      <i class="fa fa-ellipsis-v text-grey"></i>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="actionDropdown">
                       <li>
@@ -191,7 +143,7 @@
         </div>
       </div>
 
-      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 dashboard-round-bg">
+      <main class="col-md-9 ms-sm-auto col-lg-9 px-md-4 dashboard-round-bg">
         <section class="container-chat">
 
           <div class="container mt-5">
@@ -235,19 +187,19 @@
                     總之，數位孿生是一種強大的工具，可以幫助企業優化其業務流程、提高效率、降低成本，並提供更好的客戶體驗。</p>
                 </div>
                 <div class="message-actions">
-                  <button class="btn btn-action">
+                  <button class="btn btn-action" aria-label="讚" data-bs-toggle="tooltip" data-bs-placement="bottom" title="讚">
                     <i class="fa fa-thumbs-o-up"></i>
                   </button>
-                  <button class="btn btn-action" aria-label="踩">
+                  <button class="btn btn-action" aria-label="倒讚" data-bs-toggle="tooltip" data-bs-placement="bottom" title="倒讚">
                     <i class="fa fa-thumbs-o-down"></i>
                   </button>
-                  <button class="btn btn-action">
+                  <button class="btn btn-action" aria-label="複製" data-bs-toggle="tooltip" data-bs-placement="bottom" title="複製">
                     <i class="fa fa-clone"></i>
                   </button>
-                  <button class="btn btn-action">
+                  <button class="btn btn-action" aria-label="重新生成" data-bs-toggle="tooltip" data-bs-placement="bottom" title="重新生成">
                     <i class="fa fa-rotate"></i>
                   </button>
-                  <button class="btn btn-action">
+                  <button class="btn btn-action" aria-label="分享" data-bs-toggle="tooltip" data-bs-placement="bottom" title="分享">
                     <i class="fa fa-share-alt"></i>
                   </button>
                 </div>
@@ -295,19 +247,19 @@
 
                 </div>
                 <div class="message-actions">
-                  <button class="btn btn-action">
+                  <button class="btn btn-action" aria-label="讚" data-bs-toggle="tooltip" data-bs-placement="bottom" title="讚">
                     <i class="fa fa-thumbs-o-up"></i>
                   </button>
-                  <button class="btn btn-action" aria-label="踩">
+                  <button class="btn btn-action" aria-label="倒讚" data-bs-toggle="tooltip" data-bs-placement="bottom" title="倒讚">
                     <i class="fa fa-thumbs-o-down"></i>
                   </button>
-                  <button class="btn btn-action">
+                  <button class="btn btn-action" aria-label="複製" data-bs-toggle="tooltip" data-bs-placement="bottom" title="複製">
                     <i class="fa fa-clone"></i>
                   </button>
-                  <button class="btn btn-action">
+                  <button class="btn btn-action" aria-label="重新生成" data-bs-toggle="tooltip" data-bs-placement="bottom" title="重新生成">
                     <i class="fa fa-rotate"></i>
                   </button>
-                  <button class="btn btn-action">
+                  <button class="btn btn-action" aria-label="分享" data-bs-toggle="tooltip" data-bs-placement="bottom" title="分享">
                     <i class="fa fa-share-alt"></i>
                   </button>
                 </div>
@@ -397,10 +349,12 @@
 
     </main>
   </div>
-  </div>
+ 
   <script src="./js/bootstrap.bundle.min.js"></script>
 
   <!-- Custom JS for dropdown selection -->
+  <script src="./js/load-admin-header.js"></script>
+  <script src="./js/load-admin-sidebar.js"></script>
   <script>
     document.querySelectorAll('.dropdown-item').forEach(item => {
       item.addEventListener('click', function (e) {
