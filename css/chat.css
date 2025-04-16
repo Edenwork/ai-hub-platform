@@ -63,7 +63,7 @@
 .message-actions {
     margin-top: 10px;
     display: flex;
-    gap: 10px;
+    gap: 2px;
 }
 
 .btn-action {

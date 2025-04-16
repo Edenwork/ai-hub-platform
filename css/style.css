@@ -24,7 +24,8 @@ body {
 .bg-login {
     --bs-bg-opacity: 1;
     /* background-color: rgb(55 55 55) !important; */
-    background-image: url(../images/img_login_bg.jpg);
+    /* background-image: url(../images/img_login_bg.jpg); */
+    background-image:linear-gradient(268deg, #c5e9ef 0%, #fff5f5 30%, #cceefc 100%);
   }
 
   .btn {
