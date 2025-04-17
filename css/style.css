@@ -3,6 +3,13 @@ body {
   height: 100%;
   font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
 }
+
+.no-border{
+  border: 0 !important;
+}
+.fs-6{
+  line-height: 1.8rem;
+}
 .fs-7{
   font-size: 0.875rem;
 }
@@ -10,6 +17,9 @@ body {
   background-color: #F0F0F0 !important;
 }
 
+.text-grey{
+  color: #6F6F6F;
+}
 .text-danger {
   color: #CA0729 !important;
 }
@@ -17,7 +27,8 @@ body {
 .bg-login {
     --bs-bg-opacity: 1;
     /* background-color: rgb(55 55 55) !important; */
-    background-image: url(../images/img_login_bg.jpg);
+    /* background-image: url(../images/img_login_bg.jpg); */
+    background-image:linear-gradient(268deg, #c5e9ef 0%, #fff5f5 30%, #cceefc 100%);
   }
 
   .btn {
@@ -125,7 +136,9 @@ body {
     border: var(--bs-dropdown-border-width) solid var(--bs-dropdown-border-color);
     border-radius: var(--bs-dropdown-border-radius); */
 }
-
+.dropdown-menu-end{
+  right: 0; /* 確保下拉選單靠右對齊 */
+}
 
 
 /* --------------- nav --------------- */
@@ -160,7 +173,7 @@ body {
 }
 
 .nav-recommend-color{
-  color: #27AFD8;
+  color: #1595bc;
 }
 
  .dashboard-round-bg {
@@ -276,7 +289,7 @@ body {
   font-size: 16px;
   color: #6c757d;
 }
-.search-input:focus,.question-dialog textarea {
+.search-input:focus,.question-dialog textarea,.chat-dialog textarea{
   /* outline: 2px solid #007bff; /* 自定義聚焦外框 */
   outline: none;
   box-shadow: none;
@@ -305,6 +318,8 @@ body {
 }
 
 .btn-history{
+  position: absolute;
+  right: 0;
     background-color: transparent;
     border: none;
     padding: 4px 8px;
@@ -313,6 +328,7 @@ body {
 }
 span.sidebar-history{
   cursor: pointer;
+  flex-grow: 1; /* 讓文字佔據剩餘空間，推擠按鈕到右邊 */
 }
 
 
@@ -333,10 +349,14 @@ span.sidebar-history{
   border-bottom: 1px solid #ddd;
 }
 
-#modelmanageTable tr.header, #modelmanageTable tr:hover {
-  background-color: #f1f1f1;
+#modelmanageTable tr.header{
+  background-color: #e4e4e4;
+  /* color:#fff; */
 }
-
+#modelmanageTable tr:hover {
+  background-color: #f7f7f7;
+  color:#000;
+}
 
 
 /* breadcrumbs */
