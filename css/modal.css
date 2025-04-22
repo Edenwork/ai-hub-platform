@@ -56,8 +56,12 @@
     border-radius: 5px;
     font-size: 14px;
     padding: 8px 12px;
+    color: #979797;
 }
-
+.form-control::placeholder {
+    color: #979797 !important; 
+    /* opacity: 1; Ensure placeholder is fully visible */
+}
 .form-control:focus {
     outline: none;
     box-shadow: none;
@@ -71,15 +75,31 @@
     padding-right: 40px; /* 為眼睛圖標留出空間 */
 }
 
-/* 眼睛圖標 */
-.toggle-password {
+.toggle-icon {
     position: absolute !important;
     /* right: 40px; */
-    left: 236px;
+   /* left: 218px;  236px; */
     top: 50%;
     transform: translateY(-50%);
     cursor: pointer;
     color: #6c757d;
+}
+/* 眼睛圖標 */
+.toggle-password {
+    /* position: absolute !important; */
+    left: 218px; 
+    /* top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #6c757d; */
+}
+.toggle-paste {
+    /* position: absolute !important; */
+    left: 244px;
+    /* top: 50%; */
+    /* transform: translateY(-50%);
+    cursor: pointer;
+    color: #6c757d; */
 }
 
 .toggle-password i {

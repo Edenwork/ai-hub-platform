@@ -1,3 +1,19 @@
+
+/* 滑到最底btn */
+.button-to-end {
+    position: fixed;
+    bottom: 60px; /* 距離底部 60px */
+    right: 50px; /* 距離右邊 50px */
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+}
+.button-to-end.hidden {
+    display: none; /* 隱藏按鈕 */
+}
+
 .chat-window {
     padding: 20px;
 }
@@ -125,10 +141,48 @@
 }
 
 
-/* chat input */
 
-/* .form-text {
-    font-size: 12px;
-    color: #6c757d;
-    margin-left: 20px;
-} */
+
+/* -------- 逐行文案 --------- */
+
+.text-container {
+    overflow: hidden;
+  }
+
+  .text-line {
+    margin: 10px 0;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInLine 0.5s ease forwards;
+  }
+
+  .char {
+    display: inline-block;
+    opacity: 0;
+    animation: fadeInChar 0.05s ease forwards;
+  }
+
+  @keyframes fadeInLine {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeInChar {
+    to {
+      opacity: 1;
+    }
+  }
+
+  /* 重置狀態的樣式 */
+  .reset {
+    animation: none;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  .char.reset {
+    animation: none;
+    opacity: 0;
+  }
