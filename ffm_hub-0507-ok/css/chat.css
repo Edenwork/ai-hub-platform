@@ -1,0 +1,291 @@
+
+/* 滑到最底btn */
+.button-to-end {
+    position: fixed;
+    bottom: 60px; /* 距離底部 60px */
+    right: 50px; /* 距離右邊 50px */
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+}
+.button-to-end.hidden {
+    display: none; /* 隱藏按鈕 */
+}
+
+.chat-window {
+    padding: 20px;
+}
+
+.message {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 問題框置右 */
+.chat-user-message {
+    align-items: flex-end;
+}
+
+.chat-user-message .message-content {
+    background-color: #EBEBEB;
+    border-radius: 22px;
+    padding: 0.875rem 1.8rem;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); */
+    max-width: 70%; /* 最大寬度為螢幕的 70% */
+}
+
+/* 回覆框置左 */
+.chat-assistant-message {
+    align-items: flex-start;
+}
+
+.chat-assistant-message .message-content {
+    background-color: transparent;
+    border-radius: 10px;
+    padding: 15px;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); */
+    /*max-width: 70%;  最大寬度為螢幕的 70% */
+}
+
+.message-content p {
+    margin: 0;
+    color: #333;
+    /* white-space: pre-wrap; 支援換行 */
+}
+
+.btn-copy {
+    background: none;
+    border: none;
+    color: #6c757d;
+    font-size: 16px;
+    margin-left: 10px;
+}
+
+.btn-copy:hover {
+    color: #333;
+}
+
+.message-actions {
+    margin-top: 10px;
+    display: flex;
+    gap: 2px;
+}
+
+.btn-action {
+    background: none;
+    color: #6c757d;
+    font-size: 16px;
+}
+
+.btn-action:hover {
+    color: #333;
+}
+
+.continue-conversation {
+    margin-top: 20px;
+}
+
+.btn-continue {
+    background-color: #e6f0fa;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 15px;
+    font-size: 14px;
+    color: #333;
+}
+
+.btn-continue:hover {
+    background-color: #d0e0f5;
+}
+.chat-dialog{
+    background-image: linear-gradient(268deg, #dbf2f6 0%, #f8f1f1 30%, #d7eaf2 100%);
+    border-radius: 30px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 0.4rem 1rem;
+    width: 100%;
+    height: 60px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ced4da;
+}
+.chat-textarea {
+    display: block;
+    width: 100%;
+    padding: 0.2rem 1rem ; /* .375rem .75rem; */
+    /* font-size: 1rem;
+    font-weight: 400; */
+    line-height: 2rem; /* 1.5 */
+    color: var(--bs-body-color);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    /* background-color: var(--bs-body-bg); */
+    background-clip: padding-box;
+    border: transparent;
+    /* border: var(--bs-border-width) solid var(--bs-border-color); */
+    border-radius: var(--bs-border-radius);
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    resize: none;
+}
+
+
+
+
+/* -------- 逐行文案 --------- */
+
+.text-container {
+    overflow: hidden;
+  }
+
+  .text-line {
+    margin: 10px 0;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInLine 0.5s ease forwards;
+  }
+
+  .char {
+    display: inline-block;
+    opacity: 0;
+    animation: fadeInChar 0.05s ease forwards;
+  }
+
+  @keyframes fadeInLine {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeInChar {
+    to {
+      opacity: 1;
+    }
+  }
+
+  /* 重置狀態的樣式 */
+  .reset {
+    animation: none;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  .char.reset {
+    animation: none;
+    opacity: 0;
+  }
+
+
+  .file-upload {
+    width: 80%;
+    max-width: 800px;
+    padding: 20px;
+    border: 2px dashed #ccc;
+    border-radius: 10px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    position: relative;
+  }
+  /* .file-upload.dragover {
+    border-color: #6200ea;
+    background: rgba(98, 0, 234, 0.1);
+  } */
+  .question-dialog.dragover{
+    border-color: #6200ea;
+    background: rgba(98, 0, 234, 0.1);
+  }
+  .button-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  .add-btn,
+  .dropdown-btn {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .add-btn {
+    background: #e0e0e0;
+  }
+  .dropdown-btn {
+    background: #0288d1;
+    color: white;
+  }
+  #thumbnails {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 50%;
+  }
+  .thumbnail-container {
+    position: relative;
+    display: inline-block;
+  }
+  .thumbnail {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+  }
+  .delete-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #d3d3d3;
+    color: black;
+    border: none;
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+    font-size: 10px;
+    line-height: 15px;
+    text-align: center;
+    font-weight: bold;
+  }
+  .error-message {
+    margin-top: 10px;
+    padding: 10px;
+    background: linear-gradient(135deg, #e0f7fa, #f8e1e9);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 14px;
+    color: black;
+  }
+  .error-message::before {
+    content: "ⓘ";
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #d3d3d3;
+    text-align: center;
+    line-height: 16px;
+    font-size: 12px;
+  }

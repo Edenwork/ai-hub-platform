@@ -1,0 +1,290 @@
+@-webkit-keyframes thinking-animation {
+  0% {
+    opacity: 0;
+    right: 130px;
+  }
+  48% {
+    opacity: 0;
+    right: 130px;
+  }
+  52% {
+    opacity: 1;
+    right: 30px;
+  }
+  70% {
+    opacity: 1;
+    right: 30px;
+  }
+  100% {
+    opacity: 0;
+    right: 30px;
+  }
+}
+@-moz-keyframes thinking-animation {
+  0% {
+    opacity: 0;
+    right: 130px;
+  }
+  48% {
+    opacity: 0;
+    right: 130px;
+  }
+  52% {
+    opacity: 1;
+    right: 30px;
+  }
+  70% {
+    opacity: 1;
+    right: 30px;
+  }
+  100% {
+    opacity: 0;
+    right: 30px;
+  }
+}
+@-webkit-keyframes fade {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@-moz-keyframes fade {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@-webkit-keyframes bg {
+  0% {
+    background-color: #306f99;
+  }
+  50% {
+    background-color: #19470f;
+  }
+  90% {
+    background-color: #734a10;
+  }
+}
+@-moz-keyframes bg {
+  0% {
+    background-color: #306f99;
+  }
+  50% {
+    background-color: #19470f;
+  }
+  90% {
+    background-color: #734a10;
+  }
+}
+@-webkit-keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  10% {
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  20% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  30% {
+    opacity: 0;
+  }
+  35% {
+    opacity: 1;
+  }
+  40% {
+    opacity: 0;
+    right: -21px;
+  }
+  45% {
+    opacity: 1;
+    right: 80px;
+  }
+  50% {
+    opacity: 0;
+    right: -21px;
+  }
+  51% {
+    right: -21px;
+  }
+  55% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 0;
+  }
+  65% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 0;
+  }
+  75% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 0;
+  }
+  85% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 0;
+    right: -21px;
+  }
+  95% {
+    opacity: 1;
+    right: 80px;
+  }
+  96% {
+    right: -21px;
+  }
+  100% {
+    opacity: 0;
+    right: -21px;
+  }
+}
+@-moz-keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  10% {
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  20% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  30% {
+    opacity: 0;
+  }
+  35% {
+    opacity: 1;
+  }
+  40% {
+    opacity: 0;
+    right: -21px;
+  }
+  45% {
+    opacity: 1;
+    right: 80px;
+  }
+  50% {
+    opacity: 0;
+    right: -21px;
+  }
+  51% {
+    right: -21px;
+  }
+  55% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 0;
+  }
+  65% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 0;
+  }
+  75% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 0;
+  }
+  85% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 0;
+    right: -21px;
+  }
+  95% {
+    opacity: 1;
+    right: 80px;
+  }
+  96% {
+    right: -21px;
+  }
+  100% {
+    opacity: 0;
+    right: -21px;
+  }
+}
+
+
+.wrap {
+  position: relative;
+  /* top: 50%; */
+  /* left: 40%; 置中*/
+}
+
+
+.loading {
+  position: relative;
+  text-align: right;
+  text-shadow: 0 0 6px #d7f2ff;
+  height: 20px;
+  width: 150px;
+}
+.loading span {
+  display: block;
+  /* text-transform: uppercase; */
+  position: absolute;
+  right: 30px;
+  height: 20px;
+  width: 200px;
+  line-height: 20px;
+  font-weight: 600;
+  color: #1595BC;
+}
+.loading span:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0px;
+  right: -21px;
+  height: 20px;
+  width: 12px;
+  background: #46bbde;
+  -moz-box-shadow: 0 0 15px #46bbde;
+  -webkit-box-shadow: 0 0 15px #46bbde;
+  box-shadow: 0 0 15px #46bbde;
+  -moz-animation: blink 3.4s infinite;
+  -webkit-animation: blink 3.4s infinite;
+  animation: blink 3.4s infinite;
+}
+.loading span.thinking-animation {
+  -moz-animation: thinking-animation 3.4s linear infinite;
+  -webkit-animation: thinking-animation 3.4s linear infinite;
+  animation: thinking-animation 3.4s linear infinite;
+}
+.loading span.thinking-text {
+  -moz-animation: thinking-animation 3.4s linear 1.7s infinite;
+  -webkit-animation: thinking-animation 3.4s linear 1.7s infinite;
+  animation: thinking-animation 3.4s linear 1.7s infinite;
+  opacity: 0;
+}

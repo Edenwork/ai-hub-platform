@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <title>Dashboard-index chat</title>
+  <!-- <script src="../assets/js/color-modes.js"></script> -->
+  <!-- <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/dropdowns/">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3"> -->
+
+  <link href="./css/bootstrap.min.css" rel="stylesheet">
+  <link href="./css/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+
+  <style>
+
+
+  </style>
+
+
+  <!-- Custom styles -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="./css/dashboard.css" rel="stylesheet">
+</head>
+
+<body>
+
+ <!-- 動態載入 header -->
+ <div id="header-admin-placeholder"></div>
+
+
+
+  <div class="container-fluid">
+    <div class="row">
+
+<!-- sidebar -->
+      <div class="sidebar border- border-right col-md-3 col-lg-3 p-0 bg-body-tertiary">
+        <div class="sidebar-pl offcanvas-md offcanvas-end bg-body-tertiary" tabindex="-1" id="sidebarMenu"
+          aria-labelledby="sidebarMenuLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="sidebarMenuLabel">FFM Hub</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebarMenu"
+              aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3">
+            <ul class="nav flex-column">
+
+              <li class="nav-item">
+                <a href="chat.html" class="nav-link nav-recommend-color color-attention d-flex align-items-center gap-2">
+                  <img src="./images/icon-newchat.png">
+                  開始新的對話
+                </a>
+              </li>
+            </ul>
+
+            <hr class="my-3">
+
+            <ul class="nav flex-column mb-auto">
+              <li class="nav-item">
+                <div class="nav-link d-flex- align-items-center gap-2" href="#">
+                  <div class="dropdown">
+                    <!-- <img src="./images/icon-history.png"> -->
+                    <span class="sidebar-history">FFM Hub 對話長度限制2...</span>
+                    <button class="btn btn-history" type="button" id="actionDropdown" data-bs-toggle="dropdown"
+                      aria-expanded="false">
+                      <i class="fa fa-ellipsis-v text-grey"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end-" aria-labelledby="actionDropdown">
+                      <li>
+                        <a class="dropdown-item" href="#">
+                          <img src="./images/icon_edit.png">
+                          <span class="dropdown-mg"> 重新命名</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="#">
+                          <img src="./images/icon_delete.png">
+                          <span class="text-danger dropdown-mg"> 刪除對話</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+              </li>
+              <li class="nav-item">
+                <div class="nav-link d-flex- align-items-center gap-2" href="#">
+                  <div class="dropdown">
+                    <!-- <img src="./images/icon-history.png"> -->
+                    <span class="sidebar-history">FFM Hub 對話長度限制</span>
+                    <button class="btn btn-history" type="button" id="actionDropdown" data-bs-toggle="dropdown"
+                      aria-expanded="false-">
+                      <i class="fa fa-ellipsis-v text-grey"></i>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="actionDropdown">
+                      <li>
+                        <a class="dropdown-item" href="#">
+                          <img src="./images/icon_edit.png">
+                          <span class="dropdown-mg"> 重新命名</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="#">
+                          <img src="./images/icon_delete.png">
+                          <span class="text-danger dropdown-mg"> 刪除對話</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+              </li>
+              <li class="nav-item">
+                <div class="nav-link d-flex- align-items-center gap-2" href="#">
+                  <div class="dropdown">
+                    <!-- <img src="./images/icon-history.png"> -->
+                    <span class="sidebar-history">LLM生成紀錄標題01</span>
+                    <button class="btn btn-history" type="button" id="actionDropdown" data-bs-toggle="dropdown"
+                      aria-expanded="false-">
+                      <i class="fa fa-ellipsis-v text-grey"></i>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="actionDropdown">
+                      <li>
+                        <a class="dropdown-item" href="#">
+                          <img src="./images/icon_edit.png">
+                          <span class="dropdown-mg"> 重新命名</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="#">
+                          <img src="./images/icon_delete.png">
+                          <span class="text-danger dropdown-mg"> 刪除對話</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+              </li>
+
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <main class="col-md-9 ms-sm-auto col-lg-9 px-md-4 dashboard-round-bg">
+        <section class="container-chat">
+          <div class="title text-center" style="margin-top: 10%">
+            <h2>您好，歡迎使用 FFM Hub!</h2>
+            <h6 class="pt-3 pb-4">想輕鬆搞定撰寫文章、翻譯或程式碼？現在就開始向我提問吧！</h6>
+          </div>
+
+
+          <div class="container mt-5 col-9">
+            <div class="question-dialog file-upload p-3">
+
+
+              <!-- ------------ 拖曳範圍待做---------- -->
+              <!-- <div class="file-upload-" id="dropZone">
+                <input type="file" id="fileInput" multiple style="display: none;">
+                <div class="button-container">
+                  <button class="add-btn" onclick="document.getElementById('fileInput').click()">+</button>
+                  <p>將檔案拖曳到這裡或點擊上傳</p>
+              </div>
+                <div id="thumbnails"></div>
+                <div id="errorContainer"></div>
+            </div> -->
+
+           <!-- 輸入框 -->
+              <div class="d-flex flex-column h-100">
+                <textarea class="form-control-chat mb-3" placeholder="詢問任何問題" aria-label="Question" rows="3"></textarea>
+                
+                <div class="file-upload-" id="dropZone-">
+                  <input type="file" id="fileInput" multiple style="display: none;">
+                  <!-- <div class="button-container"> -->
+                    <button class="add-btn file-upload-" id="dropZone" onclick="document.getElementById('fileInput').click()">+</button>
+                    <!-- <p>將檔案拖曳到這裡或點擊上傳</p> -->
+                <!-- </div> -->
+                  <div id="thumbnails"></div>
+                  <div id="errorContainer"></div>
+              </div> 
+
+                <!-- <div class="button-container">
+                  <button class="add-btn" onclick="document.getElementById('fileInput').click()">+</button>
+                  <p>將檔案拖曳到這裡或點擊上傳2-這邊無法拖曳</p>
+              </div> -->
+
+                <div class="d-flex justify-content-end align-items-end gap-2">
+                  <div class="dropdown">
+                    <button class="btn btn-select-model dropdown-toggle fs-6" type="button" id="modelDropdown"
+                      data-bs-toggle="dropdown" aria-expanded="false">
+                      Llama3.1-FFM-70B
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="modelDropdown">
+                      <li>
+                        <a class="dropdown-item active-" href="#">
+                          <div class="content-box">
+                            <span class="dropdown-text">Llama3.1-FFM-88</span><br>
+                            <mediuam class="text-muted">適合短文本推理對話</mediuam>
+                          </div>
+                          <br>
+                          <span class="checkmark ms-2">
+                            <img src="./images/icon-check.png">
+                          </span>
+                        </a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item active" href="#">
+                          <div class="content-box">
+                            <span class="dropdown-text">Llama3.1-FFM-70B</span><br>
+                            <mediuam class="text-muted">適合複雜的任務與對話</mediuam>
+                          </div>
+                          <br>
+                          <span class="checkmark ms-2">
+                            <img src="./images/icon-check.png">
+                          </span>
+                        </a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item active-" href="#">
+                          <div class="content-box">
+                            <span class="dropdown-text">TAIDE-LX-7B</span><br>
+                            <mediuam class="text-muted">強化台灣文化理解與繁體中文處理</mediuam>
+                          </div>
+                          <br>
+                          <span class="checkmark ms-2">
+                            <img src="./images/icon-check.png">
+                          </span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <!-- 送出按鈕 -->
+                  <button class="btn btn-chat-send">
+                    <img src="./images/btn-chat-send.png">
+                  </button>
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+
+
+
+
+
+        </section>
+
+      </main>
+    </div>
+  </div>
+  <script src="./js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom JS for dropdown selection -->
+  <script src="./js/load-admin-header.js"></script>
+  <script src="./js/load-admin-sidebar.js"></script>
+  <script>
+    document.querySelectorAll('.dropdown-item').forEach(item => {
+      item.addEventListener('click', function (e) {
+        //e.preventDefault();
+        // 移除所有選項的 active 類別和勾勾
+        document.querySelectorAll('.dropdown-item').forEach(i => {
+          i.classList.remove('active');
+          i.querySelector('.checkmark').style.display = 'none';
+        });
+        // 為當前選項添加 active 類別和顯示勾勾
+        this.classList.add('active');
+        this.querySelector('.checkmark').style.display = 'inline-block';
+        // 更新按鈕文字
+        const selectedText = this.querySelector('span').textContent;
+        document.querySelector('#modelDropdown').textContent = selectedText;
+      });
+    });
+  </script>
+
+
+<!-- file-upload -->
+<script>
+const dropZone = document.getElementById("dropZone");
+const fileInput = document.getElementById("fileInput");
+const thumbnails = document.getElementById("thumbnails");
+const errorContainer = document.getElementById("errorContainer");
+const MAX_SIZE = 30 * 1024 * 1024; // 30MB in bytes
+
+function showError(message) {
+  const errorDiv = document.createElement("div");
+  errorDiv.classList.add("error-message");
+  errorDiv.textContent = message;
+  errorContainer.appendChild(errorDiv);
+
+  setTimeout(() => {
+    errorDiv.remove();
+  }, 5000);
+}
+
+dropZone.addEventListener("dragover", (e) => {
+  e.preventDefault();
+  dropZone.classList.add("dragover");
+});
+
+dropZone.addEventListener("dragleave", () => {
+  dropZone.classList.remove("dragover");
+});
+
+dropZone.addEventListener("drop", (e) => {
+  e.preventDefault();
+  dropZone.classList.remove("dragover");
+  const files = e.dataTransfer.files;
+  handleFiles(files);
+});
+
+dropZone.addEventListener("click", (e) => {
+  if (e.target === dropZone || e.target.tagName === "P") {
+    fileInput.click();
+  }
+});
+
+fileInput.addEventListener("change", () => {
+  const files = fileInput.files;
+  handleFiles(files);
+});
+
+function handleFiles(files) {
+  for (const file of files) {
+    if (file.type.startsWith("image/")) {
+      if (file.size > MAX_SIZE) {
+        showError(`圖片不可大於 30MB`);
+        continue;
+      }
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const thumbnailContainer = document.createElement("div");
+        thumbnailContainer.classList.add("thumbnail-container");
+
+        const img = document.createElement("img");
+        img.src = e.target.result;
+        img.classList.add("thumbnail");
+
+        const deleteBtn = document.createElement("button");
+        deleteBtn.textContent = "X";
+        deleteBtn.classList.add("delete-btn");
+        deleteBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          thumbnailContainer.remove();
+        });
+
+        thumbnailContainer.appendChild(img);
+        thumbnailContainer.appendChild(deleteBtn);
+        thumbnails.appendChild(thumbnailContainer);
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+}
+</script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,443 @@
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <title>使用者管理 user-manage</title>
+  <link href="./css/bootstrap.min.css" rel="stylesheet">
+  <!-- <link href="./css/breadcrumbs.css" rel="stylesheet"> -->
+  <link href="./css/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Custom styles -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="./css/dashboard.css" rel="stylesheet">
+  <link href="./css/modal.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- 動態載入 header -->
+  <div id="header-admin-placeholder"></div>
+  <!-- <div id="sidebar-admin-placeholder"></div> 位置有錯-->
+
+  <div class="container-fluid">
+    <div class="row">
+
+      <div class="sidebar border- border-right col-md-3 col-lg-2 p-0 bg-body-tertiary">
+        <div class="sidebar-pl offcanvas-md offcanvas-end bg-body-tertiary" tabindex="-1" id="sidebarMenu"
+          aria-labelledby="sidebarMenuLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="sidebarMenuLabel">FFM Hub</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebarMenu"
+              aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <button class="tag-admin">
+                  系統管理員專屬
+                </button>
+              </li>
+            </ul>
+
+            <ul class="nav flex-column mt-lg-3">
+              <li class="nav-item">
+                <a class="nav-link d-flex align-items-center gap-2" href="model-manage.html">
+                  <img src="./images/icon-manage-navbar.png">
+                  模型管理
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link d-flex align-items-center gap-2" href="user-manage.html">
+                  <img src="./images/icon-user-navbar.png">
+                  使用者管理
+                </a>
+              </li>
+            </ul>
+
+            <hr class="my-3">
+          </div>
+        </div>
+      </div>
+
+      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 dashboard-round-bg">
+        <section class="container-chat">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb rounded-3">
+              <!-- <li class="breadcrumb-item">
+                 <a class="link-body-emphasis" href="#">
+                    <svg class="bi" width="16" height="16"><use xlink:href="#house-door-fill"></use></svg> 
+                    <span class="visually-hidden">Home</span>
+                  </a>
+                </li>-->
+              <!-- <li class="breadcrumb-item">
+                  <a class="link-body-emphasis fw-semibold text-decoration-none" href="index.html"><img
+                      src="./images/logo/icon-breadcrumb-logo.png"></a>
+                </li> -->
+              <li class="breadcrumb-item active">
+                <a class="link-body-default fw-bold text-decoration-none fs-4" href="#">使用者管理</a>
+              </li>
+              <!-- <li class="breadcrumb-item text-decoration-none " aria-current="page">
+                  新增模型
+                </li> -->
+            </ol>
+          </nav>
+
+
+        </section>
+
+
+
+        <section>
+          <div class="d-flex flex-row justify-content-between align-items-center" style="">
+            <!-- <button class="btn btn-chat-send" type="button">
+              <img src="./images/btn_add_user.png">
+            </button> -->
+            <button class="btn btn-add-user" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+              <i class="fa fa-plus me-2"></i> 新增使用者
+            </button>
+
+            <!-- Button trigger modal -->
+            <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+  Launch static backdrop modal
+</button> -->
+
+            <!-- Modal -->
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+              aria-labelledby="staticBackdropLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header" class="">
+                    <div class="modal-title m-3 fw-bold text-decoration-none fs-4" id="staticBackdropLabel">新增使用者</div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body align-items-center">
+                    <form class="">
+                      <div class="row mb-3 align-items-center">
+                        <label for="account" class="col-3 form-label">帳號 <span class="text-danger-">*</span></label>
+                        <div class="col-9">
+                          <input type="email" class="form-control" id="account" placeholder="需為 email 格式，可與聯絡用的 email 不同（必填）"
+                            required>
+                        </div>
+                      </div>
+
+
+                      <div class="row mb-3 align-items-center">
+                        <label for="password" class="col-3 form-label">密碼 <span class="text-danger-">*</span></label>
+                        <div class="col-9 position-relative d-flex align-items-center">
+                          <input type="password" class="form-control password-input" id="password"
+                          placeholder="8~12碼/包含大寫英文/符號" required>
+                          <span class="position-absolute toggle-icon toggle-password">
+                            <img src="./images/icon-eye.svg">
+                          </span>
+                          <span class="position-absolute toggle-icon toggle-paste">
+                            <img src="./images/icon-copy.svg">
+                          </span>
+                          <button class="btn btn-default m-2">
+                            <span class="fs-6"> 產生</span>
+                            <img src="./images/icon-key.png">
+                            <!-- 產生 <i class="fa fa-plus me-2"></i> -->
+                          </button>
+                        </div>
+                      </div>
+
+
+
+                      <div class="row mb-3 align-items-center">
+                        <label class="col-3 form-label">角色</label>
+                        <div class="col-9">
+                          <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="role" id="roleAdmin" value="admin"
+                              checked>
+                            <label class="form-check-label" for="roleAdmin">系統管理員</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="role" id="roleUser" value="user">
+                            <label class="form-check-label" for="roleUser">使用者</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row mb-3 align-items-center">
+                        <label for="lastName" class="col-3 form-label">姓氏/名字*</label>
+                        <div class="col-4">
+                          <input type="text" class="form-control" id="lastName" placeholder="姓氏（選填）">
+                        </div>
+                        <div class="col-5">
+                          <input type="text" class="form-control" id="lastName" placeholder="名字（必填）" required>
+                        </div>
+                      </div>
+
+                      <div class="row mb-3 align-items-center">
+                        <label for="email" class="col-3 form-label">電子郵件 <span class="">*</span></label>
+
+                        <div class="col-9">
+                          <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="checkbox" name="" id="" value="" >
+                          <label class="form-check-label" for="roleAdmin">與登入帳號相同</label>
+                        </div>
+                      </div>
+                      </div>
+
+                      <div class="row mb-3 align-items-center">
+                        <label for="" class="col-3 form-label-"></label>
+                        <div class="col-9">
+                          <input type="email" class="form-control" id="email" placeholder="電子郵件與登入帳號不需一致（必填）" required>
+                        </div>
+                      </div>
+
+                    </form>
+                  </div>
+
+                  <div class="modal-info d-flex mb-3 form-text text-danger">
+                    <img class="m-2" src="./images/icon-input-hint.png">
+                    不可與前 3 次使用的密碼相同
+                  </div>
+
+                  <div class="modal-footer d-flex justify-content-between">
+                    <button type="button" class="btn btn-modal-outline fs-6" data-bs-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-modal-default fs-6">新增</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="position-relative d-inline-block"><i
+                class="fa fa-magnifying-glass position-absolute search-icon"></i>
+              <input type="text" id="tableSearchInput" onkeyup="myFunction()" placeholder="輸入姓名或帳號搜尋"
+                title="Search model name" class="search-input ps-5-">
+            </div>
+
+            <!-- <input type="text" id="tableSearchInput" onkeyup="myFunction()" placeholder="輸入模型名稱搜尋"
+              title="Search model name"><i class="fa fa-search"></i> -->
+          </div>
+
+          <table id="modelmanageTable">
+            <tr class="header">
+              <th style="width:15%;">姓氏</th>
+              <th style="width:15%;">名字</th>
+              <th style="width:25%;">帳號</th>
+              <th style="width:15%;">角色</th>
+              <th style="width:10%;">狀態</th>
+              <th style="width:15%;">功能</th>
+            </tr>
+
+            <tr>
+              <td>Yang1</td>
+              <td>Novia Yang2</td>
+              <td>account01@gmail.com</td>
+              <td>系統管理員</td>
+              <td>已啟用</td>
+              <td>
+                <div class="dropdown">
+                  <button class="btn btn-more-action" type="button" id="actionDropdown" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    <i class="fa fa-ellipsis-h"></i>
+                  </button>
+                  <!-- 下拉選單 -->
+                  <ul class="dropdown-menu" aria-labelledby="actionDropdown">
+                    <li>
+                      <a class="dropdown-item" href="#">
+                        <img src="./images/icon_edit.png">
+                        <span class="dropdown-mg"> 修改</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">
+                        <img src="./images/icon_delete.png">
+                        <span class="text-danger dropdown-mg"> 刪除</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Yang1</td>
+              <td>Novia Yang2</td>
+              <td>account03@gmail.com</td>
+              <td>系統管理員</td>
+              <td>已啟用</td>
+              <td>
+                <div class="dropdown">
+                  <button class="btn btn-more-action" type="button" id="actionDropdown" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    <i class="fa fa-ellipsis-h"></i>
+                  </button>
+                  <!-- 下拉選單 -->
+                  <ul class="dropdown-menu" aria-labelledby="actionDropdown">
+                    <li>
+                      <a class="dropdown-item" href="#">
+                        <img src="./images/icon_edit.png">
+                        <span class="dropdown-mg"> 修改</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">
+                        <img src="./images/icon_delete.png">
+                        <span class="text-danger dropdown-mg"> 刪除</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Yang1</td>
+              <td>Novia Yang2</td>
+              <td>account06@gmail.com</td>
+              <td>使用者</td>
+              <td>已停用</td>
+              <td>
+                <div class="dropdown">
+                  <button class="btn btn-more-action" type="button" id="actionDropdown" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    <i class="fa fa-ellipsis-h"></i>
+                  </button>
+                  <!-- 下拉選單 -->
+                  <ul class="dropdown-menu" aria-labelledby="actionDropdown">
+                    <li>
+                      <a class="dropdown-item" href="#">
+                        <img src="./images/icon_edit.png">
+                        <span class="dropdown-mg"> 修改</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">
+                        <img src="./images/icon_delete.png">
+                        <span class="text-danger dropdown-mg"> 刪除</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Yang1</td>
+              <td>Novia Yang2</td>
+              <td>account09@gmail.com</td>
+              <td>系統管理員</td>
+              <td>已啟用</td>
+              <td>
+                <div class="dropdown">
+                  <button class="btn btn-more-action" type="button" id="actionDropdown" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    <i class="fa fa-ellipsis-h"></i>
+                  </button>
+                  <!-- 下拉選單 -->
+                  <ul class="dropdown-menu" aria-labelledby="actionDropdown">
+                    <li>
+                      <a class="dropdown-item" href="#">
+                        <img src="./images/icon_edit.png">
+                        <span class="dropdown-mg"> 修改</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">
+                        <img src="./images/icon_delete.png">
+                        <span class="text-danger dropdown-mg"> 刪除</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Yang1</td>
+              <td>Novia Yang2</td>
+              <td>account21@gmail.com</td>
+              <td>系統管理員</td>
+              <td>已啟用</td>
+              <td>
+                <div class="dropdown">
+                  <button class="btn btn-more-action" type="button" id="actionDropdown" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    <i class="fa fa-ellipsis-h"></i>
+                  </button>
+                  <!-- 下拉選單 -->
+                  <ul class="dropdown-menu" aria-labelledby="actionDropdown">
+                    <li>
+                      <a class="dropdown-item" href="#">
+                        <img src="./images/icon_edit.png">
+                        <span class="dropdown-mg"> 修改</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">
+                        <img src="./images/icon_delete.png">
+                        <span class="text-danger dropdown-mg"> 刪除</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </td>
+            </tr>
+
+          </table>
+
+        </section>
+
+
+
+
+
+
+
+
+      </main>
+    </div>
+  </div>
+  <script src="./js/bootstrap.bundle.min.js"></script>
+  <script src="./js/table.js"></script>
+
+  <!-- Custom JS for dropdown selection -->
+  <script src="./js/load-admin-header.js"></script>
+  <script src="./js/load-admin-sidebar.js"></script>
+  <script>
+    document.querySelectorAll('.dropdown-item').forEach(item => {
+      item.addEventListener('click', function (e) {
+        //e.preventDefault();
+        // 移除所有選項的 active 類別和勾勾
+        document.querySelectorAll('.dropdown-item').forEach(i => {
+          i.classList.remove('active');
+          i.querySelector('.checkmark').style.display = 'none';
+        });
+        // 為當前選項添加 active 類別和顯示勾勾
+        this.classList.add('active');
+        this.querySelector('.checkmark').style.display = 'inline-block';
+        // 更新按鈕文字
+        const selectedText = this.querySelector('span').textContent;
+        document.querySelector('#modelDropdown').textContent = selectedText;
+      });
+    });
+  </script>
+
+  <!-- 密碼眼睛 -->
+  <script>
+    document.querySelector('.toggle-password').addEventListener('click', function () {
+      const passwordInput = document.querySelector('#password');
+      const icon = this.querySelector('i');
+      if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        icon.classList.remove('fa-eye');
+        icon.classList.add('fa-eye-slash');
+      } else {
+        passwordInput.type = 'password';
+        icon.classList.remove('fa-eye-slash');
+        icon.classList.add('fa-eye');
+      }
+    });
+  </script>
+
+
+
+</body>
+
+</html>
