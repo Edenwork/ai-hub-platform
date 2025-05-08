@@ -17,6 +17,7 @@
 
   <style>
 
+
   </style>
 
 
@@ -31,11 +32,11 @@
  <div id="header-admin-placeholder"></div>
 
 
-<!-- sidebar -->
+
   <div class="container-fluid">
     <div class="row">
 
-
+<!-- sidebar -->
       <div class="sidebar border- border-right col-md-3 col-lg-3 p-0 bg-body-tertiary">
         <div class="sidebar-pl offcanvas-md offcanvas-end bg-body-tertiary" tabindex="-1" id="sidebarMenu"
           aria-labelledby="sidebarMenuLabel">
@@ -154,10 +155,38 @@
 
 
           <div class="container mt-5 col-9">
-            <div class="question-dialog p-3">
+            <div class="question-dialog file-upload p-3">
+
+
+              <!-- ------------ 拖曳範圍待做---------- -->
+              <!-- <div class="file-upload-" id="dropZone">
+                <input type="file" id="fileInput" multiple style="display: none;">
+                <div class="button-container">
+                  <button class="add-btn" onclick="document.getElementById('fileInput').click()">+</button>
+                  <p>將檔案拖曳到這裡或點擊上傳</p>
+              </div>
+                <div id="thumbnails"></div>
+                <div id="errorContainer"></div>
+            </div> -->
+
+           <!-- 輸入框 -->
               <div class="d-flex flex-column h-100">
-                <!-- 輸入框 -->
                 <textarea class="form-control-chat mb-3" placeholder="詢問任何問題" aria-label="Question" rows="3"></textarea>
+                
+                <div class="file-upload-" id="dropZone-">
+                  <input type="file" id="fileInput" multiple style="display: none;">
+                  <!-- <div class="button-container"> -->
+                    <button class="add-btn file-upload-" id="dropZone" onclick="document.getElementById('fileInput').click()">+</button>
+                    <!-- <p>將檔案拖曳到這裡或點擊上傳</p> -->
+                <!-- </div> -->
+                  <div id="thumbnails"></div>
+                  <div id="errorContainer"></div>
+              </div> 
+
+                <!-- <div class="button-container">
+                  <button class="add-btn" onclick="document.getElementById('fileInput').click()">+</button>
+                  <p>將檔案拖曳到這裡或點擊上傳2-這邊無法拖曳</p>
+              </div> -->
 
                 <div class="d-flex justify-content-end align-items-end gap-2">
                   <div class="dropdown">
@@ -212,6 +241,7 @@
 
                 </div>
               </div>
+
             </div>
           </div>
 
@@ -248,6 +278,87 @@
       });
     });
   </script>
+
+
+<!-- file-upload -->
+<script>
+const dropZone = document.getElementById("dropZone");
+const fileInput = document.getElementById("fileInput");
+const thumbnails = document.getElementById("thumbnails");
+const errorContainer = document.getElementById("errorContainer");
+const MAX_SIZE = 30 * 1024 * 1024; // 30MB in bytes
+
+function showError(message) {
+  const errorDiv = document.createElement("div");
+  errorDiv.classList.add("error-message");
+  errorDiv.textContent = message;
+  errorContainer.appendChild(errorDiv);
+
+  setTimeout(() => {
+    errorDiv.remove();
+  }, 5000);
+}
+
+dropZone.addEventListener("dragover", (e) => {
+  e.preventDefault();
+  dropZone.classList.add("dragover");
+});
+
+dropZone.addEventListener("dragleave", () => {
+  dropZone.classList.remove("dragover");
+});
+
+dropZone.addEventListener("drop", (e) => {
+  e.preventDefault();
+  dropZone.classList.remove("dragover");
+  const files = e.dataTransfer.files;
+  handleFiles(files);
+});
+
+dropZone.addEventListener("click", (e) => {
+  if (e.target === dropZone || e.target.tagName === "P") {
+    fileInput.click();
+  }
+});
+
+fileInput.addEventListener("change", () => {
+  const files = fileInput.files;
+  handleFiles(files);
+});
+
+function handleFiles(files) {
+  for (const file of files) {
+    if (file.type.startsWith("image/")) {
+      if (file.size > MAX_SIZE) {
+        showError(`圖片不可大於 30MB`);
+        continue;
+      }
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const thumbnailContainer = document.createElement("div");
+        thumbnailContainer.classList.add("thumbnail-container");
+
+        const img = document.createElement("img");
+        img.src = e.target.result;
+        img.classList.add("thumbnail");
+
+        const deleteBtn = document.createElement("button");
+        deleteBtn.textContent = "X";
+        deleteBtn.classList.add("delete-btn");
+        deleteBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          thumbnailContainer.remove();
+        });
+
+        thumbnailContainer.appendChild(img);
+        thumbnailContainer.appendChild(deleteBtn);
+        thumbnails.appendChild(thumbnailContainer);
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+}
+</script>
 
 
 </body>

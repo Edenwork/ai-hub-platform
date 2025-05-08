@@ -1,0 +1,76 @@
+.step-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%; /* 400px; */
+    position: relative;
+}
+
+.step {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 33.33%;
+    z-index: 2;
+    /* background: #fff; */
+}
+
+.step-number {
+    width: 30px;
+    height: 30px;
+    background: #B8B8B8;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.step-label {
+    margin: 10px;
+    color: #666;
+    text-align: center;
+    background-color: #fff;
+}
+.step.disabled .step-line::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    height: 2px;
+    width: 15%;
+    /* width: 120px; */
+    background: #B8B8B8;
+}
+.step.active .step-line::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    height: 2px;
+    width: 15%;
+    /* width: 120px; */
+    background: #0D99C8;
+}
+.step-line1::before {
+    left: 15%;
+}
+.step-line2::before {
+    left: 48%;
+}
+.step.active .step-number {
+    background: #0D99C8;
+}
+.step.active .step-label {
+    color: #0D99C8;
+}
+.step.disabled .step-number {
+    background: #B8B8B8;
+}
+.step.disabled .step-label {
+    color: #666;
+}
+.step:first-child .step-number {
+    margin-left: 0;
+}
+.step:last-child .step-number {
+    margin-right: 0;
+}

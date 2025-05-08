@@ -186,3 +186,106 @@
     animation: none;
     opacity: 0;
   }
+
+
+  .file-upload {
+    width: 80%;
+    max-width: 800px;
+    padding: 20px;
+    border: 2px dashed #ccc;
+    border-radius: 10px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    position: relative;
+  }
+  /* .file-upload.dragover {
+    border-color: #6200ea;
+    background: rgba(98, 0, 234, 0.1);
+  } */
+  .question-dialog.dragover{
+    border-color: #6200ea;
+    background: rgba(98, 0, 234, 0.1);
+  }
+  .button-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  .add-btn,
+  .dropdown-btn {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .add-btn {
+    background: #e0e0e0;
+  }
+  .dropdown-btn {
+    background: #0288d1;
+    color: white;
+  }
+  #thumbnails {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 50%;
+  }
+  .thumbnail-container {
+    position: relative;
+    display: inline-block;
+  }
+  .thumbnail {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+  }
+  .delete-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #d3d3d3;
+    color: black;
+    border: none;
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+    font-size: 10px;
+    line-height: 15px;
+    text-align: center;
+    font-weight: bold;
+  }
+  .error-message {
+    margin-top: 10px;
+    padding: 10px;
+    background: linear-gradient(135deg, #e0f7fa, #f8e1e9);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 14px;
+    color: black;
+  }
+  .error-message::before {
+    content: "ⓘ";
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #d3d3d3;
+    text-align: center;
+    line-height: 16px;
+    font-size: 12px;
+  }
