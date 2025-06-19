@@ -105,7 +105,7 @@
   Launch static backdrop modal
 </button> -->
 
-            <!-- Modal -->
+            <!-- Modal 新增使用者 -->
             <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
               aria-labelledby="staticBackdropLabel" aria-hidden="true">
               <div class="modal-dialog">
@@ -204,7 +204,6 @@
               </div>
             </div>
 
-
             <div class="position-relative d-inline-block"><i
                 class="fa fa-magnifying-glass position-absolute search-icon"></i>
               <input type="text" id="tableSearchInput" onkeyup="myFunction()" placeholder="輸入姓名或帳號搜尋"
@@ -246,10 +245,10 @@
                       </a>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="#">
+                      <button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modal-delete-user">
                         <img src="./images/icon_delete.png">
                         <span class="text-danger dropdown-mg"> 刪除</span>
-                      </a>
+                      </button>
                     </li>
                   </ul>
                 </div>
@@ -277,10 +276,10 @@
                       </a>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="#">
+                      <button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modal-delete-user">
                         <img src="./images/icon_delete.png">
                         <span class="text-danger dropdown-mg"> 刪除</span>
-                      </a>
+                      </button>
                     </li>
                   </ul>
                 </div>
@@ -308,10 +307,10 @@
                       </a>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="#">
+                      <button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modal-delete-user">
                         <img src="./images/icon_delete.png">
                         <span class="text-danger dropdown-mg"> 刪除</span>
-                      </a>
+                      </button>
                     </li>
                   </ul>
                 </div>
@@ -339,10 +338,10 @@
                       </a>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="#">
+                      <button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modal-delete-user">
                         <img src="./images/icon_delete.png">
                         <span class="text-danger dropdown-mg"> 刪除</span>
-                      </a>
+                      </button>
                     </li>
                   </ul>
                 </div>
@@ -370,10 +369,10 @@
                       </a>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="#">
+                      <button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modal-delete-user">
                         <img src="./images/icon_delete.png">
                         <span class="text-danger dropdown-mg"> 刪除</span>
-                      </a>
+                      </button>
                     </li>
                   </ul>
                 </div>
@@ -381,6 +380,29 @@
             </tr>
 
           </table>
+
+
+                      <!-- Modal 刪除使用者 -->
+                      <div class="modal fade" id="modal-delete-user" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                      aria-labelledby="modal-delete-user" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header text-center" style="padding-left: 38%;">
+                            <div class="modal-title m-2 fw-bold text-decoration-none fs-4" id="modal-delete-user">刪除使用者</div>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body align-items-center text-center">
+                            <p class="text-danger">刪除後，將無法復原此帳號，請確認是否要刪除？</p>
+                          </div>
+        
+        
+                          <div class="modal-footer d-flex justify-content-between">
+                            <button type="button" class="btn btn-modal-outline fs-6" data-bs-dismiss="modal">取消</button>
+                            <button type="button" class="btn btn-modal-danger fs-6">刪除</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
 
         </section>
 

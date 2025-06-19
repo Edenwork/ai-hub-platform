@@ -1,14 +1,15 @@
 
 .signin-bg {
-  background-color: #D9D9D9;
-  padding: 10%;
-  border-top: #0D99C8 3px solid;
-  border-radius: 80px 0px 0px 0;
+  background-color: #fff;
+  padding: 15% 10%;
+  /* border-top: #035bbf 3px solid; */
+  border-radius: 8px; /* 80px */
+  box-shadow: 0px 8px 30px 14px #00000008;
 }
 
 
 .form-signin {
-  max-width: 520px;
+  max-width: 440px; /*520px;*/
   padding: 1rem;
 }
 
@@ -108,4 +109,8 @@
 
 .bd-mode-toggle .dropdown-menu .active .bi {
   display: block !important;
+}
+
+.text-forgot-pwd{
+  color: #015BBF
 }

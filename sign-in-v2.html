@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <title>Sign in</title>
+  <link href="./css/bootstrap.min.css" rel="stylesheet">
+  <link href="./css/style.css" rel="stylesheet">
+  <style></style>
+  <!-- Custom styles -->
+  <link href="./css/sign-in.css" rel="stylesheet">
+</head>
+
+<body class="d-flex align-items-center py-4 bg-login">
+
+  <main class="form-signin w-100 m-auto">
+    <form>
+      <div class="signin-bg">
+        <div class="text-center">
+          <a href="index.html" >
+          <img class="mb-4" style="margin-right:auto;margin-left:auto" src="./images/logo/logoV2.svg" alt="" width="120"
+            height="167"></a>
+        </div>
+
+        <!-- <h1 class="h3 mb-3 fw-lighter text-dark text-center">Log in to your account</h1> -->
+
+        <div class="form-floating">
+          <input type="email" class="form-control" id="floatingInput" placeholder="">
+          <label for="floatingInput">帳號 或 Email</label>
+        </div>
+        <div class="form-floating mt-3">
+          <input type="password" class="form-control" id="floatingPassword" placeholder="">
+          <label for="floatingPassword">密碼</label>
+        </div>
+
+        <!-- <div class="form-check text-start my-3">
+          <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
+          <label class="form-check-label text-dark" for="flexCheckDefault">
+            Remember me
+          </label>
+        </div> -->
+
+        <div class="text-end my-3">
+          <label class="text-forgot-pwd">
+            <a href="#">忘記密碼</a>
+          </label>
+        </div>
+
+        <button class="btn btn-primary w-100 py-2" type="submit">登入</button>
+      </div>
+
+      <!-- <p class="mt-3 mb-3 text-body-secondary text-center">&copy; Version: v1.0.0 (2025-05-27 update)</p> -->
+
+    </form>
+  </main>
+  <script src="./js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

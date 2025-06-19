@@ -137,7 +137,7 @@
     background-color: transparent;
     color:#07263B; /* #0D99C8; */
     border: 1px solid #07263B;
-    padding: 6px 58px;
+    padding: 6px 48px;
     border-radius: 5px;
     /* font-size: 16px; */
     display: flex;
@@ -161,4 +161,27 @@
   .btn-modal-default:hover,.btn-modal-outline:hover {
     background-color: #0D99C8;
     color: #fff;
+  }
+  .btn-modal-danger{
+    background-color: #CA0729;
+    color: #fff; 
+    border: none;
+    padding: 7px 58px;
+    border-radius: 5px;
+    /* font-size: 16px; */
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s ease;
+    /* width: 148px; */
+  }
+  .btn-modal-danger:hover{
+    background-color: transparent;
+    color: #CA0729; 
+    padding: 5px 56px;
+    border-radius: 5px;
+    border: 1px solid #CA0729;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s ease;
+    /* width: 148px; */
   }

@@ -22,6 +22,10 @@
   <link href="./css/chat.css" rel="stylesheet">
   <link href="./css/chat-animation.css" rel="stylesheet">
   <link href="./css/modal.css" rel="stylesheet">
+  <style>
+
+  </style>
+
 </head>
 
 <body>
@@ -43,12 +47,12 @@
               aria-label="Close"></button>
           </div>
           <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3">
-            <ul class="nav flex-column">
+            <ul class="nav flex-column nav-new-chat">
 
               <li class="nav-item">
                 <a href="chat.html"
-                  class="nav-link nav-recommend-color color-attention d-flex align-items-center gap-2">
-                  <img src="./images/icon-newchat.png">
+                  class="nav-link- nav-recommend-color color-attention d-flex align-items-center gap-3">
+                  <img src="./images/icon-newchat.svg">
                   開始新的對話
                 </a>
               </li>
@@ -61,10 +65,10 @@
                 <div class="nav-link d-flex- align-items-center gap-2" href="#">
                   <div class="dropdown">
                     <!-- <img src="./images/icon-history.png"> -->
-                    <span class="sidebar-history">FFM Hub 對話長度限制2...</span>
+                    <span class="sidebar-history">BIM格式...</span>
                     <button class="btn btn-history" type="button" id="actionDropdown" data-bs-toggle="dropdown"
                       aria-expanded="false">
-                      <i class="fa fa-ellipsis-v text-grey"></i>
+                      <i class="fa fa-ellipsis-v"></i>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end-" aria-labelledby="actionDropdown">
                       <li>
@@ -88,10 +92,10 @@
                 <div class="nav-link d-flex- align-items-center gap-2" href="#">
                   <div class="dropdown">
                     <!-- <img src="./images/icon-history.png"> -->
-                    <span class="sidebar-history">FFM Hub 對話長度限制</span>
+                    <span class="sidebar-history">Open USD格式...</span>
                     <button class="btn btn-history" type="button" id="actionDropdown" data-bs-toggle="dropdown"
                       aria-expanded="false-">
-                      <i class="fa fa-ellipsis-v text-grey"></i>
+                      <i class="fa fa-ellipsis-v"></i>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="actionDropdown">
                       <li>
@@ -115,10 +119,10 @@
                 <div class="nav-link d-flex- align-items-center gap-2" href="#">
                   <div class="dropdown">
                     <!-- <img src="./images/icon-history.png"> -->
-                    <span class="sidebar-history">LLM生成紀錄標題01</span>
+                    <span class="sidebar-history">S3 SDK 多檔案斷點續傳...</span>
                     <button class="btn btn-history" type="button" id="actionDropdown" data-bs-toggle="dropdown"
                       aria-expanded="false-">
-                      <i class="fa fa-ellipsis-v text-grey"></i>
+                      <i class="fa fa-ellipsis-v"></i>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="actionDropdown">
                       <li>
@@ -168,21 +172,60 @@
                 </div>
               </div>
 
-              <div class="message-content text-end chat-assistant-message mb-3">
-                <!--Loading...思考中 -->
+
+              <!--Loading...思考中 -->
+              <!-- <div class="message-content text-end chat-assistant-message mb-3">
                 <div class="wrap">
                   <div class="loading">
-                    <!-- <span class="title">FFM Hub</span> -->
                     <span class="thinking-animation"><img src="./images/logo/ffmhub_font.svg"></span>
                     <span class="thinking-text">思考中...</span>
-                    <!-- <span class="text"><img src="./images/img-loading-en.svg"></span> -->
                   </div>
                 </div>
-              </div>
+              </div> -->
 
 
               <!-- 第二個對話：回覆（置左） -->
               <div class="message chat-assistant-message">
+
+                <div class="container mt-3">
+                  <div class="title-bar">
+                    <span class="icon"><img src="./images/logo/chat-avatar.png"></span>
+                    <!-- <button class="btn btn-light" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#collapseContent" aria-expanded="false" aria-controls="collapseContent">
+                      思考中... <span class="arrow">▼</span>
+                    </button> -->
+
+                    <button class="btn-reasoning-collapse fs-6 ms-3" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#collapseContent" aria-expanded="false" aria-controls="collapseContent">
+                      <img class="icon-reasoning" src="./images/icon-reasoning-black.svg">
+                      <span class="ms-2 fs-7">思考中... </span><i class="fa fa-angle-up fs-7 fw-lighter ms-2"
+                        aria-hidden="true"></i>
+                      <!-- <span class="arrow">▼</span> -->
+                    </button>
+                  </div>
+
+                  <div id="collapseContent" class="collapse" style="padding-left:48px">
+                    <div class="content-with-line fs-7">
+                      <p class="chat-collapse-content-text">
+                        好的，用戶讓我解釋什麼是“數位孿生”，也就是數字孿生。首先，我需要確認這個詞的正確翻譯和常見用法。數字孿生，英文是Digital
+                        Twin，對吧？對的，這個詞在工業、物聯網等領域挺常見的。用戶可能是在學習相關技術，或者在工作中遇到了這個概念，需要基礎的解釋。 <br>
+                        接下來，我得回憶一下數字孿生的定義。根據之前學過的知識，數字孿生是指利用數據、模型和傳感器等技術，在虛擬空間中創建一個實體的實時動態副本。這個副本可以用來模擬、預測和優化實體的性能。那這個實體可以是物理的，比如機器、汽車，甚至整個工廠，也可能是非物理的系統，比如業務流程？
+                        <br>
+                        用戶可能需要知道它的核心組成，比如傳感器數據、實時同步、模型等。還要舉例子，這樣更容易理解。比如製造業中的設備監控，或者智慧城市中的交通管理。 <br>
+                        另外，可能的應用場景有哪些呢？除了製造和智慧城市，還有醫療、航空航天、能源管理等。需要分點說明，讓結構更清晰。 <br>
+                        用戶可能的背景是什麼？如果是學生，可能需要比較學術性的解釋；如果是職場人士，可能需要實際應用的例子。但問題本身比較基礎，所以應該先從定義入手，再逐步展開。 <br>
+                        可能還需要提到數字孿生的關鍵技術，比如物聯網、大數據分析、AI和雲計算。這些技術如何支撐數字孿生的實現。比如傳感器收集數據，通過雲計算處理，用AI進行分析和預測。 <br>
+                        此外，數字孿生的優勢是什麼？比如減少成本、提高效率、預防故障等。還有挑戰，比如數據安全、模型的準確性、實時性要求高。 <br>
+                        用戶可能沒有提到，但潛在的問題可能是數字孿生和模擬（simulation）有什麼區別。這時候可以在解釋中稍微提一下，比如數字孿生是實時、持續更新的，而傳統模擬可能是靜態的或一次性的。 <br>
+                        需要確保語言簡潔明了，避免使用過多專業術語，或者如果用了術語，需要簡單解釋。比如提到“實時同步”時，可以說明數據會不斷更新，保持虛擬模型和實體一致。 <br>
+                        總結一下，結構大概是：定義、核心要素、應用場景、技術支撐、優勢與挑戰。最後可能再舉一兩個例子鞏固理解。 <br>
+                        檢查有沒有遺漏的部分，比如歷史背景？可能不需要，除非用戶特別要求。但如果是解釋基本概念，重點還是放在當前的理解和應用上。 <br>
+                        最後，確保回答準確，沒有錯誤。比如數字孿生是否需要實時數據？是的，實時或近實時數據是關鍵部分。模型是否需要動態調整？對，隨著實體變化，模型也會更新。 <br>
+                        這樣應該能覆蓋用戶的需求了，既全面又易懂。
+                      </p>
+                    </div>
+                  </div>
+                </div>
 
                 <div class="message-content">
                   <div class="text-container" id="textContainer">
@@ -305,20 +348,20 @@
                 </button>
               </div>
 
-              <!-- Modal -->
+              <!-- Modal 對話已中止-->
               <div class="modal fade" id="modal-limit-exceed" data-bs-backdrop="static" data-bs-keyboard="false"
                 tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header text-center- no-border" class="" style="margin-left: 35%;">
-                      <div class="modal-title fw-bold text-decoration-none fs-4" id="staticBackdropLabel">思考已停止</div>
+                      <div class="modal-title fw-bold text-decoration-none fs-4" id="staticBackdropLabel">對話已中止</div>
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body align-items-center">
                       <form class="">
                         <div class="row mb-3- align-items-center fs-6 fw-medium">
                           <div class="col-12 text-center text-danger">
-                            目前對話已超出對話長度最大值，請開啟新對話再試
+                            目前對話長度已超過上限，請開啟新對話再試
                           </div>
                         </div>
                       </form>
@@ -333,6 +376,59 @@
                 </div>
               </div>
 
+              <!-- Modal 系統提示詞 -->
+              <div class="modal fade" id="modal-system-prompt" data-bs-backdrop="static" data-bs-keyboard="false"
+                tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header" class="">
+                      <div class="modal-title m-3 fw-bold text-decoration-none fs-4" id="staticBackdropLabel">系統提示詞
+                      </div>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body align-items-center">
+                      <form class="">
+
+                        <div class="row mb-3 align-items-center">
+                          <label for="account" class="col-3 form-label">請選擇模型 <span
+                              class="text-danger-">*</span></label>
+                          <div class="col-9">
+                            <select id="inputState" class="form-select">
+                              <option selected>Llama3.1-FFM-70B</option><!-- 展開模型列表-->
+                              <option>Llama3.1-FFM-70B</option>
+                              <option>Llama3.1-FFM-8B</option>
+                              <option>TAIDE-LX-7B</option>
+                            </select>
+                          </div>
+                        </div>
+
+
+
+                        <div class="row col-md-12-">
+                          <label for="inputState" class="form-label mb-3">請輸入提示詞，以定義AI所需扮演的角色或回答的範圍。</label>
+                          <textarea class="form-control" placeholder="例如：你是一個友好且樂於助人的AI助理" id="floatingTextarea2"
+                            style="height: 100px"></textarea>
+                        </div>
+
+                      </form>
+                    </div>
+
+                    <div class="modal-info d-flex mb-3 form-text text-danger">
+                      <img class="m-2" src="./images/icon-input-hint.png">
+                      請選擇模型
+                    </div>
+
+                    <div class="modal-footer d-flex- justify-content-between">
+                      <button type="button" class="btn btn-modal-outline fs-6">清除內容</button>
+                      <button type="button" class="btn btn-modal-outline fs-6" data-bs-dismiss="modal">取消</button>
+                      <button type="button" class="btn btn-modal-default fs-6">儲存</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+
             </div>
           </div>
 
@@ -345,14 +441,132 @@
           </button>
 
 
+          <div class="container mt-5 col-9-">
+            <div class="question-dialog p-3" id="">
 
-          <div class="container mt-5">
+              <div id="dragModal">
+                <span id="hintText" style="">
+                  <img class="icon-add" src="./images/icon-image.png">
+                  <h1>新增圖片</h1>
+                  <span>將圖片拖放至此處，使其新增至對話</span>
+                </span>
+              </div>
+
+              <div class="d-flex flex-column h-100">
+                <textarea class="form-control-chat mb-3" placeholder="詢問任何問題" aria-label="Question" rows="3"></textarea>
+
+                <div class="d-flex justify-content-start align-items-end gap-3 position-relative">
+                  <input type="file" id="fileInput" multiple style="display: none;">
+                  <button class="import-file-btn" id="" data-bs-toggle="tooltip" data-bs-placement="left"
+                    data-bs-title="上傳圖檔，支援 png/jpg" onclick="document.getElementById('fileInput').click()">
+                    <img class="icon-add" src="./images/icon-add.svg">
+                  </button>
+                  <button class="btn-reasoning-thinking fs-6" type="button" aria-expanded="false"
+                    data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="先思考後回答，解決推理問題">
+                    <img class="icon-reasoning" src="./images/icon-reasoning.svg">
+                    <p class="ms-1">深度思考</p>
+                  </button>
+
+                  <div id="thumbnails"></div>
+                  <div id="errorContainer"></div>
+
+
+                  <!-- <div id="zoominImg" class="modal">
+                    <div class="modal-zoomin-img">
+                      <span class="close-btn">×</span>
+                      <img class="modal-image" id="modalImage" src="">
+                    </div>
+                  </div> -->
+
+                  <!-- <div class="dropdown ms-3">
+                    <button class="btn btn-select-model dropdown-toggle fs-6" type="button" id="modelDropdown"
+                      data-bs-toggle="dropdown" aria-expanded="false">
+                      Llama3.1-FFM-70B
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="modelDropdown">
+                      <li>
+                        <a class="dropdown-item active-" href="#">
+                          <div class="content-box">
+                            <span class="dropdown-text">Llama3.1-FFM-88</span><br>
+                            <mediuam class="text-muted">適合短文本推理對話</mediuam>
+                          </div>
+                          <br>
+                          <span class="checkmark ms-2">
+                            <img src="./images/icon-check.png">
+                          </span>
+                        </a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item active" href="#">
+                          <div class="content-box">
+                            <span class="dropdown-text">Llama3.1-FFM-70B</span><br>
+                            <mediuam class="text-muted">適合複雜的任務與對話</mediuam>
+                          </div>
+                          <br>
+                          <span class="checkmark ms-2">
+                            <img src="./images/icon-check.png">
+                          </span>
+                        </a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item active-" href="#">
+                          <div class="content-box">
+                            <span class="dropdown-text">TAIDE-LX-7B</span><br>
+                            <mediuam class="text-muted">強化台灣文化理解與繁體中文處理</mediuam>
+                          </div>
+                          <br>
+                          <span class="checkmark ms-2">
+                            <img src="./images/icon-check.png">
+                          </span>
+                        </a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item active-" href="#">
+                          <div class="content-box">
+                            <span class="dropdown-text">TAIDE-LX-7B</span><br>
+                            <mediuam class="text-muted">強化台灣文化理解與繁體中文處理</mediuam>
+                          </div>
+                          <br>
+                          <span class="checkmark ms-2">
+                            <img src="./images/icon-check.png">
+                          </span>
+                        </a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item active-" href="#">
+                          <div class="content-box">
+                            <span class="dropdown-text">TAIDE-LX-7B</span><br>
+                            <mediuam class="text-muted">強化台灣文化理解與繁體中文處理</mediuam>
+                          </div>
+                          <br>
+                          <span class="checkmark ms-2">
+                            <img src="./images/icon-check.png">
+                          </span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div> -->
+
+                  <button class="btn btn-chat-send position-absolute" style="right: 0;">
+                    <img src="./images/btn-send-chat.svg">
+                  </button>
+
+                </div>
+              </div>
+            </div>
+
+            <div class="form-text text-muted mt-3">
+              您正在與 <span id="">Llama3.2-FFM-11B </span> 對話
+            </div>
+          </div>
+
+
+
+          <!-- 舊 caht-frame -->
+          <!-- <div class="container mt-5">
             <div class="chat-dialog">
               <div class="d-flex h-100-">
-                <!-- 輸入框 -->
                 <textarea class="chat-textarea mb-3-" placeholder="輸入對話" aria-label="Question" rows="1"></textarea>
-
-                <!-- 送出按鈕 -->
                 <button class="btn btn-chat-send">
                   <img src="./images/btn-chat-send.png">
                 </button>
@@ -361,19 +575,16 @@
               <div class="form-text text-muted mt-3">
                 您正在與 <span id="">Llama3.2-FFM-11B </span> 對話
               </div>
-
             </div>
-          </div>
+          </div> -->
+
+
+
+
+        </section>
+
+      </main>
     </div>
-
-
-
-
-
-
-    </section>
-
-    </main>
   </div>
 
   <script src="./js/bootstrap.bundle.min.js"></script>
@@ -498,6 +709,13 @@
     });
   </script>
 
+  <!-- 初始化 Tooltip -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+      const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+    });
+  </script>
 
 </body>
 

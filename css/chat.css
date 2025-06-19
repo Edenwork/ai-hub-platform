@@ -289,3 +289,29 @@
     line-height: 16px;
     font-size: 12px;
   }
+
+  /* ----reasoning---- */
+  .title-bar {
+      display: flex;
+      align-items: center;
+      background-color: transparent;
+      padding: 10px;
+    }
+
+    .content-with-line {
+      position: relative;
+      padding-left: 20px;
+    }
+
+    .content-with-line::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      border-left: 2px solid #ccc;
+    }
+
+    .chat-collapse-content-text {
+      color: #292929;
+    }
