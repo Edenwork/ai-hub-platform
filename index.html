@@ -14,7 +14,6 @@
   <link href="./css/style.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-
   <style>
     .sidebar {
       /*position: fixed;
@@ -37,11 +36,12 @@
     }
 
     .toggle-btn {
-        position: absolute;
-        right: -0px;
-        top: -20px;
-        z-index: 2;
+      position: absolute;
+      right: -0px;
+      top: -20px;
+      z-index: 2;
     }
+
     .toggle-btn:hover {
       background-color: #E2E2E2;
       border-radius: 4px;
@@ -57,16 +57,17 @@
     }
 
     #main_content {
-        margin-left: 150px;
-        width: calc(100% - 150px);
-        transition: margin-left 0.3s ease, width 0.3s ease;
-        height: 90vh !important;
-    }
-    .sidebar.collapsed + #main_content {
-      margin-left: 70px;
-      width: calc(100% - 70px); /* 自動適應剩餘寬度 */
+      margin-left: 150px;
+      width: calc(100% - 150px);
+      transition: margin-left 0.3s ease, width 0.3s ease;
+      height: 90vh !important;
     }
 
+    .sidebar.collapsed+#main_content {
+      margin-left: 70px;
+      width: calc(100% - 70px);
+      /* 自動適應剩餘寬度 */
+    }
   </style>
 
 
@@ -74,131 +75,39 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
   <link href="./css/dashboard.css" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="./js/parameter-setting.js"></script>
 </head>
 
 <body>
 
   <!-- 動態載入 header -->
-  <div id="header-admin-placeholder"></div>
+  <header></header>
 
+  <script>
+    $(function () {
+      $("header").load("header-admin.html", function () {
+        initParameterModal();
+      });
+    });
+  </script>
 
 
   <div class="container-fluid">
     <div class="row">
 
-      <!-- sidebar -->
-      <div class="sidebar border- border-right col-md-2 col-lg-3 p-0 bg-body-tertiary" id="toggleSidebar">
-        <button class="btn btn-secondary toggle-btn" onclick="toggleSidebar()">
-          <img class="icon-arrow" src="./images/btn-arrow-to-right.svg">
-        </button>
-        <div class="sidebar-pl offcanvas-md offcanvas-end bg-body-tertiary" tabindex="-1" id="sidebarMenu"
-          aria-labelledby="sidebarMenuLabel">
-          <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="sidebarMenuLabel">FFM Hub</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebarMenu"
-              aria-label="Close"></button>
-          </div>
-          <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3">
-            <ul class="nav flex-column nav-new-chat">
 
-              <li class="nav-item">
-                <a href="chat.html"
-                  class="nav-link nav-recommend-color color-attention d-flex align-items-center gap-3">
-                  <img src="./images/icon-newchat.svg">
-                  開始新的對話
-                </a>
-              </li>
-            </ul>
+      <!-- 動態載入 sidebar -->
+      <div id="sidebar"></div>
+      
+      <script>
+        $(function () {
+          $("#sidebar").load("sidebar-user.html", function () {
+          });
+        });
+        </script>
 
-            <hr class="my-3">
 
-            <ul class="nav flex-column mb-auto">
-              <li class="nav-item">
-                <div class="nav-link d-flex- align-items-center gap-2" href="#">
-                  <div class="dropdown">
-                    <!-- <img src="./images/icon-history.png"> -->
-                    <span class="sidebar-history">BIM格式...</span>
-                    <button class="btn btn-history" type="button" id="actionDropdown" data-bs-toggle="dropdown"
-                      aria-expanded="false">
-                      <i class="fa fa-ellipsis-v"></i>
-                    </button>
-                    <ul class="dropdown-menu dropdown-menu-end-" aria-labelledby="actionDropdown">
-                      <li>
-                        <a class="dropdown-item" href="#">
-                          <img src="./images/icon_edit.png">
-                          <span class="dropdown-mg"> 重新命名</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="dropdown-item" href="#">
-                          <img src="./images/icon_delete.png">
-                          <span class="text-danger dropdown-mg"> 刪除對話</span>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
 
-              </li>
-              <li class="nav-item">
-                <div class="nav-link d-flex- align-items-center gap-2" href="#">
-                  <div class="dropdown">
-                    <!-- <img src="./images/icon-history.png"> -->
-                    <span class="sidebar-history">Open USD格式...</span>
-                    <button class="btn btn-history" type="button" id="actionDropdown" data-bs-toggle="dropdown"
-                      aria-expanded="false-">
-                      <i class="fa fa-ellipsis-v"></i>
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="actionDropdown">
-                      <li>
-                        <a class="dropdown-item" href="#">
-                          <img src="./images/icon_edit.png">
-                          <span class="dropdown-mg"> 重新命名</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="dropdown-item" href="#">
-                          <img src="./images/icon_delete.png">
-                          <span class="text-danger dropdown-mg"> 刪除對話</span>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-
-              </li>
-              <li class="nav-item">
-                <div class="nav-link d-flex- align-items-center gap-2" href="#">
-                  <div class="dropdown">
-                    <!-- <img src="./images/icon-history.png"> -->
-                    <span class="sidebar-history">S3 SDK 多檔案斷點續傳...</span>
-                    <button class="btn btn-history" type="button" id="actionDropdown" data-bs-toggle="dropdown"
-                      aria-expanded="false-">
-                      <i class="fa fa-ellipsis-v"></i>
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="actionDropdown">
-                      <li>
-                        <a class="dropdown-item" href="#">
-                          <img src="./images/icon_edit.png">
-                          <span class="dropdown-mg"> 重新命名</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="dropdown-item" href="#">
-                          <img src="./images/icon_delete.png">
-                          <span class="text-danger dropdown-mg"> 刪除對話</span>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-
-              </li>
-
-            </ul>
-          </div>
-        </div>
-      </div>
 
       <section id="main_content">
         <main class="col-md-10 ms-sm-auto col-lg-9 px-md-4 dashboard-round-bg file-upload" id="dropZone">
@@ -252,28 +161,56 @@
                     </div>
 
                     <div class="dropdown ms-3 position-absolute" style="right: 10%;">
-                      <button class="btn btn-select-model dropdown-toggle fs-6" type="button" id="modelDropdown"
+                      <button class="btn btn-select-model-outline dropdown-toggle fs-6" type="button" id="modelDropdown"
                         data-bs-toggle="dropdown" aria-expanded="false">
-                        Llama3.1-FFM-70B
+                        Llama3.1-FFM-8B
                       </button>
-                      <ul class="dropdown-menu" aria-labelledby="modelDropdown">
+                      <ul class="dropdown-menu" aria-labelledby="modelDropdown"
+                        style="max-height: 200px;overflow-y: auto;">
                         <li>
                           <a class="dropdown-item active-" href="#">
                             <div class="content-box">
-                              <span class="dropdown-text">Llama3.1-FFM-88</span><br>
-                              <mediuam class="text-muted">適合短文本推理對話</mediuam>
+                              <span class="dropdown-text">Llama3.1-FFM-8B</span><br>
+                              <mediuam class="text-muted">繁中強化的語言模型</mediuam>
                             </div>
                             <br>
                             <span class="checkmark ms-2">
                               <img src="./images/icon-check.png">
                             </span>
                           </a>
+                        </li>
+                        <li>
+                          <a class="dropdown-item active-" href="#">
+                            <div class="content-box">
+                              <span class="dropdown-text">LLama3.2-FFM-11B</span><br>
+                              <mediuam class="text-muted">繁中強化的多模態模型</mediuam>
+                            </div>
+                            <br>
+                            <span class="checkmark ms-2">
+                              <img src="./images/icon-check.png">
+                            </span>
+                          </a>
+                        </li>
+                        <li>
+                          <a class="dropdown-item active-" href="#">
+                            <div class="content-box">
+                              <span class="dropdown-text">FFM-Mistral-Small-3.1-24B-Reasoning</span><br>
+                              <mediuam class="text-muted">繁中強化的推理模型</mediuam>
+                            </div>
+                            <br>
+                            <span class="checkmark ms-2">
+                              <img src="./images/icon-check.png">
+                            </span>
+                          </a>
+                        </li>
+                        <li>
+                          <hr class="dropdown-divider">
                         </li>
                         <li>
                           <a class="dropdown-item active" href="#">
                             <div class="content-box">
-                              <span class="dropdown-text">Llama3.1-FFM-70B</span><br>
-                              <mediuam class="text-muted">適合複雜的任務與對話</mediuam>
+                              <span class="dropdown-text">Qwen3-4B</span><br>
+                              <mediuam class="text-muted">多語推理模型</mediuam>
                             </div>
                             <br>
                             <span class="checkmark ms-2">
@@ -284,8 +221,8 @@
                         <li>
                           <a class="dropdown-item active-" href="#">
                             <div class="content-box">
-                              <span class="dropdown-text">TAIDE-LX-7B</span><br>
-                              <mediuam class="text-muted">強化台灣文化理解與繁體中文處理</mediuam>
+                              <span class="dropdown-text">DeepSeek-R1-Distill-Qwen-1.5B</span><br>
+                              <mediuam class="text-muted">Qwen2.5-1.5B經知識蒸餾的推理模型</mediuam>
                             </div>
                             <br>
                             <span class="checkmark ms-2">
@@ -296,8 +233,21 @@
                         <li>
                           <a class="dropdown-item active-" href="#">
                             <div class="content-box">
-                              <span class="dropdown-text">TAIDE-LX-7B</span><br>
-                              <mediuam class="text-muted">強化台灣文化理解與繁體中文處理</mediuam>
+                              <span class="dropdown-text">DeepSeek-R1-Distill-Qwen-7B</span><br>
+                              <mediuam class="text-muted">Qwen2.5-7B經知識蒸餾的推理模型</mediuam>
+                            </div>
+                            <br>
+                            <span class="checkmark ms-2">
+                              <img src="./images/icon-check.png">
+                            </span>
+                          </a>
+                        </li>
+
+                        <li>
+                          <a class="dropdown-item active-" href="#">
+                            <div class="content-box">
+                              <span class="dropdown-text">Llama-3.2-11B-Vision-Instruct</span><br>
+                              <mediuam class="text-muted">Meta多模態模型，適用圖像推理問答</mediuam>
                             </div>
                             <br>
                             <span class="checkmark ms-2">
@@ -308,8 +258,8 @@
                         <li>
                           <a class="dropdown-item active-" href="#">
                             <div class="content-box">
-                              <span class="dropdown-text">TAIDE-LX-7B</span><br>
-                              <mediuam class="text-muted">強化台灣文化理解與繁體中文處理</mediuam>
+                              <span class="dropdown-text">Qwen2.5-1.5B-Instruct</span><br>
+                              <mediuam class="text-muted">小型指令微調語言模型</mediuam>
                             </div>
                             <br>
                             <span class="checkmark ms-2">
@@ -317,6 +267,31 @@
                             </span>
                           </a>
                         </li>
+                        <li>
+                          <a class="dropdown-item active-" href="#">
+                            <div class="content-box">
+                              <span class="dropdown-text">TinyLlama-1.1B-Chat-v0.6</span><br>
+                              <mediuam class="text-muted">輕量語言模型，適合資源有限環境</mediuam>
+                            </div>
+                            <br>
+                            <span class="checkmark ms-2">
+                              <img src="./images/icon-check.png">
+                            </span>
+                          </a>
+                        </li>
+                        <li>
+                          <a class="dropdown-item active-" href="#">
+                            <div class="content-box">
+                              <span class="dropdown-text">TinyLlama-1.1B-Chat-v1.0</span><br>
+                              <mediuam class="text-muted">優化版輕量語言模型，提升多輪對話質量</mediuam>
+                            </div>
+                            <br>
+                            <span class="checkmark ms-2">
+                              <img src="./images/icon-check.png">
+                            </span>
+                          </a>
+                        </li>
+
                       </ul>
                     </div>
 
@@ -348,8 +323,90 @@
   <!-- Custom JS for dropdown selection -->
   <script src="./js/load-admin-header.js"></script>
   <script src="./js/load-admin-sidebar.js"></script>
-  <script src="./js/ffm-hub.js"></script>
+  <script src="./js/tooltip.js"></script>
   <script src="./js/file-upload.js"></script>
+
+  <script>
+    $("header").load("parameter-setting.js");
+  </script>
+
+
+  <!-- 參數拉桿 -->
+  <!-- <script>
+  document.addEventListener('DOMContentLoaded', function () {
+  // 取得 Modal 範圍
+  const modal = document.getElementById('modal-parameter-setting');
+
+  // 定義所有參數的設定
+  const paramConfigs = [
+    { slider: 'temp-slider', input: 'temp-input', defaultValue: 0.5 },
+    { slider: 'topp-slider', input: 'topp-input', defaultValue: 1 },
+    { slider: 'topk-slider', input: 'topk-input', defaultValue: 50 },
+    { slider: 'freq-slider', input: 'freq-input', defaultValue: 1 }
+  ];
+
+  // 雙向同步功能
+  function bindSliderInput(slider, input, defaultValue) {
+    // 滑桿變動時，input 跟著變
+    slider.addEventListener('input', function () {
+      input.value = slider.value;
+    });
+    // input 變動時，滑桿跟著變
+    input.addEventListener('input', function () {
+      let val = parseFloat(input.value);
+      const min = parseFloat(slider.min);
+      const max = parseFloat(slider.max);
+      if (isNaN(val)) val = defaultValue;
+      if (val < min) val = min;
+      if (val > max) val = max;
+      slider.value = val;
+      input.value = val;
+    });
+  }
+
+  // 初始化所有滑桿與 input 的同步
+  const controls = [];
+  paramConfigs.forEach(cfg => {
+    const slider = modal.querySelector(`#${cfg.slider}`);
+    const input = modal.querySelector(`#${cfg.input}`);
+    if (slider && input) {
+      bindSliderInput(slider, input, cfg.defaultValue);
+      controls.push({ slider, input, defaultValue: cfg.defaultValue });
+    }
+  });
+
+  // 最大生成token數
+  const tokenInput = modal.querySelector('#token-input');
+  const tokenDefault = '4096';
+
+  // Modal 開啟時初始化所有值
+  modal.addEventListener('shown.bs.modal', function () {
+    controls.forEach(({ slider, input, defaultValue }) => {
+      slider.value = defaultValue;
+      input.value = defaultValue;
+    });
+    if (tokenInput) tokenInput.value = tokenDefault;
+  });
+
+  // 重置按鈕功能
+  const resetBtn = modal.querySelector('#reset-btn');
+  if (resetBtn) {
+    resetBtn.addEventListener('click', function () {
+      controls.forEach(({ slider, input, defaultValue }) => {
+        slider.value = defaultValue;
+        input.value = defaultValue;
+      });
+      if (tokenInput) tokenInput.value = tokenDefault;
+    });
+  }
+});
+
+</script> -->
+
+
+
+
+
   <script>
     document.querySelectorAll('.dropdown-item').forEach(item => {
       item.addEventListener('click', function (e) {
@@ -389,13 +446,13 @@
         });
 
 
-    // 僅允許 question-dialog 類別及其內部所有 class 標籤觸發 click 事件
-    dropZone.addEventListener('click', (e) => {
-      if (!e.target.closest('.question-dialog') && !e.target.closest('.question-dialog *')) {
-        e.preventDefault();
-        e.stopPropagation();
-      }
-    });
+        // 僅允許 question-dialog 類別及其內部所有 class 標籤觸發 click 事件
+        dropZone.addEventListener('click', (e) => {
+          if (!e.target.closest('.question-dialog') && !e.target.closest('.question-dialog *')) {
+            e.preventDefault();
+            e.stopPropagation();
+          }
+        });
 
         // 處理拖曳上傳
         dropZone.addEventListener('dragover', (e) => {
@@ -504,62 +561,62 @@
     });
   </script>
 
-<script>
-        $(document).ready(function() {
-            const $thumbnails = $('#thumbnails');
+  <script>
+    $(document).ready(function () {
+      const $thumbnails = $('#thumbnails');
 
-            // 拖曳事件
-            $thumbnails.on('dragover', function(e) {
-                e.preventDefault();
-                $(this).css('border-color', '#000');
-            });
+      // 拖曳事件
+      $thumbnails.on('dragover', function (e) {
+        e.preventDefault();
+        $(this).css('border-color', '#000');
+      });
 
-            $thumbnails.on('dragleave', function(e) {
-                e.preventDefault();
-                $(this).css('border-color', '#ccc');
-            });
+      $thumbnails.on('dragleave', function (e) {
+        e.preventDefault();
+        $(this).css('border-color', '#ccc');
+      });
 
-            $thumbnails.on('drop', function(e) {
-                e.preventDefault();
-                $(this).css('border-color', '#ccc');
-                const files = e.originalEvent.dataTransfer.files;
+      $thumbnails.on('drop', function (e) {
+        e.preventDefault();
+        $(this).css('border-color', '#ccc');
+        const files = e.originalEvent.dataTransfer.files;
 
-                $.each(files, function(index, file) {
-                    if (file.type.startsWith('image/')) {
-                        const reader = new FileReader();
-                        reader.onload = function(e) {
-                            const imgSrc = e.target.result;
-                            const imgId = 'img-' + Date.now() + '-' + index;
-                            $thumbnails.append(
-                                `<div class="thumbnail-container">
+        $.each(files, function (index, file) {
+          if (file.type.startsWith('image/')) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+              const imgSrc = e.target.result;
+              const imgId = 'img-' + Date.now() + '-' + index;
+              $thumbnails.append(
+                `<div class="thumbnail-container">
                                     <img src="${imgSrc}" class="thumbnail" id="${imgId}">
                                 </div>`
-                            );
-                        };
-                        reader.readAsDataURL(file);
-                    }
-                });
-            });
-
-            // 點擊縮圖顯示 modal
-            $(document).on('click', '#thumbnails .thumbnail', function() {
-                $('#zoominImg').css('display', 'flex');
-                $('#modalImage').attr('src', $(this).attr('src'));
-            });
-
-            // 關閉按鈕
-            $('.close-btn').on('click', function() {
-                $('#zoominImg').css('display', 'none');
-            });
-
-            // 點擊背景關閉
-            $('#zoominImg').on('click', function(e) {
-                if ($(e.target).is('#zoominImg')) {
-                    $('#zoominImg').css('display', 'none');
-                }
-            });
+              );
+            };
+            reader.readAsDataURL(file);
+          }
         });
-    </script>
+      });
+
+      // 點擊縮圖顯示 modal
+      $(document).on('click', '#thumbnails .thumbnail', function () {
+        $('#zoominImg').css('display', 'flex');
+        $('#modalImage').attr('src', $(this).attr('src'));
+      });
+
+      // 關閉按鈕
+      $('.close-btn').on('click', function () {
+        $('#zoominImg').css('display', 'none');
+      });
+
+      // 點擊背景關閉
+      $('#zoominImg').on('click', function (e) {
+        if ($(e.target).is('#zoominImg')) {
+          $('#zoominImg').css('display', 'none');
+        }
+      });
+    });
+  </script>
 
   <!-- sidebar 收合 -->
   <script>
@@ -575,23 +632,23 @@
     }
   </script>
 
-<!-- main_content 的寬度計算 -->
- <script>
-function toggleSidebar() {
-  const sidebar = document.getElementById("toggleSidebar");
-  const mainContent = document.getElementById("main_content");
+  <!-- main_content 的寬度計算 -->
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById("toggleSidebar");
+      const mainContent = document.getElementById("main_content");
 
-  sidebar.classList.toggle("collapsed");
+      sidebar.classList.toggle("collapsed");
 
-  if (sidebar.classList.contains("collapsed")) {
-    mainContent.style.marginLeft = "0px";
-    mainContent.style.width = "calc(100% - 0px)";
-  } else {
-    mainContent.style.marginLeft = "150px";
-    mainContent.style.width = "calc(100% - 150px)";
-  }
-}
-</script>
+      if (sidebar.classList.contains("collapsed")) {
+        mainContent.style.marginLeft = "0px";
+        mainContent.style.width = "calc(100% - 0px)";
+      } else {
+        mainContent.style.marginLeft = "150px";
+        mainContent.style.width = "calc(100% - 150px)";
+      }
+    }
+  </script>
 
 </body>
 

@@ -1,40 +1,81 @@
-<!-- <div class="container-fluid">
-  <div class="row"> -->
-    <div class="sidebar border- border-right col-md-3 col-lg-2 p-0 bg-body-tertiary">
-      <div class="sidebar-pl offcanvas-md offcanvas-end bg-body-tertiary" tabindex="-1" id="sidebarMenu"
-        aria-labelledby="sidebarMenuLabel">
-        <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="sidebarMenuLabel">FFM Hub</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebarMenu"
-            aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
-          <ul class="nav flex-column">
-            <li class="nav-item">
-              <a class="nav-link d-flex align-items-center gap-2">
-                <img src="./images/tag-admin.png">
-              </a>
-            </li>
-          </ul>
-
-          <ul class="nav flex-column mb-auto">
-            <li class="nav-item">
-              <a class="nav-link d-flex align-items-center gap-2" href="model-manage.html">
-                <img src="./images/icon-manage-navbar.png">
-                模型管理
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link d-flex align-items-center gap-2" href="#">
-                <img src="./images/icon-user-navbar.png">
-                使用者管理
-              </a>
-            </li>
-          </ul>
-
-          <hr class="my-3">
-        </div>
-      </div>
+<div class="sidebar border-right col-md-4- col-lg-3- p-0 bg-body-tertiary">
+  <div class="sidebar-pl offcanvas-md offcanvas-end bg-body-tertiary" tabindex="-1" id="sidebarMenu"
+    aria-labelledby="sidebarMenuLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="sidebarMenuLabel">FFM Hub</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebarMenu"
+        aria-label="Close"></button>
     </div>
-  <!-- </div>
-</div> -->
+    <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3">
+      <ul class="nav flex-column nav-new-chat">
+
+        <li class="nav-item">
+          <p class="fw-bold">平台管理</p>
+        </li>
+      </ul>
+
+      <hr class="my-3">
+
+      <ul class="nav flex-column mt-lg-3-">
+        <li class="nav-item">
+          <a class="nav-link d-flex align-items-center gap-2" href="model-manage.html">
+            <img src="./images/icon-model-manage.svg">
+            模型管理
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link d-flex align-items-center gap-2" href="user-manage.html">
+            <img src="./images/icon-user.svg">
+            使用者管理
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link d-flex align-items-center gap-2" href="api-endpoint.html">
+            <img src="./images/icons-api.svg">
+            API 端點
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link d-flex align-items-center gap-2" href="api-key.html">
+            <img src="./images/icons-api-key.svg">
+            API 金鑰管理
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link d-flex align-items-center gap-2" target="_blank"
+            href="https://play.grafana.org/d/asserts-efa86fd1d0c121a26444b636a3f509a8/kubernetes-compute-resources-cluster?orgId=1&from=now-1h&to=now&timezone=utc&var-ds=grafanacloud-demoinfra-prom&var-env=$__all&var-site=$__all&var-cluster=do-nyc1-demo-infra">
+            <img src="./images/icon-dashboard.svg">
+            監控中心
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <button class="tag-admin">
+                  系統管理員專屬
+                </button>
+              </li>
+            </ul>
+
+            <ul class="nav flex-column mt-lg-3">
+              <li class="nav-item">
+                <a class="nav-link d-flex align-items-center gap-2" href="model-manage.html">
+                  <img src="./images/icon-manage-navbar.png">
+                  模型管理
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link d-flex align-items-center gap-2" href="user-manage.html">
+                  <img src="./images/icon-user-navbar.png">
+                  使用者管理
+                </a>
+              </li>
+            </ul>
+
+            <hr class="my-3">
+          </div> -->
+  </div>
+</div>

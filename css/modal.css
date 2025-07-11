@@ -135,8 +135,8 @@
 
 .btn-modal-outline{
     background-color: transparent;
-    color:#07263B; /* #0D99C8; */
-    border: 1px solid #07263B;
+    color:#004693; /* #0D99C8; */
+    border: 1px solid #004693;
     padding: 6px 48px;
     border-radius: 5px;
     /* font-size: 16px; */
@@ -146,8 +146,8 @@
     /* min-width: 148px; */
   }
   .btn-modal-default{
-    background-color: #07263B;
-    color: #31CDE5; 
+    background-color: #004693;
+    color: #fff; 
     border: none;
     padding: 7px 58px;
     border-radius: 5px;

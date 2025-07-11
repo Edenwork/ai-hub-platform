@@ -1,0 +1,112 @@
+      <div class="sidebar border- border-right col-md-2 col-lg-3 p-0 bg-body-tertiary" id="toggleSidebar">
+        <button class="btn btn-secondary toggle-btn" onclick="toggleSidebar()">
+          <img class="icon-arrow" src="./images/btn-arrow-to-right.svg">
+        </button>
+        <div class="sidebar-pl offcanvas-md offcanvas-end bg-body-tertiary" tabindex="-1" id="sidebarMenu"
+          aria-labelledby="sidebarMenuLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="sidebarMenuLabel">FFM Hub</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebarMenu"
+              aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3">
+            <ul class="nav flex-column nav-new-chat">
+
+              <li class="nav-item">
+                <a href="chat.html"
+                  class="nav-link nav-recommend-color color-attention d-flex align-items-center gap-3">
+                  <img src="./images/icon-newchat.svg">
+                  開始新的對話
+                </a>
+              </li>
+            </ul>
+
+            <hr class="my-3">
+
+            <ul class="nav flex-column mb-auto">
+              <li class="nav-item">
+                <div class="nav-link d-flex- align-items-center gap-2" href="#">
+                  <div class="dropdown">
+                    <!-- <img src="./images/icon-history.png"> -->
+                    <span class="sidebar-history">BIM格式...</span>
+                    <button class="btn btn-history" type="button" id="actionDropdown" data-bs-toggle="dropdown"
+                      aria-expanded="false">
+                      <i class="fa fa-ellipsis-v"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end-" aria-labelledby="actionDropdown">
+                      <li>
+                        <a class="dropdown-item" href="#">
+                          <img src="./images/icon_edit.png">
+                          <span class="dropdown-mg"> 重新命名</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="#">
+                          <img src="./images/icon-delete-red.svg">
+                          <span class="text-danger dropdown-mg"> 刪除對話</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+              </li>
+              <li class="nav-item">
+                <div class="nav-link d-flex- align-items-center gap-2" href="#">
+                  <div class="dropdown">
+                    <!-- <img src="./images/icon-history.png"> -->
+                    <span class="sidebar-history">Open USD格式...</span>
+                    <button class="btn btn-history" type="button" id="actionDropdown" data-bs-toggle="dropdown"
+                      aria-expanded="false-">
+                      <i class="fa fa-ellipsis-v"></i>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="actionDropdown">
+                      <li>
+                        <a class="dropdown-item" href="#">
+                          <img src="./images/icon_edit.png">
+                          <span class="dropdown-mg"> 重新命名</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="#">
+                          <img src="./images/icon-delete-red.svg">
+                          <span class="text-danger dropdown-mg"> 刪除對話</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+              </li>
+              <li class="nav-item">
+                <div class="nav-link d-flex- align-items-center gap-2" href="#">
+                  <div class="dropdown">
+                    <!-- <img src="./images/icon-history.png"> -->
+                    <span class="sidebar-history">S3 SDK 多檔案斷點續傳...</span>
+                    <button class="btn btn-history" type="button" id="actionDropdown" data-bs-toggle="dropdown"
+                      aria-expanded="false-">
+                      <i class="fa fa-ellipsis-v"></i>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="actionDropdown">
+                      <li>
+                        <a class="dropdown-item" href="#">
+                          <img src="./images/icon_edit.png">
+                          <span class="dropdown-mg"> 重新命名</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="#">
+                          <img src="./images/icon-delete-red.svg">
+                          <span class="text-danger dropdown-mg"> 刪除對話</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+              </li>
+
+            </ul>
+          </div>
+        </div>
+      </div>

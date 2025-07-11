@@ -21,6 +21,12 @@ button.disabled {
   cursor: not-allowed;
 }
 
+.cursor-pointer{
+  cursor: pointer !important;
+}
+.text-left{
+  text-align: left !important;
+}
 
 .display-only-m {
   display: none !important;
@@ -82,6 +88,9 @@ button.disabled {
 
 .text-danger {
   color: #CA0729 !important;
+}
+.text-primary {
+  color: #004693 !important;
 }
 
 .bg-login {
@@ -152,50 +161,7 @@ button.disabled {
   --bs-btn-disabled-border-color: #0d6efd;
 }
 
-.dropdown-menu {
-  /* --bs-dropdown-zindex: 1000; */
-  --bs-dropdown-min-width: 12rem;
-  /* --bs-dropdown-padding-x: 0;
-    --bs-dropdown-padding-y: 0.5rem;
-    --bs-dropdown-spacer: 0.125rem;
-    --bs-dropdown-font-size: 1rem;
-    --bs-dropdown-color: var(--bs-body-color);
-    --bs-dropdown-bg: var(--bs-body-bg);
-    --bs-dropdown-border-color: var(--bs-border-color-translucent);
-    --bs-dropdown-border-radius: var(--bs-border-radius);
-    --bs-dropdown-border-width: var(--bs-border-width);
-    --bs-dropdown-inner-border-radius: calc(var(--bs-border-radius) - var(--bs-border-width));
-    --bs-dropdown-divider-bg: var(--bs-border-color-translucent);
-    --bs-dropdown-divider-margin-y: 0.5rem;
-    --bs-dropdown-box-shadow: var(--bs-box-shadow);
-    --bs-dropdown-link-color: var(--bs-body-color);
-    --bs-dropdown-link-hover-color: var(--bs-body-color);
-    --bs-dropdown-link-hover-bg: var(--bs-tertiary-bg);
-    --bs-dropdown-link-active-color: #fff;
-    --bs-dropdown-link-active-bg: #0d6efd;
-    --bs-dropdown-link-disabled-color: var(--bs-tertiary-color);*/
-  --bs-dropdown-item-padding-x: 1.5rem;
 
-  --bs-dropdown-item-padding-y: 0.4rem;
-  /* 
-    --bs-dropdown-header-color: #6c757d;
-    --bs-dropdown-header-padding-x: 1rem;
-    --bs-dropdown-header-padding-y: 0.5rem;
-    position: absolute;
-    z-index: var(--bs-dropdown-zindex);
-    display: none;
-    min-width: var(--bs-dropdown-min-width);
-    padding: var(--bs-dropdown-padding-y) var(--bs-dropdown-padding-x);
-    margin: 0;
-    font-size: var(--bs-dropdown-font-size);
-    color: var(--bs-dropdown-color);
-    text-align: left;
-    list-style: none;
-    background-color: var(--bs-dropdown-bg);
-    background-clip: padding-box;
-    border: var(--bs-dropdown-border-width) solid var(--bs-dropdown-border-color);
-    border-radius: var(--bs-dropdown-border-radius); */
-}
 
 .dropdown-menu-end {
   right: 0;
@@ -366,8 +332,8 @@ button.disabled {
 }
 
 .btn-add-user {
-  background-color: #07263B;
-  color: #31CDE5;
+  background-color:#004693; /* #07263B; */
+  color: #fff; /*  #31CDE5;*/
   border: none;
   padding: 8px 18px;
   border-radius: 5px;
@@ -875,6 +841,7 @@ span.sidebar-history {
 
 
 .dropdown-menu {
+  overflow-y: auto;
   --bs-dropdown-zindex: 1000;
   --bs-dropdown-min-width: 10rem;
   --bs-dropdown-padding-x: 0;
@@ -961,11 +928,11 @@ span.sidebar-history {
 }
 
 .form-control {
-  border: 1px solid #ced4da;
-  border-radius: 2px !important;
-  font-size: 14px;
-  padding: 8px 12px;
-  color: #979797;
+    border: 1px solid #ced4da !important;
+    border-radius: 2px !important;
+    font-size: 14px;
+    padding: 8px 12px;
+    color: #333 !important; /* #979797 */
 }
 
 .form-control::placeholder {
@@ -979,6 +946,19 @@ span.sidebar-history {
   border-color: #007bff;
 }
 
+.form-control-parameter-sm {
+    width: 64px;
+    border: 1px solid #ced4da !important;
+    border-radius: 2px !important;
+    font-size: 14px;
+    padding: 8px;
+    color: #222 !important;
+}
+.btn-select-model-outline {
+    border-radius: 90px;
+    border: 1px solid #ced4da;
+    padding: 10px 30px;
+}
 
 /* 密碼欄位的輸入框 */
 .password-frame {

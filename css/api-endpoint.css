@@ -1,0 +1,13 @@
+.status-box {
+    width: fit-content;
+    background-color: #F1F1F1;
+    padding: 8px 16px;
+    border-radius: 4px;
+}
+
+.endpoint-url-box {
+    width: fit-content;
+    background-color: #F1F1F1;
+    padding: 8px 16px;
+    border-radius: 4px;
+}

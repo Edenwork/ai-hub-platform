@@ -26,12 +26,23 @@
 
   </style>
 
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="./js/parameter-setting.js"></script>
+
 </head>
 
 <body>
 
   <!-- 動態載入 header -->
-  <div id="header-admin-placeholder"></div>
+  <header></header>
+
+  <script>
+    $(function () {
+      $("header").load("header-admin.html", function () {
+        initParameterModal();
+      });
+    });
+  </script>
 
 
   <div class="container-fluid">
@@ -376,58 +387,6 @@
                 </div>
               </div>
 
-              <!-- Modal 系統提示詞 -->
-              <div class="modal fade" id="modal-system-prompt" data-bs-backdrop="static" data-bs-keyboard="false"
-                tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header" class="">
-                      <div class="modal-title m-3 fw-bold text-decoration-none fs-4" id="staticBackdropLabel">系統提示詞
-                      </div>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body align-items-center">
-                      <form class="">
-
-                        <div class="row mb-3 align-items-center">
-                          <label for="account" class="col-3 form-label">請選擇模型 <span
-                              class="text-danger-">*</span></label>
-                          <div class="col-9">
-                            <select id="inputState" class="form-select">
-                              <option selected>Llama3.1-FFM-70B</option><!-- 展開模型列表-->
-                              <option>Llama3.1-FFM-70B</option>
-                              <option>Llama3.1-FFM-8B</option>
-                              <option>TAIDE-LX-7B</option>
-                            </select>
-                          </div>
-                        </div>
-
-
-
-                        <div class="row col-md-12-">
-                          <label for="inputState" class="form-label mb-3">請輸入提示詞，以定義AI所需扮演的角色或回答的範圍。</label>
-                          <textarea class="form-control" placeholder="例如：你是一個友好且樂於助人的AI助理" id="floatingTextarea2"
-                            style="height: 100px"></textarea>
-                        </div>
-
-                      </form>
-                    </div>
-
-                    <div class="modal-info d-flex mb-3 form-text text-danger">
-                      <img class="m-2" src="./images/icon-input-hint.png">
-                      請選擇模型
-                    </div>
-
-                    <div class="modal-footer d-flex- justify-content-between">
-                      <button type="button" class="btn btn-modal-outline fs-6">清除內容</button>
-                      <button type="button" class="btn btn-modal-outline fs-6" data-bs-dismiss="modal">取消</button>
-                      <button type="button" class="btn btn-modal-default fs-6">儲存</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-
 
             </div>
           </div>
@@ -587,11 +546,15 @@
     </div>
   </div>
 
+
+  <script src="./js/parameter-setting.js"></script>
   <script src="./js/bootstrap.bundle.min.js"></script>
 
   <!-- Custom JS for dropdown selection -->
   <script src="./js/load-admin-header.js"></script>
   <script src="./js/load-admin-sidebar.js"></script>
+  <script src="./js/tooltip.js"></script>
+
   <script>
     document.querySelectorAll('.dropdown-item').forEach(item => {
       item.addEventListener('click', function (e) {
@@ -709,13 +672,6 @@
     });
   </script>
 
-  <!-- 初始化 Tooltip -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
-      const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
-    });
-  </script>
 
 </body>
 
