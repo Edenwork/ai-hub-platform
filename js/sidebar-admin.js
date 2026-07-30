@@ -1,13 +1,51 @@
 // 檔案跟sidebar.js一樣
 
 // 切換 sidebar 狀態
+const SIDEBAR_MOBILE_BREAKPOINT = 768;
+
 function toggleSidebar() {
     const sidebar = document.getElementById('sidebarArea');
     if (!sidebar) return;
 
+    if (window.innerWidth <= SIDEBAR_MOBILE_BREAKPOINT) {
+        sidebar.classList.add('collapsed');
+        document.body.classList.add('sidebar-collapsed');
+        sidebar.dataset.mobileCollapsed = 'true';
+        return;
+    }
+
+    delete sidebar.dataset.mobileCollapsed;
     sidebar.classList.toggle('collapsed');
     document.body.classList.toggle('sidebar-collapsed');
 }
+
+function applyResponsiveSidebar() {
+    const sidebar = document.getElementById('sidebarArea');
+    if (!sidebar) return;
+
+    const isMobile = window.innerWidth <= SIDEBAR_MOBILE_BREAKPOINT;
+
+    if (isMobile) {
+        if (!sidebar.classList.contains('collapsed')) {
+            sidebar.dataset.mobileCollapsed = 'true';
+        }
+        sidebar.classList.add('collapsed');
+        document.body.classList.add('sidebar-collapsed');
+        return;
+    }
+
+    if (sidebar.dataset.mobileCollapsed === 'true') {
+        sidebar.classList.remove('collapsed');
+        document.body.classList.remove('sidebar-collapsed');
+        delete sidebar.dataset.mobileCollapsed;
+    }
+}
+
+document.addEventListener('DOMContentLoaded', applyResponsiveSidebar);
+window.addEventListener('load', applyResponsiveSidebar);
+window.addEventListener('resize', applyResponsiveSidebar);
+window.setTimeout(applyResponsiveSidebar, 0);
+window.setTimeout(applyResponsiveSidebar, 300);
 
 // 點擊事件監聽
 document.addEventListener('click', function (e) {
@@ -52,5 +90,4 @@ document.addEventListener('click', function (e) {
     // → 都觸發 toggle（展開 → 收合；收合 → 展開）
     toggleSidebar();
 });
-
 

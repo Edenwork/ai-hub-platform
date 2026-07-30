@@ -44,6 +44,75 @@
     font-weight: 400;
 }
 
+.conversation-history-list {
+    position: relative;
+}
+
+.conversation-history-row {
+    display: flex;
+    width: 100%;
+    min-width: 0;
+}
+
+.conversation-history-menu {
+    width: 100%;
+    min-width: 0;
+}
+
+.conversation-title {
+    display: block;
+    width: calc(100% - 42px);
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.conversation-rename-input {
+    width: calc(100% - 42px);
+    min-width: 0;
+    height: 30px;
+    border: 1px solid var(--btn-chat-border, #ced4da);
+    border-radius: 6px;
+    background: #fff;
+    color: #222;
+    font-size: 0.875rem;
+    padding: 4px 8px;
+}
+
+.conversation-rename-input:focus {
+    outline: 2px solid rgba(35, 35, 123, 0.16);
+    border-color: var(--sys-color-primary, #23237b);
+}
+
+.conversation-empty-state {
+    color: #6c757d;
+    font-size: 0.875rem;
+}
+
+.sidebar-snackbar {
+    position: fixed;
+    left: 24px;
+    bottom: 24px;
+    z-index: 2000;
+    max-width: 280px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    background: #2f3440;
+    color: #fff;
+    font-size: 0.875rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(8px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.sidebar-snackbar.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 /* .sidebar .nav-link.active {
   color: #2470dc;
 } */
@@ -223,19 +292,15 @@ body.sidebar-collapsed #content {
 
 @media (max-width: 768px) {
     #content {
-        margin-left: 0 !important;
-        width: 100% !important;
+        margin-left: 80px !important;
+        width: calc(100% - 80px) !important;
         padding: 1rem;
     }
 
     #sidebarArea {
-        width: 280px;
-    }
-
-    #sidebarArea.collapsed {
-        width: 0 !important;
-        min-width: 0 !important;
-        overflow: hidden;
+        width: 80px !important;
+        min-width: 80px !important;
+        max-width: 80px !important;
     }
 }
 
@@ -289,6 +354,28 @@ body.sidebar-collapsed #content {
     align-items: center;
     /* gap: 16px;
     padding: 16px 0 !important; */
+}
+
+#sidebarArea.collapsed .sidebar-footer .nav-link {
+    justify-content: center !important;
+}
+
+#sidebarArea.collapsed .sidebar-footer .dropdown {
+    width: 44px;
+    margin: 0 auto;
+}
+
+#sidebarArea.collapsed .sidebar-footer .whatever {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#sidebarArea.collapsed .sidebar-footer .whatever img,
+#sidebarArea.collapsed .sidebar-footer .whatever svg {
+    margin: 0 auto !important;
 }
 
 /* Footer 收合時隱藏文字與箭頭，保留圖示 */
