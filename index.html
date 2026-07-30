@@ -12,62 +12,13 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="./css/bootstrap.min.css" rel="stylesheet">
   <link href="./css/style.css" rel="stylesheet">
+  <link href="./css/global.css" rel="stylesheet">
+  <link href="./css/sidebar.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="icon" type="image/gif" href="/images/logo/favicon.ico">
 
   <style>
-    .sidebar {
-      /*position: fixed;
-       top: 0; */
-      position: absolute;
-      left: 0;
-      height: 100%;
-      /* width: auto; */
-      transition: all 0.3s ease;
-      z-index: 1;
-    }
 
-    .sidebar.collapsed .offcanvas-body {
-      display: none;
-    }
-
-    .sidebar.collapsed {
-      width: 170px;
-      /* 僅顯示按鈕寬度 */
-    }
-
-    .toggle-btn {
-      position: absolute;
-      right: -0px;
-      top: -20px;
-      z-index: 2;
-    }
-
-    .toggle-btn:hover {
-      background-color: #E2E2E2;
-      border-radius: 4px;
-    }
-
-    .toggleSidebar {
-      margin-left: 250px;
-      transition: margin-left 0.3s ease;
-    }
-
-    .sidebar.collapsed+.toggleSidebar {
-      margin-left: 40px;
-    }
-
-    #main_content {
-      margin-left: 150px;
-      width: calc(100% - 150px);
-      transition: margin-left 0.3s ease, width 0.3s ease;
-      height: 90vh !important;
-    }
-
-    .sidebar.collapsed+#main_content {
-      margin-left: 70px;
-      width: calc(100% - 70px);
-      /* 自動適應剩餘寬度 */
-    }
   </style>
 
 
@@ -81,7 +32,7 @@
 <body>
 
   <!-- 動態載入 header -->
-  <header></header>
+  <!-- <header></header>
 
   <script>
     $(function () {
@@ -89,67 +40,261 @@
         initParameterModal();
       });
     });
-  </script>
+  </script> -->
 
 
   <div class="container-fluid">
     <div class="row">
 
 
-      <!-- 動態載入 sidebar -->
-      <div id="sidebar"></div>
-      
+      <!-- 動態載入 sidebar-user -->
+       <div id="sidebar"></div>
+
+<script>
+  async function loadSidebar() {
+    try {
+      const response = await fetch('sidebar-user.html');
+      const html = await response.text();
+      document.getElementById('sidebar').innerHTML = html;
+      initParameterModal();
+    } catch (err) {
+      console.error('載入 sidebar 失敗', err);
+    }
+  }
+  loadSidebar();
+</script>
+
+      <!-- <div id="sidebar"></div>
+
       <script>
         $(function () {
           $("#sidebar").load("sidebar-user.html", function () {
+             initParameterModal();
           });
         });
-        </script>
+      </script> -->
 
 
 
 
-      <section id="main_content">
-        <main class="col-md-10 ms-sm-auto col-lg-9 px-md-4 dashboard-round-bg file-upload" id="dropZone">
-          <section class="container-chat">
-            <div class="title text-center" style="margin-top: 10%">
-              <h2>您好，歡迎使用 FFM Hub!</h2>
+
+      <main class="px-md-4 dashboard-round-bg full-width-when-collapsed file-upload" id="content">
+        <!-- id="dropZone" -->
+        <!-- <main class="col-md-10 ms-sm-auto col-lg-9 px-md-4 dashboard-round-bg file-upload" id="dropZone"> -->
+        <section class="container-chat">
+          <!--<div class="title text-center" style="margin-top: 10%">
+              <img src="./images/logo/logo_welcome.png" alt="AFS AI Hub Logo" class="afs-hub-hello">
+               <h2>您好，歡迎使用 AFS AI Hub!</h2>
               <h6 class="pt-3 pb-4">想輕鬆搞定撰寫文章、翻譯或程式碼？現在就開始向我提問吧！</h6>
+            </div> -->
+
+
+
+
+
+          <div class="container pt-5- mt-5-">
+            <div class="d-flex align-items-center mb-4">
+              <img src="./images/logo/logo_welcome.png" alt="AFS AI Hub Logo" class="afs-hub-hello">
+              <h2 class="fw-medium mb-0 ms-2">AI Hub，您好！</h2>
             </div>
 
+            <p class="mb-4" style="color: var(--link-text-color);">您的 AI 應用程式</p>
 
-            <div class="container mt-5 col-9">
-              <div class="question-dialog p-3 file-upload" id="">
+            <div class="row g-4">
+              <div class="col-md-4">
+                <a href="#" class="text-decoration-none" target="_blank">
+                  <div class="ai-card p-2 d-flex align-items-center" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                    title="支援 OCR 藥單辨識，結合 gpt 與 RAG 技術索引自衛福部食藥署藥品的仿單資料，可自動執行 28 項複雜處方用藥。">
+                    <div class="icon-wrapper me-2">
+                      <img src="./images/card-aiAgent-logo-02.png" alt="Medical AI" class="rounded-3">
+                    </div>
+                    <div class="flex-grow-1">
+                      <h6 class="card-title-15p- fw-bold mb-1">AI 醫護虛實共照</h6>
+                      <!-- <p class="fs-7">支援 OCR 藥單辨識，結合 gpt-oss-120b 與 RAG 技...</p> -->
+                    </div>
+                    <i class="bi bi-chevron-right text-secondary ms-2"></i>
+                  </div>
+                </a>
+              </div>
 
-                <div id="dragModal">
-                  <span id="hintText" style="">
-                    <img class="icon-add" src="./images/icon-image.png">
-                    <h1>新增圖片</h1>
-                    <span>將圖片拖放至此處，使其新增至對話</span>
-                  </span>
+              <div class="col-md-4">
+                <div class="ai-card p-2 d-flex align-items-center" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                    title="上傳技術規格文件以自動擷取專有名詞，建立具備上下文關聯的 RAG 問答系統，提升資訊檢索的可靠性。">
+                  <div class="icon-wrapper me-2">
+                    <img src="./images/card-aiAgent-logo-01.png" alt="i-Spec AI" class="rounded-3">
+                  </div>
+                  <div class="flex-grow-1">
+                    <h6 class="fw-bold mb-1">i-Spec 技術文件助理</h6>
+                    <!-- <p class="fs-7">上傳技術規格文件以自動擷取專有名詞，建立具備上...下文關聯的 RAG 問答系統，提升資訊檢索的可靠性。</p> -->
+                  </div>
+                  <i class="bi bi-chevron-right text-secondary ms-2"></i>
                 </div>
+              </div>
 
-                <div class="d-flex flex-column h-100">
-                  <textarea class="form-control-chat mb-3" placeholder="詢問任何問題" aria-label="Question"
-                    rows="3"></textarea>
+              <div class="col-md-4">
+                <div class="ai-card p-2 d-flex align-items-center" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                    title="以自然語言查詢資料庫，自動生成 SQL、視覺圖表與分析報告，大幅降低門檻並加速決策流程。">
+                  <div class="icon-wrapper me-2">
+                    <img src="./images/card-aiAgent-logo-03.png" alt="SQL Agent AI" class="rounded-3">
+                  </div>
+                  <div class="flex-grow-1">
+                    <h6 class="fw-bold mb-1">SQL Agent</h6>
+                    <!-- <p class="fs-7">以自然語言查詢資料庫，自動生成 SQL、視覺圖表與...分析報告，大幅降低門檻並加速決策流程。</p> -->
+                  </div>
+                  <i class="bi bi-chevron-right text-secondary ms-2"></i>
+                </div>
+              </div>
+            </div>
 
-                  <div class="d-flex justify-content-start align-items-end gap-3 justify-content-between-">
-                    <input type="file" id="fileInput" multiple style="display: none;">
-                    <button class="import-file-btn file-upload" id="" data-bs-toggle="tooltip" data-bs-placement="left"
-                      data-bs-title="上傳圖檔，支援 png/jpg" onclick="document.getElementById('fileInput').click()">
-                      <!-- <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <line x1="3.09998" y1="9.4" x2="16.9" y2="9.4" stroke="#0D99C8" stroke-width="1.2" stroke-linecap="round"/>
-                      <path d="M10 2.5L10 17.5" stroke="#0D99C8" stroke-width="1.2" stroke-linecap="round"/>
-                      </svg> -->
-                      <img class="icon-add" src="./images/icon-add.svg">
+            <div class="text-end mt-3">
+              <a href="./user-agent.html" class="see-all fs-7">
+                查看全部 AI 應用 <i class="bi bi-chevron-right"></i>
+              </a>
+            </div>
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          <div class="container mt-5">
+            <div class="question-dialog p-3 file-upload mx-auto" id="">
+
+              <div id="dragModal">
+                <span id="hintText" style="">
+                  <img class="icon-add" src="./images/icon-image.png">
+                  <h1>新增圖片</h1>
+                  <span>將圖片拖放至此處，使其新增至對話</span>
+                </span>
+              </div>
+
+              <div class="d-flex flex-column h-100">
+                <textarea class="form-control-chat mb-3" placeholder="詢問任何問題" aria-label="Question" rows="3"></textarea>
+
+                <div class="d-flex justify-content-start align-items-end- gap-3 mt-4 justify-content-between-">
+                  <input type="file" id="fileInput-" multiple style="display: none;">
+                  <!-- 
+                  <button class="import-file-btn file-upload" id="" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                    data-bs-title="上傳圖檔，支援 png/jpg" onclick="document.getElementById('fileInput').click()">
+                    <img class="icon-inside filter-grey" style=""
+                      src="./images/upload-image.svg">
+                  </button> -->
+
+                  <!-- <button class="import-file-btn" id="" data-bs-toggle="modal" data-bs-target="#modal-chose-prompt" data-bs-title="選擇提示詞">
+                    <img class="icon-inside filter-grey" style=""
+                      src="./images/icon-prompt.svg">
+                  </button> -->
+
+
+
+                  <button class="import-file-btn file-upload" id="" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                    data-bs-title="上傳圖檔，支援 png/jpg" onclick="document.getElementById('fileInput').click()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+                    class="icon-inside filter-grey">
+                      <line x1="5.1" y1="11.4" x2="18.9" y2="11.4" stroke="currentColor" stroke-width="1.2"
+                        stroke-linecap="round" />
+                      <path d="M12 4.5L12 19.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+                    </svg>
+                  </button>
+
+
+<button class="import-file-btn" id="" data-bs-toggle="modal" data-bs-target="#modal-chose-prompt"
+                    data-bs-title="選擇提示詞">
+<img class="icon-reasoning filter-grey" src="./images/icon-prompt.svg">
+</button>
+                  <!-- <button class="import-file-btn" id="" data-bs-toggle="modal" data-bs-target="#modal-chose-prompt"
+                    data-bs-title="選擇提示詞">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+                      class="icon-inside filter-grey" style="">
+                      <g clip-path="url(#clip0_94455_63235)">
+                        <path
+                          d="M5.33203 5.10596C4.52771 5.10614 3.89949 5.77427 3.89941 6.56104V16.8286C3.89944 17.6154 4.52767 18.2835 5.33203 18.2837H17.1621L19.0693 20.2417C19.2396 20.4165 19.4986 20.4711 19.7246 20.3794C19.9508 20.2875 20.0986 20.0669 20.0986 19.8228V6.56104C20.0986 5.77427 19.4703 5.10614 18.666 5.10596H5.33203Z"
+                          stroke="currentColor" stroke-width="1.2" stroke-linejoin="round" />
+
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                          d="M10.2639 10.612L11.7396 7.66064L13.2153 10.612L16.1667 12.0877L13.2153 13.5634L11.7396 16.5148L10.2639 13.5634L7.3125 12.0877L10.2639 10.612Z"
+                          fill="currentColor" />
+
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                          d="M16.6094 13.8584L17.9375 15.1865L16.6094 16.5146L15.2812 15.1865L16.6094 13.8584Z"
+                          fill="currentColor" />
+
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                          d="M7.31283 6.77539L9.08366 8.54622L7.31283 10.3171L5.54199 8.54622L7.31283 6.77539Z"
+                          fill="currentColor" />
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_94455_63235">
+                          <rect width="20" height="20" fill="white" transform="translate(2 4)" />
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  </button> -->
+
+                  <button class="btn btn-reasoning-thinking" type="button" aria-expanded="false"
+                    data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="先思考後回答，解決推理問題">
+                    <img class="icon-reasoning filter-grey" src="./images/icon-reasoning.svg">
+                    <span class="ms-1 fs-15px">深度思考</span>
+                  </button>
+
+                  <div class="dropdown ms-3 position-absolute-" style="left: 0%;">
+                    <button class="btn btn-select-thinking-outline dropdown-toggle- fs-6- fs-15px" type="button"
+                      id="modelDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                      思考強度 - 中
+                      <i class="fa fa-chevron-down ms-2"></i>
                     </button>
-                    <button class="btn-reasoning-thinking fs-6" type="button" aria-expanded="false"
-                      data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="先思考後回答，解決推理問題">
-                      <img class="icon-reasoning" src="./images/icon-reasoning.svg">
-                      <p class="ms-1">深度思考</p>
-                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="modelDropdown"
+                      style="max-height: 200px;overflow-y: auto;">
+                      <li>
+                        <a class="dropdown-item active-" href="#">
+                          <div class="content-box">
+                            <span class="dropdown-text">思考強度 - 低</span><br>
+                          </div>
+                          <br>
+                          <span class="checkmark ms-2">
+                            <img src="./images/icon-check.png" alt="check icon">
+                          </span>
+                        </a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item active-" href="#">
+                          <div class="content-box">
+                            <span class="dropdown-text">思考強度 - 中</span><br>
+                          </div>
+                          <br>
+                          <span class="checkmark ms-2">
+                            <img src="./images/icon-check.png" alt="check icon">
+                          </span>
+                        </a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item active-" href="#">
+                          <div class="content-box">
+                            <span class="dropdown-text">思考強度 - 高</span><br>
+                          </div>
+                          <br>
+                          <span class="checkmark ms-2">
+                            <img src="./images/icon-check.png" alt="check icon">
+                          </span>
+                        </a>
+                      </li>
+                      <li>
+                        <hr class="dropdown-divider">
+                      </li>
 
-                    <div id="thumbnails"></div>
+                    </ul>
+                  </div>
+
+                  <!-- <div id="thumbnails"></div>
                     <div id="errorContainer"></div>
 
 
@@ -158,162 +303,419 @@
                         <span class="close-btn">×</span>
                         <img class="modal-image" id="modalImage" src="">
                       </div>
-                    </div>
+                    </div> -->
 
-                    <div class="dropdown ms-3 position-absolute" style="right: 10%;">
-                      <button class="btn btn-select-model-outline dropdown-toggle fs-6" type="button" id="modelDropdown"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        Llama3.1-FFM-8B
-                      </button>
-                      <ul class="dropdown-menu" aria-labelledby="modelDropdown"
-                        style="max-height: 200px;overflow-y: auto;">
-                        <li>
-                          <a class="dropdown-item active-" href="#">
-                            <div class="content-box">
-                              <span class="dropdown-text">Llama3.1-FFM-8B</span><br>
-                              <mediuam class="text-muted">繁中強化的語言模型</mediuam>
-                            </div>
-                            <br>
-                            <span class="checkmark ms-2">
-                              <img src="./images/icon-check.png">
-                            </span>
-                          </a>
-                        </li>
-                        <li>
-                          <a class="dropdown-item active-" href="#">
-                            <div class="content-box">
-                              <span class="dropdown-text">LLama3.2-FFM-11B</span><br>
-                              <mediuam class="text-muted">繁中強化的多模態模型</mediuam>
-                            </div>
-                            <br>
-                            <span class="checkmark ms-2">
-                              <img src="./images/icon-check.png">
-                            </span>
-                          </a>
-                        </li>
-                        <li>
-                          <a class="dropdown-item active-" href="#">
-                            <div class="content-box">
-                              <span class="dropdown-text">FFM-Mistral-Small-3.1-24B-Reasoning</span><br>
-                              <mediuam class="text-muted">繁中強化的推理模型</mediuam>
-                            </div>
-                            <br>
-                            <span class="checkmark ms-2">
-                              <img src="./images/icon-check.png">
-                            </span>
-                          </a>
-                        </li>
-                        <li>
-                          <hr class="dropdown-divider">
-                        </li>
-                        <li>
-                          <a class="dropdown-item active" href="#">
-                            <div class="content-box">
-                              <span class="dropdown-text">Qwen3-4B</span><br>
-                              <mediuam class="text-muted">多語推理模型</mediuam>
-                            </div>
-                            <br>
-                            <span class="checkmark ms-2">
-                              <img src="./images/icon-check.png">
-                            </span>
-                          </a>
-                        </li>
-                        <li>
-                          <a class="dropdown-item active-" href="#">
-                            <div class="content-box">
-                              <span class="dropdown-text">DeepSeek-R1-Distill-Qwen-1.5B</span><br>
-                              <mediuam class="text-muted">Qwen2.5-1.5B經知識蒸餾的推理模型</mediuam>
-                            </div>
-                            <br>
-                            <span class="checkmark ms-2">
-                              <img src="./images/icon-check.png">
-                            </span>
-                          </a>
-                        </li>
-                        <li>
-                          <a class="dropdown-item active-" href="#">
-                            <div class="content-box">
-                              <span class="dropdown-text">DeepSeek-R1-Distill-Qwen-7B</span><br>
-                              <mediuam class="text-muted">Qwen2.5-7B經知識蒸餾的推理模型</mediuam>
-                            </div>
-                            <br>
-                            <span class="checkmark ms-2">
-                              <img src="./images/icon-check.png">
-                            </span>
-                          </a>
-                        </li>
-
-                        <li>
-                          <a class="dropdown-item active-" href="#">
-                            <div class="content-box">
-                              <span class="dropdown-text">Llama-3.2-11B-Vision-Instruct</span><br>
-                              <mediuam class="text-muted">Meta多模態模型，適用圖像推理問答</mediuam>
-                            </div>
-                            <br>
-                            <span class="checkmark ms-2">
-                              <img src="./images/icon-check.png">
-                            </span>
-                          </a>
-                        </li>
-                        <li>
-                          <a class="dropdown-item active-" href="#">
-                            <div class="content-box">
-                              <span class="dropdown-text">Qwen2.5-1.5B-Instruct</span><br>
-                              <mediuam class="text-muted">小型指令微調語言模型</mediuam>
-                            </div>
-                            <br>
-                            <span class="checkmark ms-2">
-                              <img src="./images/icon-check.png">
-                            </span>
-                          </a>
-                        </li>
-                        <li>
-                          <a class="dropdown-item active-" href="#">
-                            <div class="content-box">
-                              <span class="dropdown-text">TinyLlama-1.1B-Chat-v0.6</span><br>
-                              <mediuam class="text-muted">輕量語言模型，適合資源有限環境</mediuam>
-                            </div>
-                            <br>
-                            <span class="checkmark ms-2">
-                              <img src="./images/icon-check.png">
-                            </span>
-                          </a>
-                        </li>
-                        <li>
-                          <a class="dropdown-item active-" href="#">
-                            <div class="content-box">
-                              <span class="dropdown-text">TinyLlama-1.1B-Chat-v1.0</span><br>
-                              <mediuam class="text-muted">優化版輕量語言模型，提升多輪對話質量</mediuam>
-                            </div>
-                            <br>
-                            <span class="checkmark ms-2">
-                              <img src="./images/icon-check.png">
-                            </span>
-                          </a>
-                        </li>
-
-                      </ul>
-                    </div>
-
-                    <button class="btn btn-chat-send position-absolute" style="right: 2%;">
-                      <img src="./images/btn-send-chat.svg">
+                  <div class="dropdown ms-3 position-absolute" style="right: 10%;">
+                    <button class="btn btn-select-model-outline dropdown-toggle- fs-6- fs-15px me-3" type="button"
+                      id="modelDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                      Llama3.1-FFM-8B
+                      <i class="fa fa-chevron-down ms-2"></i>
                     </button>
+                    <ul class="dropdown-menu" aria-labelledby="modelDropdown"
+                      style="max-height: 200px;overflow-y: auto;">
+                      <li>
+                        <a class="dropdown-item active-" href="#">
+                          <div class="content-box">
+                            <span class="dropdown-text">Llama3.1-FFM-8B</span><br>
+                            <mediuam class="text-muted">繁中強化的語言模型</mediuam>
+                          </div>
+                          <br>
+                          <span class="checkmark ms-2">
+                            <img src="./images/icon-check.png" alt="check icon">
+                          </span>
+                        </a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item active-" href="#">
+                          <div class="content-box">
+                            <span class="dropdown-text">LLama3.2-FFM-11B</span><br>
+                            <mediuam class="text-muted">繁中強化的多模態模型</mediuam>
+                          </div>
+                          <br>
+                          <span class="checkmark ms-2">
+                            <img src="./images/icon-check.png" alt="check icon">
+                          </span>
+                        </a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item active-" href="#">
+                          <div class="content-box">
+                            <span class="dropdown-text">FFM-Mistral-Small-3.1-24B-Reasoning</span><br>
+                            <mediuam class="text-muted">繁中強化的推理模型</mediuam>
+                          </div>
+                          <br>
+                          <span class="checkmark ms-2">
+                            <img src="./images/icon-check.png" alt="check icon">
+                          </span>
+                        </a>
+                      </li>
+                      <li>
+                        <hr class="dropdown-divider">
+                      </li>
+                      <li>
+                        <a class="dropdown-item active" href="#">
+                          <div class="content-box">
+                            <span class="dropdown-text">Qwen3-4B</span><br>
+                            <mediuam class="text-muted">多語推理模型</mediuam>
+                          </div>
+                          <br>
+                          <span class="checkmark ms-2">
+                            <img src="./images/icon-check.png" alt="check icon">
+                          </span>
+                        </a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item active-" href="#">
+                          <div class="content-box">
+                            <span class="dropdown-text">DeepSeek-R1-Distill-Qwen-1.5B</span><br>
+                            <mediuam class="text-muted">Qwen2.5-1.5B經知識蒸餾的推理模型</mediuam>
+                          </div>
+                          <br>
+                          <span class="checkmark ms-2">
+                            <img src="./images/icon-check.png" alt="check icon">
+                          </span>
+                        </a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item active-" href="#">
+                          <div class="content-box">
+                            <span class="dropdown-text">DeepSeek-R1-Distill-Qwen-7B</span><br>
+                            <mediuam class="text-muted">Qwen2.5-7B經知識蒸餾的推理模型</mediuam>
+                          </div>
+                          <br>
+                          <span class="checkmark ms-2">
+                            <img src="./images/icon-check.png" alt="check icon">
+                          </span>
+                        </a>
+                      </li>
 
+                      <li>
+                        <a class="dropdown-item active-" href="#">
+                          <div class="content-box">
+                            <span class="dropdown-text">Llama-3.2-11B-Vision-Instruct</span><br>
+                            <mediuam class="text-muted">Meta多模態模型，適用圖像推理問答</mediuam>
+                          </div>
+                          <br>
+                          <span class="checkmark ms-2">
+                            <img src="./images/icon-check.png" alt="check icon">
+                          </span>
+                        </a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item active-" href="#">
+                          <div class="content-box">
+                            <span class="dropdown-text">Qwen2.5-1.5B-Instruct</span><br>
+                            <mediuam class="text-muted">小型指令微調語言模型</mediuam>
+                          </div>
+                          <br>
+                          <span class="checkmark ms-2">
+                            <img src="./images/icon-check.png" alt="check icon">
+                          </span>
+                        </a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item active-" href="#">
+                          <div class="content-box">
+                            <span class="dropdown-text">TinyLlama-1.1B-Chat-v0.6</span><br>
+                            <mediuam class="text-muted">輕量語言模型，適合資源有限環境</mediuam>
+                          </div>
+                          <br>
+                          <span class="checkmark ms-2">
+                            <img src="./images/icon-check.png" alt="check icon">
+                          </span>
+                        </a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item active-" href="#">
+                          <div class="content-box">
+                            <span class="dropdown-text">TinyLlama-1.1B-Chat-v1.0</span><br>
+                            <mediuam class="text-muted">優化版輕量語言模型，提升多輪對話質量</mediuam>
+                          </div>
+                          <br>
+                          <span class="checkmark ms-2">
+                            <img src="./images/icon-check.png" alt="check icon">
+                          </span>
+                        </a>
+                      </li>
+
+                    </ul>
                   </div>
+
+                  <!-- <button class="btn btn-chat-send position-absolute" style="right: 2%;">
+                      <img src="./images/btn-send-chat.svg">
+                    </button> -->
+
+                  <button class="btn btn-chat-send position-absolute" style="right: 2%; bottom: 20px;">
+                    <img class="icon-inside filter-grey" style="" src="./images/btn-send-chat.svg">
+                  </button>
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+
+
+          <!-- Modal  選擇提示詞 -->
+          <div class="modal fade" id="modal-chose-prompt" data-bs-backdrop="static" data-bs-keyboard="false"
+            tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header" class="">
+                  <div class="modal-title m-3 fw-bold text-decoration-none fs-4" id="modal-chose-prompt-label">選擇提示詞
+                  </div>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body align-items-center">
+                  <form class="">
+
+                    <div class="row mb-3 align-items-center justify-content-between">
+                      <div class="col position-relative d-inline-block">
+                        <i class="fa fa-magnifying-glass position-absolute modal-search-icon"
+                          style="left: 30px; top: 50%; transform: translateY(-50%);"></i>
+                        <input type="text" id="tableSearchInput" onkeyup="myFunction()" placeholder="搜尋提示詞"
+                          title="Search model name" class="search-input">
+                      </div>
+                      <!-- <div class="col text-primary text-end">
+                          <span class="text-black">已選擇 </span><label id="member-count">2</span><span class="text-black">
+                              成員</span>
+                        </div> -->
+                    </div>
+
+
+                    <div class="table-responsive" style="max-height: 300px; overflow-y: auto;">
+                      <table id="modelmanageTable-" class="mt-0 table table-sticky-header table-hover">
+                        <thead class="sticky-top">
+                          <tr class="header">
+                            <th style="width:5%;"></th>
+                            <th style="width:40%;">名稱</th>
+                            <th style="width:40%;">描述</th>
+                            <!-- <th style="width:15%;">功能</th> -->
+                          </tr>
+                        </thead>
+
+                        <tbody>
+                          <tr>
+                            <!-- <td> <input class="form-check-input mt-0" type="checkbox" value=""
+                                  aria-label="Checkbox for following text input"></td>
+                              <td> -->
+                            <td>
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="promptSelection" value="1" checked->
+                              </div>
+                            </td>
+                            <td>
+                              <label aria-expanded="false" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                data-bs-title="顯示用戶輸入{名稱}，Hover可察看完整名稱">提示詞名稱</label>
+                            </td>
+                            <td>
+                              <label aria-expanded="false" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                data-bs-title="顯示用戶輸入{描述}，Hover可察看完整描述">提示詞描述</label>
+                            </td>
+
+                            <!-- <td>
+                            <button class="btn btn-more-action-" type="button" aria-expanded="false"
+                              data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="刪除">
+                              <img src="./images/icon-delete-red.svg">
+                            </button>
+                          </td> -->
+                          </tr>
+
+                          <tr>
+                            <!-- <td> <input class="form-check-input mt-0" type="checkbox" value=""
+                                  aria-label="Checkbox for following text input"></td>
+                              <td> -->
+                            <td>
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="promptSelection" value="2"
+                                  checked="">
+                              </div>
+                            </td>
+                            <td>
+                              <label aria-expanded="false" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                data-bs-title="顯示用戶輸入{名稱}，Hover可察看完整名稱">提示詞名稱</label>
+                            </td>
+                            <td>
+                              <label aria-expanded="false" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                data-bs-title="顯示用戶輸入{描述}，Hover可察看完整描述">提示詞描述</label>
+                            </td>
+
+                            <!-- <td>
+                            <button class="btn btn-more-action-" type="button" aria-expanded="false"
+                              data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="刪除">
+                              <img src="./images/icon-delete-red.svg">
+                            </button>
+                          </td> -->
+                          </tr>
+
+                          <tr>
+                            <!-- <td> <input class="form-check-input mt-0" type="checkbox" value=""
+                                  aria-label="Checkbox for following text input"></td>
+                              <td> -->
+                            <td>
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="promptSelection" value="3">
+                              </div>
+                            </td>
+                            <td>
+                              <label aria-expanded="false" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                data-bs-title="顯示用戶輸入{名稱}，Hover可察看完整名稱">提示詞名稱</label>
+                            </td>
+                            <td>
+                              <label aria-expanded="false" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                data-bs-title="顯示用戶輸入{描述}，Hover可察看完整描述">提示詞描述</label>
+                            </td>
+
+                            <!-- <td>
+                            <button class="btn btn-more-action-" type="button" aria-expanded="false"
+                              data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="刪除">
+                              <img src="./images/icon-delete-red.svg">
+                            </button>
+                          </td> -->
+                          </tr>
+                          <tr>
+                            <!-- <td> <input class="form-check-input mt-0" type="checkbox" value=""
+                                  aria-label="Checkbox for following text input"></td>
+                              <td> -->
+                            <td>
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="promptSelection" value="4">
+                              </div>
+                            </td>
+                            <td>
+                              <label aria-expanded="false" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                data-bs-title="顯示用戶輸入{名稱}，Hover可察看完整名稱">提示詞名稱</label>
+                            </td>
+                            <td>
+                              <label aria-expanded="false" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                data-bs-title="顯示用戶輸入{描述}，Hover可察看完整描述">提示詞描述</label>
+                            </td>
+
+                            <!-- <td>
+                            <button class="btn btn-more-action-" type="button" aria-expanded="false"
+                              data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="刪除">
+                              <img src="./images/icon-delete-red.svg">
+                            </button>
+                          </td> -->
+                          </tr>
+
+                          <tr>
+                            <!-- <td> <input class="form-check-input mt-0" type="checkbox" value=""
+                                  aria-label="Checkbox for following text input"></td>
+                              <td> -->
+                            <td>
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="promptSelection" value="5">
+                              </div>
+                            </td>
+                            <td>
+                              <label aria-expanded="false" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                data-bs-title="顯示用戶輸入{名稱}，Hover可察看完整名稱">提示詞名稱</label>
+                            </td>
+                            <td>
+                              <label aria-expanded="false" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                data-bs-title="顯示用戶輸入{描述}，Hover可察看完整描述">提示詞描述</label>
+                            </td>
+
+                            <!-- <td>
+                            <button class="btn btn-more-action-" type="button" aria-expanded="false"
+                              data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="刪除">
+                              <img src="./images/icon-delete-red.svg">
+                            </button>
+                          </td> -->
+                          </tr>
+
+                          <tr>
+                            <!-- <td> <input class="form-check-input mt-0" type="checkbox" value=""
+                                  aria-label="Checkbox for following text input"></td>
+                              <td> -->
+                            <td>
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="promptSelection" value="6">
+                              </div>
+                            </td>
+                            <td>
+                              <label aria-expanded="false" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                data-bs-title="顯示用戶輸入{名稱}，Hover可察看完整名稱">提示詞名稱</label>
+                            </td>
+                            <td>
+                              <label aria-expanded="false" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                data-bs-title="顯示用戶輸入{描述}，Hover可察看完整描述">提示詞描述</label>
+                            </td>
+
+                            <!-- <td>
+                            <button class="btn btn-more-action-" type="button" aria-expanded="false"
+                              data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="刪除">
+                              <img src="./images/icon-delete-red.svg">
+                            </button>
+                          </td> -->
+                          </tr>
+
+                        </tbody>
+
+                      </table>
+                    </div>
+
+                  </form>
                 </div>
 
+                <div class="modal-footer d-flex justify-content-between">
+                  <button type="button" class="btn btn-modal-outline fs-6" data-bs-dismiss="modal">取消</button>
+                  <button type="button" class="btn btn-modal-default fs-6" data-bs-toggle="modal"
+                    data-bs-target="#modal-prompt-name">確認
+                  </button>
+                </div>
               </div>
             </div>
+          </div>
 
 
+          <!-- Modal  {提示詞名稱} -->
+          <div class="modal fade" id="modal-prompt-name" data-bs-backdrop="static" data-bs-keyboard="false"
+            tabindex="-1" aria-labelledby="modal-prompt-name" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header" class="">
+                  <div class="modal-title m-3 fw-bold text-decoration-none fs-4" id="modal-prompt-name-Label"> {提示詞名稱}
+                  </div>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body align-items-center">
+                  <form class="">
+                    <div class="row">
+                      <label for="inputState" class="form-label mb-3">提示詞</label>
+                      <textarea class="form-control" placeholder="自動帶入用戶輸入提示詞，{變數1}、{變數2}..." id=""
+                        style="height: 120px"></textarea>
+                    </div>
+
+                    <div class="row">
+                      <label for="inputState" class="form-label mt-3 mb-3">變數1*</label>
+                      <textarea class="form-control" placeholder="" id="" style="height: 62px"></textarea>
+                    </div>
+
+                    <div class="row">
+                      <label for="inputState" class="form-label mt-3 mb-3">變數2*</label>
+                      <textarea class="form-control" placeholder="" id="" style="height: 62px"></textarea>
+                    </div>
+
+                  </form>
+                </div>
+
+                <div class="modal-footer d-flex- justify-content-between">
+                  <!-- <button type="button" class="btn btn-modal-outline fs-6">清除內容</button> -->
+                  <button type="button" class="btn btn-modal-outline fs-6" data-bs-dismiss="modal">取消</button>
+                  <button type="button" class="btn btn-modal-default fs-6">套用</button>
+                </div>
+              </div>
+            </div>
+          </div>
 
 
+        </section>
 
+      </main>
 
-          </section>
-
-        </main>
-      </section>
 
     </div>
   </div>
@@ -321,89 +723,18 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
   <!-- Custom JS for dropdown selection -->
-  <script src="./js/load-admin-header.js"></script>
-  <script src="./js/load-admin-sidebar.js"></script>
+  <!-- <script src="./js/load-admin-header.js"></script> -->
+  <script src="./js/sidebar.js"></script>
   <script src="./js/tooltip.js"></script>
   <script src="./js/file-upload.js"></script>
 
-  <script>
-    $("header").load("parameter-setting.js");
-  </script>
-
-
-  <!-- 參數拉桿 -->
   <!-- <script>
-  document.addEventListener('DOMContentLoaded', function () {
-  // 取得 Modal 範圍
-  const modal = document.getElementById('modal-parameter-setting');
+    $("header").load("parameter-setting.js");
+  </script> -->
 
-  // 定義所有參數的設定
-  const paramConfigs = [
-    { slider: 'temp-slider', input: 'temp-input', defaultValue: 0.5 },
-    { slider: 'topp-slider', input: 'topp-input', defaultValue: 1 },
-    { slider: 'topk-slider', input: 'topk-input', defaultValue: 50 },
-    { slider: 'freq-slider', input: 'freq-input', defaultValue: 1 }
-  ];
-
-  // 雙向同步功能
-  function bindSliderInput(slider, input, defaultValue) {
-    // 滑桿變動時，input 跟著變
-    slider.addEventListener('input', function () {
-      input.value = slider.value;
-    });
-    // input 變動時，滑桿跟著變
-    input.addEventListener('input', function () {
-      let val = parseFloat(input.value);
-      const min = parseFloat(slider.min);
-      const max = parseFloat(slider.max);
-      if (isNaN(val)) val = defaultValue;
-      if (val < min) val = min;
-      if (val > max) val = max;
-      slider.value = val;
-      input.value = val;
-    });
-  }
-
-  // 初始化所有滑桿與 input 的同步
-  const controls = [];
-  paramConfigs.forEach(cfg => {
-    const slider = modal.querySelector(`#${cfg.slider}`);
-    const input = modal.querySelector(`#${cfg.input}`);
-    if (slider && input) {
-      bindSliderInput(slider, input, cfg.defaultValue);
-      controls.push({ slider, input, defaultValue: cfg.defaultValue });
-    }
-  });
-
-  // 最大生成token數
-  const tokenInput = modal.querySelector('#token-input');
-  const tokenDefault = '4096';
-
-  // Modal 開啟時初始化所有值
-  modal.addEventListener('shown.bs.modal', function () {
-    controls.forEach(({ slider, input, defaultValue }) => {
-      slider.value = defaultValue;
-      input.value = defaultValue;
-    });
-    if (tokenInput) tokenInput.value = tokenDefault;
-  });
-
-  // 重置按鈕功能
-  const resetBtn = modal.querySelector('#reset-btn');
-  if (resetBtn) {
-    resetBtn.addEventListener('click', function () {
-      controls.forEach(({ slider, input, defaultValue }) => {
-        slider.value = defaultValue;
-        input.value = defaultValue;
-      });
-      if (tokenInput) tokenInput.value = tokenDefault;
-    });
-  }
-});
-
-</script> -->
-
-
+  <script>
+    $("sidebar").load("parameter-setting.js");
+  </script>
 
 
 
@@ -616,38 +947,6 @@
         }
       });
     });
-  </script>
-
-  <!-- sidebar 收合 -->
-  <script>
-    function toggleSidebar() {
-      const sidebar = document.getElementById('toggleSidebar');
-      const content = document.getElementById('main_content');
-      sidebar.classList.toggle('collapsed');
-      if (sidebar.classList.contains('collapsed')) {
-        content.style.marginLeft = '-150px';
-      } else {
-        content.style.marginLeft = '50px';
-      }
-    }
-  </script>
-
-  <!-- main_content 的寬度計算 -->
-  <script>
-    function toggleSidebar() {
-      const sidebar = document.getElementById("toggleSidebar");
-      const mainContent = document.getElementById("main_content");
-
-      sidebar.classList.toggle("collapsed");
-
-      if (sidebar.classList.contains("collapsed")) {
-        mainContent.style.marginLeft = "0px";
-        mainContent.style.width = "calc(100% - 0px)";
-      } else {
-        mainContent.style.marginLeft = "150px";
-        mainContent.style.width = "calc(100% - 150px)";
-      }
-    }
   </script>
 
 </body>

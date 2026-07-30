@@ -1,0 +1,88 @@
+/* =============================================
+   :root 語意優先，參考 SLDS 2 風格
+   - Primitive 原始: 客戶品牌原始色，只改這裡就能全站換色
+   - Semantic 語意: 元件永遠引用這些，固定名稱
+   ============================================= */
+
+/* 1. Primitive colors ── 客戶專屬原始值（放在 brand-default.css 或直接 :root 覆蓋） */
+:root {
+  /* Brand / Accent 原始色 */
+  --raw-brand-primary:    #222222;     /* 原 --main-color / --primary：穩重主品牌色 */
+  --raw-brand-accent:     #23237B;     /* 原 --second-color：較有活力的強調/次品牌色 */
+
+  /* Neutral / Surface 原始色 */
+  --raw-surface-1:        #ffffff;     /* 最純白，主背景 / card */
+  --raw-surface-2:        #f9fbff;     /* 原 --content-area-bg：內容區淡藍灰 */
+  --raw-surface-3:        #e8e8e8;     /* 原 --hover-bg-color：hover / 次要容器 */
+  --raw-border-subtle:    #e1e1e1;     /* 原 --card-border / --btn-chat-border 基礎 */
+  --raw-border-chat:      #ced4da;     /* 保留 chat 專用邊框 */
+
+  /* Text / On- 原始色 */
+  --raw-on-black:         #000000;     /* 深文字 */
+  --raw-on-white:         #ffffff;     /* 白文字 */
+
+  /* Status / Feedback 原始色 */
+  --raw-error-main:       #ca0729;     /* 原 --error-color */
+  --raw-error-dark:       #ad001d;     /* 原 --second-error-color */
+}
+
+/* 2. Semantic tokens ── 全站共用，元件只用這些 */
+:root {
+  /* ── Brand / Accent ── */
+  --color-brand-primary:          var(--raw-brand-primary);    /* 主品牌色：主要按鈕、標題、重點連結 */
+  --color-brand-accent:           var(--raw-brand-accent);     /* 強調色：hover、secondary CTA、badge、tag */
+  --color-brand-subtle:           color-mix(in srgb, var(--color-brand-primary) 12%, white); /* 淡品牌背景 */
+
+  /* ── Surface (背景層級) ── */
+  --color-surface-primary:        var(--raw-surface-1);        /* 最主要背景：頁面整體、card 主底 */
+  --color-surface-secondary:      var(--raw-surface-2);        /* 內容區、輕背景、table 隔行 */
+  --color-surface-tertiary:       var(--raw-surface-3);        /* hover 背景、次要容器、sub-section */
+  --color-surface-hover:          var(--raw-surface-3);        /* 通用 hover 背景（可再加 opacity 調整） */
+
+  /* ── Surface Container (元件/卡片容器背景) ── */
+  --color-surface-container-primary:   var(--raw-surface-1);   /* card、modal、button 等預設容器背景 */
+  --color-surface-container-secondary: var(--raw-surface-2);   /* 次要容器、input bg 等 */
+  --color-surface-container-hover:     color-mix(in srgb, var(--raw-surface-3) 80%, transparent); /* hover 容器 */
+
+  /* ── On-Surface / On-Container (放在背景上的文字/icon) ── */
+  --color-on-surface-primary:     var(--raw-on-black);         /* 主要文字、標題（放在 surface 上） */
+  --color-on-surface-secondary:   #555555;                     /* 次要文字、描述、link（原 --link-text-color） */
+  --color-on-surface-tertiary:    #777777;                     /* 更輔助文字、disabled 等 */
+  --color-on-surface-inverse:     var(--raw-on-white);         /* 白文字，用在深背景或品牌色上 */
+
+  --color-on-brand-primary:       var(--raw-on-white);         /* 放在品牌主色上的文字（通常 white） */
+  --color-on-brand-accent:        var(--raw-on-white);         /* 放在 accent 上的文字 */
+
+  /* ── Border ── */
+  --color-border-subtle:          var(--raw-border-subtle);    /* 一般邊框、divider、card border */
+  --color-border-primary:         #cbd5e1;                     /* 較明顯邊框（可調整） */
+  --color-border-chat:            var(--raw-border-chat);      /* chat 專用邊框 */
+
+  /* ── Status / Feedback ── */
+  --color-status-error:           var(--raw-error-main);
+  --color-status-error-dark:      var(--raw-error-dark);       /* error hover / active */
+  --color-status-error-on:        var(--raw-on-white);         /* 放在 error 背景上的文字 */
+
+  /* ── Interaction / Button ── */
+  --color-btn-primary-bg:         var(--color-brand-primary);
+  --color-btn-primary-text:       var(--color-on-brand-primary);
+  --color-btn-hover-bg:           var(--color-brand-accent);   /* 或用 color-mix 調深 */
+  --color-btn-hover-text:         var(--color-on-brand-accent);
+  --color-btn-disabled-bg:        #cccccc;
+  --color-btn-disabled-text:      #666666;
+
+  /* ── Link ── */
+  --color-link-text:              var(--color-on-surface-secondary);   /* 原 --link-text-color */
+  --color-link-hover:             var(--color-on-surface-primary);     /* 原 --hover-link-text-color */
+
+  /* ── Radius & Shadow (非顏色，但常一起定義) ── */
+  --radius-card:                  30px;                        /* 原 --border-top-left-radius，可擴展 --radius-md 等 */
+  --radius-btn:                   8px;                         /* 按鈕圓角，可自行調整 */
+  --shadow-card:                  0px 3px 5px rgba(0, 0, 0, 0.05); /* 原 --card-box-shadow */
+  --border-card:                  1px solid var(--color-border-subtle); /* 原 --card-border */
+}
+
+/* 額外：filter 獨立定義，不混在 color 裡 */
+:root {
+  --filter-brand-invert: invert(32%) sepia(84%) saturate(762%) hue-rotate(135deg) brightness(92%) contrast(101%);
+}

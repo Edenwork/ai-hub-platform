@@ -8,6 +8,8 @@
   <title>add-model-key</title>
   <link href="./css/bootstrap.min.css" rel="stylesheet">
   <!-- <link href="./css/breadcrumbs.css" rel="stylesheet"> -->
+     <link href="./css/style.css" rel="stylesheet">
+  <link href="./css/sidebar.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
 
@@ -15,6 +17,7 @@
 
   <!-- Custom styles -->
   <link href="./css/style.css" rel="stylesheet">
+    <link href="./css/sidebar.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
   <link href="./css/dashboard.css" rel="stylesheet">
   <link href="./css/add-model.css" rel="stylesheet">
@@ -25,7 +28,7 @@
 <body>
 
   <!-- 動態載入 header -->
-  <header></header>
+  <!-- <header></header>
 
   <script>
     $(function () {
@@ -33,56 +36,24 @@
         initParameterModal();
       });
     });
-  </script>
+  </script> -->
 
 
   <div class="container-fluid">
     <div class="row">
 
-      <div class="sidebar border- border-right col-md-3 col-lg-2 p-0 bg-body-tertiary">
-        <div class="sidebar-pl offcanvas-md offcanvas-end bg-body-tertiary" tabindex="-1" id="sidebarMenu"
-          aria-labelledby="sidebarMenuLabel">
-          <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="sidebarMenuLabel">FFM Hub</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebarMenu"
-              aria-label="Close"></button>
-          </div>
-          <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
-            <ul class="nav flex-column">
-              <li class="nav-item">
+      <!-- 動態載入 sidebar -->
+      <div id="sidebar-admin" class="col-md-4- col-lg-3- z-3"></div>
 
-                <button class="tag-admin">
-                  系統管理員專屬
-                </button>
+      <script>
+        $(function () {
+          $("#sidebar-admin").load("sidebar-admin.html", function () {
+          });
+        });
+      </script>
 
-                <!-- <a class="nav-link d-flex align-items-center gap-2">
-                  <img src="./images/tag-admin.png">
-                </a> -->
-              </li>
-            </ul>
-
-            <ul class="nav flex-column mt-lg-3">
-              <li class="nav-item">
-                <a class="nav-link d-flex align-items-center gap-2" href="model-manage.html">
-                  <img src="./images/icon-manage-navbar.png">
-                  模型管理
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link d-flex align-items-center gap-2" href="user-manage.html">
-                  <img src="./images/icon-user-navbar.png">
-                  使用者管理
-                </a>
-              </li>
-            </ul>
-
-            <hr class="my-3">
-          </div>
-        </div>
-      </div>
-
-      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 dashboard-round-bg">
-        <section class="container-chat">
+      <main class="px-md-4 dashboard-round-bg full-width-when-collapsed file-upload" id="content">
+        <section class="container-manage">
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb rounded-3">
               <!-- <li class="breadcrumb-item">
@@ -191,7 +162,8 @@
 
   <!-- Custom JS for dropdown selection -->
   <script src="./js/load-admin-header.js"></script>
-  <script src="./js/load-admin-sidebar.js"></script>
+  <script src="./js/sidebar.js"></script>
+  <!-- <script src="./js/sidebar-admin.js"></script> -->
   <script src="./js/parameter-setting.js"></script>
   <script src="./js/tooltip.js"></script>
   <!-- 密碼眼睛 -->

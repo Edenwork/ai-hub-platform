@@ -1,0 +1,140 @@
+/* GLOBAL CSS VARIABLES
+   架構：Reference / Palette (底層：物理來源) -> Brand Palette (來源) -> System Tokens (語意化，最常使用) -> Component Tokens (元件專屬) */
+
+:root {
+  /* ── 1. Base / Palette ── 最底層物理顏色、中性名稱（客戶專屬原始色票） */
+  --base-01: #222222;
+  /* 主品牌深色 原 --main-color / --primary / --btn-bg-hover */
+  --base-02: #23237B;
+  /* 主品牌特別色 原 --second-color */
+  --base-white: #ffffff;
+  /* 純白 原 --second-text-color / --card-bg */
+  --base-black: #000000;
+  /* 純黑 原 --main-text-color / --hover-link-text-color */
+  --base-red: #ca0729;
+  /* 原 --error-color */
+  --base-red-dark: #ad001d;
+  /* 原 --second-error-color */
+  --base-gray-50: #f9fbff;
+  /* 內容區淡背景 * 原 --content-area-bg */
+  --base-gray-200: #e8e8e8;
+  /* hover、次要容器 * 原 --hover-bg-color */
+  --base-gray-300: #e1e1e1;
+  /* 邊框基礎 * 原 --card-border 基礎色 */
+  --base-gray-500: #555555;
+  /* 原 --link-text-color */
+  --base-chat-border: #ced4da;
+  /* chat 專用邊框 / 原 --btn-chat-border */
+
+  /* ── 2. Brand ── 品牌角色（換客戶改這裡） */
+  --brand-primary: var(--base-01);
+  /* 主品牌強調色 --main-color / --primary：穩重主品牌色 */
+  --brand-secondary: var(--base-02);
+  /* --second-color：較有活力的強調/次品牌色 */
+
+  /* 使用順序建議
+最常用：--sys-color-on-surface (主要內容文字、card 標題、表單 label、icon) / --sys-color-on-surface-variant（描述文字、placeholder、輔助 icon、次要按鈕文字、meta 資訊）
+品牌強調：--sys-color-primary（背景） + --sys-color-on-primary（文字/icon）
+柔和強調：--sys-color-primary-container / --sys-color-secondary 等
+錯誤處理：--sys-color-error 系列
+邊框：--sys-color-outline / --sys-color-outline-variant
+背景層級：--sys-color-surface → --sys-color-surface-container → --sys-color-surface-container-high */
+
+  /* ── 3. System ── 系統語意角色（開發者/元件主要使用這層） */
+
+  /* Primary 系列 ── 高強調、主品牌色，通常用在最重要、最吸引注意力的元素 */
+  --sys-color-primary: var(--brand-primary);
+  /* 主要用途：最強烈的品牌強調色
+     常見應用：主要按鈕背景 (filled primary button)、重點連結文字、主導航 active 狀態、FAB (浮動動作按鈕)、進度條填充、選中標記
+  */
+
+  --sys-color-on-primary: var(--base-white);  /* #fff;*/
+  /* 主要用途：放在 primary 背景上的文字、圖示
+     常見應用：主要按鈕內的文字與 icon、FAB icon、選單中選中的項目文字
+  */
+
+  --sys-color-primary-container: color-mix(in srgb, var(--brand-primary) 12%, white);
+  /* 主要用途：primary 的淡化/tonal 版本，用於較柔和的強調背景
+     常見應用：次要 CTA 按鈕背景 (tonal button)、chip/tag 背景、alert 資訊框淡背景、hover 狀態的 primary 區域
+  */
+
+  --sys-color-on-primary-container: var(--base-black);
+  /* 主要用途：放在 primary-container 上的文字、圖示
+     常見應用：tonal button 文字、chip 文字、資訊提示文字
+  */
+
+  /* Secondary 系列 ── 輔助強調色，次要品牌色或互補色 */
+  --sys-color-secondary: var(--brand-secondary);
+  /* 主要用途：次要強調色，較 primary 柔和
+     常見應用：次要按鈕背景、tab 選中指示線、進度指示器、次要導航項目、badge 背景
+  */
+
+  --sys-color-on-secondary: var(--base-white);
+  /* 主要用途：放在 secondary 背景上的文字、圖示
+     常見應用：次要按鈕文字、次要導航選中文字
+  */
+
+  /* Surface 系列 ── 中性背景層級，用來建立視覺深度與分組 */
+  --sys-color-surface: var(--base-white);
+  /* 主要用途：最底層頁面背景、modal 外層
+     常見應用：body 背景、整個頁面底色、dialog/scrim 外層
+  */
+
+  --sys-color-surface-container: var(--base-gray-50);
+  /* 主要用途：承載內容的容器背景（比 surface 稍有區隔）
+     常見應用：card 背景、panel、table 背景、input 欄位背景、accordion 內容區
+  */
+
+  --sys-color-surface-container-high: var(--base-gray-200);
+  /* 主要用途：較明顯的容器背景或 hover 狀態
+     常見應用：hover 的 card、table 隔行背景、次要 panel、selected list item 背景
+  */
+
+  --sys-color-on-surface: var(--base-01);
+  /* 主要用途：放在 surface 或 container 上的主要文字、圖示
+     常見應用：頁面主要內容文字、card 標題、表單 label、icon (預設)
+  */
+
+  --sys-color-on-surface-variant: var(--base-gray-500);
+  /* 主要用途：次要文字、輔助說明、較淡 icon
+     常見應用：描述文字、placeholder、輔助 icon、次要按鈕文字、meta 資訊
+  */
+
+  /* Outline 系列 ── 邊框與細線 */
+  --sys-color-outline: var(--base-gray-300);
+  /* 主要用途：較明顯的邊框、分隔線
+     常見應用：input 預設邊框、card 邊框、divider、menu 分隔線
+  */
+
+  --sys-color-outline-variant: var(--base-chat-border);
+  /* 主要用途：更細、更淡的邊框
+     常見應用：極淡的 divider、table 邊框、chip 邊框、disabled 狀態邊框
+  */
+
+  /* Error 系列 ── 錯誤/警示反饋 */
+  --sys-color-error: var(--base-red);
+  /* 主要用途：錯誤主色
+     常見應用：錯誤按鈕背景、警示 icon、validation error 文字、alert 背景
+  */
+
+  --sys-color-on-error: var(--base-white);
+  /* 主要用途：放在 error 背景上的文字、圖示
+     常見應用：錯誤按鈕文字、alert 內文字
+  */
+
+  --sys-color-error-container: color-mix(in srgb, var(--base-red) 15%, white);
+  /* 主要用途：錯誤的淡背景版本
+     常見應用：錯誤提示框背景、form error message 背景、validation 淡紅區域
+  */
+
+  --sys-color-on-error-container: var(--base-red-dark);
+  /* 主要用途：放在 error-container 上的文字、圖示
+     常見應用：錯誤提示文字、validation 訊息文字
+  */
+
+  /* Hover 狀態 ── 通用 hover 背景 */
+  --sys-color-hover: var(--base-black);
+  /* 主要用途：通用 hover 背景層
+     常見應用：任何可 hover 元素的 hover 背景 (list item、button、card)、menu item hover
+  */
+}

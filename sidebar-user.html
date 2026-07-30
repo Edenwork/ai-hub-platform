@@ -1,112 +1,750 @@
-      <div class="sidebar border- border-right col-md-2 col-lg-3 p-0 bg-body-tertiary" id="toggleSidebar">
-        <button class="btn btn-secondary toggle-btn" onclick="toggleSidebar()">
-          <img class="icon-arrow" src="./images/btn-arrow-to-right.svg">
-        </button>
-        <div class="sidebar-pl offcanvas-md offcanvas-end bg-body-tertiary" tabindex="-1" id="sidebarMenu"
-          aria-labelledby="sidebarMenuLabel">
-          <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="sidebarMenuLabel">FFM Hub</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebarMenu"
-              aria-label="Close"></button>
-          </div>
-          <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3">
-            <ul class="nav flex-column nav-new-chat">
+<head>
+  <link href="./css/modal.css" rel="stylesheet">
+    <link rel="icon" type="image/gif" href="/images/logo/favicon.ico">
+</head>
 
-              <li class="nav-item">
-                <a href="chat.html"
-                  class="nav-link nav-recommend-color color-attention d-flex align-items-center gap-3">
-                  <img src="./images/icon-newchat.svg">
-                  開始新的對話
-                </a>
-              </li>
-            </ul>
+<style>
+   /* 平常狀態：透明度為 0 */
+.btn-history {
+    opacity: 0;
+    transition: opacity 0.3s ease; /* 增加 0.3 秒的過渡感 */
+}
 
-            <hr class="my-3">
+.nav-item:hover .btn-history {
+    opacity: 1;
+    cursor: pointer !important;
+}
 
-            <ul class="nav flex-column mb-auto">
-              <li class="nav-item">
-                <div class="nav-link d-flex- align-items-center gap-2" href="#">
-                  <div class="dropdown">
-                    <!-- <img src="./images/icon-history.png"> -->
-                    <span class="sidebar-history">BIM格式...</span>
-                    <button class="btn btn-history" type="button" id="actionDropdown" data-bs-toggle="dropdown"
-                      aria-expanded="false">
-                      <i class="fa fa-ellipsis-v"></i>
-                    </button>
-                    <ul class="dropdown-menu dropdown-menu-end-" aria-labelledby="actionDropdown">
-                      <li>
-                        <a class="dropdown-item" href="#">
-                          <img src="./images/icon_edit.png">
-                          <span class="dropdown-mg"> 重新命名</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="dropdown-item" href="#">
-                          <img src="./images/icon-delete-red.svg">
-                          <span class="text-danger dropdown-mg"> 刪除對話</span>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
+</style>
 
-              </li>
-              <li class="nav-item">
-                <div class="nav-link d-flex- align-items-center gap-2" href="#">
-                  <div class="dropdown">
-                    <!-- <img src="./images/icon-history.png"> -->
-                    <span class="sidebar-history">Open USD格式...</span>
-                    <button class="btn btn-history" type="button" id="actionDropdown" data-bs-toggle="dropdown"
-                      aria-expanded="false-">
-                      <i class="fa fa-ellipsis-v"></i>
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="actionDropdown">
-                      <li>
-                        <a class="dropdown-item" href="#">
-                          <img src="./images/icon_edit.png">
-                          <span class="dropdown-mg"> 重新命名</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="dropdown-item" href="#">
-                          <img src="./images/icon-delete-red.svg">
-                          <span class="text-danger dropdown-mg"> 刪除對話</span>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
+<div class="sidebar border-right- col-md-2- col-lg-3- p-0" id="sidebarArea">
 
-              </li>
-              <li class="nav-item">
-                <div class="nav-link d-flex- align-items-center gap-2" href="#">
-                  <div class="dropdown">
-                    <!-- <img src="./images/icon-history.png"> -->
-                    <span class="sidebar-history">S3 SDK 多檔案斷點續傳...</span>
-                    <button class="btn btn-history" type="button" id="actionDropdown" data-bs-toggle="dropdown"
-                      aria-expanded="false-">
-                      <i class="fa fa-ellipsis-v"></i>
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="actionDropdown">
-                      <li>
-                        <a class="dropdown-item" href="#">
-                          <img src="./images/icon_edit.png">
-                          <span class="dropdown-mg"> 重新命名</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="dropdown-item" href="#">
-                          <img src="./images/icon-delete-red.svg">
-                          <span class="text-danger dropdown-mg"> 刪除對話</span>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
+  <!-- 頂部只有 logo + 漢堡 -->
+  <div class="collapse-topbar">
+    <div class="topbar-container">
+      <a href="index.html" class="sidebar-logo">
+        <img src="./images/logo/logo-sidebar.png" alt="Logo">
+      </a>
+      <button class="menu-toggle" id="sidebarToggle" type="button">
+        <img src="./images/icon-toggle.svg" alt="Toggle">
+      </button>
+    </div>
+  </div>
 
-              </li>
+  <!-- 選單區塊移出來，獨立 -->
+  <ul class="nav flex-column mb-auto-">
+    <li class="nav-item">
+      <a href="chat.html" class="nav-link d-flex align-items-center gap-3" data-bs-toggle="tooltip"
+        data-bs-placement="bottom" data-bs-title="新對話">
+        <img src="./images/icon-newchat-b.svg" width="24" height="24" alt="新對話">
+        <span class="sidebar-text">開始新的對話</span>
+      </a>
+    </li>
 
-            </ul>
-          </div>
+    <li class="nav-item">
+      <a href="user-prompt.html" class="nav-link d-flex align-items-center gap-3" data-bs-toggle="tooltip"
+        data-bs-placement="bottom" data-bs-title="提示詞庫">
+        <img src="./images/icon-prompt-b.svg" width="24" height="24" alt="提示詞庫">
+        <span class="sidebar-text">提示詞庫</span>
+      </a>
+    </li>
+
+    <!-- AI應用區塊 -->
+    <li class="nav-item nav-link-default">
+      <!-- <div class="nav-link d-flex align-items-center gap-3">
+        <img src="./images/icon-agent-b.svg" width="24" height="24" alt="AI應用">
+        <span class="sidebar-text">AI應用</span>
+    </div> -->
+      <a href="./user-agent.html" class="nav-link d-flex align-items-center gap-3" data-bs-toggle="tooltip"
+        data-bs-placement="bottom" data-bs-title="AI應用">
+        <img src="./images/icon-agent-b.svg" width="24" height="24" alt="AI應用">
+        <span class="sidebar-text">AI應用</span>
+      </a>
+
+      <ul class="ai-app-list nav flex-column ps-0" id="aiAppList">
+        <li class="nav-item">
+          <a href="#" class="nav-link d-flex align-items-center gap-3">
+            <img src="./images/sidebar/icon-aiAgent-logo-01.png" width="24" height="24">
+            <span class="sidebar-text">AI醫護虛實共照</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link d-flex align-items-center gap-3">
+            <img src="./images/sidebar/icon-aiAgent-logo-05.png" width="24" height="24">
+            <span class="sidebar-text">SQL Agent</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link d-flex align-items-center gap-3">
+            <img src="./images/sidebar/icon-aiAgent-logo-04.png" width="24" height="24">
+            <span class="sidebar-text">Python 數位轉碼服務</span>
+          </a>
+        </li>
+
+        <div class="collapse" id="moreAppsCollapse">
+          <li class="nav-item">
+            <a href="#" class="nav-link d-flex align-items-center gap-3">
+              <img src="./images/sidebar/icon-aiAgent-logo-04.png" width="24" height="24">
+              <span class="sidebar-text">.NET 數位轉碼服務</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link d-flex align-items-center gap-3">
+              <img src="./images/sidebar/icon-aiAgent-logo-02.png" width="24" height="24">
+              <span class="sidebar-text">i-Spec 技術文件助理</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="app6.html" class="nav-link d-flex align-items-center gap-3">
+              <img src="./images/sidebar/icon-aiAgent-logo-06.png" width="24" height="24">
+              <span class="sidebar-text">金屬扣件智造</span>
+            </a>
+          </li>
+        </div>
+      </ul>
+
+<button class="btn btn-link btn-show-more d-flex align-items-center gap-3 w-100 border-0 text-start"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#moreAppsCollapse"
+        id="toggleAppBtn">
+  <span class="sidebar-text btn-text" id="showMoreText">
+    顯示全部 <i class="fa fa-chevron-down sidebar-toggle-icon"></i>
+  </span>
+</button>
+    </li>
+  </ul>
+
+
+
+  <hr class="my-3">
+
+  <ul class="nav flex-column mb-auto-">
+    <!-- <li class="nav-item"> -->
+    <span class="nav-title align-items-center gap-2 ms-3 mb-2">
+      對話歷史</span>
+    <!-- </li> -->
+
+    <li class="nav-item">
+      <div class="nav-link d-flex- align-items-center gap-2 justify-content-between" href="#">
+        <div class="dropdown">
+          <!-- <img src="./images/icon-history.png"> -->
+          <span class="sidebar-history" data-bs-toggle="tooltip" data-bs-placement="bottom"
+            data-bs-title="完整對話">Onboarding AI Features Playbook</span>
+          <button class="btn btn-history" type="button" id="actionDropdown" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            <i class="fa fa-ellipsis-v"></i>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end-" aria-labelledby="actionDropdown">
+            <li>
+              <a class="dropdown-item" href="#">
+                <img src="./images/icon_edit.png">
+                <span class="dropdown-mg"> 重新命名</span>
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#">
+                <img src="./images/icon-delete-red.svg">
+                <span class="text-danger dropdown-mg"> 刪除對話</span>
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
+
+    </li>
+    <li class="nav-item">
+      <div class="nav-link d-flex- align-items-center gap-2" href="#">
+        <div class="dropdown">
+          <!-- <img src="./images/icon-history.png"> -->
+          <span class="sidebar-history">前端 OCR 實作範例</span>
+          <button class="btn btn-history" type="button" id="actionDropdown" data-bs-toggle="dropdown"
+            aria-expanded="false-">
+            <i class="fa fa-ellipsis-v"></i>
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="actionDropdown">
+            <li>
+              <a class="dropdown-item" href="#">
+                <img src="./images/icon_edit.png">
+                <span class="dropdown-mg"> 重新命名</span>
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#">
+                <img src="./images/icon-delete-red.svg">
+                <span class="text-danger dropdown-mg"> 刪除對話</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </li>
+    <li class="nav-item">
+      <div class="nav-link d-flex- align-items-center gap-2" href="#">
+        <div class="dropdown">
+          <!-- <img src="./images/icon-history.png"> -->
+          <span class="sidebar-history">S3 SDK 多檔案斷點續傳</span>
+          <button class="btn btn-history" type="button" id="actionDropdown" data-bs-toggle="dropdown"
+            aria-expanded="false-">
+            <i class="fa fa-ellipsis-v"></i>
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="actionDropdown">
+            <li>
+              <a class="dropdown-item" href="#">
+                <img src="./images/icon_edit.png">
+                <span class="dropdown-mg"> 重新命名</span>
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#">
+                <img src="./images/icon-delete-red.svg">
+                <span class="text-danger dropdown-mg"> 刪除對話</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </li>
+
+
+  </ul>
+
+
+  <ul class="nav sidebar-footer flex-column pt-2 pb-2 border-top-">
+
+      <a href="./dashboard.html" class="nav-link d-flex align-items-center justify-content-between mb-2"  data-bs-toggle="tooltip"
+        data-bs-placement="bottom" data-bs-title="平台管理">
+        <div class="whatever">
+          <img src="./images/icon-manage.svg" width="24" height="24">
+
+          <span class="sidebar-text ms-2">平台管理</span>
+        </div>
+        <div class="">
+          <i class="fa fa-arrow-right ms-2"></i>
+        </div>
+
+      </a>
+
+    <div class="dropdown">
+      <a class="nav-link d-flex align-items-center gap-3 dropdown-toggle- justify-content-between" href="#"
+        data-bs-toggle="dropdown" aria-expanded="false">
+        <div class="whatever">
+          <img src="./images/icon-user.svg" width="24" height="24">
+
+          <span class="sidebar-text ms-2">帳號及設定</span>
+        </div>
+        <i class="fa fa-chevron-down ms-2"></i>
+      </a>
+<ul class="dropdown-menu dropdown-menu-end">
+  <li>
+    <a class="dropdown-item gap-1 fs-7">
+      <img src="./images/icon-model-manage.svg" alt=""> 模型設置
+    </a>
+  </li>
+
+  <li>
+    <a class="dropdown-item gap-1 submenu-level-1 fs-7" href="#" data-bs-toggle="modal" data-bs-target="#modal-system-prompt">
+      <img src="./images/icon-systemPrompt.svg" alt=""> 系統提示詞
+    </a>
+  </li>
+
+  <li>
+    <a class="dropdown-item gap-1 submenu-level-1 fs-7" href="#" data-bs-toggle="modal" data-bs-target="#modal-parameter-setting">
+      <img src="./images/icon-parameter-setting.svg" alt=""> 模型參數設定
+    </a>
+  </li>
+
+  <li>
+    <a class="dropdown-item gap-1 fs-7" href="sign-in.html" target="_blank">
+      <img src="./images/icon-logout.png" alt="">
+      登出
+    </a>
+  </li>
+</ul>
+    </div>
+
+
+
+  </ul>
+</div>
+
+
+
+
+
+<!-- Modal 系統提示詞 -->
+<div class="modal fade" id="modal-system-prompt" data-bs-backdrop="true" data-bs-keyboard="true" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header" class="">
+        <div class="modal-title m-3 fw-bold text-decoration-none fs-4" id="staticBackdropLabel">系統提示詞
+        </div>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body align-items-center">
+        <form class="">
+
+          <!-- 請選擇模型 -->
+          <div class="row mb-3 align-items-center">
+            <label for="account" class="col-3 form-label">請選擇模型 <span class="text-danger-">*</span></label>
+
+            <div class="col-9">
+
+              <div class="dropdown ms-3" style="left:110px;">
+                <button class="btn btn-select-model-outline dropdown-toggle fs-6" type="button" id="modelDropdown"
+                  data-bs-toggle="dropdown" aria-expanded="false">
+                  Llama3.1-FFM-8B
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="modelDropdown" style="max-height: 500px;">
+                  <li>
+                    <a class="dropdown-item active-" href="#">
+                      <div class="content-box">
+                        <span class="dropdown-text">Llama3.1-FFM-8B</span><br>
+                        <mediuam class="text-muted">繁中強化的語言模型</mediuam>
+                      </div>
+                      <br>
+                      <span class="checkmark ms-2">
+                        <img src="./images/icon-check.png">
+                      </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item active-" href="#">
+                      <div class="content-box">
+                        <span class="dropdown-text">LLama3.2-FFM-11B</span><br>
+                        <mediuam class="text-muted">繁中強化的多模態模型</mediuam>
+                      </div>
+                      <br>
+                      <span class="checkmark ms-2">
+                        <img src="./images/icon-check.png">
+                      </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item active-" href="#">
+                      <div class="content-box">
+                        <span class="dropdown-text">FFM-Mistral-Small-3.1-24B-Reasoning</span><br>
+                        <mediuam class="text-muted">繁中強化的推理模型</mediuam>
+                      </div>
+                      <br>
+                      <span class="checkmark ms-2">
+                        <img src="./images/icon-check.png">
+                      </span>
+                    </a>
+                  </li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <li>
+                    <a class="dropdown-item active" href="#">
+                      <div class="content-box">
+                        <span class="dropdown-text">Qwen3-4B</span><br>
+                        <mediuam class="text-muted">多語推理模型</mediuam>
+                      </div>
+                      <br>
+                      <span class="checkmark ms-2">
+                        <img src="./images/icon-check.png">
+                      </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item active-" href="#">
+                      <div class="content-box">
+                        <span class="dropdown-text">DeepSeek-R1-Distill-Qwen-1.5B</span><br>
+                        <mediuam class="text-muted">Qwen2.5-1.5B經知識蒸餾的推理模型</mediuam>
+                      </div>
+                      <br>
+                      <span class="checkmark ms-2">
+                        <img src="./images/icon-check.png">
+                      </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item active-" href="#">
+                      <div class="content-box">
+                        <span class="dropdown-text">DeepSeek-R1-Distill-Qwen-7B</span><br>
+                        <mediuam class="text-muted">Qwen2.5-7B經知識蒸餾的推理模型</mediuam>
+                      </div>
+                      <br>
+                      <span class="checkmark ms-2">
+                        <img src="./images/icon-check.png">
+                      </span>
+                    </a>
+                  </li>
+
+                  <li>
+                    <a class="dropdown-item active-" href="#">
+                      <div class="content-box">
+                        <span class="dropdown-text">Llama-3.2-11B-Vision-Instruct</span><br>
+                        <mediuam class="text-muted">Meta多模態模型，適用圖像推理問答</mediuam>
+                      </div>
+                      <br>
+                      <span class="checkmark ms-2">
+                        <img src="./images/icon-check.png">
+                      </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item active-" href="#">
+                      <div class="content-box">
+                        <span class="dropdown-text">Qwen2.5-1.5B-Instruct</span><br>
+                        <mediuam class="text-muted">小型指令微調語言模型</mediuam>
+                      </div>
+                      <br>
+                      <span class="checkmark ms-2">
+                        <img src="./images/icon-check.png">
+                      </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item active-" href="#">
+                      <div class="content-box">
+                        <span class="dropdown-text">TinyLlama-1.1B-Chat-v0.6</span><br>
+                        <mediuam class="text-muted">輕量語言模型，適合資源有限環境</mediuam>
+                      </div>
+                      <br>
+                      <span class="checkmark ms-2">
+                        <img src="./images/icon-check.png">
+                      </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item active-" href="#">
+                      <div class="content-box">
+                        <span class="dropdown-text">TinyLlama-1.1B-Chat-v1.0</span><br>
+                        <mediuam class="text-muted">優化版輕量語言模型，提升多輪對話質量</mediuam>
+                      </div>
+                      <br>
+                      <span class="checkmark ms-2">
+                        <img src="./images/icon-check.png">
+                      </span>
+                    </a>
+                  </li>
+
+                </ul>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="row col-md-12-">
+            <label for="inputState" class="form-label mb-3">請輸入提示詞，以定義AI所需扮演的角色或回答的範圍。</label>
+            <textarea class="form-control" placeholder="例如：你是一個友好且樂於助人的AI助理" id="floatingTextarea2"
+              style="height: 100px"></textarea>
+          </div>
+
+        </form>
+      </div>
+
+      <div class="modal-info d-flex mb-3 form-text text-danger">
+        <img class="m-2" src="./images/icon-input-hint.png">
+        請選擇模型
+      </div>
+
+      <div class="modal-footer d-flex- justify-content-between">
+        <button type="button" class="btn btn-modal-outline fs-6">清除內容</button>
+        <button type="button" class="btn btn-modal-outline fs-6" data-bs-dismiss="modal">取消</button>
+        <button type="button" class="btn btn-modal-default fs-6">儲存</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal 模型參數設定 model-parameter-setting -->
+<div class="modal fade" id="modal-parameter-setting" data-bs-backdrop="true" data-bs-keyboard="true" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header" class="">
+        <div class="modal-title m-3 fw-bold text-decoration-none fs-4" id="staticBackdropLabel">模型參數設定
+        </div>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body align-items-center">
+        <!-- <form class=""> -->
+
+
+
+        <!-- 請選擇模型 -->
+        <div class="row mb-3 align-items-center">
+          <label for="account" class="col-3 form-label">請選擇模型 <span class="text-danger-">*</span></label>
+
+          <div class="col-9">
+
+            <div class="dropdown ms-3" style="left:110px;">
+              <button class="btn btn-select-model-outline dropdown-toggle fs-6" type="button" id="modelDropdown"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                Llama3.1-FFM-8B
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="modelDropdown" style="max-height: 500px;">
+                <li>
+                  <a class="dropdown-item active-" href="#">
+                    <div class="content-box">
+                      <span class="dropdown-text">Llama3.1-FFM-8B</span><br>
+                      <mediuam class="text-muted">繁中強化的語言模型</mediuam>
+                    </div>
+                    <br>
+                    <span class="checkmark ms-2">
+                      <img src="./images/icon-check.png">
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item active-" href="#">
+                    <div class="content-box">
+                      <span class="dropdown-text">LLama3.2-FFM-11B</span><br>
+                      <mediuam class="text-muted">繁中強化的多模態模型</mediuam>
+                    </div>
+                    <br>
+                    <span class="checkmark ms-2">
+                      <img src="./images/icon-check.png">
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item active-" href="#">
+                    <div class="content-box">
+                      <span class="dropdown-text">FFM-Mistral-Small-3.1-24B-Reasoning</span><br>
+                      <mediuam class="text-muted">繁中強化的推理模型</mediuam>
+                    </div>
+                    <br>
+                    <span class="checkmark ms-2">
+                      <img src="./images/icon-check.png">
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li>
+                  <a class="dropdown-item active" href="#">
+                    <div class="content-box">
+                      <span class="dropdown-text">Qwen3-4B</span><br>
+                      <mediuam class="text-muted">多語推理模型</mediuam>
+                    </div>
+                    <br>
+                    <span class="checkmark ms-2">
+                      <img src="./images/icon-check.png">
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item active-" href="#">
+                    <div class="content-box">
+                      <span class="dropdown-text">DeepSeek-R1-Distill-Qwen-1.5B</span><br>
+                      <mediuam class="text-muted">Qwen2.5-1.5B經知識蒸餾的推理模型</mediuam>
+                    </div>
+                    <br>
+                    <span class="checkmark ms-2">
+                      <img src="./images/icon-check.png">
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item active-" href="#">
+                    <div class="content-box">
+                      <span class="dropdown-text">DeepSeek-R1-Distill-Qwen-7B</span><br>
+                      <mediuam class="text-muted">Qwen2.5-7B經知識蒸餾的推理模型</mediuam>
+                    </div>
+                    <br>
+                    <span class="checkmark ms-2">
+                      <img src="./images/icon-check.png">
+                    </span>
+                  </a>
+                </li>
+
+                <li>
+                  <a class="dropdown-item active-" href="#">
+                    <div class="content-box">
+                      <span class="dropdown-text">Llama-3.2-11B-Vision-Instruct</span><br>
+                      <mediuam class="text-muted">Meta多模態模型，適用圖像推理問答</mediuam>
+                    </div>
+                    <br>
+                    <span class="checkmark ms-2">
+                      <img src="./images/icon-check.png">
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item active-" href="#">
+                    <div class="content-box">
+                      <span class="dropdown-text">Qwen2.5-1.5B-Instruct</span><br>
+                      <mediuam class="text-muted">小型指令微調語言模型</mediuam>
+                    </div>
+                    <br>
+                    <span class="checkmark ms-2">
+                      <img src="./images/icon-check.png">
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item active-" href="#">
+                    <div class="content-box">
+                      <span class="dropdown-text">TinyLlama-1.1B-Chat-v0.6</span><br>
+                      <mediuam class="text-muted">輕量語言模型，適合資源有限環境</mediuam>
+                    </div>
+                    <br>
+                    <span class="checkmark ms-2">
+                      <img src="./images/icon-check.png">
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item active-" href="#">
+                    <div class="content-box">
+                      <span class="dropdown-text">TinyLlama-1.1B-Chat-v1.0</span><br>
+                      <mediuam class="text-muted">優化版輕量語言模型，提升多輪對話質量</mediuam>
+                    </div>
+                    <br>
+                    <span class="checkmark ms-2">
+                      <img src="./images/icon-check.png">
+                    </span>
+                  </a>
+                </li>
+
+              </ul>
+            </div>
+
+          </div>
+        </div>
+
+
+        <!-- 溫度 Temperature -->
+        <div class="row mb-3">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <label class="form-label mb-0">
+              溫度 Temperature
+              <img class="ms-1 cursor-pointer" src="./images/icon-info.svg" data-bs-toggle="tooltip"
+                data-bs-placement="bottom" title="生成文本的隨機和多樣性。值越大，文本更具創意和多樣性；值越小，則較保守、接近模型所訓練的文本。">
+            </label>
+            <input type="number" id="temp-input" class="form-control-parameter-sm" min="0.01" max="1" step="0.01"
+              value="0.5">
+          </div>
+          <input type="range" id="temp-slider" class="form-range" min="0.01" max="1" step="0.01" value="0.5">
+        </div>
+
+        <!-- 最大生成token數 -->
+        <div class="row mb-3">
+          <label class="form-label mb-2">
+            最大生成 token 數
+            <img class="ms-1 cursor-pointer" src="./images/icon-info.svg" data-bs-toggle="tooltip"
+              data-bs-placement="bottom" title="一次最多可生成的 token 數量。">
+            <small class="text-muted align-end" style="margin-left: 110px;">請輸入1~(model context length)</small>
+          </label>
+          <input type="number" id="token-input" class="form-control" placeholder="請輸入1~(model context length)"
+            value="4096">
+        </div>
+
+        <!-- Top P -->
+        <div class="row mb-3">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <label class="form-label mb-0">
+              Top P
+              <img class="ms-1 cursor-pointer" src="./images/icon-info.svg" data-bs-toggle="tooltip"
+                data-bs-placement="bottom"
+                title="當候選 token 的累計機率達到或超過此值時，就會停止選擇更多的候選 token。值越大，生成的文本越多樣化；值越小，生成的文本越保守。">
+            </label>
+            <input type="number" id="topp-input" class="form-control-parameter-sm" min="0.01" max="1" step="0.01"
+              value="1">
+          </div>
+          <input type="range" id="topp-slider" class="form-range" min="0.01" max="1" step="0.01" value="1">
+        </div>
+
+        <!-- Top K -->
+        <div class="row mb-3">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <label class="form-label mb-0">
+              Top K
+              <img class="ms-1 cursor-pointer" src="./images/icon-info.svg" data-bs-toggle="tooltip"
+                data-bs-placement="bottom" title="限制模型只從具有最高概率的 K 個 token 中進行選擇。值越大，生成文本越多樣化；值越小，生成的文本越保守。">
+            </label>
+            <input type="number" id="topk-input" class="form-control-parameter-sm" min="1" max="100" step="1"
+              value="50">
+          </div>
+          <input type="range" id="topk-slider" class="form-range" min="1" max="100" step="1" value="50">
+        </div>
+
+        <!-- 重複懲罰 Frequency Penalty -->
+        <div class="row mb-3">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <label class="form-label mb-0">
+              重複懲罰 Frequency Penalty
+              <img class="ms-1 cursor-pointer" src="./images/icon-info.svg" data-bs-toggle="tooltip"
+                data-bs-placement="bottom" title="重複懲罰，控制重複生成 token 的概率。值越大，重複 token 出現次數將降低。">
+            </label>
+            <input type="number" id="freq-input" class="form-control-parameter-sm" min="0.01" max="2" step="0.01"
+              value="1">
+          </div>
+          <input type="range" id="freq-slider" class="form-range" min="0.01" max="2" step="0.01" value="1">
+        </div>
+
+
+
+
+
+        <!-- </form> -->
+      </div>
+
+      <!-- <div class="modal-info d-flex mb-3 form-text text-danger">
+        <img class="m-2" src="./images/icon-input-hint.png">
+        請選擇模型
+      </div> -->
+
+      <div class="modal-footer d-flex- justify-content-between">
+        <button type="button" class="btn btn-modal-outline fs-6" id="reset-btn" data-bs-toggle="tooltip"
+          data-bs-placement="bottom" data-bs-title="先思考後回答，解決推理問題">重置參數</button>
+        <button type="button" class="btn btn-modal-outline fs-6" data-bs-dismiss="modal">取消</button>
+        <button type="button" class="btn btn-modal-default fs-6">儲存</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- tooltip 匯入 -->
+<script>
+  (function () {
+    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+    tooltipTriggerList.forEach(el => {
+      if (!el._tooltip) {
+        el._tooltip = new bootstrap.Tooltip(el);
+      }
+    });
+  })();
+</script>
+
+<script src="./js/parameter-setting.js"></script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+  const collapseEl = document.getElementById('moreAppsCollapse');
+  const textEl     = document.getElementById('showMoreText');
+
+  console.log('DOMContentLoaded 已觸發');
+  console.log('collapseEl:', collapseEl);   // 應該印出 <div> 元素
+  console.log('textEl:', textEl);           // 應該印出 <span> 元素
+
+  if (!collapseEl || !textEl) {
+    console.error('元素找不到！請檢查 id 是否正確');
+    return;
+  }
+
+  collapseEl.addEventListener('shown.bs.collapse', function () {
+    console.log('→ 已展開 (shown.bs.collapse 觸發)');
+    textEl.innerHTML = '顯示更少 <i class="fa fa-chevron-down sidebar-toggle-icon"></i>';
+  });
+
+  collapseEl.addEventListener('hidden.bs.collapse', function () {
+    console.log('→ 已收合 (hidden.bs.collapse 觸發)');
+    textEl.innerHTML = '顯示全部 <i class="fa fa-chevron-down sidebar-toggle-icon"></i>';
+  });
+
+});
+</script>

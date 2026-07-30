@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <title>agent-info-page</title>
+  <link href="./css/bootstrap.min.css" rel="stylesheet">
+  <link href="./css/breadcrumbs.css" rel="stylesheet">
+  <link href="./css/style.css" rel="stylesheet">
+  <link href="./css/sidebar.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+   
+  </style>
+
+  <!-- Custom styles -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="./css/dashboard.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+
+<body>
+
+  <!-- 動態載入 header -->
+  <!-- <header></header>
+
+  <script>
+    $(function () {
+      $("header").load("header-admin.html", function () {
+        initParameterModal();
+      });
+    });
+  </script> -->
+
+
+  <div class="container-fluid">
+    <div class="row">
+
+      <!-- 動態載入 sidebar -->
+      <div id="sidebar-admin" class="col-md-4- col-lg-3- z-3"></div>
+
+      <script>
+        $(function () {
+          $("#sidebar-admin").load("sidebar-admin.html", function () {
+          });
+        });
+      </script>
+
+      <main class="px-md-4 dashboard-round-bg full-width-when-collapsed file-upload" id="content">
+        <section class="container-chat">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">
+                <a class="text-decoration-none fs-6 align-text-bottom" href="./ai-agent.html">AI應用管理</a>
+              </li>
+              <li class="breadcrumb-item active-" aria-current="page-">
+                <i class="fas fa-chevron-right me-2"></i>
+              </li>
+            </ol>
+            <label class="link-body-default fw-bold fs-4">AI應用詳細資訊</label>
+          </nav>
+
+
+        </section>
+
+
+
+        <section>
+
+
+          <div class="row">
+            <!-- 左側內容 -->
+            <div class="col-lg-8">
+              <div class="d-flex align-items-center mt-5 mb-4">
+                <div class="icon-custom"><img src="./images/icon-aiAgent-logo-01.png"></div>
+                <div class="agent-card-title">
+                  <div class="fw-bold text-black ms-2 fs-4">AI醫護虛實共照</div>
+                  <p class="ms-2">智慧化臨床輔助工具，能即時分析患者診斷與用藥資料</p>
+                </div>
+              </div>
+
+              <!-- 優勢特色 -->
+              <!-- <h4 class="fw-bold title-gradient mb-4">Llama3.3-FFM-70B</h4> -->
+              <ul class="list-unstyled mb-5 text-black-">
+                <li>智慧化臨床輔助工具，能即時分析患者診斷與用藥資料，提供藥師在處方開立與藥物管理上的建議。透過自然語言理解與醫藥知識庫結合。</li>
+                <!-- <li>★  ★</li> -->
+              </ul>
+
+              <!-- image01 -->
+              <h5 class="fw-bold mb-3">虛實共照示意圖</h5>
+              <div class="chart-placeholder mb-5">
+                <img style="width: 480px;height: auto;" src="./images/img-agent-info-01.jpg" alt="image01">
+              </div>
+
+              <!-- image02 -->
+              <!-- <h5 class="fw-bold mb-3">image02</h5>
+              <div class="chart-placeholder mb-5">
+                <img src="./images/agent-info-02.jpg" alt="image01">
+              </div> -->
+
+            </div>
+
+            <!-- 右側側邊欄 -->
+            <div class="col-lg-4">
+
+              <div class="card sidebar-card p-4">
+                <!-- <div class="d-flex justify-content-between align-items-center mb-3">
+                  <span class="provider-badge">發行者</span>
+                  <small class="text-grey">台灣智慧雲端服務股份有限公司</small>
+                </div> -->
+                <div class="align-items-center">
+                  <p class="text-primary fw-bold">發行者</p>
+                  <p class="">台灣智慧雲端服務股份有限公司</p>
+                </div>
+                <hr>
+                <table class="table table-borderless fs-7">
+                  <tbody>
+                    <tr>
+                      <th class="infoCard-name">類別</th>
+                      <td><span class="card-tag fs-7">醫療</span></td>
+                    </tr>
+                                        <tr>
+                      <th class="infoCard-name">版本號</th>
+                      <td>Beta版</td>
+                    </tr>
+                    <tr>
+                      <th class="infoCard-name">檔案大小</th>
+                      <td>4.7GB</td>
+                    </tr>
+                    <tr>
+                      <th class="infoCard-name">支援語言</th>
+                      <td>繁體中文</td>
+                    </tr>
+                    <tr>
+                      <th class="infoCard-name">使用模型</th>
+                      <td>gpt-oss-120B<br>FFM-Embedding-v2.1</td>
+                    </tr>
+                    <tr>
+                      <th class="infoCard-name">系統需求</th>
+                      <td>xxx</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+              </div>
+
+            </div>
+
+
+            <!-- 適用情境 -->
+            <h5 class="fw-bold mt-5 mb-4">適用情境</h5>
+            <div class="row g-4-">
+              <div class="col-5 mb-4">
+                <div class="scene-box">
+                  <h6 class="fw-bold text-primary mb-3">• 即時處方建議</h6>
+                  <p class="text-black lh-lg">
+                    針對醫師開立的藥品，快速檢查劑量、用法與適應症是否合理。
+                  </p>
+                </div>
+              </div>
+              <div class="col-5 mb-4">
+                <div class="scene-box">
+                  <h6 class="fw-bold text-primary mb-3">• 交互作用檢測</h6>
+                  <p class="text-black lh-lg">
+                    自動比對藥品之間、藥物與疾病或飲食間的潛在交互作用，降低用藥風險。
+                  </p>
+                </div>
+              </div>
+              <div class="col-5 mb-4">
+                <div class="scene-box">
+                  <h6 class="fw-bold text-primary mb-3">• 患者安全保障</h6>
+                  <p class="text-black lh-lg">
+                    即時提醒懷孕、哺乳、年齡或慢性疾病患者的特殊用藥限制。
+                  </p>
+                </div>
+              </div>
+              <div class="col-5 mb-4">
+                <div class="scene-box">
+                  <h6 class="fw-bold text-primary mb-3">• 智慧化輔助決策</h6>
+                  <p class="text-black lh-lg">
+                    提供參考建議與用藥依據，協助藥師快速審查處方，提升臨床效率。
+                  </p>
+                </div>
+              </div>
+
+            </div>
+
+            <ul class="list-unstyled mt-3 mb-5 text-black">
+              <li>藉由藥師 Agent，醫療單位能在不增加藥師負擔的情況下，強化處方審核品質，確保患者用藥安全與醫療合規性。</li>
+            </ul>
+
+          </div>
+
+
+
+
+        </section>
+
+
+
+
+
+
+
+
+      </main>
+
+    </div>
+  </div>
+  <script src="./js/bootstrap.bundle.min.js"></script>
+  <script src="./js/table.js"></script>
+
+  <!-- Custom JS for dropdown selection -->
+  <script src="./js/load-admin-header.js"></script>
+  <script src="./js/sidebar-admin.js"></script>
+  <script src="./js/parameter-setting.js"></script>
+  <script src="./js/tooltip.js"></script>
+
+
+
+  <!-- 初始化 Tooltip -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+      const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+    });
+  </script>
+
+</body>
+
+</html>

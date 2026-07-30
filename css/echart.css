@@ -1,0 +1,65 @@
+.card {
+  border: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+  background: #fff;
+}
+#chart-container {
+  height: 520px;
+  width: 100%;
+}
+
+.data-panel {
+  border-left: 1px solid #eee;
+  height: 520px;
+  overflow-y: auto;
+  padding-left: 15px;
+}
+.table-custom {
+  font-size: 0.8rem;
+  width: 100%;
+}
+.table-custom th {
+  cursor: pointer;
+  color: #666;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  padding-bottom: 12px;
+  transition: color 0.2s;
+  white-space: nowrap;
+}
+.table-custom th:hover {
+  color: #000;
+}
+
+/* 單一箭頭旋轉動畫 */
+.sort-arrow {
+  display: inline-block;
+  transition: transform 0.3s ease;
+  margin-left: 4px;
+  font-size: 12px;
+  vertical-align: middle;
+}
+.asc {
+  transform: rotate(180deg);
+} /* 由小到大時，箭頭朝上 */
+
+.table-custom td {
+  vertical-align: middle;
+  padding: 6px 0;
+  border-bottom: 1px solid #f8f9fa;
+}
+.color-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  display: inline-block;
+  margin-right: 6px;
+}
+.model-name {
+  max-width: 110px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: inline-block;
+}

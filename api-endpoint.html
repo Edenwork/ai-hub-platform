@@ -9,6 +9,7 @@
   <link href="./css/bootstrap.min.css" rel="stylesheet">
   <!-- <link href="./css/breadcrumbs.css" rel="stylesheet"> -->
   <link href="./css/style.css" rel="stylesheet">
+    <link href="./css/sidebar.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <!-- Custom styles -->
@@ -22,7 +23,7 @@
 <body>
 
   <!-- 動態載入 header -->
-  <header></header>
+  <!-- <header></header>
 
   <script>
     $(function () {
@@ -30,13 +31,13 @@
         initParameterModal();
       });
     });
-  </script>
+  </script> -->
 
   <div class="container-fluid">
     <div class="row">
 
       <!-- 動態載入 sidebar -->
-      <div id="sidebar-admin" class="col-md-4 col-lg-3 z-3"></div>
+      <div id="sidebar-admin" class="col-md-4- col-lg-3- z-3"></div>
 
       <script>
         $(function () {
@@ -45,11 +46,8 @@
         });
       </script>
 
-
-
-
-      <main class="col-md-8 ms-sm-auto col-lg-9 px-md-4 dashboard-round-bg">
-        <section class="container-chat">
+      <main class="px-md-4 dashboard-round-bg full-width-when-collapsed file-upload" id="content">
+        <section class="container-manage">
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb rounded-3">
               <!-- <li class="breadcrumb-item">
@@ -80,19 +78,19 @@
             <div class="d-flex flex-row align-items-center">
               <div class="status-box">
                 <div class="form-check form-switch text-center">
-                  <label class="form-check-label ms-2" for="flexSwitchCheckChecked">狀態：未啟用</label>
+                  <label class="form-check-label ms-2 cursor-pointer" for="flexSwitchCheckChecked">狀態：未啟用</label>
                   <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked">
                 </div>
               </div>
 
               <button class="btn fs-6 ms-2" type="button" aria-expanded="false" data-bs-toggle="tooltip"
-                data-bs-placement="right" data-bs-title="API 文件">
+                data-bs-placement="bottom" data-bs-title="API 文件" href="#">
                 <img class="" src="./images/btn-document.svg">
               </button>
 
               <!-- Better to have -->
-              <button class="btn fs-6" type="button" aria-expanded="false" data-bs-toggle="tooltip"
-                data-bs-placement="right" data-bs-title="API 端點設定">
+              <button class="btn fs-6" type="button" aria-expanded="false" data-bs-toggle="modal"
+                data-bs-placement="right" data-bs-target="#modal-api-endpoint-setting" title="API 端點設定">
                 <img class="" src="./images/btn-manage.svg">
               </button>
             </div>
@@ -101,8 +99,8 @@
             <div class="d-flex flex-row align-items-center">
               <div class="endpoint-url-box">
                 <div class="text-center">
-                  <label class="form-check-label ms-2 me-2">http://127.0.0.1:{port}</label>
-                  <span class="" style="cursor: pointer;">
+                  <label class="form-check-label ms-2 me-2">http://127.0.0.1:<span>{port}</span></label>
+                  <span class="cursor-pointer">
                     <img src="./images/icon-copy.svg">
                   </span>
                 </div>
@@ -152,45 +150,30 @@
 
 
 
-          <!-- Modal 展延API金鑰 -->
-          <div class="modal fade" id="modal-extend-api-key" data-bs-backdrop="static" data-bs-keyboard="false"
+          <!-- Modal API設定 -->
+          <div class="modal fade" id="modal-api-endpoint-setting" data-bs-backdrop="static" data-bs-keyboard="false"
             tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header" class="">
-                  <div class="modal-title m-3 fw-bold text-decoration-none fs-4" id="smodal-extend-api-key">展延API金鑰
+                  <div class="modal-title m-3 fw-bold text-decoration-none fs-4" id="modal-api-endpoint-setting">API 端點設定
                   </div>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body align-items-center">
                   <form class="">
                     <div class="row mb-1 align-items-center">
-                      <label for="number" class="col-4 form-label">延長天數 <span class="">*</span></label>
+                      <label for="number" class="col-4 form-label">伺服器連接埠 <span class=""></span></label>
                       <div class="col-8">
-                        <input type="number" class="form-control" placeholder="僅可輸入1~365正整數" value="30" required>
+                        <input type="number" id="temp-input-" class="form-control" class="form-control-parameter-sm-"
+                          min="1024" max="65535" step="1" value="8081">
                       </div>
                     </div>
                     <div class="row mb-3 align-items-center-">
                       <label class="col-4"></label>
                       <small class="col-8 text-primary">
-                        有效天數不可超過365天
+                        可自行輸入，範圍1024~65535
                       </small>
-                    </div>
-
-                    <div class="row mb-3 align-items-center">
-                      <label for="account" class="col-4 form-label">到期時間 <span class="text-danger-"></span></label>
-                      <div class="col-8">
-                        <p>YYYY-MM-DD HH:MM:SS</p>
-                        <!-- <input type="text" class="form-control" placeholder="限輸入3~20中英文及數字字元" required> -->
-                      </div>
-                    </div>
-
-                    <div class="row mb-3 align-items-center">
-                      <label for="account" class="col-4 form-label">展延後到期時間 </label>
-                      <div class="col-8">
-                        <p>YYYY-MM-DD HH:MM:SS</p>
-                        <!-- <input type="text" class="form-control" placeholder="可輸入0~100字元"> -->
-                      </div>
                     </div>
 
                   </form>
@@ -209,15 +192,7 @@
             </div>
           </div>
 
-
         </section>
-
-
-
-
-
-
-
 
       </main>
     </div>
@@ -227,10 +202,10 @@
 
   <!-- Custom JS for dropdown selection -->
   <script src="./js/load-admin-header.js"></script>
-  <script src="./js/load-admin-sidebar.js"></script>
+  <script src="./js/sidebar-admin.js"></script>
   <script src="./js/parameter-setting.js"></script>
   <script src="./js/tooltip.js"></script>
-  <script src="./js/status-toggle.js"></script>
+  <script src="./js/api-endpoint.js"></script>
 
   <script>
     document.querySelectorAll('.dropdown-item').forEach(item => {

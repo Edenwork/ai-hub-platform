@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <title>user-AI應用管理</title>
+  <link href="./css/bootstrap.min.css" rel="stylesheet">
+  <!-- <link href="./css/breadcrumbs.css" rel="stylesheet"> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+  </style>
+
+  <!-- Custom styles -->
+  <link href="./css/style.css" rel="stylesheet">
+    <link href="./css/sidebar.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="./css/dashboard.css" rel="stylesheet">
+  <link href="./css/add-model.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="./js/parameter-setting.js"></script>
+</head>
+
+<body>
+
+  <!-- 動態載入 header -->
+  <!-- <header></header>
+
+  <script>
+    $(function () {
+      $("header").load("header-admin.html", function () {
+        initParameterModal();
+      });
+    });
+  </script> -->
+
+  <div class="container-fluid">
+    <div class="row">
+
+      <!-- 動態載入 sidebar-user -->
+      <div id="sidebar" class="col-md-4 col-lg-3 z-3"></div>
+
+      <script>
+        $(function () {
+          $("#sidebar").load("sidebar-user.html", function () {
+          });
+        });
+      </script>
+
+      <main class="px-md-4 dashboard-round-bg full-width-when-collapsed file-upload" id="content">
+        <section class="container-chat">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb rounded-3">
+              <li class="breadcrumb-item active">
+                <a class="link-body-default fw-bold text-decoration-none fs-4" href="#">AI應用</a>
+              </li>
+            </ol>
+          </nav>
+        </section>
+
+        <section class="section-card-list pt-5 d-flex flex-wrap">
+          <div class="card card-agent mb-5 me-4">
+           <!-- <span class="status-badge-default fs-7">
+              <label class="status-dot status-color-active"></label>
+              <label class="status-font-color-active">已啟用</label>
+            </span>
+
+            <span class="card-icon-more-info fs-7">
+              <div class="dropdown">
+                <button class="btn-more-action-v" type="button" id="actionDropdown" data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  <i class="fa fa-ellipsis-v fa-ellipsis-h-"></i>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="actionDropdown">
+                  <li>
+                    <a class="dropdown-item" href="/ai-agent-setup-all.html">
+                      <img src="./images/icon-setup.svg">
+                      <span class="dropdown-mg"> 使用權限設定</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </span> -->
+
+
+            <div class="d-flex align-items-center mb-2">
+              <div class="icon-custom-"><img src="./images/card-aiAgent-logo-01.png"></div>
+              <div class="agent-card-title">
+                <div class="fw-bold text-black ms-2 fs-5">ISPEC-RAG</div>
+                <small class="ms-2">4.75 GB</small>
+              </div>
+            </div>
+            <p>知識管理，快速查詢</p>
+            <div class="d-flex justify-content-between align-items-end">
+              <span class="card-tag fs-7">知識庫</span>
+              <button type="button" class="btn- btn-agentCard-inactive fs-6">停用</button>
+            </div>
+          </div>
+
+
+          <div class="card card-agent mb-5 me-4">
+            <!-- <span class="status-badge-default fs-7">
+              <label class="status-dot status-color-inactive"></label>
+              <label class="">部署中</label>
+            </span>
+            <span class="card-icon-more-info fs-7">
+              <div class="dropdown">
+                <button class="btn-more-action-v" type="button" id="actionDropdown" data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  <i class="fa fa-ellipsis-v fa-ellipsis-h-"></i>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="actionDropdown">
+                  <li>
+                    <a class="dropdown-item" href="/ai-agent-setup-all.html">
+                      <img src="./images/icon-setup.svg">
+                      <span class="dropdown-mg"> 使用權限設定</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </span> -->
+
+            <div class="d-flex align-items-center mb-2">
+              <div class="icon-custom-"><img src="./images/card-aiAgent-logo-02.png"></div>
+              <div class="agent-card-title">
+                <div class="fw-bold text-black ms-2 fs-5">醫生藥事</div>
+                <small class="ms-2">5.27 GB</small>
+              </div>
+            </div>
+            <p>及時提供藥師開藥及處方籤建議</p>
+            <div class="d-flex justify-content-between align-items-end">
+              <span class="card-tag fs-7">醫療</span>
+              <button type="button-" class="btn- btn-agentCard-default fs-6">開始使用</button>
+            </div>
+          </div>
+
+          <div class="card card-agent mb-5 me-4">
+            <!-- <span class="status-badge-default fs-7">
+              <label class="status-dot status-color-inactive"></label>
+              <label class="">未啟用</label>
+            </span>
+            <span class="card-icon-more-info fs-7">
+              <div class="dropdown">
+                <button class="btn-more-action-v" type="button" id="actionDropdown" data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  <i class="fa fa-ellipsis-v fa-ellipsis-h-"></i>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="actionDropdown">
+                  <li>
+                    <a class="dropdown-item" href="./ai-agent-setup-all.html">
+                      <img src="./images/icon-setup.svg">
+                      <span class="dropdown-mg"> 使用權限設定</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </span> -->
+
+            <div class="d-flex align-items-center mb-2">
+              <div class="icon-custom-"><img src="./images/card-aiAgent-logo-03.png"></div>
+              <div class="agent-card-title">
+                <div class="fw-bold text-black ms-2 fs-5">數位黑潮</div>
+                <small class="ms-2">5.27 GB</small>
+              </div>
+            </div>
+            <p>及時提供藥師開藥及處方籤建議2</p>
+            <div class="d-flex justify-content-between align-items-end">
+              <span class="card-tag fs-7">程式</span>
+              <button type="button-" class="btn- btn-agentCard-default fs-6">開始使用</button>
+            </div>
+          </div>
+
+        </section>
+
+      </main>
+
+    </div>
+  </div>
+  <script src="./js/bootstrap.bundle.min.js"></script>
+  <script src="./js/table.js"></script>
+
+  <!-- Custom JS for dropdown selection -->
+  <script src="./js/load-admin-header.js"></script>
+  <script src="./js/sidebar-admin.js"></script>
+  <script src="./js/parameter-setting.js"></script>
+  <script src="./js/tooltip.js"></script>
+
+  <!-- 密碼眼睛 -->
+  <script>
+    document.querySelector('.toggle-password').addEventListener('click', function () {
+      const passwordInput = document.querySelector('#password');
+      const icon = this.querySelector('i');
+      if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        icon.classList.remove('fa-eye');
+        icon.classList.add('fa-eye-slash');
+      } else {
+        passwordInput.type = 'password';
+        icon.classList.remove('fa-eye-slash');
+        icon.classList.add('fa-eye');
+      }
+    });
+  </script>
+
+  <!-- 在Card 的其他地方也可觸發 radio，並排除點擊下載按鈕 -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // 獲取所有 card-add-model-container 元素
+      const containers = document.querySelectorAll('.card-add-model-container');
+
+      containers.forEach(container => {
+        container.addEventListener('click', function (event) {
+          // 防止點擊 button 或其他特定元素時觸發 radio
+          // 如果點擊的是 button 或 radio 本身，則不處理
+          // const target = event.target;
+          // if (target.closest('.download-btn') || target.closest('.radio-btn'))|| target.closest('.radio-btn')) {
+          //     return; 
+          // }
+
+          // 如果點擊的是 disabled ，則不處理
+          const target = event.target;
+          if (target.closest('.disabled')) {
+            return;
+          }
+
+          // 找到容器內的 radio 按鈕
+          const radio = container.querySelector('.radio-btn');
+          if (radio) {
+            radio.checked = true; // 選中 radio
+          }
+        });
+      });
+    });
+  </script>
+
+
+</body>
+
+</html>

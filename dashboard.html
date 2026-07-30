@@ -1,0 +1,1180 @@
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <title>dashboard</title>
+  <link href="./css/bootstrap.min.css" rel="stylesheet">
+  <!-- <link href="./css/breadcrumbs.css" rel="stylesheet"> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+
+  </style>
+
+  <!-- Custom styles -->
+  <link href="./css/style.css" rel="stylesheet">
+  <link href="./css/global.css" rel="stylesheet">
+  <link href="./css/sidebar.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="./css/dashboard.css" rel="stylesheet">
+  <link href="./css/dashboard-new.css" rel="stylesheet">
+  <link href="./css/add-model.css" rel="stylesheet">
+  <link href="./css/echart.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="./js/parameter-setting.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+</head>
+
+<body>
+
+  <!-- 動態載入 header -->
+  <!-- <header></header>
+
+  <script>
+    $(function () {
+      $("header").load("header-admin.html", function () {
+        initParameterModal();
+      });
+    });
+  </script> -->
+
+
+  <div class="container-fluid">
+    <div class="row">
+
+      <!-- 動態載入 sidebar -->
+      <div id="sidebar-admin" class="col-md-4- col-lg-3- z-3"></div>
+
+      <script>
+        $(function () {
+          $("#sidebar-admin").load("sidebar-admin.html", function () {
+          });
+        });
+      </script>
+
+
+      <main class="px-md-4 dashboard-round-bg full-width-when-collapsed file-upload" id="content">
+
+        <div id="announcement-bar" class="">
+          <span>目前版本：<label>v0.9.0</label></span>
+          <button onclick="document.getElementById('announcement-bar').style.display='none'"
+            style="position:absolute; right:16px; background:none; border:none; cursor:pointer; font-size:20px; color:#555; line-height:1;">&times;</button>
+        </div>
+
+        <!-- <hr class="my-3"> -->
+
+
+        <section class="container-manage">
+
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <!-- <li class="breadcrumb-item">
+                <a class="text-decoration-none fs-6 align-text-bottom" href="./ldap-manage.html">LDAP 設定</a>
+              </li> 
+              <li class="breadcrumb-item active-" aria-current="page-">
+                <i class="fas fa-chevron-right me-2"></i>
+              </li>-->
+            </ol>
+            <label class="link-body-default fw-bold fs-4">總覽</label>
+          </nav>
+
+        </section>
+
+
+        <section>
+          <div class="container mt-4">
+            <div class="tab-default">
+              <div class="tab-header">
+                <ul class="nav nav-tabs tab-header-tabs">
+                  <li class="nav-item">
+                    <button class="nav-link active" id="" data-bs-toggle="tab" data-bs-target="#tab-model-state"
+                      type="button" role="tab" aria-controls="tab-model-state" aria-selected="true">模型狀態</button>
+                  </li>
+                  <li class="nav-item">
+                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-token-usage" type="button"
+                      role="tab" aria-controls="tab-token-usage" aria-selected="false">Token用量</button>
+                  </li>
+
+                  <li class="nav-item">
+                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-model-performance" type="button"
+                      role="tab" aria-controls="tab-model-performance" aria-selected="false">模型效能</button>
+                  </li>
+
+                </ul>
+              </div>
+
+              <div class="tab-body">
+                <div class="tab-content">
+
+
+                  <!-- Tab 模型狀態 -->
+                  <div class="tab-pane fade show active" id="tab-model-state" role="tabpanel"
+                    aria-labelledby="general-tab" tabindex="0">
+
+                    <section class="section-container">
+
+                      <p class="card-title collapse-title fs-6 fw-bold" data-bs-toggle="collapse"
+                        href="#collapseUserDashboard" aria-expanded="true">
+                        <i class="fa fa-chevron-down me-2 fs-15px"></i>
+                        模型狀態
+                      </p>
+
+                      <div class="table-responsive collapse show table-adjust-mt" id="collapseUserDashboard">
+                        <table id="modelmanageTable">
+                          <tr class="header">
+                            <th style="width:30%;">模型名稱</th>
+                            <th style="width:20%;">啟用狀態</th>
+                            <th style="width:25%;">使用GPU編號</th>
+                            <th style="width:25%;">目前GPU使用率</th>
+                          </tr>
+                          <tr>
+                            <td>gpt-oss-120B</td>
+                            <td><span class="tagStatus tagStatus-active">已啟用</span></td>
+                            <td>0, 1</td>
+                            <td>95%</td>
+                          </tr>
+                          <tr>
+                            <td>FFM-Embedding-v2.1 </td>
+                            <td><span class="tagStatus tagStatus-unactive">未啟用</span></td>
+                            <td> </td>
+                            <td> </td>
+                          </tr>
+                          <tr>
+                            <td>Llamma3.3-70B</td>
+                            <td><span class="tagStatus tagStatus-active">已啟用</span></td>
+                            <td>2</td>
+                            <td>10</td>
+                          </tr>
+
+                        </table>
+                      </div>
+                    </section>
+
+
+                    <section class="section-container">
+                      <div class="section-filter d-flex flex-row justify-content-between align-items-center gap-4">
+
+                        <p class="card-title collapse-title fs-6 fw-bold" data-bs-toggle="collapse"
+                          href="#collapseGpuUsage" aria-expanded="true">
+                          <i class="fa fa-chevron-down me-2 fs-15px"></i>
+                          GPU使用率
+                        </p>
+
+                        <!-- <div class="ms-2 text-center">
+                          <div id="reportrange"
+                            class="picker-trigger btn btn-select-model-outline-form fs-15px d-flex justify-content-between align-items-center">
+                            <span>最近 1 小時</span>
+                            <i class="fa fa-chevron-down ms-2"></i>
+                          </div>
+                        </div> -->
+
+                        <div class="col-4- ms-2 text-center">
+                          <div
+                            class="reportrange picker-trigger btn btn-select-model-outline-form fs-15px d-flex justify-content-between align-items-center"
+                            data-default="最近 1 小時">
+                            <span>最近 1 小時</span>
+                            <i class="fa fa-chevron-down ms-2"></i>
+                          </div>
+                        </div>
+
+                      </div>
+
+                      <div class="collapse show" id="collapseGpuUsage">
+
+                        <div class="container">
+                          <div class="card p-4">
+                            <div class="d-flex justify-content-between align-items-center mb-4">
+                              <h6 class="mb-0 fw-bold">Average GPU Usage</h6>
+                              <span class="text-muted small">Updated: 04/10 15:57</span>
+                            </div>
+
+                            <div class="row g-0">
+                              <div class="col-lg-8 col-xl-9">
+                                <div id="chart-container"></div>
+                              </div>
+
+                              <div class="col-lg-4 col-xl-3">
+                                <div class="data-panel">
+                                  <table class="table-custom" id="stats-table">
+                                    <thead>
+                                      <tr>
+                                        <th onclick="handleSort('name')">Name <span id="arrow-name" class="sort-arrow">▼
+                                            <!--                   <i class="fa fa-chevron-down ms-2"></i> -->
+
+                                          </span></th>
+                                        <th class="text-end" onclick="handleSort('max')">Max <span id="arrow-max"
+                                            class="sort-arrow">▼</span></th>
+                                        <th class="text-end" onclick="handleSort('mean')">Mean <span id="arrow-mean"
+                                            class="sort-arrow">▼</span></th>
+                                      </tr>
+                                    </thead>
+                                    <tbody id="stats-body"></tbody>
+                                  </table>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+
+
+
+                      </div>
+
+                    </section>
+
+
+
+                  </div>
+
+
+                  <!-- Tab Token用量 -->
+                  <div class="tab-pane fade" id="tab-token-usage" role="tabpanel" aria-labelledby="mapper-tab"
+                    tabindex="0">
+
+                    <div id="alert-bar">
+                      <div style="display:flex; align-items:center; gap:10px;">
+                        <div class="icon-alert">
+                          <span style="color:#fff; font-size:13px; font-weight:700;">!</span>
+                        </div>
+                        <span style="font-size:14px; color:#333;">
+                          偵測到異常用量 — Key Name3 過去 1 小時超出正常範圍 340%。
+                        </span>
+                      </div>
+
+                      <button id="alert-close">&times;</button>
+                    </div>
+
+                    <script>
+                      document.getElementById('alert-close').addEventListener('click', function () {
+                        document.getElementById('alert-bar').style.display = 'none';
+                      });
+                    </script>
+
+                    <div class="section-filter d-flex flex-row justify-content-between align-items-center gap-4">
+                      <div class="row">
+                        <div class="col-6">
+                          <div class="dropdown" style="">
+                            <!-- <button class="btn btn-select-model-outline-form fs-15px" type="button"
+                    id="modelDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    Llama3.1-FFM-8B
+                    <i class="fa fa-chevron-down ms-2"></i>
+                  </button> -->
+                            <button
+                              class="btn btn-select-model-outline-form fs-15px d-flex justify-content-between align-items-center"
+                              type="button" id="modelDropdown" data-bs-toggle="dropdown" aria-expanded="false"
+                              data-bs-popper="static" data-bs-display="static">
+                              <label class="">GPT-OSS-120B</label>
+                              <i class="fa fa-chevron-down ms-2"></i>
+                            </button>
+
+                            <ul class="dropdown-menu dropdown-menu-end-" aria-labelledby="modelDropdown"
+                              style="max-height: 300px; overflow-y: auto;">
+                              <li>
+                                <a class="dropdown-item active-" href="#">
+                                  <div class="content-box">
+                                    <span class="dropdown-text">GPT-OSS-120B</span><br>
+                                    <mediuam class="text-muted">OpenAI推理模型</mediuam>
+                                  </div>
+                                  <br>
+                                  <span class="checkmark ms-2">
+                                    <img src="./images/icon-check.png" alt="check icon">
+                                  </span>
+                                </a>
+                              </li>
+                              <li>
+                                <hr class="dropdown-divider">
+                              </li>
+                              <li>
+                                <a class="dropdown-item active-" href="#">
+                                  <div class="content-box">
+                                    <span class="dropdown-text">LLama3.2-FFM-11B</span><br>
+                                    <mediuam class="text-muted">繁中強化的多模態模型</mediuam>
+                                  </div>
+                                  <br>
+                                  <span class="checkmark ms-2">
+                                    <img src="./images/icon-check.png" alt="check icon">
+                                  </span>
+                                </a>
+                              </li>
+                              <li>
+                                <a class="dropdown-item active-" href="#">
+                                  <div class="content-box">
+                                    <span class="dropdown-text">FFM-Mistral-Small-3.1-24B-Reasoning</span><br>
+                                    <mediuam class="text-muted">繁中強化的推理模型</mediuam>
+                                  </div>
+                                  <br>
+                                  <span class="checkmark ms-2">
+                                    <img src="./images/icon-check.png" alt="check icon">
+                                  </span>
+                                </a>
+                              </li>
+
+                              <li>
+                                <a class="dropdown-item active-" href="#">
+                                  <div class="content-box">
+                                    <span class="dropdown-text">Llama-3.2-11B-Vision-Instruct</span><br>
+                                    <mediuam class="text-muted">Meta多模態模型，適用圖像推理問答</mediuam>
+                                  </div>
+                                  <br>
+                                  <span class="checkmark ms-2">
+                                    <img src="./images/icon-check.png" alt="check icon">
+                                  </span>
+                                </a>
+                              </li>
+
+
+                            </ul>
+
+                          </div>
+
+                        </div>
+
+                        <div class="col-4 ms-2 text-center">
+                          <div
+                            class="reportrange picker-trigger btn btn-select-model-outline-form fs-15px d-flex justify-content-between align-items-center"
+                            data-default="最近 1 小時">
+                            <span>最近 1 小時</span>
+                            <i class="fa fa-chevron-down ms-2"></i>
+                          </div>
+                        </div>
+
+                      </div>
+                      <div class=" ">
+                        <button class="btn fs-6 ms-2" type="button" aria-expanded="false" data-bs-toggle="tooltip"
+                          data-bs-placement="bottom" data-bs-title="重新整理">
+                          <img class="" src="./images/icon-refresh.svg">
+                        </button>
+                      </div>
+
+                    </div>
+
+
+                    <section class="section-container">
+
+                      <div class="section-filter d-flex flex-row justify-content-between gap-4">
+                        <div class="card-title collapse-title fs-6 fw-bold" data-bs-toggle="collapse"
+                          href="#collapseUserDashboard" aria-expanded="true">
+                          <i class="fa fa-chevron-down me-2 fs-15px"></i>
+                          使用者
+                        </div>
+
+                         <div class="text-end mt-3">
+                          <a class="see-all fs-7 cursor-pointer" href="./dashboard-seeAll-user.html"
+                            target="_self">
+                            查看全部 <i class="bi bi-chevron-right"></i>
+                         </a>
+                        </div>
+
+                        <!-- modal -->
+                        <!-- <div class="text-end mt-3">
+                          <div class="see-all fs-7 cursor-pointer" data-bs-toggle="modal"
+                            data-bs-target="#modal-seeAll-user">
+                            查看全部 <i class="bi bi-chevron-right"></i>
+                          </div>
+                        </div> -->
+
+                      </div>
+
+
+
+                      <!-- Modal 查看全部 使用者 -->
+                      <!-- <div class="modal fade" id="modal-seeAll-user" data-bs-backdrop="true" data-bs-keyboard="false"
+                        tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header" class="">
+                              <div class="modal-title m-3 fw-bold text-decoration-none fs-4" id="staticBackdropLabel">
+                                使用者</div>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body align-items-center">
+
+                              <div class="table-responsive collapse show table-adjust-mt" id="collapseUserDashboard">
+                                <table id="modelmanageTable">
+                                  <tr class="header">
+                                    <th style="width:30%;">排名</th>
+                                    <th style="width:30%;">使用者</th>
+                                    <th style="width:30%;">Token 數</th>
+                                  </tr>
+                                  <tr>
+                                    <td>1</td>
+                                    <td>User Account1</td>
+                                    <td>320,153</td>
+                                  </tr>
+                                  <tr>
+                                    <td>2</td>
+                                    <td>User Account2</td>
+                                    <td> 310,204</td>
+                                  </tr>
+                                  <tr>
+                                    <td>3</td>
+                                    <td>User Account3</td>
+                                    <td>280,204</td>
+                                  </tr>
+                                  <tr>
+                                    <td>4</td>
+                                    <td>User Account4</td>
+                                    <td>280,204</td>
+                                  </tr>
+                                  <tr>
+                                    <td>5</td>
+                                    <td>User Account5</td>
+                                    <td>280,204</td>
+                                  </tr>
+                                  <tr>
+                                    <td>6</td>
+                                    <td>User Account6</td>
+                                    <td>320,153</td>
+                                  </tr>
+                                  <tr>
+                                    <td>7</td>
+                                    <td>User Account7</td>
+                                    <td> 310,204</td>
+                                  </tr>
+                                  <tr>
+                                    <td>8</td>
+                                    <td>User Account8</td>
+                                    <td>280,204</td>
+                                  </tr>
+                                  <tr>
+                                    <td>9</td>
+                                    <td>User Account9</td>
+                                    <td>280,204</td>
+                                  </tr>
+                                  <tr>
+                                    <td>10</td>
+                                    <td>User Account10</td>
+                                    <td>280,204</td>
+                                  </tr>
+
+                                </table>
+                              </div>
+
+                            </div>
+
+
+                            <div class="modal-footer d-flex justify-content-center">
+                              <button type="button" class="btn btn-modal-default fs-6" aria-hidden="true"
+                                data-bs-dismiss="modal" aria-label="Close">關閉</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>-->
+
+                      <div class="table-responsive collapse show table-adjust-mt" id="collapseUserDashboard">
+                        <table id="modelmanageTable">
+                          <tr class="header">
+                            <th style="width:30%;">排名</th>
+                            <th style="width:30%;">使用者</th>
+                            <th style="width:30%;">Token 數</th>
+                          </tr>
+
+                          <tr>
+                            <td>1</td>
+                            <td>User Account1</td>
+                            <td>320,153</td>
+                          </tr>
+
+                          <tr>
+                            <td>2</td>
+                            <td>User Account2</td>
+                            <td> 310,204</td>
+                          </tr>
+
+                          <tr>
+                            <td>3</td>
+                            <td>User Account3</td>
+                            <td>280,204</td>
+                          </tr>
+
+                          <tr>
+                            <td>4</td>
+                            <td>User Account4</td>
+                            <td>280,204</td>
+                          </tr>
+
+                          <tr>
+                            <td>5</td>
+                            <td>User Account5</td>
+                            <td>280,204</td>
+                          </tr>
+
+                        </table>
+                      </div> 
+
+                    </section>
+
+
+
+
+
+                    <section class="section-container">
+
+                      <div class="section-filter d-flex flex-row justify-content-between gap-4">
+                        <div class="card-title collapse-title fs-6 fw-bold" data-bs-toggle="collapse"
+                          href="#collapseAPIKey" aria-expanded="true">
+                          <i class="fa fa-chevron-down me-2 fs-15px"></i>
+                          API Key
+                        </div>
+
+                        <div class="text-end mt-3">
+                          <div class="see-all fs-7 cursor-pointer" data-bs-toggle="modal"
+                            data-bs-target="#modal-seeAll-api">
+                            查看全部 <i class="bi bi-chevron-right"></i>
+                          </div>
+                        </div>
+                      </div>
+
+
+
+                      <!-- Modal 查看全部API -->
+                      <div class="modal fade" id="modal-seeAll-api" data-bs-backdrop="true" data-bs-keyboard="false"
+                        tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header" class="">
+                              <div class="modal-title m-3 fw-bold text-decoration-none fs-4" id="staticBackdropLabel">
+                                API Key</div>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body align-items-center">
+
+                              <div class="table-responsive collapse show table-adjust-mt" id="collapseUserDashboard">
+                                <table id="modelmanageTable">
+                                  <tr class="header">
+                                    <th style="width:30%;">排名</th>
+                                    <th style="width:30%;">API Key 名稱</th>
+                                    <th style="width:30%;">Token 數</th>
+                                  </tr>
+                                  <tr>
+                                    <td>1</td>
+                                    <td>Key Name1</td>
+                                    <td>320,153</td>
+                                  </tr>
+                                  <tr>
+                                    <td>2</td>
+                                    <td>Key Name2</td>
+                                    <td> 310,204</td>
+                                  </tr>
+                                  <tr>
+                                    <td>3</td>
+                                    <td>Key Name3</td>
+                                    <td>280,204</td>
+                                  </tr>
+                                  <tr>
+                                    <td>4</td>
+                                    <td>Key Name4</td>
+                                    <td>280,204</td>
+                                  </tr>
+                                  <tr>
+                                    <td>5</td>
+                                    <td>Key Name5</td>
+                                    <td>280,204</td>
+                                  </tr>
+                                  <tr>
+                                    <td>6</td>
+                                    <td>Key Name6</td>
+                                    <td>320,153</td>
+                                  </tr>
+                                  <tr>
+                                    <td>7</td>
+                                    <td>Key Name7</td>
+                                    <td> 310,204</td>
+                                  </tr>
+                                  <tr>
+                                    <td>8</td>
+                                    <td>Key Name8</td>
+                                    <td>280,204</td>
+                                  </tr>
+                                  <tr>
+                                    <td>9</td>
+                                    <td>Key Name9</td>
+                                    <td>280,204</td>
+                                  </tr>
+                                  <tr>
+                                    <td>10</td>
+                                    <td>Key Name10</td>
+                                    <td>280,204</td>
+                                  </tr>
+
+                                </table>
+                              </div>
+
+                            </div>
+
+
+                            <div class="modal-footer d-flex justify-content-center">
+                              <button type="button" class="btn btn-modal-default fs-6" data-bs-dismiss="modal"
+                                aria-label="Close">關閉</button>
+                            </div>
+
+
+
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- <p class="card-title collapse-title fs-6 fw-bold" data-bs-toggle="collapse" href="#collapseAPIKey"
+                        aria-expanded="true">
+                        <i class="fa fa-chevron-down me-2 fs-15px"></i>
+                        API Key
+                      </p> -->
+
+                      <div class="table-responsive collapse show table-adjust-mt" id="collapseAPIKey">
+                        <table id="modelmanageTable">
+                          <tr class="header">
+                            <th style="width:30%;">排名</th>
+                            <th style="width:30%;">API Key 名稱</th>
+                            <th style="width:30%;">Token 數</th>
+                          </tr>
+                          <tr>
+                            <td>1</td>
+                            <td>Key Name3</td>
+                            <td>320,153</td>
+                          </tr>
+                          <tr>
+                            <td>2</td>
+                            <td>Key Name2</td>
+                            <td> 310,204</td>
+                          </tr>
+                          <tr>
+                            <td>3</td>
+                            <td>Key Name1</td>
+                            <td>280,204</td>
+                          </tr>
+                          <tr>
+                            <td>4</td>
+                            <td>Key Name4</td>
+                            <td>280,204</td>
+                          </tr>
+                          <tr>
+                            <td>5</td>
+                            <td>Key Name5</td>
+                            <td>280,204</td>
+                          </tr>
+                        </table>
+                      </div>
+                    </section>
+
+
+                    <section class="section-container">
+
+                      <div class="section-filter d-flex flex-row justify-content-between gap-4">
+                        <div class="card-title collapse-title fs-6 fw-bold" data-bs-toggle="collapse"
+                          href="#collapseGroupDashboard" aria-expanded="true">
+                          <i class="fa fa-chevron-down me-2 fs-15px"></i>
+                          群組
+                        </div>
+
+                        <div class="text-end mt-3">
+                          <div class="see-all fs-7 cursor-pointer" data-bs-toggle="modal"
+                            data-bs-target="#modal-seeAll-group">
+                            查看全部 <i class="bi bi-chevron-right"></i>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- <p class="card-title collapse-title fs-6 fw-bold" data-bs-toggle="collapse"
+                        href="#collapseGroupDashboard" aria-expanded="true">
+                        <i class="fa fa-chevron-down me-2 fs-15px"></i>
+                        群組
+                      </p> -->
+
+
+                      <!-- Modal 查看全部 群組 -->
+                      <div class="modal fade" id="modal-seeAll-group" data-bs-backdrop="true" data-bs-keyboard="false"
+                        tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header" class="">
+                              <div class="modal-title m-3 fw-bold text-decoration-none fs-4" id="staticBackdropLabel">
+                                群組</div>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body align-items-center">
+
+                              <div class="table-responsive collapse show table-adjust-mt" id="collapseUserDashboard">
+                                <table id="modelmanageTable">
+                                  <tr class="header">
+                                    <th style="width:30%;">排名</th>
+                                    <th style="width:30%;">群組名稱</th>
+                                    <th style="width:30%;">Token 數</th>
+                                  </tr>
+                                  <tr>
+                                    <td>1</td>
+                                    <td>Group Name1</td>
+                                    <td>320,153</td>
+                                  </tr>
+                                  <tr>
+                                    <td>2</td>
+                                    <td>Group Name2</td>
+                                    <td> 310,204</td>
+                                  </tr>
+                                  <tr>
+                                    <td>3</td>
+                                    <td>Group Name3</td>
+                                    <td>280,204</td>
+                                  </tr>
+                                  <tr>
+                                    <td>4</td>
+                                    <td>Group Name4</td>
+                                    <td>280,204</td>
+                                  </tr>
+                                  <tr>
+                                    <td>5</td>
+                                    <td>Group Name5</td>
+                                    <td>280,204</td>
+                                  </tr>
+                                  <tr>
+                                    <td>6</td>
+                                    <td>Group Name6</td>
+                                    <td>320,153</td>
+                                  </tr>
+                                  <tr>
+                                    <td>7</td>
+                                    <td>Group Name7</td>
+                                    <td> 310,204</td>
+                                  </tr>
+                                  <tr>
+                                    <td>8</td>
+                                    <td>Group Name8</td>
+                                    <td>280,204</td>
+                                  </tr>
+                                  <tr>
+                                    <td>9</td>
+                                    <td>Group Name9</td>
+                                    <td>280,204</td>
+                                  </tr>
+                                  <tr>
+                                    <td>10</td>
+                                    <td>Group Name10</td>
+                                    <td>280,204</td>
+                                  </tr>
+
+                                </table>
+                              </div>
+
+                            </div>
+
+
+                            <div class="modal-footer d-flex justify-content-center">
+                              <button type="button" class="btn btn-modal-default fs-6" data-bs-dismiss="modal"
+                                aria-label="Close">關閉</button>
+                            </div>
+
+
+
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="table-responsive collapse show table-adjust-mt" id="collapseGroupDashboard">
+                        <table id="modelmanageTable">
+                          <tr class="header">
+                            <th style="width:30%;">排名</th>
+                            <th style="width:30%;">群組名稱</th>
+                            <th style="width:30%;">Token 數</th>
+                          </tr>
+                          <tr>
+                            <td>1</td>
+                            <td>Group Name1</td>
+                            <td>320,153</td>
+                          </tr>
+                          <tr>
+                            <td>2</td>
+                            <td>Group Name2</td>
+                            <td> 310,204</td>
+                          </tr>
+                          <tr>
+                            <td>3</td>
+                            <td>Group Name1</td>
+                            <td>280,204</td>
+                          </tr>
+                          <tr>
+                            <td>4</td>
+                            <td>Group Name4</td>
+                            <td>280,204</td>
+                          </tr>
+                          <tr>
+                            <td>5</td>
+                            <td>Group Name5</td>
+                            <td>280,204</td>
+                          </tr>
+                        </table>
+                      </div>
+
+                    </section>
+
+                  </div>
+
+                  <!-- Tab 模型效能 -->
+                  <div class="tab-pane fade" id="tab-model-performance" role="tabpanel" aria-labelledby="mapper-tab"
+                    tabindex="0">
+
+                    <div id="alert-bar">
+                      <div style="display:flex; align-items:center; gap:10px;">
+                        <div class="icon-alert">
+                          <span style="color:#fff; font-size:13px; font-weight:700;">!</span>
+                        </div>
+                        <span style="font-size:14px; color:#333;">
+                          偵測到異常 — Model Name3 回應速度大幅超出正常範圍 140%。(TTFT P99 首字延遲超出310%)
+                        </span>
+                      </div>
+
+                      <button id="alert-close">&times;</button>
+                    </div>
+
+                    <script>
+                      document.getElementById('alert-close').addEventListener('click', function () {
+                        document.getElementById('alert-bar').style.display = 'none';
+                      });
+                    </script>
+
+                    <div class="section-filter d-flex flex-row justify-content-between align-items-center gap-4">
+                      <div class="row">
+                        <div class="col-6">
+                          <div class="dropdown" style="">
+
+                            <button
+                              class="btn btn-select-model-outline-form fs-15px d-flex justify-content-between align-items-center"
+                              type="button" id="modelDropdown" data-bs-toggle="dropdown" aria-expanded="false"
+                              data-bs-popper="static" data-bs-display="static">
+                              <label class="">GPT-OSS-120B</label>
+                              <i class="fa fa-chevron-down ms-2"></i>
+                            </button>
+
+                            <ul class="dropdown-menu dropdown-menu-end-" aria-labelledby="modelDropdown"
+                              style="max-height: 300px; overflow-y: auto;">
+                              <li>
+                                <a class="dropdown-item active-" href="#">
+                                  <div class="content-box">
+                                    <span class="dropdown-text">GPT-OSS-120B</span><br>
+                                    <mediuam class="text-muted">OpenAI推理模型</mediuam>
+                                  </div>
+                                  <br>
+                                  <span class="checkmark ms-2">
+                                    <img src="./images/icon-check.png" alt="check icon">
+                                  </span>
+                                </a>
+                              </li>
+                              <li>
+                                <hr class="dropdown-divider">
+                              </li>
+                              <li>
+                                <a class="dropdown-item active-" href="#">
+                                  <div class="content-box">
+                                    <span class="dropdown-text">LLama3.2-FFM-11B</span><br>
+                                    <mediuam class="text-muted">繁中強化的多模態模型</mediuam>
+                                  </div>
+                                  <br>
+                                  <span class="checkmark ms-2">
+                                    <img src="./images/icon-check.png" alt="check icon">
+                                  </span>
+                                </a>
+                              </li>
+                              <li>
+                                <a class="dropdown-item active-" href="#">
+                                  <div class="content-box">
+                                    <span class="dropdown-text">FFM-Mistral-Small-3.1-24B-Reasoning</span><br>
+                                    <mediuam class="text-muted">繁中強化的推理模型</mediuam>
+                                  </div>
+                                  <br>
+                                  <span class="checkmark ms-2">
+                                    <img src="./images/icon-check.png" alt="check icon">
+                                  </span>
+                                </a>
+                              </li>
+
+                              <li>
+                                <a class="dropdown-item active-" href="#">
+                                  <div class="content-box">
+                                    <span class="dropdown-text">Llama-3.2-11B-Vision-Instruct</span><br>
+                                    <mediuam class="text-muted">Meta多模態模型，適用圖像推理問答</mediuam>
+                                  </div>
+                                  <br>
+                                  <span class="checkmark ms-2">
+                                    <img src="./images/icon-check.png" alt="check icon">
+                                  </span>
+                                </a>
+                              </li>
+
+
+                            </ul>
+
+                          </div>
+
+                        </div>
+
+                        <div class="col-4 ms-2 text-center">
+                          <div
+                            class="reportrange picker-trigger btn btn-select-model-outline-form fs-15px d-flex justify-content-between align-items-center"
+                            data-default="最近 1 小時">
+                            <span>最近 1 小時</span>
+                            <i class="fa fa-chevron-down ms-2"></i>
+                          </div>
+                        </div>
+
+                      </div>
+                      <div class=" ">
+                        <button class="btn fs-6 ms-2" type="button" aria-expanded="false" data-bs-toggle="tooltip"
+                          data-bs-placement="bottom" data-bs-title="重新整理">
+                          <img class="" src="./images/icon-refresh.svg">
+                        </button>
+                      </div>
+
+                    </div>
+
+
+                    <section class="section-container">
+
+                      <div class="section-filter d-flex flex-row justify-content-between gap-4">
+                        <div class="card-title collapse-title fs-6 fw-bold" data-bs-toggle="collapse"
+                          href="#collapseTokenThroughput" aria-expanded="true">
+                          <i class="fa fa-chevron-down me-2 fs-15px"></i>
+                          各模型吞吐量
+                        </div>
+
+                        <!-- <div class="text-end mt-3">
+                          <div class="see-all fs-7 cursor-pointer" data-bs-toggle="modal" data-bs-target="#modal-seeAll-user">
+                            查看全部 <i class="bi bi-chevron-right"></i>
+                          </div>
+                        </div> -->
+
+                      </div>
+
+                      <!-- Card 1: Token Throughput -->
+                      <div id="collapseTokenThroughput">
+                        <div class="card collapse show" id="card-tp">
+                          <div class="card-header" onclick="toggleCard('tp')">
+                            <div class="card-title">
+                              <span class="chevron open" id="chev-tp">▾</span>
+                              <h2>各模型吞吐量</h2>
+                              <span class="sub">Token Throughput</span>
+                            </div>
+                            <div class="card-updated" id="upd-tp">—</div>
+                          </div>
+                          <div class="card-body" id="body-tp">
+                            <div class="chart-area">
+                              <div id="chart-tp" class="chart-wrapper"></div>
+                              <div class="chart-legend" id="legend-tp"></div>
+                            </div>
+                            <div class="data-panel">
+                              <div class="table-header">
+                                <span onclick="sortTable('tp','name')">NAME <i class="bi bi-chevron-down"></i></span>
+                                <span onclick="sortTable('tp','max')">MAX <i class="bi bi-chevron-down"></i></span>
+                              </div>
+                              <div class="model-list-scroll">
+                                <div class="model-list" id="list-tp"></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                    </section>
+
+
+                    <!-- Card 2: Time to First Token -->
+                    <section class="section-container">
+                      <div class="section-filter d-flex flex-row justify-content-between gap-4">
+                        <div class="card-title collapse-title fs-6 fw-bold" data-bs-toggle="collapse"
+                          href="#collapseTimetoFirstToken" aria-expanded="true">
+                          <i class="fa fa-chevron-down me-2 fs-15px"></i>
+                          各模型每token生成時間
+                        </div>
+
+                        <!-- <div class="text-end mt-3">
+                          <div class="see-all fs-7 cursor-pointer" data-bs-toggle="modal" data-bs-target="#modal-seeAll-user">
+                            查看全部 <i class="bi bi-chevron-right"></i>
+                          </div>
+                        </div> -->
+
+                      </div>
+
+                      <!-- Card 2: Time to First Token -->
+                      <div id="collapseTimetoFirstToken">
+                        <div class="card collapse show" id="card-e2e">
+                          <div class="card-header" onclick="toggleCard('e2e')">
+                            <div class="card-title">
+                              <span class="chevron open" id="chev-e2e">▾</span>
+                              <h2>各模型首Token生成時間</h2>
+                              <span class="sub">Time to First Token</span>
+                            </div>
+                            <div class="card-updated" id="upd-e2e">—</div>
+                          </div>
+                          <div class="card-body" id="body-e2e">
+                            <div class="chart-area">
+                              <div id="chart-e2e" class="chart-wrapper"></div>
+                              <div class="chart-legend" id="legend-e2e"></div>
+                            </div>
+                            <div class="data-panel">
+                              <div class="table-header">
+                                <span onclick="sortTable('e2e','name')">NAME <i class="bi bi-chevron-down"></i></span>
+                                <span onclick="sortTable('e2e','max')">MAX <i class="bi bi-chevron-down"></i></span>
+                              </div>
+                              <div class="model-list-scroll">
+                                <div class="model-list" id="list-e2e"></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </section>
+
+
+
+                    <!-- Card 3: Time Per Output Token -->
+                    <section class="section-container">
+
+                      <div class="section-filter d-flex flex-row justify-content-between gap-4">
+                        <div class="card-title collapse-title fs-6 fw-bold" data-bs-toggle="collapse"
+                          href="#collapseTimePerOutputToken" aria-expanded="true">
+                          <i class="fa fa-chevron-down me-2 fs-15px"></i>
+                          各模型每token生成時間
+                        </div>
+
+                        <!-- <div class="text-end mt-3">
+                          <div class="see-all fs-7 cursor-pointer" data-bs-toggle="modal" data-bs-target="#modal-seeAll-user">
+                            查看全部 <i class="bi bi-chevron-right"></i>
+                          </div>
+                        </div> -->
+
+                      </div>
+
+                      <div id="collapseTimePerOutputToken">
+                        <div class="card collapse show" id="card-tpot">
+                          <div class="card-header" onclick="toggleCard('tpot')">
+                            <div class="card-title">
+                              <span class="chevron open" id="chev-tpot">▾</span>
+                              <h2>各模型每token生成時間</h2>
+                              <span class="sub">Time Per Output Token Latency</span>
+                            </div>
+                            <div class="card-updated" id="upd-tpot">—</div>
+                          </div>
+                          <div class="card-body" id="body-tpot">
+                            <div class="chart-area">
+                              <div id="chart-tpot" class="chart-wrapper"></div>
+                              <div class="chart-legend" id="legend-tpot"></div>
+                            </div>
+                            <div class="data-panel">
+                              <div class="table-header">
+                                <span onclick="sortTable('tpot','name')">NAME <i class="bi bi-chevron-down"></i></span>
+                                <span onclick="sortTable('tpot','max')">MAX <i class="bi bi-chevron-down"></i></span>
+                              </div>
+                              <div class="model-list-scroll">
+                                <div class="model-list" id="list-tpot"></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+
+                    </section>
+
+        </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+
+  </div>
+  </div>
+  </div>
+  </div>
+
+
+  </section>
+
+
+
+
+
+
+
+
+  </main>
+
+  </div>
+  </div>
+  <script src="./js/bootstrap.bundle.min.js"></script>
+  <script src="./js/table.js"></script>
+
+  <!-- Custom JS for dropdown selection -->
+  <script src="./js/load-admin-header.js"></script>
+  <script src="./js/sidebar-admin.js"></script>
+  <script src="./js/parameter-setting.js"></script>
+  <script src="./js/tooltip.js"></script>
+  <script src="./js/datepicker.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/moment@2.29.4/moment.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+
+  <!-- 1. 先載入 ECharts -->
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+  <script src="./js/echart.js"></script>
+
+  <!-- 密碼眼睛 -->
+
+  <script>
+    document.querySelector('.toggle-password').addEventListener('click', function () {
+      const passwordInput = document.querySelector('#password');
+      const icon = this.querySelector('i');
+      if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        icon.classList.remove('fa-eye');
+        icon.classList.add('fa-eye-slash');
+      } else {
+        passwordInput.type = 'password';
+        icon.classList.remove('fa-eye-slash');
+        icon.classList.add('fa-eye');
+      }
+    });
+  </script>
+
+
+
+
+</body>
+
+</html>

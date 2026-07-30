@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <title>model-manage</title>
+  <link href="./css/bootstrap.min.css" rel="stylesheet">
+  <link href="./css/breadcrumbs.css" rel="stylesheet">
+  <link href="./css/style.css" rel="stylesheet">
+    <link href="./css/global.css" rel="stylesheet">
+  <link href="./css/sidebar.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    
+  </style>
+
+  <!-- Custom styles -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="./css/dashboard.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+
+<body>
+
+  <!-- 動態載入 header -->
+  <!-- <header></header>
+
+  <script>
+    $(function () {
+      $("header").load("header-admin.html", function () {
+        initParameterModal();
+      });
+    });
+  </script> -->
+
+
+  <div class="container-fluid">
+    <div class="row">
+
+      <!-- 動態載入 sidebar -->
+      <div id="sidebar-admin" class="col-md-4- col-lg-3- z-3"></div>
+
+      <script>
+        $(function () {
+          $("#sidebar-admin").load("sidebar-admin.html", function () {
+          });
+        });
+      </script>
+
+      <main class="px-md-4 dashboard-round-bg full-width-when-collapsed file-upload" id="content">
+        <section class="container-chat">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">
+                <a class="text-decoration-none fs-6 align-text-bottom" href="./model-manage.html">模型管理</a>
+              </li>
+              <li class="breadcrumb-item active-" aria-current="page-">
+                <i class="fas fa-chevron-right me-2"></i>
+                <!-- <a class="link-body-default fw-bold text-decoration-none fs-4">新增 LDAP 設定</a> -->
+              </li>
+            </ol>
+            <label class="link-body-default fw-bold fs-4">模型詳細資訊</label>
+          </nav>
+
+
+        </section>
+
+
+
+        <section>
+
+
+          <div class="row">
+            <!-- 左側內容 -->
+            <div class="col-lg-8">
+
+              <!-- 標題與 Logo -->
+              <!-- <div class="d-flex align-items-center mt-5 mb-4">
+                 <div class="icon-custom-"><img src="./images/icon-aiAgent-logo-01.svg"></div>
+              <div class="agent-card-title">
+                <div class="fw-bold text-black ms-2 fs-5">醫生藥事</div>
+                <small class="ms-2">5.27 GB</small>
+              </div> -->
+
+              <div class="d-flex align-items-center mt-5 mb-4">
+                <div class="icon-custom"><img src="./images/icon-modelinfo-logo.png"></div>
+                <div class="agent-card-title">
+                  <div class="fw-bold text-black ms-2 fs-4">Llama3.3-FFM-70B</div>
+                  <p class="ms-2">具備卓越繁中與多語能力，能同時調用多項外部工具並維持高準確率</p>
+                </div>
+
+                <!-- <div class="logo-img me-4">LL</div>
+                <div>
+                  <h1 class="h3 mb-2 fw-bold">Llama3.3-FFM-70B</h1>
+                  <p class="text-grey fs-6 mb-0">具備卓越繁中與多模態能力，能同時處理多項外部工具並維持高準確率</p>
+                </div> -->
+              </div>
+
+              <!-- 優勢特色 -->
+              <!-- <h4 class="fw-bold title-gradient mb-4">Llama3.3-FFM-70B</h4> -->
+              <ul class="list-unstyled mb-5 text-black-">
+                <li>★ 優異繁中和多語言處理能力 ★</li>
+                <li>★ 高準確 Tool Call 工具調用能力，助力企業打造高效 AI Agent ★</li>
+                <li>★ Tool Call 準確率高達 94 %，效率、精準性、穩定性全面升級 ★</li>
+                <li>★ Parallel Call 並行處理不卡關，相較原生模型大幅提升準確率 ★</li>
+                <li>★ 具備 OpenAI API 相容性，模型串接無痛轉換 ★</li>
+              </ul>
+
+              <!-- image01 -->
+              <h5 class="fw-bold mb-3">Llama3.3-FFM繁中能力超越GPT4.0</h5>
+              <div class="chart-placeholder mb-5">
+                <img src="./images/model-info-01.jpg" alt="Llama3.3-FFM繁中能力超越GPT4.0">
+              </div>
+
+              <!-- image02 -->
+              <h5 class="fw-bold mb-3">Tool Call高準確率，打造高效AI Agent</h5>
+              <div class="chart-placeholder mb-5">
+                <img src="./images/model-info-01.jpg" alt="Tool Call">
+              </div>
+
+
+
+              <!-- 適用情境 -->
+              <!-- <h5 class="fw-bold mb-4">適用情境</h5>
+              <div class="row g-4">
+                <div class="col-md-4">
+                  <div class="scene-box">
+                    <h6 class="fw-bold text-primary mb-3">• 打造AI自動工作流</h6>
+                    <p class="text-grey lh-lg">
+                      AI Agent 精準串聯多個工具，例如同時調用CRM系統更新客戶資料、觸發郵件發送API、以及在數據庫生成交易紀錄，將原本仰賴人力的多步驟流程在瞬息間完成。
+                    </p>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="scene-box">
+                    <h6 class="fw-bold text-primary mb-3">• 並行處理能力躍升</h6>
+                    <p class="text-grey lh-lg">
+                      Parallel Tool Call 並行呼叫多系統可同步執行如多城市天氣查詢、多用戶資料處理、同時查詢不同API等任務，大幅減少工具調用及對話延遲時間。
+                    </p>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="scene-box">
+                    <h6 class="fw-bold text-primary mb-3">• 提升用戶體驗</h6>
+                    <p class="text-grey lh-lg">
+                      精準的工具調用能力能讓模型根據對話內容動態呼叫最合適的工具，讓用戶體驗更流暢、互動更自然，尤其在客服或個人助理場景表現突出。
+                    </p>
+                  </div>
+                </div>
+              </div> -->
+
+            </div>
+
+            <!-- 右側側邊欄 -->
+            <div class="col-lg-4">
+
+              <div class="card sidebar-card p-4">
+                <!-- <div class="d-flex justify-content-between align-items-center mb-3">
+                  <span class="provider-badge">發行者</span>
+                  <small class="text-grey">台灣智慧雲端服務股份有限公司</small>
+                </div> -->
+                <div class="align-items-center">
+                  <p class="text-primary fw-bold">發行者</p>
+                  <p class="">台灣智慧雲端服務股份有限公司</p>
+                </div>
+                <hr>
+                <table class="table table-borderless fs-7">
+                  <tbody>
+                    <tr>
+                      <th class="infoCard-name">檔案大小</th>
+                      <td>xx GB</td>
+                    </tr>
+                    <tr>
+                      <th class="infoCard-name">模型類別</th>
+                      <td>語言模型</td>
+                    </tr>
+                    <tr>
+                      <th class="infoCard-name">模型格式 / 精度</th>
+                      <td>FP4</td>
+                    </tr>
+                    <tr>
+                      <th class="infoCard-name">模型參數量</th>
+                      <td>70B</td>
+                    </tr>
+                    <tr>
+                      <th class="infoCard-name">上下文長度</th>
+                      <td>32K</td>
+                    </tr>
+                    <tr>
+                      <th class="infoCard-name">GPU / VRAM 需求</th>
+                      <td>>80GB</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <!-- <hr> -->
+
+              </div>
+
+            </div>
+
+
+            <!-- 適用情境 -->
+            <h5 class="fw-bold mb-4">適用情境</h5>
+            <div class="row g-4-">
+              <div class="col-md-4">
+                <div class="scene-box">
+                  <h6 class="fw-bold text-primary mb-3">• 打造AI自動工作流</h6>
+                  <p class="text-black lh-lg">
+                    AI Agent 精準串聯多個工具，例如同時調用CRM系統更新客戶資料、觸發郵件發送API、以及在數據庫生成交易紀錄，將原本仰賴人力的多步驟流程在瞬息間完成。
+                  </p>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="scene-box">
+                  <h6 class="fw-bold text-primary mb-3">• 並行處理能力躍升</h6>
+                  <p class="text-black lh-lg">
+                    Parallel Tool Call 並行呼叫多系統可同步執行如多城市天氣查詢、多用戶資料處理、同時查詢不同API等任務，大幅減少工具調用及對話延遲時間。
+                  </p>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="scene-box">
+                  <h6 class="fw-bold text-primary mb-3">• 提升用戶體驗</h6>
+                  <p class="text-black lh-lg">
+                    精準的工具調用能力能讓模型根據對話內容動態呼叫最合適的工具，讓用戶體驗更流暢、互動更自然，尤其在客服或個人助理場景表現突出。
+                  </p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+
+
+
+        </section>
+
+
+
+
+
+
+
+
+      </main>
+
+    </div>
+  </div>
+  <script src="./js/bootstrap.bundle.min.js"></script>
+  <script src="./js/table.js"></script>
+
+  <!-- Custom JS for dropdown selection -->
+  <script src="./js/load-admin-header.js"></script>
+  <script src="./js/sidebar-admin.js"></script>
+  <script src="./js/parameter-setting.js"></script>
+  <script src="./js/tooltip.js"></script>
+
+
+
+  <!-- 初始化 Tooltip -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+      const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+    });
+  </script>
+
+</body>
+
+</html>

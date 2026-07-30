@@ -1,0 +1,537 @@
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <title>ldap-manage-edit</title>
+  <link href="./css/bootstrap.min.css" rel="stylesheet">
+  <!-- <link href="./css/breadcrumbs.css" rel="stylesheet"> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    /* 覆蓋 Bootstrap 預設的麵包屑分隔符 */
+    .breadcrumb-item+.breadcrumb-item::before {
+      display: none;
+      /* content: '>';
+      color: #6c757d;
+      padding-right: 0.5rem; */
+    }
+
+    .breadcrumb-item+.breadcrumb-item {
+      padding-left: var(--bs-breadcrumb-item-padding-x);
+      padding-top: 2px;
+    }
+
+    .breadcrumb-item a {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .breadcrumb {
+      --bs-breadcrumb-margin-bottom: 0;
+    }
+
+    .toggle-icon-position {
+      right: 40px;
+    }
+
+    .form-switch-position {
+      margin-left: 10px;
+    }
+
+    /* 以下為tab */
+    .card {
+      border: 1px #dee2e6 solid !important;
+      /* border: none;  */
+      /* box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);  */
+    }
+
+    .tab-default {
+      border: 1px #dee2e6 solid !important;
+      --bs-card-spacer-y: 1rem;
+      --bs-card-spacer-x: 1rem;
+      --bs-card-title-spacer-y: 0.5rem;
+      --bs-card-title-color: ;
+      --bs-card-subtitle-color: ;
+      --bs-card-border-width: var(--bs-border-width);
+      --bs-card-border-color: var(--bs-border-color-translucent);
+      --bs-card-border-radius: var(--bs-border-radius);
+      --bs-card-box-shadow: ;
+      --bs-card-inner-border-radius: calc(var(--bs-border-radius) - (var(--bs-border-width)));
+      --bs-card-cap-padding-y: 0.5rem;
+      --bs-card-cap-padding-x: 1rem;
+      --bs-card-cap-bg: rgba(var(--bs-body-color-rgb), 0.03);
+      --bs-card-cap-color: ;
+      --bs-card-height: ;
+      --bs-card-color: ;
+      --bs-card-bg: var(--bs-body-bg);
+      --bs-card-img-overlay-padding: 1rem;
+      --bs-card-group-margin: 0.75rem;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      height: var(--bs-card-height);
+      color: var(--bs-body-color);
+      word-wrap: break-word;
+      background-color: var(--bs-card-bg);
+      background-clip: border-box;
+      border: var(--bs-card-border-width) solid var(--bs-card-border-color);
+      border-radius: var(--bs-card-border-radius);
+    }
+
+    .tab-header {
+      padding: 0px 8px;
+      /* padding: var(--bs-card-cap-padding-y) var(--bs-card-cap-padding-x); */
+      margin-bottom: 0;
+      color: var(--bs-card-cap-color);
+      background-color: var(--bs-card-cap-bg);
+      border-bottom: 0;
+      /* border-bottom: var(--bs-card-border-width) solid var(--bs-card-border-color); */
+    }
+
+    .nav-tabs .nav-link {
+      font-size: 1rem;
+      padding: 0.75rem 1.25rem;
+      border-radius: 4px;
+    }
+
+    .tab-container {
+      padding: 3%;
+    }
+
+    .tab-header-tabs {
+      border-bottom: none;
+    }
+
+    .nav-tabs .nav-link.active {
+      position: relative;
+      background-color: #ffffff;
+    }
+
+    .nav-tabs .nav-link.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 70px;
+      height: 3px;
+      background-color: var(--main-color);
+      border-radius: 1.5px;
+    }
+
+    .nav-tabs {
+      border-bottom: 1px solid #a6a6a6;
+      /* border-bottom: 3px solid #dee2e6; */
+    }
+
+    .tab-body {
+      padding: 3%;
+      color: var(--bs-card-color);
+    }
+
+    .tab-header-tabs {
+      margin-right: calc(-.5 * var(--bs-card-cap-padding-x));
+      margin-bottom: calc(-1 * var(--bs-card-cap-padding-y));
+      margin-left: calc(-.5 * var(--bs-card-cap-padding-x));
+      border-bottom: 1px solid #a6a6a6;
+    }
+  </style>
+
+  <!-- Custom styles -->
+  <link href="./css/style.css" rel="stylesheet">
+    <link href="./css/global.css" rel="stylesheet">
+    <link href="./css/sidebar.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="./css/dashboard.css" rel="stylesheet">
+  <link href="./css/add-model.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="./js/parameter-setting.js"></script>
+</head>
+
+<body>
+
+  <!-- 動態載入 header -->
+  <!-- <header></header>
+
+  <script>
+    $(function () {
+      $("header").load("header-admin.html", function () {
+        initParameterModal();
+      });
+    });
+  </script> -->
+
+
+  <div class="container-fluid">
+    <div class="row">
+
+      <!-- 動態載入 sidebar -->
+      <div id="sidebar-admin" class="col-md-4- col-lg-3- z-3"></div>
+
+      <script>
+        $(function () {
+          $("#sidebar-admin").load("sidebar-admin.html", function () {
+          });
+        });
+      </script>
+
+      <main class="px-md-4 dashboard-round-bg full-width-when-collapsed file-upload" id="content">
+        <section class="container-manage">
+
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">
+                <a class="text-decoration-none fs-6 align-text-bottom" href="./ldap-manage.html">LDAP 設定</a>
+              </li>
+              <li class="breadcrumb-item active-" aria-current="page-">
+                <i class="fas fa-chevron-right me-2"></i>
+                <!-- <a class="link-body-default fw-bold text-decoration-none fs-4">新增 LDAP 設定</a> -->
+              </li>
+            </ol>
+            <label class="link-body-default fw-bold fs-4">修改 LDAP 設定</label>
+          </nav>
+
+        </section>
+
+
+        <section>
+          <div class="container mt-4">
+            <div class="tab-default">
+              <div class="tab-header">
+                <ul class="nav nav-tabs tab-header-tabs">
+                  <li class="nav-item">
+                    <button class="nav-link active" id="" data-bs-toggle="tab" data-bs-target="#general-pane"
+                      type="button" role="tab" aria-controls="general-pane" aria-selected="true">一般設定</button>
+                  </li>
+                  <li class="nav-item">
+                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#mapper-pane" type="button" role="tab"
+                      aria-controls="mapper-pane" aria-selected="false">Mapper 設定</button>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="tab-body">
+                <div class="tab-content">
+                  <div class="tab-pane fade show active" id="general-pane" role="tabpanel" aria-labelledby="general-tab"
+                    tabindex="0">
+                    <form class="container">
+                      <div class="row mt-4 mb-4 align-items-center">
+                        <label for="" class="col-3- col-md-12 col-lg-3 form-label">名稱 <span class="">*</span>
+                          <img class="ms-1 cursor-pointer" src="./images/icon-info.svg" data-bs-toggle="tooltip"
+                            data-bs-placement="bottom" title="在管理介面中顯示的名稱"></label>
+                        <div class="col-6- col-md-12 col-lg-6 position-relative d-flex align-items-center">
+                          <input type="" class="form-control input-frame" id="" placeholder="ex: LDAP" required>
+                        </div>
+                      </div>
+                      <div class="row mt-4 mb-4 align-items-center">
+                        <label for="" class="col-3- col-md-12 col-lg-3 form-label">LDAP URL <span class="">*</span>
+                          <img class="ms-1 cursor-pointer" src="./images/icon-info.svg" data-bs-toggle="tooltip"
+                            data-bs-placement="bottom" title="連線至您 LDAP 伺服器的 URL"></label>
+                        <div class="col-6- col-md-12 col-lg-6 position-relative d-flex align-items-center">
+                          <input type="" class="form-control input-frame" id="" placeholder="ex: ldap://dc1.company.com"
+                            required>
+                        </div>
+                      </div>
+
+                      <div class="row mt-4 mb-4 align-items-center">
+                        <label for="" class="col-3- col-md-12 col-lg-3 form-label">StartTLS <span
+                            class="text-danger-">*</span>
+                          <img class="ms-1 cursor-pointer" src="./images/icon-info.svg" data-bs-toggle="tooltip"
+                            data-bs-placement="bottom" title="使用 STARTTLS 加密與 LDAP 的連線"></label>
+
+                        <div
+                          class="col-6- col-md-12 col-lg-6 position-relative d-flex align-items-center form-switch form-switch-position">
+                          <input class="form-check-input me-2" type="checkbox" id="flexSwitchCheckDefault">
+                          <label class="form-check-label" for="flexSwitchCheckDefault">預設關閉，可自行開啟</label>
+                        </div>
+                      </div>
+
+                      <div class="row mt-4 mb-4 align-items-center">
+                        <label for="" class="col-3- col-md-12 col-lg-3 form-label">Bind DN <span class="">*</span>
+                          <img class="ms-1 cursor-pointer" src="./images/icon-info.svg" data-bs-toggle="tooltip"
+                            data-bs-placement="bottom" title="LDAP 管理員的 DN，用於存取 LDAP 伺服器"></label>
+                        <div class="col-6- col-md-12 col-lg-6 position-relative d-flex align-items-center">
+                          <input type="" class="form-control input-frame" id=""
+                            placeholder="ex: CN=Administrator,DC=company,DC=com" required>
+                        </div>
+                      </div>
+
+                      <div class="row mt-4 mb-4 align-items-center">
+                        <label for="password" class="col-3- col-md-12 col-lg-3 form-label">Bind credentials <span
+                            class="">*</span>
+                          <img class="ms-1 cursor-pointer" src="./images/icon-info.svg" data-bs-toggle="tooltip"
+                            data-bs-placement="bottom" title="LDAP 管理員的密碼"></label>
+                        <div class="col-6- col-md-12 col-lg-6 position-relative d-flex align-items-center">
+                          <input type="password" class="form-control password-frame" id="password" placeholder=""
+                            required>
+                          <span class="position-absolute toggle-icon toggle-icon-position toggle-password-">
+                            <img src="./images/icon-eye.svg">
+                          </span>
+                        </div>
+                      </div>
+
+                      <div class="row mt-4 mb-4 align-items-center">
+                        <label for="" class="col-3- col-md-12 col-lg-3 form-label">Users DN <span
+                            class="text-danger-">*</span>
+                          <img class="ms-1 cursor-pointer" src="./images/icon-info.svg" data-bs-toggle="tooltip"
+                            data-bs-placement="bottom" title="包含使用者的 LDAP 樹狀結構完整 DN，用於 LDAP 搜尋"></label>
+                        <div class="col-6- col-md-12 col-lg-6 position-relative d-flex align-items-center">
+                          <input type="" class="form-control input-frame" id=""
+                            placeholder="ex: CN=Users,DC=company,DC=com" required>
+                        </div>
+                      </div>
+
+                    </form>
+
+                    <div class="row mb-3 align-items-center ms-2">
+                      <div class="d-flex flex-row align-items-center">
+                        <button class="btn btn-add-user fs-6 mb-3">
+                          <label>驗證</label>
+                        </button>
+                      </div>
+                      <div class="hint-info d-flex mb-3 form-text text-primary">
+                        <img class="m-2" src="./images/icon-input-hint-primary.svg">
+                        <span>驗證成功！</span>
+                      </div>
+                      <div class="clear-fix"></div>
+                      <div class="hint-info d-flex mb-3 form-text text-danger">
+                        <img class="m-2" src="./images/icon-input-hint.svg">
+                        <span>
+                          { error message } API-1<br>
+                          { error message } API-2
+                        </span>
+                      </div>
+                    </div>
+
+
+                    <div class="d-flex flex-row align-items-center">
+                      <!-- <button class="btn btn-default-outline fs-6">
+                        <a href="./ldap-manage.html">返回LDAP設定</a>
+                      </button> -->
+                      <button class="btn btn-add-user fs-6 ms-2">
+                        <label>確認修改</label>
+                      </button>
+                    </div>
+
+
+                  </div>
+
+                  <div class="tab-pane fade" id="mapper-pane" role="tabpanel" aria-labelledby="mapper-tab" tabindex="0">
+                    <!-- <h5 class="card-title">Mapper 設定內容</h5> -->
+                     <div class="table-responsive">
+                      <table id="modelmanageTable">
+                        <tr class="header">
+                          <th style="width:30%;">使用者欄位</th>
+                          <th style="width:30%;">LDAP Attribute</th>
+                          <th style="width:30%;">功能</th>
+                        </tr>
+
+                        <tr>
+                          <td>名字</td>
+                          <td>givenName</td>
+                          <td>
+                            <div class="dropdown">
+                              <button class="btn btn-more-action" type="button" id="actionDropdown"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa fa-ellipsis-h"></i>
+                              </button>
+                              <!-- 下拉選單 -->
+                              <ul class="dropdown-menu" aria-labelledby="actionDropdown">
+                                <li>
+                                  <a class="dropdown-item gap-3" href="#" data-bs-toggle="modal"
+                                    data-bs-target="#modal-mapper-setting">
+                                    <img src="./images/icon_edit.png">
+                                    <span class="dropdown-mg"> 修改</span>
+                                  </a>
+                                </li>
+                                <!-- <li>
+                                  <button class="dropdown-item" data-bs-toggle="modal"
+                                    data-bs-target="#modal-delete-user">
+                                    <img src="./images/icon-delete-red.svg">
+                                    <span class="text-danger dropdown-mg"> 刪除</span>
+                                  </button>
+                                </li> -->
+                              </ul>
+                            </div>
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td>姓氏</td>
+                          <td>sn</td>
+                          <td>
+                            <div class="dropdown">
+                              <button class="btn btn-more-action" type="button" id="actionDropdown"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa fa-ellipsis-h"></i>
+                              </button>
+                              <!-- 下拉選單 -->
+                              <ul class="dropdown-menu" aria-labelledby="actionDropdown">
+                                <li>
+                                  <a class="dropdown-item" href="#">
+                                    <img src="./images/icon_edit.png">
+                                    <span class="dropdown-mg"> 修改</span>
+                                  </a>
+                                </li>
+                                <!-- <li>
+                                  <button class="dropdown-item" data-bs-toggle="modal"
+                                    data-bs-target="#modal-delete-user">
+                                    <img src="./images/icon-delete-red.svg">
+                                    <span class="text-danger dropdown-mg"> 刪除</span>
+                                  </button>
+                                </li> -->
+                              </ul>
+                            </div>
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td>電子郵件</td>
+                          <td>mail</td>
+                          <td>
+                            <div class="dropdown">
+                              <button class="btn btn-more-action" type="button" id="actionDropdown"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa fa-ellipsis-h"></i>
+                              </button>
+                              <!-- 下拉選單 -->
+                              <ul class="dropdown-menu" aria-labelledby="actionDropdown">
+                                <li>
+                                  <a class="dropdown-item" href="#">
+                                    <img src="./images/icon_edit.png">
+                                    <span class="dropdown-mg"> 修改</span>
+                                  </a>
+                                </li>
+                                <!-- <li>
+                                  <button class="dropdown-item" data-bs-toggle="modal"
+                                    data-bs-target="#modal-delete-user">
+                                    <img src="./images/icon-delete-red.svg">
+                                    <span class="text-danger dropdown-mg"> 刪除</span>
+                                  </button>
+                                </li> -->
+                              </ul>
+                            </div>
+                          </td>
+                        </tr>
+
+                      </table>
+                    </div>
+                  </div>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="d-flex flex-row align-items-center mt-5">
+            <button class="btn btn-default-outline fs-6">
+              <a href="./ldap-manage.html">返回LDAP設定</a>
+            </button>
+          </div>
+
+        </section>
+
+
+
+
+
+        <!-- Modal 修改 Mapper 設定 -->
+        <div class="modal fade" id="modal-mapper-setting" data-bs-backdrop="static" data-bs-keyboard="false"
+          tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header" class="">
+                <div class="modal-title m-3 fw-bold text-decoration-none fs-4" id="modal-extend-api-key">修改 Mapper 設定
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body align-items-center">
+                <form class="">
+                  <div class="row mb-3 align-items-center">
+                    <label for="" class="col-4 form-label">使用者欄位
+                      <img class="ms-1 cursor-pointer" src="./images/icon-info.svg" data-bs-toggle="tooltip"
+                        data-bs-placement="bottom" title="AFS AI Hub上使用者管理欄位">
+                      <span class="text-danger-"></span></label>
+                    <div class="col-8">
+                      <p>自動帶入名字 or 姓氏 or 電子郵件</p>
+                      <!-- <input type="text" class="form-control" placeholder="限輸入3~20中英文及數字字元" required> -->
+                    </div>
+                  </div>
+
+                  <div class="row mb-1 align-items-center">
+                    <label for="" class="col-4 form-label">LDAP Attribute
+                      <img class="ms-1 cursor-pointer" src="./images/icon-info.svg" data-bs-toggle="tooltip"
+                        data-bs-placement="bottom" title="對應的LDAP屬性。例如：cn、sn、mail">
+
+                    </label>
+                    <div class="col-8">
+                      <input type="" class="form-control" placeholder="givenName   or  sn  or  mail" value="">
+                    </div>
+                  </div>
+                  <!-- <div class="row mb-3 align-items-center-">
+                      <label class="col-4"></label>
+                      <small class="col-8 text-primary">
+                        info
+                      </small>
+                    </div> -->
+
+
+                </form>
+              </div>
+
+              <!-- <div class="modal-info d-flex mb-3 form-text text-danger">
+                    <img class="m-2" src="./images/icon-input-hint.png">
+                    不可與前 3 次使用的密碼相同
+                  </div> -->
+
+              <div class="modal-footer d-flex justify-content-between">
+                <button type="button" class="btn btn-modal-outline fs-6" data-bs-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-modal-default fs-6" data-bs-dismiss="modal">確認</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+      </main>
+
+    </div>
+  </div>
+  <script src="./js/bootstrap.bundle.min.js"></script>
+  <script src="./js/table.js"></script>
+
+  <!-- Custom JS for dropdown selection -->
+  <script src="./js/load-admin-header.js"></script>
+  <script src="./js/sidebar-admin.js"></script>
+  <script src="./js/parameter-setting.js"></script>
+  <script src="./js/tooltip.js"></script>
+  <!-- 密碼眼睛 -->
+
+  <script>
+    document.querySelector('.toggle-password').addEventListener('click', function () {
+      const passwordInput = document.querySelector('#password');
+      const icon = this.querySelector('i');
+      if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        icon.classList.remove('fa-eye');
+        icon.classList.add('fa-eye-slash');
+      } else {
+        passwordInput.type = 'password';
+        icon.classList.remove('fa-eye-slash');
+        icon.classList.add('fa-eye');
+      }
+    });
+  </script>
+
+
+
+
+</body>
+
+</html>

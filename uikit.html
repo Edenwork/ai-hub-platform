@@ -1,0 +1,1701 @@
+<!doctype html>
+<html lang="zh-TW" data-bs-theme="auto">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <title>UI Kit</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- <link href="./css/bootstrap.min.css" rel="stylesheet"> -->
+  <link href="./css/style.css" rel="stylesheet">
+  <link href="./css/dashboard.css" rel="stylesheet">
+  <!-- <link href="./css/sidebar.css" rel="stylesheet"> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="icon" type="image/gif" href="/images/logo/favicon.ico">
+
+  <style>
+    :root {
+      --font-size-root: 16px;
+      /* no use */
+      --primary: #222;
+      --primary-hover: #23237B;
+      --sidebar-bg: #ffffff;
+      --body-bg: #f9fafb;
+      --text-main: #050912;
+      --text-muted: #686868;
+      --border-color: #e8ebf1;
+      --code-bg: #0c1017;
+      --tag-uikit: #7ee787;
+      --attr: #79c0ff;
+      --string: #a5d6ff;
+    }
+
+
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, sans-serif;
+      background: var(--body-bg);
+      color: var(--text-main);
+      display: flex;
+    }
+    .main-content li{
+      line-height: 2;
+      color: var(--main-color);
+    }
+    .sidebar {
+      width: 284px; /* 240px; */
+      height: 100vh;
+      background: var(--sidebar-bg);
+      border-right: 1px solid var(--border-color);
+      position: fixed;
+      left: 0;
+      top: 0;
+      padding: 20px 0;
+      z-index: 100;
+    }
+
+    .sidebar-header {
+      padding: 0 25px 30px;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .sidebar-header span {
+      color: var(--primary);
+    }
+
+    .nav-list {
+      list-style: none;
+    }
+
+    .nav-label {
+      padding: 15px 25px 5px;
+      font-size: 11px;
+      font-weight: 700;
+      color: #999;
+      text-transform: uppercase;
+    }
+
+    .nav-item {
+      padding: 10px 25px;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.2s;
+    }
+
+    .nav-item:hover,
+    .nav-item.active {
+      color: var(--primary);
+      background: rgba(114, 124, 245, 0.05);
+    }
+
+    .nav-item.sub {
+      padding-left: 45px;
+    }
+
+    .main-content {
+      margin-left: 284px;
+      flex: 1;
+      min-height: 100vh;
+      padding: 40px;
+    }
+
+    .container {
+      max-width: 1060px;
+      margin: 0 auto;
+    }
+
+    .page-desc {
+      color: var(--text-muted);
+      margin-bottom: 40px;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 20px;
+    }
+
+    .section-desc {
+      color: var(--main-color);
+      margin-bottom: 20px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.25em 0.4em;
+      font-size: 75%;
+      font-weight: 700;
+      line-height: 1;
+      text-align: center;
+      white-space: nowrap;
+      vertical-align: baseline;
+      border-radius: 0.25rem;
+      margin-left: 5px;
+    }
+
+    .badge-primary {
+      background-color: var(--primary);
+      color: #fff;
+    }
+
+    .badge-light {
+      background-color: #f8f9fa;
+      color: #333;
+      border: 1px solid #ddd;
+    }
+
+
+    .card-uikit {
+      background: #fff;
+      border: 1px solid var(--border-color);
+      border-radius: 0.5rem;
+      padding: 25px;
+      margin-bottom: 30px;
+    }
+
+    .example-render {
+      padding: 20px;
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      margin-bottom: 15px;
+    }
+
+    /* 程式碼區塊與 Copy 按鈕 */
+    .code-container {
+      position: relative;
+      background: var(--code-bg);
+      border-radius: 4px;
+      padding: 20px;
+    }
+
+    .code-block-uikit {
+      color: #d4d4d4;
+      font-family: 'Consolas', 'Monaco', monospace;
+      font-size: 13px;
+      line-height: 1.6;
+      overflow-x: auto;
+      white-space: pre;
+    }
+
+    .code-block-uikit .tag {
+      color: var(--tag);
+    }
+
+    .code-block-uikit .attr {
+      color: var(--attr);
+    }
+
+    .code-block-uikit .string {
+      color: var(--string);
+    }
+
+    .code-block-uikit .tag-uikit {
+      color: var(--tag-uikit);
+    }
+
+    .copy-btn {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: #2d2d2d;
+      color: #ccc;
+      border: 1px solid #444;
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .copy-btn:hover {
+      background: #3d3d3d;
+      color: #fff;
+    }
+
+    .copy-btn::before {
+      content: attr(data-tooltip);
+      position: absolute;
+      right: 115%;
+      top: 50%;
+      transform: translateY(-50%) translateX(10px);
+      background: #000;
+      color: #fff;
+      padding: 5px 12px;
+      border-radius: 4px;
+      white-space: nowrap;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.2s;
+      pointer-events: none;
+    }
+
+    .copy-btn:hover::before {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(-50%) translateX(0);
+    }
+
+    .btn-uikit {
+      display: inline-block;
+      padding: 8px 16px;
+      background: var(--primary);
+      color: #fff;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .btn-uikit:hover {
+      background: var(--primary-hover);
+    }
+
+    .main-content .highlight {
+    position: relative;
+    direction: ltr;
+}
+
+figure {
+    margin: 0 0 1rem;
+}
+.main-content .highlight pre {
+    border: 4px solid var(--bs-border-color);
+    border-top: 0;
+    padding: 16px;
+    margin: 0;
+    background: #0d1117;
+}
+.main-content .highlight .btn-clipboard {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    font-size: 12px;
+    padding: 1px 6px;
+    background: rgba(121,135,161,.4);
+    color: #fff;
+    border: 0;
+    transition: background .3s ease-in-out;
+}
+
+.main-content .highlight .btn-clipboard:hover {
+    background: rgba(121,135,161,.2);
+    transition: background .1s ease;
+}
+code[class*="language-"], pre[class*="language-"] {
+  font-size: 13px;
+    color: #e3eaf2;
+    background: none;
+    font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+}
+.token.class-name, .token.key, .token.parameter, .token.property, .token.property-access, .token.variable {
+    color: #6cb8e6;
+}
+.token.punctuation {
+    color: #e3eaf2;
+}
+.token.function, .token.selector .token.class, .token.selector .token.id {
+    color: #c699e3;
+}
+.token.attr-value, .token.inserted, .token.color, .token.selector .token.value, .token.string, .token.string .token.url-link {
+    color: #91d076;
+}
+
+/* 斷行 */
+/* 自訂的多行截斷 class 建議再加 max-height 來確保高度一致（依字體大小調整） */
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  /* max-height: 4.5rem;       假設 line-height 1.5rem × 3 = 4.5rem */
+  /* line-height: 1.5rem; */
+}
+
+
+.dAwsoU .ProseMirror {
+    position: relative;
+    font-size: 0.8125rem;
+    overflow-wrap: break-word;
+    white-space: break-spaces;
+    font-variant-ligatures: none;
+    font-feature-settings: "liga" 0;
+    cursor: text;
+    height: 100%;
+    tab-size: 4;
+}
+.dAwsoU .ProseMirror .tableWrapper .zheditor-table {
+    width: 848px;
+    table-layout: fixed;
+    border-collapse: collapse;
+    padding-top: 30px;
+}
+
+  </style>
+
+
+  <!-- Custom styles -->
+  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script> -->
+</head>
+
+<body>
+
+  <!-- 動態載入 header -->
+  <!-- <header></header>
+
+  <script>
+    $(function () {
+      $("header").load("header-admin.html", function () {
+        initParameterModal();
+      });
+    });
+  </script> -->
+
+
+  <div class="container-fluid">
+    <div class="row">
+
+
+      <!-- 動態載入 sidebar-user -->
+      <!-- <div id="sidebar"></div>
+
+      <script>
+        $(function () {
+          $("#sidebar").load("sidebar-user.html", function () {
+          });
+        });
+      </script> -->
+
+
+
+      <aside class="sidebar">
+        <div class="sidebar-header">UI<span> Kit</span></div>
+        <ul class="nav-list">
+          <li class="nav-label">Main</li>
+          <li class="nav-item" onclick="scrollToTarget('page-top')">Dashboard</li>
+          <li class="nav-item" onclick="scrollToTarget('section-guideline')">命名規範</li>
+          <li class="nav-label">Components</li>
+          <li class="nav-item active">UI Kit</li>
+          <li class="nav-item sub" onclick="scrollToTarget('section-font')">Typography</li>
+          <li class="nav-item sub" onclick="scrollToTarget('section-buttons')">Buttons</li>
+          <li class="nav-item sub" onclick="scrollToTarget('section-cards')">Cards</li>
+          <li class="nav-item sub" onclick="scrollToTarget('section-color')">Color</li>
+          <li class="nav-item sub" onclick="scrollToTarget('section-chat-frame')">Chat 對話框</li>
+          <li class="nav-item sub" onclick="scrollToTarget('section-tables')">Tables</li>
+          <li class="nav-item sub" onclick="scrollToTarget('section-form-group')">Form Group</li>
+          <li class="nav-item sub" onclick="scrollToTarget('section-tooltip')">Tooltip</li>
+          <li class="nav-item sub" onclick="scrollToTarget('section-tables')">Modal</li>
+        </ul>
+
+        <p class="nav-label sidebar-footer" style="position: absolute; bottom: 0 !important; display: block;" class="">
+          <a href="./index.html" target="_blank">
+            Link to Index
+          </a>
+        </p>
+      </aside>
+
+
+
+      <main class="main-content">
+        <div class="container" id="page-top">
+          <h1>UI Kit Example</h1>
+          <p class="page-desc">Documentation and examples for components.</p>
+          <p class="alert alert-warning h6">全域 CSS/Variable 設定放在 <code>css/global.css</code>
+                    
+              <button class="btn btn-default- btn-default-outline mt-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                global.css 檔案
+              </button>
+            </p>
+            <div class="collapse" id="collapseExample">
+              <div class="card card-body">
+                <div class="code-container">
+              <button class="copy-btn" data-tooltip="Copy to clipboard"
+                onclick="copyContent('code-root-semantic-tokens', this)">Copy</button>
+
+              <div class="code-block-uikit" id="code-root-semantic-tokens">
+<span class="comment">/* GLOBAL CSS VARIABLES</span>
+<span class="comment">   架構：Reference / Palette (底層：物理來源) -> Brand Palette (來源) -> System Tokens (語意化，最常使用) -> Component Tokens (元件專屬)</span> */</span><br>
+<span class="tag-uikit">:root</span> {
+&nbsp;&nbsp;<span class="comment">/* ── 1. Base / Palette ── 最底層物理顏色、中性名稱（客戶專屬原始色票） */</span>
+&nbsp;&nbsp;<span class="attr">--base-black</span>:      <span class="string">#222222</span>;
+&nbsp;&nbsp;<span class="attr">--base-blue-dark</span>:  <span class="string">#23237B</span>;
+&nbsp;&nbsp;<span class="attr">--base-white</span>:      <span class="string">#ffffff</span>;
+&nbsp;&nbsp;<span class="attr">--base-red</span>:        <span class="string">#ca0729</span>;
+&nbsp;&nbsp;<span class="attr">--base-red-dark</span>:   <span class="string">#ad001d</span>;
+&nbsp;&nbsp;<span class="attr">--base-gray-50</span>:    <span class="string">#f9fbff</span>;     <span class="comment">/* 內容區淡背景 */</span>
+&nbsp;&nbsp;<span class="attr">--base-gray-200</span>:   <span class="string">#e8e8e8</span>;     <span class="comment">/* hover、次要容器 */</span>
+&nbsp;&nbsp;<span class="attr">--base-gray-300</span>:   <span class="string">#e1e1e1</span>;     <span class="comment">/* 邊框基礎 */</span>
+&nbsp;&nbsp;<span class="attr">--base-gray-600</span>:   <span class="string">#555555</span>;     <span class="comment">/* 次要文字 */</span>
+
+&nbsp;&nbsp;<span class="comment">/* ── 2. Brand ── 品牌角色映射（換客戶主要改這裡） */</span>
+&nbsp;&nbsp;<span class="comment">/* Brand 品牌色 / Accent 原始色 */</span>
+&nbsp;&nbsp;<span class="comment">/*  --main-color / --primary：穩重主品牌色 */</span>
+&nbsp;&nbsp;<span class="comment">/* --second-color：較有活力的強調/次品牌色 */</span>
+
+&nbsp;&nbsp;<span class="attr">--brand-primary</span>:    <span class="string">var(--base-black)</span>;
+&nbsp;&nbsp;<span class="attr">--brand-secondary</span>:  <span class="string">var(--base-blue-dark)</span>;
+&nbsp;&nbsp;<span class="comment">/* 如果 error 是品牌專屬才放這裡，否則建議直接在 system 引用 base */</span>
+
+&nbsp;&nbsp;<span class="comment">/* ── 3. System ── 系統語意角色（開發者/元件主要使用這層） */</span>
+&nbsp;&nbsp;<span class="attr">--sys-color-primary</span>:            <span class="string">var(--brand-primary)</span>;
+&nbsp;&nbsp;<span class="attr">--sys-color-on-primary</span>:         <span class="string">var(--base-white)</span>;
+&nbsp;&nbsp;<span class="attr">--sys-color-primary-container</span>:  <span class="string">color-mix(in srgb, var(--brand-primary) 12%, white)</span>;
+&nbsp;&nbsp;<span class="attr">--sys-color-on-primary-container</span>: <span class="string">var(--base-black)</span>;
+
+&nbsp;&nbsp;<span class="attr">--sys-color-secondary</span>:          <span class="string">var(--brand-secondary)</span>;
+&nbsp;&nbsp;<span class="attr">--sys-color-on-secondary</span>:       <span class="string">var(--base-white)</span>;
+
+&nbsp;&nbsp;<span class="attr">--sys-color-surface</span>:            <span class="string">var(--base-white)</span>;
+&nbsp;&nbsp;<span class="attr">--sys-color-surface-container</span>:  <span class="string">var(--base-gray-50)</span>;
+&nbsp;&nbsp;<span class="attr">--sys-color-surface-container-high</span>: <span class="string">var(--base-gray-200)</span>;
+&nbsp;&nbsp;<span class="attr">--sys-color-on-surface</span>:         <span class="string">var(--base-black)</span>;
+&nbsp;&nbsp;<span class="attr">--sys-color-on-surface-variant</span>: <span class="string">var(--base-gray-600)</span>;
+
+&nbsp;&nbsp;<span class="attr">--sys-color-outline</span>:            <span class="string">var(--base-gray-300)</span>;
+&nbsp;&nbsp;<span class="attr">--sys-color-outline-variant</span>:    <span class="string">var(--base-gray-300)</span>;
+
+&nbsp;&nbsp;<span class="attr">--sys-color-error</span>:              <span class="string">var(--base-red)</span>;
+&nbsp;&nbsp;<span class="attr">--sys-color-on-error</span>:           <span class="string">var(--base-white)</span>;
+&nbsp;&nbsp;<span class="attr">--sys-color-error-container</span>:    <span class="string">color-mix(in srgb, var(--base-red) 15%, white)</span>;
+&nbsp;&nbsp;<span class="attr">--sys-color-on-error-container</span>: <span class="string">var(--base-red-dark)</span>;
+
+&nbsp;&nbsp;<span class="attr">--sys-color-hover</span>:              <span class="string">var(--base-gray-200)</span>;   <span class="comment">/* 或用 color-mix 動態調整 */</span>
+
+&nbsp;&nbsp;<span class="comment">/* ── 4. Component ── 元件專屬（必要時才定義，少用） */</span><br>
+&nbsp;&nbsp;<span class="attr">--comp-card-radius</span>:             <span class="string">30px</span>;
+&nbsp;&nbsp;<span class="attr">--comp-card-shadow</span>:             <span class="string">0 3px 5px rgba(0,0,0,0.05)</span>;
+&nbsp;&nbsp;<span class="attr">--comp-card-border</span>:             <span class="string">1px solid var(--sys-color-outline-variant)</span>;
+
+&nbsp;&nbsp;<span class="attr">--comp-btn-primary-bg</span>:          <span class="string">var(--sys-color-primary)</span>;
+&nbsp;&nbsp;<span class="attr">--comp-btn-primary-text</span>:        <span class="string">var(--sys-color-on-primary)</span>;
+&nbsp;&nbsp;<span class="attr">--comp-btn-hover-bg</span>:            <span class="string">var(--sys-color-primary-container)</span>;
+&nbsp;&nbsp;<span class="attr">--comp-btn-hover-text</span>:          <span class="string">var(--sys-color-on-primary-container)</span>;
+}
+              </div>
+            </div>
+
+              </div>
+            </div>
+
+          
+
+          <!-- <ul>
+            <li>全域 CSS/Variable 設定放在 <code>css/global.css</code></li>
+          </ul> -->
+
+          <h2 id="section-guideline" class="pt-3 pb-3">命名規範</h2>
+          <p>主要樣式設定根據以下參數：</p>
+          <ul>
+              <li>按鈕：intent - primary (主色)、secondary (灰色)、white (白底黑字)、whiteDark (黑底白字)、outline (黑框)、outlineHoverPrimary (hover 轉主色)、outlineGray (灰框)、outlineDanger (警示紅框)、link (連結透明底)。</li>
+              <li>size - md (預設)、lg (有最小寬度)、sm 、xs (特殊小尺寸)</li>
+              <li>rounded - full (預設)、md (基本圓角)</li>
+              <li>position - 按鈕內部 justify 位置。</li>
+              <li>- primary：深一點、穩重 → 主按鈕、header<br>
+                  - accent：亮一點、活潑 → hover、focus、badge、選中態</li>
+          </ul>
+
+          <div class="table-responsive pb-4">
+                <table id="modelmanageTable" class="">
+                  <tbody>
+                    <tr class="header">
+                      <th>類別</th>
+                      <th>描述</th>
+                      </tr>
+                    <tr>
+                      <td><code class="zheditor-inline-code" data-block-id="">color, fill</code></td>
+                      <td>預設基礎顏色值。</td>
+                    </tr>
+                     <tr>
+                      <td><code class="zheditor-inline-code" data-block-id="">surface</code></td>
+                      <td>僅適用於頁面底層特定元素的背景。</td>
+                    </tr>
+                    <tr>
+                      <td><code class="zheditor-inline-code" data-block-id="">surface-container</code></td>
+                      <td>僅適用於位於表面之上的元素的背景，並包含其他 UI 元素或元素，例如文字或圖示。</td>
+                    </tr>
+                    <tr>
+                      <td><code class="zheditor-inline-code" data-block-id="">on-surface, on-feedback, on-accent</code></td>
+                      <td>適用於位於表面或表面容器（例如按鈕）上的內容（文字或圖示）。</td>
+                    </tr>
+                    <tr>
+                      <td><code class="zheditor-inline-code" data-block-id="">border</code></td>
+                      <td>用於容器周圍的邊框、描邊或分隔線。</td>
+                    </tr>
+                        </tbody>
+                      </table>
+                    </div>
+
+
+          <img class="pt-4 pb-2" src="./images/uikit/color-style-hook.png">
+          <small class="d-flex justify-content-end pt-2 pb-4">from:  <a href="https://www.lightningdesignsystem.com/2e1ef8501/p/655b28-color/b/25b51f"> Salesfore-lightning design system</a></small>
+
+          <p class="alert alert-warning h6">Note: If you prefer not to use Gulp and SCSS, you can still start using the
+            project right away. Simply place the files in your desired environment and open the HTML file in a
+            browser—no additional setup or compilation required.</p>
+
+          <!-- <p class="section-desc"></p> -->
+          <hr>
+
+          <h2 id="section-font" class="pt-3 pb-3">Typography</h2>
+          <p class="section-desc">
+
+          </p>
+
+          <div class="card-uikit">
+            <div class="example-render">
+              <h1>H1 - Example heading <span class="badge badge-primary">H1</span></h1>
+              <h2>H2 - Example heading <span class="badge badge-primary">H2</span></h2>
+              <h3>H3 - Example heading <span class="badge badge-primary">H3</span></h3>
+              <h4>H4 - Example heading <span class="badge badge-primary">H4</span></h4>
+              <h5>H5 - Example heading <span class="badge badge-primary">H5</span></h5>
+              <h6>P / H6 - Example heading <span class="badge badge-primary">New</span></h6>
+              <h7>H7 - Example heading <span class="badge badge-primary">H7</span></h7><br>
+              <small>Small - Example heading <span class="badge badge-primary">Small</span></small>
+            </div>
+
+            <div class="code-container">
+              <button class="copy-btn" data-tooltip="Copy to clipboard"
+                onclick="copyContent('code-1', this)">Copy</button>
+              <div class="code-block-uikit" id="code-1">
+                <span class="tag-uikit">&lt;h1&gt;</span>Example heading
+                  <span class="tag-uikit">&lt;span</span> <span class="attr">class=</span><span class="string">"badge bg-primary"</span><span class="tag-uikit">&gt;</span>H1<span class="tag-uikit">&lt;/span&gt;
+                  &lt;/h1&gt;</span>
+            
+                <span class="tag-uikit">&lt;h6&gt;</span>Example heading
+                <span class="tag-uikit">&lt;span</span> <span class="attr">class=</span><span class="string">"badge
+                  bg-primary"</span><span class="tag-uikit">&gt;</span>H6<span class="tag-uikit">&lt;/span&gt;
+                  &lt;/h6&gt;</span>
+                
+                <span class="tag-uikit">&lt;small&gt;</span>Example heading
+                <span class="tag-uikit">&lt;span</span> <span class="attr">class=</span><span class="string">"badge bg-primary"</span><span class="tag-uikit">&gt;</span>Small<span class="tag-uikit">&lt;/span&gt;
+                  &lt;/small&gt;</span>
+                <!-- <span class="tag-uikit">&lt;h2&gt;</span>Example heading <span class="tag-uikit">&lt;span</span> <span
+                  class="attr">class=</span><span class="string">"badge bg-primary"</span><span
+                  class="tag-uikit">&gt;</span>New<span class="tag-uikit">&lt;/span&gt;&lt;/h2&gt;</span>
+                
+                  <span class="tag-uikit">&lt;h3&gt;</span>Example heading <span class="tag-uikit">&lt;span</span> <span
+                  class="attr">class=</span><span class="string">"badge bg-primary"</span><span
+                  class="tag-uikit">&gt;</span>New<span class="tag-uikit">&lt;/span&gt;&lt;/h3&gt;</span>
+                
+                  <span class="tag-uikit">&lt;h4&gt;</span>Example heading <span class="tag-uikit">&lt;span</span> <span
+                  class="attr">class=</span><span class="string">"badge bg-primary"</span><span
+                  class="tag-uikit">&gt;</span>New<span class="tag-uikit">&lt;/span&gt;&lt;/h4&gt;</span>
+                
+                  <span class="tag-uikit">&lt;h5&gt;</span>Example heading <span class="tag-uikit">&lt;span</span> <span
+                  class="attr">class=</span><span class="string">"badge bg-primary"</span><span
+                  class="tag-uikit">&gt;</span>New<span class="tag-uikit">&lt;/span&gt;&lt;/h5&gt;</span>
+                
+                  <span class="tag-uikit">&lt;h6&gt;</span>Example heading <span class="tag-uikit">&lt;span</span> <span
+                  class="attr">class=</span><span class="string">"badge bg-primary"</span><span
+                  class="tag-uikit">&gt;</span>New<span class="tag-uikit">&lt;/span&gt;&lt;/h6&gt;</span> -->
+              </div>
+            </div>
+          </div>
+
+          <h2 id="section-buttons" class="pt-3 pb-3">Buttons</h2>
+          <p class="section-desc">各尺寸按鈕：頁面按鈕、Modal按鈕、</p>
+          <p class="alert alert-warning h6">Note: If you prefer not to use Gulp and SCSS, you can still start using the
+            project right away. Simply place the files in your desired environment and open the HTML file in a
+            browser—no additional setup or compilation required.</p>
+            <hr>
+
+          <div class="card-uikit">
+            <!-- <div class="example-render">
+              <button class="btn-uikit">
+                Notifications <span class="badge badge-light">4</span>
+              </button>
+            </div> -->
+
+            <div class="example-render">
+              <div class="d-flex flex-row justify-content-between align-items-center" style="">
+                <button class="btn btn-add-user">
+                  <a href="./user-prompt-new.html">
+                    <i class="fa fa-plus me-2"></i> 新增提示詞</a>
+                </button>
+                <div class="position-relative d-inline-block"><i
+                    class="fa fa-magnifying-glass position-absolute search-icon"></i>
+                  <input type="text" id="tableSearchInput" onkeyup="myFunction()" placeholder="搜尋提示詞"
+                    title="Search model name" class="search-input ps-5-">
+                </div>
+              </div>
+            </div>
+
+
+
+                   <div class="code-container">
+              <button class="copy-btn" data-tooltip="Copy to clipboard"
+                onclick="copyContent('code-add-user-btn', this)">Copy</button>
+
+              <div class="code-block-uikit" id="code-add-user-btn">
+<span class="tag-uikit">&lt;button</span> <span class="attr">class=</span><span class="string">"btn btn-add-user"</span><span class="tag-uikit">&gt;</span>
+&nbsp;&nbsp;<span class="tag-uikit">&lt;a</span> <span class="attr">href=</span><span class="string">"./user-prompt-new.html"</span><span class="tag-uikit">></span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag-uikit">&lt;i</span> <span class="attr">class=</span><span class="string">"fa fa-plus me-2"</span><span class="tag-uikit">&gt;&lt;/i&gt;</span> 新增提示詞
+&nbsp;&nbsp;<span class="tag-uikit">&lt;/a&gt;</span>
+<span class="tag-uikit">&lt;/button&gt;</span>
+              </div>
+            </div>
+
+          </div>
+
+
+
+
+
+          <h2 id="section-cards" class="pt-3 pb-3">Cards</h2>
+          <ul>
+            <li>介紹文字最多50字，對於較長的內容，可以添加 <code>.text-truncate</code> 類別，以透過刪節號截斷文字。
+              需為 <code>display: inline-block</code> 或是 <code>display: block</code>，並設定 CSS Style 高度 <code> max-width: 150px</code>。
+            </li>
+            <li>自訂的多行截斷，可以添加 <code>.line-clamp-3 </code> 類別，例如 3行 就設定 <code>-webkit-line-clamp: 3</code>。</li>
+          </ul>
+
+            <div class="code-container">
+              <button class="copy-btn" data-tooltip="Copy to clipboard"
+                onclick="copyContent('code-line-clamp-3', this)">Copy</button>
+
+              <div class="code-block-uikit" id="code-line-clamp-3">
+<span class="tag-uikit">.line-clamp-3</span> {
+&nbsp;&nbsp;<span class="attr">display</span>: <span class="string">-webkit-box</span>;
+&nbsp;&nbsp;<span class="attr">-webkit-box-orient</span>: <span class="string">vertical</span>;
+&nbsp;&nbsp;<span class="attr">-webkit-line-clamp</span>: <span class="string">3</span>;
+&nbsp;&nbsp;<span class="attr">overflow</span>: <span class="string">hidden</span>;
+&nbsp;&nbsp;<span class="comment">/* max-height: 4.5rem;       假設 line-height 1.5rem × 3 = 4.5rem */</span>
+&nbsp;&nbsp;<span class="comment">/* line-height: 1.5rem; */</span><br>
+}
+              </div>
+            </div>
+
+          <div class="card-uikit">
+            <div class="example-render">
+              <section class="section-card-list pt-5- d-flex flex-wrap">
+                <div class="card card-agent mb-5 me-4">
+                  <div class="d-flex align-items-center">
+                    <div class="icon-wrapper"><img src="./images/card-aiAgent-logo-03.png"></div>
+                    <div class="agent-card-title">
+                      <div class="fw-bold text-black ms-2 fs-6">SQL Agent</div>
+                      <!-- <small class="ms-2">4.75 GB</small> -->
+                    </div>
+                  </div>
+                  <p class="fs-7">以自然語言查詢資料庫，自動生成 SQL、視覺圖表與分析報告，大幅降低門檻並加速決策流程。</p>
+                  <div class="d-flex justify-content-between align-items-end mt-2">
+                    <!-- <span class="card-tag fs-7">知識庫</span> -->
+                    <button type="button" class="btn- btn-agentCard-inactive- fs-7 btn-default-outline">
+                      <a href="/agent-info-page-user.html" target="_self">
+                        詳細資訊</a>
+
+                    </button>
+
+                    <a type="button" href="#" target="_blank"
+                      class="btn- btn-agentCard-inactive text-decoration-none fs-7">
+                      <!-- <img class="me-1 cursor-pointer" src="./images/icon-open-page.svg"> -->
+                      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none"
+                        class="me-2">
+                        <g clip-path="url(#clip0_95017_43738)">
+                          <path
+                            d="M3.07863 2.74989C2.75491 2.74989 2.44445 2.87848 2.21554 3.10739C1.98664 3.33629 1.85804 3.64675 1.85804 3.97047V8.85283C1.85804 9.17655 1.98664 9.48701 2.21554 9.71591C2.44445 9.94482 2.75491 10.0734 3.07863 10.0734H7.96098C8.2847 10.0734 8.59516 9.94482 8.82407 9.71591C9.05297 9.48701 9.18157 9.17655 9.18157 8.85283V7.63224C9.18157 7.47038 9.24587 7.31515 9.36032 7.2007C9.47477 7.08624 9.63 7.02194 9.79186 7.02194C9.95372 7.02194 10.109 7.08624 10.2234 7.2007C10.3379 7.31515 10.4022 7.47038 10.4022 7.63224V8.85283C10.4022 9.50027 10.145 10.1212 9.68715 10.579C9.22934 11.0368 8.60842 11.294 7.96098 11.294H3.07863C2.43119 11.294 1.81026 11.0368 1.35246 10.579C0.894646 10.1212 0.637451 9.50027 0.637451 8.85283V3.97047C0.637451 3.32303 0.894646 2.70211 1.35246 2.2443C1.81026 1.78649 2.43119 1.5293 3.07863 1.5293H4.29922C4.46108 1.5293 4.61631 1.5936 4.73076 1.70805C4.84521 1.8225 4.90951 1.97773 4.90951 2.13959C4.90951 2.30145 4.84521 2.45668 4.73076 2.57113C4.61631 2.68559 4.46108 2.74989 4.29922 2.74989H3.07863ZM6.74039 2.74989C6.57853 2.74989 6.4233 2.68559 6.30885 2.57113C6.1944 2.45668 6.1301 2.30145 6.1301 2.13959C6.1301 1.97773 6.1944 1.8225 6.30885 1.70805C6.4233 1.5936 6.57853 1.5293 6.74039 1.5293H9.79186C9.95372 1.5293 10.109 1.5936 10.2234 1.70805C10.3379 1.8225 10.4022 1.97773 10.4022 2.13959V5.19106C10.4022 5.35292 10.3379 5.50815 10.2234 5.6226C10.109 5.73706 9.95372 5.80136 9.79186 5.80136C9.63 5.80136 9.47477 5.73706 9.36032 5.6226C9.24587 5.50815 9.18157 5.35292 9.18157 5.19106V3.61284L7.17248 5.62315C7.11574 5.67989 7.04838 5.7249 6.97424 5.75561C6.9001 5.78632 6.82064 5.80213 6.74039 5.80213C6.66015 5.80213 6.58069 5.78632 6.50655 5.75561C6.43241 5.7249 6.36505 5.67989 6.3083 5.62315C6.25156 5.56641 6.20655 5.49904 6.17584 5.42491C6.14513 5.35077 6.12933 5.27131 6.12933 5.19106C6.12933 5.11082 6.14513 5.03135 6.17584 4.95722C6.20655 4.88308 6.25156 4.81572 6.3083 4.75897L8.31861 2.74989H6.74039Z"
+                            fill="var(--btn-text-w)" />
+                        </g>
+                        <defs>
+                          <clipPath id="clip0_95017_43738">
+                            <rect width="11.8571" height="11.0667" fill="white" />
+                          </clipPath>
+                        </defs>
+                      </svg>
+                      開始使用
+                    </a>
+                  </div>
+                </div>
+
+
+                <div class="card card-agent mb-5 me-4">
+                  <div class="d-flex align-items-center">
+                    <div class="icon-wrapper"><img src="./images/card-aiAgent-logo-02.png"></div>
+                    <div class="agent-card-title">
+                      <div class="fw-bold text-black ms-2 fs-6">AI 醫護虛實共照</div>
+                      <!-- <small class="ms-2">4.75 GB</small> -->
+                    </div>
+                  </div>
+                  <p class="fs-7 line-clamp-3">AI 藥事 Agent 支援 OCR 藥單辨識，結合 gpt-oss-120b 與 RAG 技術索引來自衛福部食藥署藥品的仿單資料，可自動執行 28 項複雜處方用藥之安全性與適切性審核，大幅提升藥師作業效率與用藥安全。</p>
+                  <div class="d-flex justify-content-between align-items-end mt-2">
+                    <!-- <span class="card-tag fs-7">醫療</span> -->
+                    <!-- <button type="button" class="btn- btn-agentCard-inactive- fs-7 btn-default-outline">
+                <a href="/agent-info-page-user.html" target="_self">
+                  詳細資訊</a>
+              </button> -->
+
+                    <a type="button" class="btn- btn-agentCard-inactive- fs-7 btn-default-outline text-decoration-none"
+                      href="/agent-info-page-user.html" target="_self">
+                      詳細資訊</a>
+                    </a>
+
+                    <a type="button" href="#" target="_blank"
+                      class="btn- btn-agentCard-inactive text-decoration-none fs-7">
+                      <!-- <img class="me-1 cursor-pointer" src="./images/icon-open-page.svg"> -->
+                      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none"
+                        class="me-2">
+                        <g clip-path="url(#clip0_95017_43738)">
+                          <path
+                            d="M3.07863 2.74989C2.75491 2.74989 2.44445 2.87848 2.21554 3.10739C1.98664 3.33629 1.85804 3.64675 1.85804 3.97047V8.85283C1.85804 9.17655 1.98664 9.48701 2.21554 9.71591C2.44445 9.94482 2.75491 10.0734 3.07863 10.0734H7.96098C8.2847 10.0734 8.59516 9.94482 8.82407 9.71591C9.05297 9.48701 9.18157 9.17655 9.18157 8.85283V7.63224C9.18157 7.47038 9.24587 7.31515 9.36032 7.2007C9.47477 7.08624 9.63 7.02194 9.79186 7.02194C9.95372 7.02194 10.109 7.08624 10.2234 7.2007C10.3379 7.31515 10.4022 7.47038 10.4022 7.63224V8.85283C10.4022 9.50027 10.145 10.1212 9.68715 10.579C9.22934 11.0368 8.60842 11.294 7.96098 11.294H3.07863C2.43119 11.294 1.81026 11.0368 1.35246 10.579C0.894646 10.1212 0.637451 9.50027 0.637451 8.85283V3.97047C0.637451 3.32303 0.894646 2.70211 1.35246 2.2443C1.81026 1.78649 2.43119 1.5293 3.07863 1.5293H4.29922C4.46108 1.5293 4.61631 1.5936 4.73076 1.70805C4.84521 1.8225 4.90951 1.97773 4.90951 2.13959C4.90951 2.30145 4.84521 2.45668 4.73076 2.57113C4.61631 2.68559 4.46108 2.74989 4.29922 2.74989H3.07863ZM6.74039 2.74989C6.57853 2.74989 6.4233 2.68559 6.30885 2.57113C6.1944 2.45668 6.1301 2.30145 6.1301 2.13959C6.1301 1.97773 6.1944 1.8225 6.30885 1.70805C6.4233 1.5936 6.57853 1.5293 6.74039 1.5293H9.79186C9.95372 1.5293 10.109 1.5936 10.2234 1.70805C10.3379 1.8225 10.4022 1.97773 10.4022 2.13959V5.19106C10.4022 5.35292 10.3379 5.50815 10.2234 5.6226C10.109 5.73706 9.95372 5.80136 9.79186 5.80136C9.63 5.80136 9.47477 5.73706 9.36032 5.6226C9.24587 5.50815 9.18157 5.35292 9.18157 5.19106V3.61284L7.17248 5.62315C7.11574 5.67989 7.04838 5.7249 6.97424 5.75561C6.9001 5.78632 6.82064 5.80213 6.74039 5.80213C6.66015 5.80213 6.58069 5.78632 6.50655 5.75561C6.43241 5.7249 6.36505 5.67989 6.3083 5.62315C6.25156 5.56641 6.20655 5.49904 6.17584 5.42491C6.14513 5.35077 6.12933 5.27131 6.12933 5.19106C6.12933 5.11082 6.14513 5.03135 6.17584 4.95722C6.20655 4.88308 6.25156 4.81572 6.3083 4.75897L8.31861 2.74989H6.74039Z"
+                            fill="var(--btn-text-w)" />
+                        </g>
+                        <defs>
+                          <clipPath id="clip0_95017_43738">
+                            <rect width="11.8571" height="11.0667" fill="white" />
+                          </clipPath>
+                        </defs>
+                      </svg>
+                      開始使用
+                    </a>
+                  </div>
+                </div>
+
+                <div class="card card-agent mb-5 me-4">
+                  <div class="d-flex align-items-center">
+                    <div class="icon-wrapper"><img src="./images/card-aiAgent-logo-01.png"></div>
+                    <div class="agent-card-title">
+                      <div class="fw-bold text-black ms-2 fs-6">i-Spec 技術文件助理</div>
+                      <!-- <small class="ms-2">4.75 GB</small> -->
+                    </div>
+                  </div>
+                  <p class="fs-7">上傳技術規格文件以自動擷取專有名詞，建立具備上下文關聯的 RAG 問答系統，提升資訊檢索的可靠性。</p>
+                  <div class="d-flex justify-content-between align-items-end mt-2">
+                    <!-- <span class="card-tag fs-7">知識庫</span> -->
+                    <button type="button" class="btn- btn-agentCard-inactive- fs-7 btn-default-outline">
+                      <a href="/agent-info-page-user.html" target="_self">
+                        詳細資訊</a>
+
+                    </button>
+
+                    <a type="button" href="#" target="_blank"
+                      class="btn- btn-agentCard-inactive text-decoration-none fs-7">
+                      <!-- <img class="me-1 cursor-pointer" src="./images/icon-open-page.svg"> -->
+                      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none"
+                        class="me-2">
+                        <g clip-path="url(#clip0_95017_43738)">
+                          <path
+                            d="M3.07863 2.74989C2.75491 2.74989 2.44445 2.87848 2.21554 3.10739C1.98664 3.33629 1.85804 3.64675 1.85804 3.97047V8.85283C1.85804 9.17655 1.98664 9.48701 2.21554 9.71591C2.44445 9.94482 2.75491 10.0734 3.07863 10.0734H7.96098C8.2847 10.0734 8.59516 9.94482 8.82407 9.71591C9.05297 9.48701 9.18157 9.17655 9.18157 8.85283V7.63224C9.18157 7.47038 9.24587 7.31515 9.36032 7.2007C9.47477 7.08624 9.63 7.02194 9.79186 7.02194C9.95372 7.02194 10.109 7.08624 10.2234 7.2007C10.3379 7.31515 10.4022 7.47038 10.4022 7.63224V8.85283C10.4022 9.50027 10.145 10.1212 9.68715 10.579C9.22934 11.0368 8.60842 11.294 7.96098 11.294H3.07863C2.43119 11.294 1.81026 11.0368 1.35246 10.579C0.894646 10.1212 0.637451 9.50027 0.637451 8.85283V3.97047C0.637451 3.32303 0.894646 2.70211 1.35246 2.2443C1.81026 1.78649 2.43119 1.5293 3.07863 1.5293H4.29922C4.46108 1.5293 4.61631 1.5936 4.73076 1.70805C4.84521 1.8225 4.90951 1.97773 4.90951 2.13959C4.90951 2.30145 4.84521 2.45668 4.73076 2.57113C4.61631 2.68559 4.46108 2.74989 4.29922 2.74989H3.07863ZM6.74039 2.74989C6.57853 2.74989 6.4233 2.68559 6.30885 2.57113C6.1944 2.45668 6.1301 2.30145 6.1301 2.13959C6.1301 1.97773 6.1944 1.8225 6.30885 1.70805C6.4233 1.5936 6.57853 1.5293 6.74039 1.5293H9.79186C9.95372 1.5293 10.109 1.5936 10.2234 1.70805C10.3379 1.8225 10.4022 1.97773 10.4022 2.13959V5.19106C10.4022 5.35292 10.3379 5.50815 10.2234 5.6226C10.109 5.73706 9.95372 5.80136 9.79186 5.80136C9.63 5.80136 9.47477 5.73706 9.36032 5.6226C9.24587 5.50815 9.18157 5.35292 9.18157 5.19106V3.61284L7.17248 5.62315C7.11574 5.67989 7.04838 5.7249 6.97424 5.75561C6.9001 5.78632 6.82064 5.80213 6.74039 5.80213C6.66015 5.80213 6.58069 5.78632 6.50655 5.75561C6.43241 5.7249 6.36505 5.67989 6.3083 5.62315C6.25156 5.56641 6.20655 5.49904 6.17584 5.42491C6.14513 5.35077 6.12933 5.27131 6.12933 5.19106C6.12933 5.11082 6.14513 5.03135 6.17584 4.95722C6.20655 4.88308 6.25156 4.81572 6.3083 4.75897L8.31861 2.74989H6.74039Z"
+                            fill="var(--btn-text-w)" />
+                        </g>
+                        <defs>
+                          <clipPath id="clip0_95017_43738">
+                            <rect width="11.8571" height="11.0667" fill="white" />
+                          </clipPath>
+                        </defs>
+                      </svg>
+                      開始使用
+                    </a>
+                  </div>
+                </div>
+              <p>範例-AI應用卡片：<a href="./user-agent.html" target="_self">user-agent.html</a></p>
+                <!-- </div> -->
+              </section>
+
+
+            </div>
+
+
+
+
+                   <div class="code-container">
+              <button class="copy-btn" data-tooltip="Copy to clipboard"
+                onclick="copyContent('code-sql-agent-card', this)">Copy</button>
+
+              <div class="code-block-uikit" id="code-sql-agent-card">
+<span class="tag-uikit">&lt;div</span> <span class="attr">class=</span><span class="string">"card card-agent mb-5 me-4"</span><span class="tag-uikit">&gt;</span>
+
+&nbsp;&nbsp;<span class="tag-uikit">&lt;div</span> <span class="attr">class=</span><span class="string">"d-flex align-items-center"</span><span class="tag-uikit">&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag-uikit">&lt;div</span> <span class="attr">class=</span><span class="string">"icon-wrapper"</span><span class="tag-uikit">&gt;</span><span class="tag-uikit">&lt;img</span> <span class="attr">src=</span><span class="string">"./images/card-aiAgent-logo-03.png"</span><span class="tag-uikit">&gt;&lt;/div&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag-uikit">&lt;div</span> <span class="attr">class=</span><span class="string">"agent-card-title"</span><span class="tag-uikit">&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag-uikit">&lt;div</span> <span class="attr">class=</span><span class="string">"fw-bold text-black ms-2 fs-6"</span><span class="tag-uikit">&gt;</span>SQL Agent<span class="tag-uikit">&lt;/div&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">&lt;!-- &lt;small class="ms-2"&gt;4.75 GB&lt;/small&gt; --&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag-uikit">&lt;/div&gt;</span>
+&nbsp;&nbsp;<span class="tag-uikit">&lt;/div&gt;</span>
+
+&nbsp;&nbsp;<span class="tag-uikit">&lt;p</span> <span class="attr">class=</span><span class="string">"fs-7"</span><span class="tag-uikit">&gt;</span>以自然語言查詢資料庫，自動生成 SQL、視覺圖表與分析報告，大幅降低門檻並加速決策流程。<span class="tag-uikit">&lt;/p&gt;</span>
+
+&nbsp;&nbsp;<span class="tag-uikit">&lt;div</span> <span class="attr">class=</span><span class="string">"d-flex justify-content-between align-items-end mt-2"</span><span class="tag-uikit">&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">&lt;!-- &lt;span class="card-tag fs-7"&gt;知識庫&lt;/span&gt; --&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag-uikit">&lt;button</span> <span class="attr">type=</span><span class="string">"button"</span> <span class="attr">class=</span><span class="string">"btn- btn-agentCard-inactive- fs-7 btn-default-outline"</span><span class="tag-uikit">&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag-uikit">&lt;a</span> <span class="attr">href=</span><span class="string">"/agent-info-page-user.html"</span> <span class="attr">target=</span><span class="string">"_self"</span><span class="tag-uikit">&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;詳細資訊
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag-uikit">&lt;/a&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag-uikit">&lt;/button&gt;</span>
+
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag-uikit">&lt;a</span> <span class="attr">type=</span><span class="string">"button"</span> <span class="attr">href=</span><span class="string">"#"</span> <span class="attr">target=</span><span class="string">"_blank"</span> <span class="attr">class=</span><span class="string">"btn- btn-agentCard-inactive text-decoration-none fs-7"</span><span class="tag-uikit">&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">&lt;!-- &lt;img class="me-1 cursor-pointer" src="./images/icon-open-page.svg"&gt; --&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag-uikit">&lt;svg</span> <span class="attr">xmlns=</span><span class="string">"http://www.w3.org/2000/svg"</span> <span class="attr">width=</span><span class="string">"12"</span> <span class="attr">height=</span><span class="string">"12"</span> <span class="attr">viewBox=</span><span class="string">"0 0 12 12"</span> <span class="attr">fill=</span><span class="string">"none"</span> <span class="attr">class=</span><span class="string">"me-2"</span><span class="tag-uikit">&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag-uikit">&lt;g</span> <span class="attr">clip-path=</span><span class="string">"url(#clip0_95017_43738)"</span><span class="tag-uikit">&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag-uikit">&lt;path</span> <span class="attr">d=</span><span class="string">"M3.07863 2.74989C2.75491 2.74989 2.44445 2.87848 2.21554 3.10739C1.98664 3.33629 1.85804 3.64675 1.85804 3.97047V8.85283C1.85804 9.17655 1.98664 9.48701 2.21554 9.71591C2.44445 9.94482 2.75491 10.0734 3.07863 10.0734H7.96098C8.2847 10.0734 8.59516 9.94482 8.82407 9.71591C9.05297 9.48701 9.18157 9.17655 9.18157 8.85283V7.63224C9.18157 7.47038 9.24587 7.31515 9.36032 7.2007C9.47477 7.08624 9.63 7.02194 9.79186 7.02194C9.95372 7.02194 10.109 7.08624 10.2234 7.2007C10.3379 7.31515 10.4022 7.47038 10.4022 7.63224V8.85283C10.4022 9.50027 10.145 10.1212 9.68715 10.579C9.22934 11.0368 8.60842 11.294 7.96098 11.294H3.07863C2.43119 11.294 1.81026 11.0368 1.35246 10.579C0.894646 10.1212 0.637451 9.50027 0.637451 8.85283V3.97047C0.637451 3.32303 0.894646 2.70211 1.35246 2.2443C1.81026 1.78649 2.43119 1.5293 3.07863 1.5293H4.29922C4.46108 1.5293 4.61631 1.5936 4.73076 1.70805C4.84521 1.8225 4.90951 1.97773 4.90951 2.13959C4.90951 2.30145 4.84521 2.45668 4.73076 2.57113C4.61631 2.68559 4.46108 2.74989 4.29922 2.74989H3.07863ZM6.74039 2.74989C6.57853 2.74989 6.4233 2.68559 6.30885 2.57113C6.1944 2.45668 6.1301 2.30145 6.1301 2.13959C6.1301 1.97773 6.1944 1.8225 6.30885 1.70805C6.4233 1.5936 6.57853 1.5293 6.74039 1.5293H9.79186C9.95372 1.5293 10.109 1.5936 10.2234 1.70805C10.3379 1.8225 10.4022 1.97773 10.4022 2.13959V5.19106C10.4022 5.35292 10.3379 5.50815 10.2234 5.6226C10.109 5.73706 9.95372 5.80136 9.79186 5.80136C9.63 5.80136 9.47477 5.73706 9.36032 5.6226C9.24587 5.50815 9.18157 5.35292 9.18157 5.19106V3.61284L7.17248 5.62315C7.11574 5.67989 7.04838 5.7249 6.97424 5.75561C6.9001 5.78632 6.82064 5.80213 6.74039 5.80213C6.66015 5.80213 6.58069 5.78632 6.50655 5.75561C6.43241 5.7249 6.36505 5.67989 6.3083 5.62315C6.25156 5.56641 6.20655 5.49904 6.17584 5.42491C6.14513 5.35077 6.12933 5.27131 6.12933 5.19106C6.12933 5.11082 6.14513 5.03135 6.17584 4.95722C6.20655 4.88308 6.25156 4.81572 6.3083 4.75897L8.31861 2.74989H6.74039Z"</span> <span class="attr">fill=</span><span class="string">"var(--btn-text-w)"</span><span class="tag-uikit">&gt;&lt;/path&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag-uikit">&lt;/g&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag-uikit">&lt;defs&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag-uikit">&lt;clipPath</span> <span class="attr">id=</span><span class="string">"clip0_95017_43738"</span><span class="tag-uikit">&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag-uikit">&lt;rect</span> <span class="attr">width=</span><span class="string">"11.8571"</span> <span class="attr">height=</span><span class="string">"11.0667"</span> <span class="attr">fill=</span><span class="string">"white"</span><span class="tag-uikit">&gt;&lt;/rect&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag-uikit">&lt;/clipPath&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag-uikit">&lt;/defs&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag-uikit">&lt;/svg&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;開始使用
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag-uikit">&lt;/a&gt;</span>
+&nbsp;&nbsp;<span class="tag-uikit">&lt;/div&gt;</span>
+
+<span class="tag-uikit">&lt;/div&gt;</span>
+              </div>
+            </div>
+
+          </div>
+
+
+
+
+
+          <h2 id="section-color" class="pt-3 pb-3">Color</h2>
+          <ul>
+            <li>style.css 設定 :root，相關css以 <code>color: var(--main-color)</code> 來匯入，盡量不要用色碼去設定 color 避免規範混亂。</li>
+            <li>為了滿足 <a href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html" target="_blank">
+              WCAG 2.0 色彩對比度的輔助功能</a>
+              ， <strong>必須</strong> 
+              符合 <a href="https://www.w3.org/WAI/WCAG20/quickref/20160105/Overview.php#visual-audio-contrast-contrast" target="_blank">
+                至少 4.5:1 的對比度</a>。</li>
+          </ul>
+          <!-- <p class="section-desc">
+            style.css 設定:root，相關css以 <code>color: var(--main-color)</code> 來匯入，盡量不要用色碼去設定 color 避免規範混亂。
+          </p> -->
+
+          <div class="card-uikit">
+            <div class="example-render">
+              <div class="example-render">
+                <h4 style="color: var(--main-color) ;">Example color <span class="badge badge-primary" style="background-color: var(--main-color)">--main-color: #222222;</span></h4>
+                <h4 style="color: var(--primary) ;">Example color <span class="badge badge-primary" style="background-color: var(--primary)">--primary: #222222;</span></h4>
+                <h4 style="color: var(--second-color) ;">Example color <span class="badge badge-primary" style="background-color: var(--second-color)">--second-color: #23237B;</span></h4>
+                <h4 style="color: var(--main-text-color) ;">Example color <span class="badge badge-primary" style="background-color: var(--main-text-color)">--main-text-color: #000000;</span></h4>
+                <h4 style="color: var(--second-text-color) ;background-color: var(--btn-chat-border)">Example color <span class="badge badge-primary" style="background-color: var(--btn-chat-border)">--second-text-color: #ffffff;</span></h4>
+                <h4 style="color: var(--btn-text-w) ;background-color: var(--btn-chat-border)">Example color <span class="badge badge-primary" style="background-color: var(--btn-chat-border)">--btn-text-w: #ffffff;</span></h4>
+                <h4 style="color: var(--error-color) ;">Example color <span class="badge badge-primary" style="background-color: var(--error-color)">--error-color: #CA0729</span></h4>
+                <h4 style="color: var(--link-text-color) ;">Example color <span class="badge badge-primary" style="background-color: var(--link-text-color)">--link-text-color: #555;</span></h4>
+                <h4 style="color: var(--hover-link-text-color) ;">Example color <span class="badge badge-primary" style="background-color: var(--hover-link-text-color) ;">--hover-link-text-color: #000;</span></h4>
+                <!-- <h4 style="color: var() ;">Example color <span class="badge badge-primary" style="background-color: var(--)">--</span></h4> -->
+            </div>
+            </div>
+
+
+                   <div class="code-container">
+              <button class="copy-btn" data-tooltip="Copy to clipboard"
+                onclick="copyContent('code-root-variables', this)">Copy</button>
+
+              <div class="code-block-uikit" id="code-root-variables">
+CSS寫法<br>
+<span class="tag-uikit">:root</span> {
+&nbsp;&nbsp;<span class="attr">--main-color</span>: <span class="string">#222222</span>;
+&nbsp;&nbsp;<span class="attr">--primary</span>: <span class="string">#222222</span>;
+&nbsp;&nbsp;<span class="attr">--second-color</span>: <span class="string">#23237B</span>;
+&nbsp;&nbsp;<span class="attr">--second-color-filter</span>: <span class="string">invert(32%) sepia(84%) saturate(762%) hue-rotate(135deg) brightness(92%) contrast(101%)</span>;
+&nbsp;&nbsp;<span class="attr">--main-text-color</span>: <span class="string">#000000</span>;
+&nbsp;&nbsp;<span class="attr">--second-text-color</span>: <span class="string">#ffffff</span>;
+&nbsp;&nbsp;<span class="attr">--content-area-bg</span>: <span class="string">#F9FBFF</span>;
+&nbsp;&nbsp;<span class="attr">--btn-bg-hover</span>: <span class="string">#000000</span>;
+&nbsp;&nbsp;<span class="attr">--btn-text-w</span>: <span class="string">#ffffff</span>;
+&nbsp;&nbsp;<span class="attr">--btn-text-hover</span>: <span class="string">#ffffff</span>;
+&nbsp;&nbsp;<span class="attr">--btn-chat-border</span>: <span class="string">#ced4da</span>;
+}
+
+<span class="tag-uikit">color</span>:&nbsp;<span class="attr">var(--main-color)</span>;	
+              </div>
+            </div>
+
+          </div>
+
+
+
+
+
+
+
+
+          <h2 id="section-chat-frame" class="pt-3 pb-3">Chat 對話框</h2>
+          <p class="section-desc">...</p>
+
+          <div class="card-uikit">
+            <div class="example-render">
+              <!-- Chat 對話框 start -->
+              <div class="container mt-5">
+                <div class="question-dialog p-3 file-upload mx-auto" id="">
+
+                  <div id="dragModal">
+                    <span id="hintText" style="">
+                      <img class="icon-add" src="./images/icon-image.png">
+                      <h1>新增圖片</h1>
+                      <span>將圖片拖放至此處，使其新增至對話</span>
+                    </span>
+                  </div>
+
+                  <div class="d-flex flex-column h-100">
+                    <textarea class="form-control-chat mb-3" placeholder="詢問任何問題" aria-label="Question"
+                      rows="3"></textarea>
+
+                    <div class="d-flex justify-content-start align-items-end- gap-3 mt-4 justify-content-between-">
+                      <input type="file" id="fileInput-" multiple="" style="display: none;">
+                      <!-- 
+                  <button class="import-file-btn file-upload" id="" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                    data-bs-title="上傳圖檔，支援 png/jpg" onclick="document.getElementById('fileInput').click()">
+                    <img class="icon-inside filter-grey" style=""
+                      src="./images/upload-image.svg">
+                  </button> -->
+
+                      <!-- <button class="import-file-btn" id="" data-bs-toggle="modal" data-bs-target="#modal-chose-prompt" data-bs-title="選擇提示詞">
+                    <img class="icon-inside filter-grey" style=""
+                      src="./images/icon-prompt.svg">
+                  </button> -->
+
+
+
+                      <button class="import-file-btn file-upload" id="" data-bs-toggle="tooltip"
+                        data-bs-placement="bottom" data-bs-title="上傳圖檔，支援 png/jpg"
+                        onclick="document.getElementById('fileInput').click()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+                          class="icon-inside filter-grey">
+                          <line x1="5.1" y1="11.4" x2="18.9" y2="11.4" stroke="currentColor" stroke-width="1.2"
+                            stroke-linecap="round"></line>
+                          <path d="M12 4.5L12 19.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round">
+                          </path>
+                        </svg>
+                      </button>
+
+
+                      <button class="import-file-btn" id="" data-bs-toggle="modal" data-bs-target="#modal-chose-prompt"
+                        data-bs-title="選擇提示詞">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+                          class="icon-inside filter-grey" style="">
+                          <g clip-path="url(#clip0_94455_63235)">
+                            <!-- 外框路徑 -->
+                            <path
+                              d="M5.33203 5.10596C4.52771 5.10614 3.89949 5.77427 3.89941 6.56104V16.8286C3.89944 17.6154 4.52767 18.2835 5.33203 18.2837H17.1621L19.0693 20.2417C19.2396 20.4165 19.4986 20.4711 19.7246 20.3794C19.9508 20.2875 20.0986 20.0669 20.0986 19.8228V6.56104C20.0986 5.77427 19.4703 5.10614 18.666 5.10596H5.33203Z"
+                              stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"></path>
+
+                            <!-- 星星主體：改 fill 為 currentColor -->
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                              d="M10.2639 10.612L11.7396 7.66064L13.2153 10.612L16.1667 12.0877L13.2153 13.5634L11.7396 16.5148L10.2639 13.5634L7.3125 12.0877L10.2639 10.612Z"
+                              fill="currentColor"></path>
+
+                            <!-- 小星星1 -->
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                              d="M16.6094 13.8584L17.9375 15.1865L16.6094 16.5146L15.2812 15.1865L16.6094 13.8584Z"
+                              fill="currentColor"></path>
+
+                            <!-- 小星星2 -->
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                              d="M7.31283 6.77539L9.08366 8.54622L7.31283 10.3171L5.54199 8.54622L7.31283 6.77539Z"
+                              fill="currentColor"></path>
+                          </g>
+                          <defs>
+                            <clipPath id="clip0_94455_63235">
+                              <rect width="20" height="20" fill="white" transform="translate(2 4)"></rect>
+                            </clipPath>
+                          </defs>
+                        </svg>
+                      </button>
+
+                      <button class="btn btn-reasoning-thinking" type="button" aria-expanded="false"
+                        data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="先思考後回答，解決推理問題">
+                        <img class="icon-reasoning filter-grey" src="./images/icon-reasoning.svg">
+                        <span class="ms-1 fs-15px">深度思考</span>
+                      </button>
+
+                      <div class="dropdown ms-3 position-absolute-" style="left: 0%;">
+                        <button class="btn btn-select-thinking-outline dropdown-toggle- fs-6- fs-15px" type="button"
+                          id="modelDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                          思考強度 - 中
+                          <i class="fa fa-chevron-down ms-2"></i>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="modelDropdown"
+                          style="max-height: 200px;overflow-y: auto;">
+                          <li>
+                            <a class="dropdown-item active-" href="#">
+                              <div class="content-box">
+                                <span class="dropdown-text">思考強度 - 低</span><br>
+                              </div>
+                              <br>
+                              <span class="checkmark ms-2">
+                                <img src="./images/icon-check.png">
+                              </span>
+                            </a>
+                          </li>
+                          <li>
+                            <a class="dropdown-item active-" href="#">
+                              <div class="content-box">
+                                <span class="dropdown-text">思考強度 - 中</span><br>
+                              </div>
+                              <br>
+                              <span class="checkmark ms-2">
+                                <img src="./images/icon-check.png">
+                              </span>
+                            </a>
+                          </li>
+                          <li>
+                            <a class="dropdown-item active-" href="#">
+                              <div class="content-box">
+                                <span class="dropdown-text">思考強度 - 高</span><br>
+                              </div>
+                              <br>
+                              <span class="checkmark ms-2">
+                                <img src="./images/icon-check.png">
+                              </span>
+                            </a>
+                          </li>
+                          <li>
+                            <hr class="dropdown-divider">
+                          </li>
+
+                        </ul>
+                      </div>
+
+                      <!-- <div id="thumbnails"></div>
+                    <div id="errorContainer"></div>
+
+
+                    <div id="zoominImg" class="modal">
+                      <div class="modal-zoomin-img">
+                        <span class="close-btn">×</span>
+                        <img class="modal-image" id="modalImage" src="">
+                      </div>
+                    </div> -->
+
+                      <div class="dropdown ms-3 position-absolute" style="right: 10%;">
+                        <button class="btn btn-select-model-outline dropdown-toggle- fs-6- fs-15px me-3" type="button"
+                          id="modelDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                          Llama3.1-FFM-8B
+                          <i class="fa fa-chevron-down ms-2"></i>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="modelDropdown"
+                          style="max-height: 200px;overflow-y: auto;">
+                          <li>
+                            <a class="dropdown-item active-" href="#">
+                              <div class="content-box">
+                                <span class="dropdown-text">Llama3.1-FFM-8B</span><br>
+                                <mediuam class="text-muted">繁中強化的語言模型</mediuam>
+                              </div>
+                              <br>
+                              <span class="checkmark ms-2">
+                                <img src="./images/icon-check.png">
+                              </span>
+                            </a>
+                          </li>
+                          <li>
+                            <a class="dropdown-item active-" href="#">
+                              <div class="content-box">
+                                <span class="dropdown-text">LLama3.2-FFM-11B</span><br>
+                                <mediuam class="text-muted">繁中強化的多模態模型</mediuam>
+                              </div>
+                              <br>
+                              <span class="checkmark ms-2">
+                                <img src="./images/icon-check.png">
+                              </span>
+                            </a>
+                          </li>
+                          <li>
+                            <a class="dropdown-item active-" href="#">
+                              <div class="content-box">
+                                <span class="dropdown-text">FFM-Mistral-Small-3.1-24B-Reasoning</span><br>
+                                <mediuam class="text-muted">繁中強化的推理模型</mediuam>
+                              </div>
+                              <br>
+                              <span class="checkmark ms-2">
+                                <img src="./images/icon-check.png">
+                              </span>
+                            </a>
+                          </li>
+                          <li>
+                            <hr class="dropdown-divider">
+                          </li>
+                          <li>
+                            <a class="dropdown-item active" href="#">
+                              <div class="content-box">
+                                <span class="dropdown-text">Qwen3-4B</span><br>
+                                <mediuam class="text-muted">多語推理模型</mediuam>
+                              </div>
+                              <br>
+                              <span class="checkmark ms-2">
+                                <img src="./images/icon-check.png">
+                              </span>
+                            </a>
+                          </li>
+                          <li>
+                            <a class="dropdown-item active-" href="#">
+                              <div class="content-box">
+                                <span class="dropdown-text">DeepSeek-R1-Distill-Qwen-1.5B</span><br>
+                                <mediuam class="text-muted">Qwen2.5-1.5B經知識蒸餾的推理模型</mediuam>
+                              </div>
+                              <br>
+                              <span class="checkmark ms-2">
+                                <img src="./images/icon-check.png">
+                              </span>
+                            </a>
+                          </li>
+                          <li>
+                            <a class="dropdown-item active-" href="#">
+                              <div class="content-box">
+                                <span class="dropdown-text">DeepSeek-R1-Distill-Qwen-7B</span><br>
+                                <mediuam class="text-muted">Qwen2.5-7B經知識蒸餾的推理模型</mediuam>
+                              </div>
+                              <br>
+                              <span class="checkmark ms-2">
+                                <img src="./images/icon-check.png">
+                              </span>
+                            </a>
+                          </li>
+
+                          <li>
+                            <a class="dropdown-item active-" href="#">
+                              <div class="content-box">
+                                <span class="dropdown-text">Llama-3.2-11B-Vision-Instruct</span><br>
+                                <mediuam class="text-muted">Meta多模態模型，適用圖像推理問答</mediuam>
+                              </div>
+                              <br>
+                              <span class="checkmark ms-2">
+                                <img src="./images/icon-check.png">
+                              </span>
+                            </a>
+                          </li>
+                          <li>
+                            <a class="dropdown-item active-" href="#">
+                              <div class="content-box">
+                                <span class="dropdown-text">Qwen2.5-1.5B-Instruct</span><br>
+                                <mediuam class="text-muted">小型指令微調語言模型</mediuam>
+                              </div>
+                              <br>
+                              <span class="checkmark ms-2">
+                                <img src="./images/icon-check.png">
+                              </span>
+                            </a>
+                          </li>
+                          <li>
+                            <a class="dropdown-item active-" href="#">
+                              <div class="content-box">
+                                <span class="dropdown-text">TinyLlama-1.1B-Chat-v0.6</span><br>
+                                <mediuam class="text-muted">輕量語言模型，適合資源有限環境</mediuam>
+                              </div>
+                              <br>
+                              <span class="checkmark ms-2">
+                                <img src="./images/icon-check.png">
+                              </span>
+                            </a>
+                          </li>
+                          <li>
+                            <a class="dropdown-item active-" href="#">
+                              <div class="content-box">
+                                <span class="dropdown-text">TinyLlama-1.1B-Chat-v1.0</span><br>
+                                <mediuam class="text-muted">優化版輕量語言模型，提升多輪對話質量</mediuam>
+                              </div>
+                              <br>
+                              <span class="checkmark ms-2">
+                                <img src="./images/icon-check.png">
+                              </span>
+                            </a>
+                          </li>
+
+                        </ul>
+                      </div>
+
+                      <!-- <button class="btn btn-chat-send position-absolute" style="right: 2%;">
+                      <img src="./images/btn-send-chat.svg">
+                    </button> -->
+
+                      <button class="btn btn-chat-send position-absolute" style="right: 2%;bottom: 20px;">
+                        <img class="icon-inside filter-grey" style="" src="./images/btn-send-chat.svg">
+                      </button>
+
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+              <!-- Chat 對話框 End -->
+
+            </div>
+
+            <div class="code-container">
+              <button class="copy-btn" data-tooltip="Copy to clipboard"
+                onclick="copyContent('code-2', this)">Copy</button>
+
+              <div class="code-block-uikit" id="code-3"><span class="tag-uikit">&lt;div</span> <span
+                  class="attr">class=</span><span class="string">"card card-agent mb-5 me-4"</span><span
+                  class="tag-uikit">&gt;</span>
+                Notifications <span class="tag-uikit">&lt;span</span> <span class="attr">class=</span><span
+                  class="string">"badge bg-light text-dark"</span><span class="tag-uikit">&gt;</span>4<span
+                  class="tag-uikit">&lt;/span&gt;</span>
+                <span class="tag-uikit">&lt;/button&gt;</span>
+              </div>
+            </div>
+
+          </div>
+
+
+
+
+
+
+
+          <h2 id="section-tables" class="pt-3 pb-3">Tables</h2>
+          <p class="section-desc">使用 Responsive Table 設定</label> class="table-responsive"</label></p>
+
+          <div class="card-uikit">
+            <div class="example-render">
+
+              <div class="table-responsive">
+                <table id="modelmanageTable" class="">
+                  <tbody>
+                    <tr class="header">
+                      <th style="width:25%;">模型名稱</th>
+                      <th style="width:20%;">模型簡介</th>
+                      <th style="width:10%;">發行者</th>
+                      <th style="width:10%;">檔案大小</th>
+                      <th style="width:20%;">狀態
+                        <img class="ms-1 cursor-pointer" src="./images/icon-info.svg" data-bs-toggle="tooltip"
+                          data-bs-placement="bottom"
+                          data-bs-title="請先完成AI應用下載並啟用後才能使用。『已下載』僅表示AI應用檔案已準備完成，尚未啟用。請啟用AI應用後才能進行互動。">
+                      </th>
+                      <th class="col" style="width:15%;">使用權限<img class="ms-1 cursor-pointer"
+                          src="./images/icon-info.svg" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                          aria-label="「開放」代表所有使用者皆可使用，「指定群組」代表僅限被授權群組使用。"
+                          data-bs-original-title="「開放」代表所有使用者皆可使用，「指定群組」代表僅限被授權群組使用。"></th>
+                      <th style="width:10%;">功能</th>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <a href="/model-info-page.html" target="_blank" data-bs-toggle="tooltip"
+                          data-bs-placement="bottom" data-bs-title="Hover tooltip 看全部模型名稱">
+                          <img class="me-1 cursor-pointer" src="./images/icon-open-page.svg">
+                          Llama3.2-FFM-11B
+                        </a>
+                      </td>
+                      <td data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Hover tooltip 看全部模型簡介">
+                        Meta多模態模型，適用圖像推理問答</td>
+                      <td>台灣智慧雲端</td>
+                      <td>10GB</td>
+                      <td>未下載</td>
+                      <td>指定群組</td>
+                      <td>
+                        <div class="dropdown">
+                          <button class="btn btn-more-action" type="button" id="actionDropdown"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa fa-ellipsis-h"></i>
+                          </button>
+                          <!-- 下拉選單 -->
+                          <ul class="dropdown-menu" aria-labelledby="actionDropdown">
+                            <li>
+                              <a class="dropdown-item" href="#">
+                                <img src="./images/icon-ok.svg">
+                                <span class="dropdown-mg fs-6"> 下載</span>
+                              </a>
+                            </li>
+                            <li>
+                              <a class="dropdown-item" href="/model-manage-setup-all.html">
+                                <img src="./images/icon-setup.svg">
+                                <span class="dropdown-mg fs-6"> 使用權限設定</span>
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <a href="/model-info-page.html" target="_blank" data-bs-toggle="tooltip"
+                          data-bs-placement="bottom" data-bs-title="Hover tooltip 看全部模型名稱">
+                          <img class="me-1 cursor-pointer" src="./images/icon-open-page.svg">
+                          {模型名稱}
+                        </a>
+                      </td>
+                      <td data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Hover tooltip 看全部模型簡介">
+                        {模型簡介}
+                      </td>
+                      <td>{發行者}</td>
+                      <td>10GB</td>
+                      <td>下載中 ... (<label>15%</label>)</td>
+                      <td>指定群組</td>
+                      <td>
+                        <div class="dropdown">
+                          <button class="btn btn-more-action" type="button" id="actionDropdown"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa fa-ellipsis-h"></i>
+                          </button>
+                          <!-- 下拉選單 -->
+                          <ul class="dropdown-menu" aria-labelledby="actionDropdown">
+                            <li>
+                              <a class="dropdown-item" href="#">
+                                <img src="./images/icon-delete-red.svg">
+                                <span class="text-danger dropdown-mg fs-6"> 刪除</span>
+                              </a>
+                            </li>
+                            <li>
+                              <a class="dropdown-item" href="/model-manage-setup-assign.html">
+                                <img src="./images/icon-setup.svg">
+                                <span class="dropdown-mg fs-6"> 使用權限設定</span>
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <a href="/model-info-page.html" target="_blank" data-bs-toggle="tooltip"
+                          data-bs-placement="bottom" data-bs-title="Hover tooltip 看全部模型名稱">
+                          <img class="me-1 cursor-pointer" src="./images/icon-open-page.svg">
+                          {模型名稱}
+                        </a>
+                      </td>
+                      <td data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Hover tooltip 看全部模型簡介">
+                        {模型簡介}
+                      </td>
+                      <td>{發行者}</td>
+                      <td>10GB</td>
+                      <td>已下載未啟用</td>
+                      <td>指定群組</td>
+                      <td>
+                        <div class="dropdown">
+                          <button class="btn btn-more-action" type="button" id="actionDropdown"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa fa-ellipsis-h"></i>
+                          </button>
+                          <!-- 下拉選單 -->
+                          <ul class="dropdown-menu" aria-labelledby="actionDropdown">
+                            <li>
+                              <a class="dropdown-item" href="#">
+                                <img src="./images/icon-ativate.svg">
+                                <span class="dropdown-mg fs-6"> 啟用</span>
+                              </a>
+                            </li>
+                            <li>
+                              <a class="dropdown-item" href="#">
+                                <img src="./images/icon-delete-red.svg">
+                                <span class="text-danger dropdown-mg fs-6"> 刪除</span>
+                              </a>
+                            </li>
+                            <li>
+                              <a class="dropdown-item" href="/model-manage-setup-assign.html">
+                                <img src="./images/icon-setup.svg">
+                                <span class="dropdown-mg fs-6"> 使用權限設定</span>
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                      </td>
+                    </tr>
+
+                  </tbody>
+                </table>
+              </div>
+
+
+            </div>
+
+            <div class="code-container">
+              <button class="copy-btn" data-tooltip="Copy to clipboard"
+                onclick="copyContent('code-2', this)">Copy</button>
+
+              <div class="code-block-uikit" id="code-3"><span class="tag-uikit">&lt;div</span> <span
+                  class="attr">class=</span><span class="string">"card card-agent mb-5 me-4"</span><span
+                  class="tag-uikit">&gt;</span>
+                Notifications <span class="tag-uikit">&lt;span</span> <span class="attr">class=</span><span
+                  class="string">"badge bg-light text-dark"</span><span class="tag-uikit">&gt;</span>4<span
+                  class="tag-uikit">&lt;/span&gt;</span>
+                <span class="tag-uikit">&lt;/button&gt;</span>
+              </div>
+            </div>
+
+          </div>
+
+
+
+
+
+
+
+          <h2 id="section-form-group" class="pt-3 pb-3">Form Group</h2>
+          <p class="section-desc">...</p>
+
+          <div class="card-uikit">
+            <div class="example-render">
+
+              <form class="form-container">
+                <div class="row mb-3 align-items-center">
+                  <label for="" class="col-3 form-label">名稱 <span class="">*</span>
+                    <img class="ms-1 cursor-pointer" src="./images/icon-info.svg" data-bs-toggle="tooltip"
+                      data-bs-placement="bottom" aria-label="在管理介面中顯示的名稱" data-bs-original-title="在管理介面中顯示的名稱"></label>
+                  <div class="col-6 position-relative d-flex align-items-center">
+                    <input type="" class="form-control input-frame" id="" placeholder="ex: LDAP" required="">
+                  </div>
+                </div>
+
+                <div class="row mb-3 align-items-center">
+                  <label for="" class="col-3 form-label">StartTLS <span class="text-danger-">*</span>
+                    <img class="ms-1 cursor-pointer" src="./images/icon-info.svg" data-bs-toggle="tooltip"
+                      data-bs-placement="bottom" aria-label="使用 STARTTLS 加密與 LDAP 的連線"
+                      data-bs-original-title="使用 STARTTLS 加密與 LDAP 的連線"></label>
+
+                  <div class="col-6 position-relative d-flex align-items-center form-switch form-switch-position">
+                    <input class="form-check-input me-2" type="checkbox" id="flexSwitchCheckDefault">
+                    <label class="form-check-label" for="flexSwitchCheckDefault">預設關閉，可自行開啟</label>
+
+                  </div>
+                </div>
+
+              </form>
+
+            </div>
+
+            <div class="code-container">
+              <button class="copy-btn" data-tooltip="Copy to clipboard"
+                onclick="copyContent('code-2', this)">Copy</button>
+
+              <div class="code-block-uikit" id="code-3"><span class="tag-uikit">&lt;div</span> <span
+                  class="attr">class=</span><span class="string">"card card-agent mb-5 me-4"</span><span
+                  class="tag-uikit">&gt;</span>
+                Notifications <span class="tag-uikit">&lt;span</span> <span class="attr">class=</span><span
+                  class="string">"badge bg-light text-dark"</span><span class="tag-uikit">&gt;</span>4<span
+                  class="tag-uikit">&lt;/span&gt;</span>
+                <span class="tag-uikit">&lt;/button&gt;</span>
+              </div>
+            </div>
+
+          </div>
+
+
+
+
+
+          <h2 id="section-tooltip" class="pt-3 pb-3">Tooltip</h2>
+          <h5>HTML</h5>
+          <ul>
+            <li>加上 data-bs-toggle="tooltip"</li>
+            <li>顯示 Tooltip 位置：data-bs-placement="bottom" (right 右 / left 左 / bottom 下方 / top 上方)</li>
+            <li>顯示 Tooltip 內容：data-bs-original-title="這裡寫 Tooltip 描述內容"</li>
+
+          </ul>
+
+          <!-- <p class="section-desc">最下方要匯入tooltip 的 js</p> -->
+
+          <div class="card-uikit">
+            <div class="example-render">
+
+              <p>Tooltip
+                <img class="ms-1 cursor-pointer" src="./images/icon-info.svg" data-bs-toggle="tooltip"
+                  data-bs-placement="bottom" aria-label="Tooltip 描述1" data-bs-original-title="Tooltip 描述2">
+              </p>
+
+            </div>
+
+
+            <div class="code-container">
+              <button class="copy-btn" data-tooltip="Copy to clipboard"
+                onclick="copyContent('code-tooltip-example', this)">Copy</button>
+
+              <div class="code-block-uikit" id="code-tooltip-example">
+                <span class="tag-uikit">&lt;p&gt;</span>Tooltip
+                &nbsp;&nbsp;<span class="tag-uikit">&lt;img</span> <span class="attr">class=</span><span
+                  class="string">"ms-1 cursor-pointer"</span>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="attr">src=</span><span
+                  class="string">"./images/icon-info.svg"</span>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="attr">data-bs-toggle=</span><span
+                  class="string">"tooltip"</span>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="attr">data-bs-placement=</span><span
+                  class="string">"bottom"</span>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="attr">aria-label=</span><span class="string">"Tooltip
+                  描述1"</span>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="attr">data-bs-original-title=</span><span
+                  class="string">"Tooltip 描述2"</span><span class="tag-uikit">&gt;</span>
+                <span class="tag-uikit">&lt;/p&gt;</span>
+              </div>
+            </div>
+
+          </div>
+
+          <hr class="my-3">
+
+            
+          <h5>Javascript</h5>
+          <ul>
+            <li>最下方要匯入tooltip 的 js</li>
+          </ul>
+
+          <div class="example-render">
+
+            <div class="code-container">
+              <button class="copy-btn" data-tooltip="Copy to clipboard"
+                onclick="copyContent('code-tooltip-init', this)">Copy</button>
+
+              <div class="code-block-uikit" id="code-tooltip-init"><span class="tag-uikit">&lt;!-- 初始化 Tooltip --&gt;</span>
+                <span class="tag-uikit">&lt;script&gt;</span>
+                document.addEventListener(<span class="string">'DOMContentLoaded'</span>, <span
+                  class="keyword">function</span> () {
+                <span class="keyword">const</span> tooltipTriggerList = document.querySelectorAll(<span
+                  class="string">'[data-bs-toggle="tooltip"]'</span>);
+                <span class="keyword">const</span> tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl =&gt;
+                <span class="keyword">new</span> bootstrap.Tooltip(tooltipTriggerEl));
+                });
+                <span class="tag-uikit">&lt;/script&gt;</span>
+              </div>
+            </div>
+
+          </div>
+
+
+
+
+
+
+
+
+          <h2 id="section-modal" class="pt-3 pb-3">Modal</h2>
+          <p class="section-desc">...</p>
+
+          <div class="card-uikit">
+            <div class="example-render">
+
+              ...
+            </div>
+
+            <div class="code-container">
+              <button class="copy-btn" data-tooltip="Copy to clipboard"
+                onclick="copyContent('code-2', this)">Copy</button>
+
+              <div class="code-block-uikit" id="code-3"><span class="tag-uikit">&lt;div</span> <span
+                  class="attr">class=</span><span class="string">"card card-agent mb-5 me-4"</span><span
+                  class="tag-uikit">&gt;</span>
+                Notifications <span class="tag-uikit">&lt;span</span> <span class="attr">class=</span><span
+                  class="string">"badge bg-light text-dark"</span><span class="tag-uikit">&gt;</span>4<span
+                  class="tag-uikit">&lt;/span&gt;</span>
+                <span class="tag-uikit">&lt;/button&gt;</span>
+              </div>
+            </div>
+
+          </div>
+
+
+
+
+
+
+
+
+          <!-- <h2 id="section-chat" class="pt-3 pb-3">copy 範例</h2>
+          <p class="section-desc">...</p>
+
+          <div class="card-uikit">
+            <div class="example-render">
+              ...
+            </div>
+
+                   <div class="code-container">
+              <button class="copy-btn" data-tooltip="Copy to clipboard"
+                onclick="copyContent('code-2', this)">Copy</button>
+
+              <div class="code-block-uikit" id="code-3"><span class="tag-uikit">&lt;div</span> <span
+                  class="attr">class=</span><span class="string">"card card-agent mb-5 me-4"</span><span
+                  class="tag-uikit">&gt;</span>
+                Notifications <span class="tag-uikit">&lt;span</span> <span class="attr">class=</span><span
+                  class="string">"badge bg-light text-dark"</span><span class="tag-uikit">&gt;</span>4<span
+                  class="tag-uikit">&lt;/span&gt;</span>
+                <span class="tag-uikit">&lt;/button&gt;</span>
+              </div>
+            </div>
+
+          </div> -->
+
+
+
+        </div>
+      </main>
+
+
+    </div>
+  </div>
+  <!-- <script src="./js/bootstrap.bundle.min.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!--<script src="./js/load-admin-header.js"></script>
+  <script src="./js/sidebar.js"></script>
+  <script src="./js/tooltip.js"></script> -->
+
+  <script>
+    // 1. 複製功能
+    function copyContent(id, btn) {
+      const codeElement = document.getElementById(id);
+      const text = codeElement.innerText;
+
+      navigator.clipboard.writeText(text).then(() => {
+        // 切換 Tooltip 文字
+        const originalTooltip = btn.getAttribute('data-tooltip');
+        btn.setAttribute('data-tooltip', 'Copied!');
+
+        // 1.5 秒後恢復
+        setTimeout(() => {
+          btn.setAttribute('data-tooltip', originalTooltip);
+        }, 1500);
+      }).catch(err => {
+        console.error('無法複製: ', err);
+      });
+    }
+
+    // 2. 平滑捲動功能
+    function scrollToTarget(id) {
+      const target = document.getElementById(id);
+      if (target) {
+        // 考慮到邊距的手動捲動
+        window.scrollTo({
+          top: target.offsetTop - 20,
+          behavior: 'smooth'
+        });
+
+        // 視覺上更新 Sidebar 選中狀態
+        document.querySelectorAll('.nav-item').forEach(item => {
+          item.classList.remove('active');
+        });
+        // 這裡簡單處理，如果是點擊子項目，父項目也可以標註
+        event.currentTarget.classList.add('active');
+      }
+    }
+  </script>
+
+
+
+  <!-- 初始化 Tooltip -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+      const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+    });
+  </script>
+
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,929 @@
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <title>index chat</title>
+  <!-- <script src="../assets/js/color-modes.js"></script> -->
+  <!-- <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/dropdowns/">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3"> -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="./css/bootstrap.min.css" rel="stylesheet">
+  <link href="./css/style.css" rel="stylesheet">
+<link href="./css/sidebar.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="icon" type="image/gif" href="/images/logo/favicon.ico">
+
+  <style>
+    .btn-select-thinking-outline {
+      border-radius: 12px;
+      border: 1px solid #ced4da;
+      padding: 10px 10px;
+    }
+
+    .btn-select-thinking-outline:focus,
+    .btn-select-thinking-outline:clicked {
+      background-color: #0D99C8;
+      color: #fff;
+    }
+
+  </style>
+
+
+  <!-- Custom styles -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="./css/dashboard.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="./js/parameter-setting.js"></script>
+</head>
+
+<body>
+
+  <!-- 動態載入 header -->
+  <header></header>
+
+  <script>
+    $(function () {
+      $("header").load("header-admin.html", function () {
+        initParameterModal();
+      });
+    });
+  </script>
+
+
+  <div class="container-fluid">
+    <div class="row">
+
+
+      <!-- 動態載入 sidebar-user -->
+      <div id="sidebar"></div>
+
+      <script>
+        $(function () {
+          $("#sidebar").load("sidebar-user.html", function () {
+          });
+        });
+      </script>
+
+
+
+
+
+        <main class="px-md-4 dashboard-round-bg full-width-when-collapsed file-upload" id="content">  <!-- id="dropZone" -->
+        <!-- <main class="col-md-10 ms-sm-auto col-lg-9 px-md-4 dashboard-round-bg file-upload" id="dropZone"> -->
+          <section class="container-chat">
+            <div class="title text-center" style="margin-top: 10%">
+              <h2>您好，歡迎使用 AFS AI Hub!</h2>
+              <h6 class="pt-3 pb-4">想輕鬆搞定撰寫文章、翻譯或程式碼？現在就開始向我提問吧！</h6>
+            </div>
+
+
+            <div class="container mt-5">
+              <div class="question-dialog p-3 file-upload mx-auto" id="">
+
+                <div id="dragModal">
+                  <span id="hintText" style="">
+                    <img class="icon-add" src="./images/icon-image.png">
+                    <h1>新增圖片</h1>
+                    <span>將圖片拖放至此處，使其新增至對話</span>
+                  </span>
+                </div>
+
+                <div class="d-flex flex-column h-100">
+                  <textarea class="form-control-chat mb-3" placeholder="詢問任何問題" aria-label="Question"
+                    rows="3"></textarea>
+
+                  <div class="d-flex justify-content-start align-items-end- gap-3 justify-content-between-">
+                    <input type="file" id="fileInput-" multiple style="display: none;">
+                    <div class="dropdown ms-3 position-absolute-" style="left: 0%;">
+                      <button class="btn btn-select-thinking-outline dropdown-toggle fs-6" type="button"
+                        id="modelDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        思考強度 - 中
+                      </button>
+                      <ul class="dropdown-menu" aria-labelledby="modelDropdown"
+                        style="max-height: 200px;overflow-y: auto;">
+                        <li>
+                          <a class="dropdown-item active-" href="#">
+                            <div class="content-box">
+                              <span class="dropdown-text">思考強度 - 低</span><br>
+                            </div>
+                            <br>
+                            <span class="checkmark ms-2">
+                              <img src="./images/icon-check.png">
+                            </span>
+                          </a>
+                        </li>
+                        <li>
+                          <a class="dropdown-item active-" href="#">
+                            <div class="content-box">
+                              <span class="dropdown-text">思考強度 - 中</span><br>
+                            </div>
+                            <br>
+                            <span class="checkmark ms-2">
+                              <img src="./images/icon-check.png">
+                            </span>
+                          </a>
+                        </li>
+                        <li>
+                          <a class="dropdown-item active-" href="#">
+                            <div class="content-box">
+                              <span class="dropdown-text">思考強度 - 高</span><br>
+                            </div>
+                            <br>
+                            <span class="checkmark ms-2">
+                              <img src="./images/icon-check.png">
+                            </span>
+                          </a>
+                        </li>
+                        <li>
+                          <hr class="dropdown-divider">
+                        </li>
+
+                      </ul>
+                    </div>
+
+                    <!-- <button class="btn-reasoning-thinking fs-6" type="button" aria-expanded="false"
+                      data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="先思考後回答，解決推理問題">
+                      <img class="icon-reasoning" src="./images/icon-reasoning.svg">
+                      <p class="ms-1">深度思考</p>
+                    </button> -->
+
+                    <!-- <button class="import-file-btn file-upload" id="" data-bs-toggle="tooltip"
+                      data-bs-placement="bottom" data-bs-title="上傳圖檔，支援 png/jpg"
+                      onclick="document.getElementById('fileInput').click()">
+                      <img class="icon-add" src="./images/icon-add.svg">
+                    </button> 
+                    <button class="import-file-btn" id="" data-bs-toggle="tooltip-" data-bs-placement="bottom"
+                      data-bs-title="選擇提示詞" data-bs-toggle="modal" data-bs-target="#modal-add-member">
+                      <img class="icon-add" src="./images/icon-prompt.svg">
+                    </button>
+                    -->
+                    <button class="import-file-btn file-upload" id="" data-bs-toggle="tooltip"
+                      data-bs-placement="bottom" data-bs-title="上傳圖檔，支援 png/jpg"
+                      onclick="document.getElementById('fileInput').click()">
+                      <img class="icon-add" src="./images/icon-add.svg">
+                    </button>
+
+                    <button class="import-file-btn" id="" data-bs-toggle="modal" data-bs-target="#modal-chose-prompt">
+                      <img class="icon-add" src="./images/icon-prompt.svg">
+                    </button>
+
+                    <!-- <div id="thumbnails"></div>
+                    <div id="errorContainer"></div>
+
+
+                    <div id="zoominImg" class="modal">
+                      <div class="modal-zoomin-img">
+                        <span class="close-btn">×</span>
+                        <img class="modal-image" id="modalImage" src="">
+                      </div>
+                    </div> -->
+
+                    <div class="dropdown ms-3 position-absolute" style="right: 10%;">
+                      <button class="btn btn-select-model-outline dropdown-toggle fs-6 me-3" type="button"
+                        id="modelDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        Llama3.1-FFM-8B
+                      </button>
+                      <ul class="dropdown-menu" aria-labelledby="modelDropdown"
+                        style="max-height: 200px;overflow-y: auto;">
+                        <li>
+                          <a class="dropdown-item active-" href="#">
+                            <div class="content-box">
+                              <span class="dropdown-text">Llama3.1-FFM-8B</span><br>
+                              <mediuam class="text-muted">繁中強化的語言模型</mediuam>
+                            </div>
+                            <br>
+                            <span class="checkmark ms-2">
+                              <img src="./images/icon-check.png">
+                            </span>
+                          </a>
+                        </li>
+                        <li>
+                          <a class="dropdown-item active-" href="#">
+                            <div class="content-box">
+                              <span class="dropdown-text">LLama3.2-FFM-11B</span><br>
+                              <mediuam class="text-muted">繁中強化的多模態模型</mediuam>
+                            </div>
+                            <br>
+                            <span class="checkmark ms-2">
+                              <img src="./images/icon-check.png">
+                            </span>
+                          </a>
+                        </li>
+                        <li>
+                          <a class="dropdown-item active-" href="#">
+                            <div class="content-box">
+                              <span class="dropdown-text">FFM-Mistral-Small-3.1-24B-Reasoning</span><br>
+                              <mediuam class="text-muted">繁中強化的推理模型</mediuam>
+                            </div>
+                            <br>
+                            <span class="checkmark ms-2">
+                              <img src="./images/icon-check.png">
+                            </span>
+                          </a>
+                        </li>
+                        <li>
+                          <hr class="dropdown-divider">
+                        </li>
+                        <li>
+                          <a class="dropdown-item active" href="#">
+                            <div class="content-box">
+                              <span class="dropdown-text">Qwen3-4B</span><br>
+                              <mediuam class="text-muted">多語推理模型</mediuam>
+                            </div>
+                            <br>
+                            <span class="checkmark ms-2">
+                              <img src="./images/icon-check.png">
+                            </span>
+                          </a>
+                        </li>
+                        <li>
+                          <a class="dropdown-item active-" href="#">
+                            <div class="content-box">
+                              <span class="dropdown-text">DeepSeek-R1-Distill-Qwen-1.5B</span><br>
+                              <mediuam class="text-muted">Qwen2.5-1.5B經知識蒸餾的推理模型</mediuam>
+                            </div>
+                            <br>
+                            <span class="checkmark ms-2">
+                              <img src="./images/icon-check.png">
+                            </span>
+                          </a>
+                        </li>
+                        <li>
+                          <a class="dropdown-item active-" href="#">
+                            <div class="content-box">
+                              <span class="dropdown-text">DeepSeek-R1-Distill-Qwen-7B</span><br>
+                              <mediuam class="text-muted">Qwen2.5-7B經知識蒸餾的推理模型</mediuam>
+                            </div>
+                            <br>
+                            <span class="checkmark ms-2">
+                              <img src="./images/icon-check.png">
+                            </span>
+                          </a>
+                        </li>
+
+                        <li>
+                          <a class="dropdown-item active-" href="#">
+                            <div class="content-box">
+                              <span class="dropdown-text">Llama-3.2-11B-Vision-Instruct</span><br>
+                              <mediuam class="text-muted">Meta多模態模型，適用圖像推理問答</mediuam>
+                            </div>
+                            <br>
+                            <span class="checkmark ms-2">
+                              <img src="./images/icon-check.png">
+                            </span>
+                          </a>
+                        </li>
+                        <li>
+                          <a class="dropdown-item active-" href="#">
+                            <div class="content-box">
+                              <span class="dropdown-text">Qwen2.5-1.5B-Instruct</span><br>
+                              <mediuam class="text-muted">小型指令微調語言模型</mediuam>
+                            </div>
+                            <br>
+                            <span class="checkmark ms-2">
+                              <img src="./images/icon-check.png">
+                            </span>
+                          </a>
+                        </li>
+                        <li>
+                          <a class="dropdown-item active-" href="#">
+                            <div class="content-box">
+                              <span class="dropdown-text">TinyLlama-1.1B-Chat-v0.6</span><br>
+                              <mediuam class="text-muted">輕量語言模型，適合資源有限環境</mediuam>
+                            </div>
+                            <br>
+                            <span class="checkmark ms-2">
+                              <img src="./images/icon-check.png">
+                            </span>
+                          </a>
+                        </li>
+                        <li>
+                          <a class="dropdown-item active-" href="#">
+                            <div class="content-box">
+                              <span class="dropdown-text">TinyLlama-1.1B-Chat-v1.0</span><br>
+                              <mediuam class="text-muted">優化版輕量語言模型，提升多輪對話質量</mediuam>
+                            </div>
+                            <br>
+                            <span class="checkmark ms-2">
+                              <img src="./images/icon-check.png">
+                            </span>
+                          </a>
+                        </li>
+
+                      </ul>
+                    </div>
+
+                    <button class="btn btn-chat-send position-absolute" style="right: 2%;">
+                      <img src="./images/btn-send-chat.svg">
+                    </button>
+
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+
+
+            <!-- Modal  選擇提示詞 -->
+            <div class="modal fade" id="modal-chose-prompt" data-bs-backdrop="static" data-bs-keyboard="false"
+              tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header" class="">
+                    <div class="modal-title m-3 fw-bold text-decoration-none fs-4" id="modal-chose-prompt-label">選擇提示詞
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body align-items-center">
+                    <form class="">
+
+                      <div class="row mb-3 align-items-center justify-content-between">
+                        <div class="col position-relative d-inline-block">
+                          <i class="fa fa-magnifying-glass position-absolute modal-search-icon"
+                            style="left: 30px; top: 50%; transform: translateY(-50%);"></i>
+                          <input type="text" id="tableSearchInput" onkeyup="myFunction()" placeholder="搜尋提示詞"
+                            title="Search model name" class="search-input">
+                        </div>
+                        <!-- <div class="col text-primary text-end">
+                          <span class="text-black">已選擇 </span><label id="member-count">2</span><span class="text-black">
+                              成員</span>
+                        </div> -->
+                      </div>
+
+
+                      <div class="table-responsive" style="max-height: 300px; overflow-y: auto;">
+                        <table id="modelmanageTable" class="mt-0 table table-sticky-header table-hover">
+                          <thead class="sticky-top">
+                            <tr class="header">
+                              <th style="width:5%;"></th>
+                              <th style="width:40%;">名稱</th>
+                              <th style="width:40%;">描述</th>
+                              <!-- <th style="width:15%;">功能</th> -->
+                            </tr>
+                          </thead>
+
+                          <tbody>
+                            <tr>
+                              <!-- <td> <input class="form-check-input mt-0" type="checkbox" value=""
+                                  aria-label="Checkbox for following text input"></td>
+                              <td> -->
+                              <td>
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input" type="radio" name="promptSelection" value="1"
+                                    checked->
+                                </div>
+                              </td>
+                              <td>
+                                <label aria-expanded="false" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                  data-bs-title="顯示用戶輸入{名稱}，Hover可察看完整名稱">提示詞名稱</label>
+                              </td>
+                              <td>
+                                <label aria-expanded="false" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                  data-bs-title="顯示用戶輸入{描述}，Hover可察看完整描述">提示詞描述</label>
+                              </td>
+
+                              <!-- <td>
+                            <button class="btn btn-more-action-" type="button" aria-expanded="false"
+                              data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="刪除">
+                              <img src="./images/icon-delete-red.svg">
+                            </button>
+                          </td> -->
+                            </tr>
+
+                            <tr>
+                              <!-- <td> <input class="form-check-input mt-0" type="checkbox" value=""
+                                  aria-label="Checkbox for following text input"></td>
+                              <td> -->
+                              <td>
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input" type="radio" name="promptSelection" value="2"
+                                    checked="">
+                                </div>
+                              </td>
+                              <td>
+                                <label aria-expanded="false" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                  data-bs-title="顯示用戶輸入{名稱}，Hover可察看完整名稱">提示詞名稱</label>
+                              </td>
+                              <td>
+                                <label aria-expanded="false" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                  data-bs-title="顯示用戶輸入{描述}，Hover可察看完整描述">提示詞描述</label>
+                              </td>
+
+                              <!-- <td>
+                            <button class="btn btn-more-action-" type="button" aria-expanded="false"
+                              data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="刪除">
+                              <img src="./images/icon-delete-red.svg">
+                            </button>
+                          </td> -->
+                            </tr>
+
+                            <tr>
+                              <!-- <td> <input class="form-check-input mt-0" type="checkbox" value=""
+                                  aria-label="Checkbox for following text input"></td>
+                              <td> -->
+                              <td>
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input" type="radio" name="promptSelection" value="3">
+                                </div>
+                              </td>
+                              <td>
+                                <label aria-expanded="false" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                  data-bs-title="顯示用戶輸入{名稱}，Hover可察看完整名稱">提示詞名稱</label>
+                              </td>
+                              <td>
+                                <label aria-expanded="false" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                  data-bs-title="顯示用戶輸入{描述}，Hover可察看完整描述">提示詞描述</label>
+                              </td>
+
+                              <!-- <td>
+                            <button class="btn btn-more-action-" type="button" aria-expanded="false"
+                              data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="刪除">
+                              <img src="./images/icon-delete-red.svg">
+                            </button>
+                          </td> -->
+                            </tr>
+                            <tr>
+                              <!-- <td> <input class="form-check-input mt-0" type="checkbox" value=""
+                                  aria-label="Checkbox for following text input"></td>
+                              <td> -->
+                              <td>
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input" type="radio" name="promptSelection" value="4">
+                                </div>
+                              </td>
+                              <td>
+                                <label aria-expanded="false" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                  data-bs-title="顯示用戶輸入{名稱}，Hover可察看完整名稱">提示詞名稱</label>
+                              </td>
+                              <td>
+                                <label aria-expanded="false" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                  data-bs-title="顯示用戶輸入{描述}，Hover可察看完整描述">提示詞描述</label>
+                              </td>
+
+                              <!-- <td>
+                            <button class="btn btn-more-action-" type="button" aria-expanded="false"
+                              data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="刪除">
+                              <img src="./images/icon-delete-red.svg">
+                            </button>
+                          </td> -->
+                            </tr>
+
+                            <tr>
+                              <!-- <td> <input class="form-check-input mt-0" type="checkbox" value=""
+                                  aria-label="Checkbox for following text input"></td>
+                              <td> -->
+                              <td>
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input" type="radio" name="promptSelection" value="5">
+                                </div>
+                              </td>
+                              <td>
+                                <label aria-expanded="false" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                  data-bs-title="顯示用戶輸入{名稱}，Hover可察看完整名稱">提示詞名稱</label>
+                              </td>
+                              <td>
+                                <label aria-expanded="false" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                  data-bs-title="顯示用戶輸入{描述}，Hover可察看完整描述">提示詞描述</label>
+                              </td>
+
+                              <!-- <td>
+                            <button class="btn btn-more-action-" type="button" aria-expanded="false"
+                              data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="刪除">
+                              <img src="./images/icon-delete-red.svg">
+                            </button>
+                          </td> -->
+                            </tr>
+
+                            <tr>
+                              <!-- <td> <input class="form-check-input mt-0" type="checkbox" value=""
+                                  aria-label="Checkbox for following text input"></td>
+                              <td> -->
+                              <td>
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input" type="radio" name="promptSelection" value="6">
+                                </div>
+                              </td>
+                              <td>
+                                <label aria-expanded="false" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                  data-bs-title="顯示用戶輸入{名稱}，Hover可察看完整名稱">提示詞名稱</label>
+                              </td>
+                              <td>
+                                <label aria-expanded="false" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                  data-bs-title="顯示用戶輸入{描述}，Hover可察看完整描述">提示詞描述</label>
+                              </td>
+
+                              <!-- <td>
+                            <button class="btn btn-more-action-" type="button" aria-expanded="false"
+                              data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="刪除">
+                              <img src="./images/icon-delete-red.svg">
+                            </button>
+                          </td> -->
+                            </tr>
+
+                          </tbody>
+
+                        </table>
+                      </div>
+
+                    </form>
+                  </div>
+
+                  <div class="modal-footer d-flex justify-content-between">
+                    <button type="button" class="btn btn-modal-outline fs-6" data-bs-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-modal-default fs-6" data-bs-toggle="modal"
+                      data-bs-target="#modal-prompt-name">確認
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <!-- Modal  {提示詞名稱} -->
+            <div class="modal fade" id="modal-prompt-name" data-bs-backdrop="static" data-bs-keyboard="false"
+              tabindex="-1" aria-labelledby="modal-prompt-name" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header" class="">
+                    <div class="modal-title m-3 fw-bold text-decoration-none fs-4" id="modal-prompt-name-Label"> {提示詞名稱}
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body align-items-center">
+                    <form class="">
+                      <div class="row">
+                        <label for="inputState" class="form-label mb-3">提示詞</label>
+                        <textarea class="form-control" placeholder="自動帶入用戶輸入提示詞，{變數1}、{變數2}..." id=""
+                          style="height: 120px"></textarea>
+                      </div>
+
+                      <div class="row">
+                        <label for="inputState" class="form-label mt-3 mb-3">變數1*</label>
+                        <textarea class="form-control" placeholder="" id="" style="height: 62px"></textarea>
+                      </div>
+
+                      <div class="row">
+                        <label for="inputState" class="form-label mt-3 mb-3">變數2*</label>
+                        <textarea class="form-control" placeholder="" id="" style="height: 62px"></textarea>
+                      </div>
+
+                    </form>
+                  </div>
+
+                  <div class="modal-footer d-flex- justify-content-between">
+                    <!-- <button type="button" class="btn btn-modal-outline fs-6">清除內容</button> -->
+                    <button type="button" class="btn btn-modal-outline fs-6" data-bs-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-modal-default fs-6">套用</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+          </section>
+
+        </main>
+
+
+    </div>
+  </div>
+  <!-- <script src="./js/bootstrap.bundle.min.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom JS for dropdown selection -->
+  <script src="./js/load-admin-header.js"></script>
+  <script src="./js/sidebar.js"></script>
+  <script src="./js/tooltip.js"></script>
+  <script src="./js/file-upload.js"></script>
+
+  <script>
+    $("header").load("parameter-setting.js");
+  </script>
+
+
+  <!-- 參數拉桿 -->
+  <!-- <script>
+  document.addEventListener('DOMContentLoaded', function () {
+  // 取得 Modal 範圍
+  const modal = document.getElementById('modal-parameter-setting');
+
+  // 定義所有參數的設定
+  const paramConfigs = [
+    { slider: 'temp-slider', input: 'temp-input', defaultValue: 0.5 },
+    { slider: 'topp-slider', input: 'topp-input', defaultValue: 1 },
+    { slider: 'topk-slider', input: 'topk-input', defaultValue: 50 },
+    { slider: 'freq-slider', input: 'freq-input', defaultValue: 1 }
+  ];
+
+  // 雙向同步功能
+  function bindSliderInput(slider, input, defaultValue) {
+    // 滑桿變動時，input 跟著變
+    slider.addEventListener('input', function () {
+      input.value = slider.value;
+    });
+    // input 變動時，滑桿跟著變
+    input.addEventListener('input', function () {
+      let val = parseFloat(input.value);
+      const min = parseFloat(slider.min);
+      const max = parseFloat(slider.max);
+      if (isNaN(val)) val = defaultValue;
+      if (val < min) val = min;
+      if (val > max) val = max;
+      slider.value = val;
+      input.value = val;
+    });
+  }
+
+  // 初始化所有滑桿與 input 的同步
+  const controls = [];
+  paramConfigs.forEach(cfg => {
+    const slider = modal.querySelector(`#${cfg.slider}`);
+    const input = modal.querySelector(`#${cfg.input}`);
+    if (slider && input) {
+      bindSliderInput(slider, input, cfg.defaultValue);
+      controls.push({ slider, input, defaultValue: cfg.defaultValue });
+    }
+  });
+
+  // 最大生成token數
+  const tokenInput = modal.querySelector('#token-input');
+  const tokenDefault = '4096';
+
+  // Modal 開啟時初始化所有值
+  modal.addEventListener('shown.bs.modal', function () {
+    controls.forEach(({ slider, input, defaultValue }) => {
+      slider.value = defaultValue;
+      input.value = defaultValue;
+    });
+    if (tokenInput) tokenInput.value = tokenDefault;
+  });
+
+  // 重置按鈕功能
+  const resetBtn = modal.querySelector('#reset-btn');
+  if (resetBtn) {
+    resetBtn.addEventListener('click', function () {
+      controls.forEach(({ slider, input, defaultValue }) => {
+        slider.value = defaultValue;
+        input.value = defaultValue;
+      });
+      if (tokenInput) tokenInput.value = tokenDefault;
+    });
+  }
+});
+
+</script> -->
+
+
+
+
+
+  <script>
+    document.querySelectorAll('.dropdown-item').forEach(item => {
+      item.addEventListener('click', function (e) {
+        //e.preventDefault();
+        // 移除所有選項的 active 類別和勾勾
+        document.querySelectorAll('.dropdown-item').forEach(i => {
+          i.classList.remove('active');
+          i.querySelector('.checkmark').style.display = 'none';
+        });
+        // 為當前選項添加 active 類別和顯示勾勾
+        this.classList.add('active');
+        this.querySelector('.checkmark').style.display = 'inline-block';
+        // 更新按鈕文字
+        const selectedText = this.querySelector('span').textContent;
+        document.querySelector('#modelDropdown').textContent = selectedText;
+      });
+    });
+  </script>
+
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const fileInput = document.getElementById('fileInput');
+      const dropZone = document.getElementById('dropZone');
+      const textarea = document.querySelector('textarea.form-control-chat');
+
+      if (fileInput && dropZone && textarea) {
+        zoominImg.style.display = 'none';
+
+        fileInput.addEventListener('change', () => {
+          console.log('File input changed, files:', fileInput.files.length);
+          if (fileInput.files.length > 0) {
+            textarea.classList.add('shift-down');
+          } else {
+            textarea.classList.remove('shift-down');
+          }
+        });
+
+
+        // 僅允許 question-dialog 類別及其內部所有 class 標籤觸發 click 事件
+        dropZone.addEventListener('click', (e) => {
+          if (!e.target.closest('.question-dialog') && !e.target.closest('.question-dialog *')) {
+            e.preventDefault();
+            e.stopPropagation();
+          }
+        });
+
+        // 處理拖曳上傳
+        dropZone.addEventListener('dragover', (e) => {
+          e.preventDefault();
+          dropZone.style.backgroundColor = '#e1e1e1';
+        });
+
+        dropZone.addEventListener('dragleave', () => {
+          dropZone.style.backgroundColor = '';
+        });
+
+        dropZone.addEventListener('drop', (e) => {
+          e.preventDefault();
+          dropZone.style.backgroundColor = '';
+          const files = e.dataTransfer.files;
+          if (files.length > 0) {
+            fileInput.files = files;
+            textarea.classList.add('shift-down');
+            console.log('Files dropped, count:', files.length);
+          } else {
+            textarea.classList.remove('shift-down');
+          }
+        });
+      } else {
+        console.error('fileInput, dropZone, or textarea not found');
+      }
+    });
+  </script>
+
+  <!-- 每行增加高度  -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const textarea = document.querySelector('textarea.form-control-chat');
+      if (textarea) {
+        textarea.addEventListener('input', () => {
+          const scrollHeight = textarea.scrollHeight; // 獲取內容總高度
+          const lineHeight = 44;                      // 每行高度 44px
+          const requiredLines = Math.ceil(scrollHeight / lineHeight); // 計算所需行數
+          const requiredHeight = requiredLines * lineHeight;          // 計算總高度
+          textarea.style.height = requiredHeight + 'px';              // 設定新高度
+        });
+      }
+    });
+  </script>
+
+  <!-- 初始化 Tooltip -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+      const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+    });
+  </script>
+
+
+  <!-- 拖曳圖片背景提示文案 -->
+  <script>
+    const dragModal = document.getElementById('dragModal');
+    let isDraggingOver = false;
+    let timeoutId = null;
+
+    dragModal.addEventListener('dragenter', (e) => {
+      e.preventDefault();
+      if (!isDraggingOver) {
+        isDraggingOver = true;
+        dragModal.classList.add('dragover');
+      }
+    });
+
+    dragModal.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
+    });
+
+    dragModal.addEventListener('dragleave', (e) => {
+      e.preventDefault();
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
+      timeoutId = setTimeout(() => {
+        if (isDraggingOver) {
+          isDraggingOver = false;
+          dragModal.classList.remove('dragover');
+        }
+      }, 100);
+    });
+
+    dragModal.addEventListener('drop', (e) => {
+      e.preventDefault();
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
+      isDraggingOver = false;
+      dragModal.classList.remove('dragover');
+    });
+
+    // 監聽整個頁面的拖曳事件，以便在拖曳開始時顯示 dragModal
+    document.addEventListener('dragenter', (e) => {
+      if (e.dataTransfer.types.includes('Files')) {
+        if (!isDraggingOver) {
+          isDraggingOver = true;
+          dragModal.classList.add('dragover');
+        }
+      }
+    });
+  </script>
+
+  <script>
+    $(document).ready(function () {
+      const $thumbnails = $('#thumbnails');
+
+      // 拖曳事件
+      $thumbnails.on('dragover', function (e) {
+        e.preventDefault();
+        $(this).css('border-color', '#000');
+      });
+
+      $thumbnails.on('dragleave', function (e) {
+        e.preventDefault();
+        $(this).css('border-color', '#ccc');
+      });
+
+      $thumbnails.on('drop', function (e) {
+        e.preventDefault();
+        $(this).css('border-color', '#ccc');
+        const files = e.originalEvent.dataTransfer.files;
+
+        $.each(files, function (index, file) {
+          if (file.type.startsWith('image/')) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+              const imgSrc = e.target.result;
+              const imgId = 'img-' + Date.now() + '-' + index;
+              $thumbnails.append(
+                `<div class="thumbnail-container">
+                                    <img src="${imgSrc}" class="thumbnail" id="${imgId}">
+                                </div>`
+              );
+            };
+            reader.readAsDataURL(file);
+          }
+        });
+      });
+
+      // 點擊縮圖顯示 modal
+      $(document).on('click', '#thumbnails .thumbnail', function () {
+        $('#zoominImg').css('display', 'flex');
+        $('#modalImage').attr('src', $(this).attr('src'));
+      });
+
+      // 關閉按鈕
+      $('.close-btn').on('click', function () {
+        $('#zoominImg').css('display', 'none');
+      });
+
+      // 點擊背景關閉
+      $('#zoominImg').on('click', function (e) {
+        if ($(e.target).is('#zoominImg')) {
+          $('#zoominImg').css('display', 'none');
+        }
+      });
+    });
+  </script>
+
+  <!-- sidebar 收合 -->
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById('toggleSidebar');
+      const content = document.getElementById('main_content');
+      sidebar.classList.toggle('collapsed');
+      if (sidebar.classList.contains('collapsed')) {
+        content.style.marginLeft = '-150px';
+      } else {
+        content.style.marginLeft = '50px';
+      }
+    }
+  </script>
+
+  <!-- main_content 的寬度計算 -->
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById("toggleSidebar");
+      const mainContent = document.getElementById("main_content");
+
+      sidebar.classList.toggle("collapsed");
+
+      if (sidebar.classList.contains("collapsed")) {
+        mainContent.style.marginLeft = "0px";
+        mainContent.style.width = "calc(100% - 0px)";
+      } else {
+        mainContent.style.marginLeft = "150px";
+        mainContent.style.width = "calc(100% - 150px)";
+      }
+    }
+  </script>
+
+</body>
+
+</html>

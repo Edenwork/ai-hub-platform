@@ -135,8 +135,8 @@
 
 .btn-modal-outline{
     background-color: transparent;
-    color:#004693; /* #0D99C8; */
-    border: 1px solid #004693;
+    color:var(--main-color); /* #0D99C8; */
+    border: 1px solid var(--main-color);
     padding: 6px 48px;
     border-radius: 5px;
     /* font-size: 16px; */
@@ -146,7 +146,7 @@
     /* min-width: 148px; */
   }
   .btn-modal-default{
-    background-color: #004693;
+    background-color: var(--main-color);
     color: #fff; 
     border: none;
     padding: 7px 58px;
@@ -159,7 +159,7 @@
   }
   
   .btn-modal-default:hover,.btn-modal-outline:hover {
-    background-color: #0D99C8;
+    background-color: var(--btn-bg-hover);
     color: #fff;
   }
   .btn-modal-danger{

@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <title>AI應用管理</title>
+  <link href="./css/bootstrap.min.css" rel="stylesheet">
+  <!-- <link href="./css/breadcrumbs.css" rel="stylesheet"> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    .card-icon-more-info {
+      position: absolute;
+      display: inline-flex;
+      align-items: center;
+      top: 19px;
+      right: 16px;
+      padding: 4px 8px;
+      /* border: 1px solid #CFCFCF; */
+      border-radius: 4px;
+    }
+
+    .btn-more-action-v {
+      background-color: transparent;
+      border: none;
+      border-radius: 5px;
+      font-size: 18px;
+      color: #000;
+      width: 34px;
+      height: 34px;
+    }
+
+    .btn-more-action-v:hover {
+      background-color: #fff;
+      border-radius: 5px;
+      color: #000;
+    }
+
+
+  </style>
+
+  <!-- Custom styles -->
+  <link href="./css/style.css" rel="stylesheet">
+  <link href="./css/sidebar.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="./css/dashboard.css" rel="stylesheet">
+  <link href="./css/add-model.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="./js/parameter-setting.js"></script>
+</head>
+
+<body>
+
+  <!-- 動態載入 header -->
+  <!-- <header></header>
+
+  <script>
+    $(function () {
+      $("header").load("header-admin.html", function () {
+        initParameterModal();
+      });
+    });
+  </script> -->
+
+  <div class="container-fluid">
+    <div class="row">
+
+      <!-- 動態載入 sidebar -->
+      <div id="sidebar-admin" class="col-md-4- col-lg-3- z-3"></div>
+
+      <script>
+        $(function () {
+          $("#sidebar-admin").load("sidebar-admin.html", function () {
+          });
+        });
+      </script>
+
+      <main class="px-md-4 dashboard-round-bg full-width-when-collapsed file-upload" id="content">
+        <section class="container-manage">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb rounded-3">
+              <li class="breadcrumb-item active">
+                <a class="link-body-default fw-bold text-decoration-none fs-4" href="#">AI應用管理</a>
+              </li>
+            </ol>
+          </nav>
+        </section>
+
+
+        <section>
+          <div class="d-flex flex-row justify-content-between- justify-content-end align-items-center" style="">
+            <!-- <button class="btn btn-add-user">
+              <a href="/ai-agent-card.html">
+                <i class="fa fa-plus me-2"></i> card版本</a>
+            </button> -->
+            <!-- <div class="position-relative d-inline-block"><i
+                class="fa fa-magnifying-glass position-absolute search-icon"></i>
+              <input type="text" id="tableSearchInput" onkeyup="myFunction()" placeholder="輸入..搜尋"
+                title="Search model name" class="search-input ps-5-">
+            </div> -->
+
+            <div class="dropdown dropstart- ms-3-">
+              <button class="btn btn-more-action dropdown-toggle" type="button" id="modelDropdown-x"
+                data-bs-toggle="dropdown" data-popper-placement="right-end" aria-expanded="false">
+                近7天操作紀錄
+              </button>
+              <div class="dropdown-menu dropdown-menu-start p-0 overflow-y-scroll shadow"
+                data-popper-placement="right-end-"
+                style="transform: translate(-360px, 0px) !important; background-color:#f8f9fa !important" ;
+                style="min-height: 300px;overflow: auto">
+                <table class="table table-log">
+                  <thead class="table-light sticky-top">
+                    <tr>
+                      <th scope="col">模型</th>
+                      <th scope="col">操作者</th>
+                      <th scope="col">動作/狀態</th>
+                    </tr>
+                  </thead>
+
+                  <tr>
+                    <td><label class="label_log_model">gpt-oss-20B</label><br>
+                      <p class="label_log_time">2025-11-07 18:02:00</p>
+                    </td>
+                    <td>Test User 1</td>
+                    <td>下載模型</td>
+                  </tr>
+                  <tr>
+                    <td><label class="label_log_model">FFM-Embedding-v2.1</label><br>
+                      <p class="label_log_time">2025-11-07 18:02:00</p>
+                    </td>
+                    <td>Test User Name
+                      Test...</td>
+                    <td>下載模型成功</td>
+                  </tr>
+                  <tr>
+                    <td><label class="label_log_model">FFM-Embedding-v2.1</label><br>
+                      <p class="label_log_time">2025-11-07 18:02:00</p>
+                    </td>
+                    <td>Test User Name
+                      Test...</td>
+                    <td>啟用模型失敗 - 儲存可用空間不足...</td>
+                  </tr>
+
+                  <tr>
+                    <td><label class="label_log_model">FFM-Embedding-v2.1</label><br>
+                      <p class="label_log_time">2025-11-07 18:02:00</p>
+                    </td>
+                    <td>User Name 2</td>
+                    <td>啟用模型失敗 - 儲存可用空間不足...</td>
+                  </tr>
+                </table>
+
+
+              </div>
+            </div>
+
+          </div>
+
+          <div class="table-responsive">
+            <table id="modelmanageTable" class="">
+              <tr class="header">
+                <th style="width:25%;">AI應用名稱</th>
+                <th style="width:20%;">AI應用簡介</th>
+                <th style="width:10%;">發行者</th>
+                <th style="width:10%;">檔案大小</th>
+                <th style="width:20%;">狀態
+                  <img class="ms-1 cursor-pointer" src="./images/icon-info.svg" data-bs-toggle="tooltip"
+                    data-bs-placement="bottom"
+                    data-bs-title="請先完成AI應用下載並啟用後才能使用。『已下載』僅表示AI應用檔案已準備完成，尚未啟用。請啟用AI應用後才能進行互動。">
+                </th>
+                <th class="col" style="width:15%;">使用權限<img class="ms-1 cursor-pointer" src="./images/icon-info.svg"
+                    data-bs-toggle="tooltip" data-bs-placement="bottom" title="「開放」代表所有使用者皆可使用，「指定群組」代表僅限被授權群組使用。"></th>
+                <th style="width:10%;">功能</th>
+              </tr>
+
+              <tr>
+                <td>
+                  <a href="/agent-info-page.html" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                    data-bs-title="Hover tooltip 看全部AI應用名稱">
+                    <img class="me-1 cursor-pointer" src="./images/icon-open-page.svg">
+                    AI醫護虛實共照
+                  </a>
+                </td>
+                <td data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Hover tooltip 看全部AI應用簡介">
+                  智慧化臨床輔助工具，能即時分析患者診斷與用藥資料</td>
+                <td>台灣智慧雲端服務股份有限公司</td>
+                <td>10GB</td>
+                <td>未下載</td>
+                <td>指定群組</td>
+                <td>
+                  <div class="dropdown">
+                    <button class="btn btn-more-action" type="button" id="actionDropdown" data-bs-toggle="dropdown"
+                      aria-expanded="false">
+                      <i class="fa fa-ellipsis-h"></i>
+                    </button>
+                    <!-- 下拉選單 -->
+                    <ul class="dropdown-menu" aria-labelledby="actionDropdown">
+                      <li>
+                        <a class="dropdown-item" href="#">
+                          <img src="./images/icon-ok.svg">
+                          <span class="dropdown-mg fs-6"> 下載</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="/model-manage-setup-all.html">
+                          <img src="./images/icon-setup.svg">
+                          <span class="dropdown-mg fs-6"> 使用權限設定</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <a href="/agent-info-page.html" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                    data-bs-title="Hover tooltip 看全部AI應用名稱">
+                    <img class="me-1 cursor-pointer" src="./images/icon-open-page.svg">
+                    {AI應用名稱}
+                  </a>
+                </td>
+                <td data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Hover tooltip 看全部AI應用簡介">{AI應用簡介}
+                </td>
+                <td>{發行者}</td>
+                <td>10GB</td>
+                <td>下載中 ... (<label>15%</label>)</td>
+                <td>指定群組</td>
+                <td>
+                  <div class="dropdown">
+                    <button class="btn btn-more-action" type="button" id="actionDropdown" data-bs-toggle="dropdown"
+                      aria-expanded="false">
+                      <i class="fa fa-ellipsis-h"></i>
+                    </button>
+                    <!-- 下拉選單 -->
+                    <ul class="dropdown-menu" aria-labelledby="actionDropdown">
+                      <li>
+                        <a class="dropdown-item" href="#">
+                          <img src="./images/icon-delete-red.svg">
+                          <span class="text-danger dropdown-mg fs-6"> 刪除</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="/model-manage-setup-assign.html">
+                          <img src="./images/icon-setup.svg">
+                          <span class="dropdown-mg fs-6"> 使用權限設定</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <a href="/agent-info-page.html" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                    data-bs-title="Hover tooltip 看全部AI應用名稱">
+                    <img class="me-1 cursor-pointer" src="./images/icon-open-page.svg">
+                    {AI應用名稱}
+                  </a>
+                </td>
+                <td data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Hover tooltip 看全部AI應用簡介">{AI應用簡介}
+                </td>
+                <td>{發行者}</td>
+                <td>10GB</td>
+                <td>已下載未啟用</td>
+                <td>指定群組</td>
+                <td>
+                  <div class="dropdown">
+                    <button class="btn btn-more-action" type="button" id="actionDropdown" data-bs-toggle="dropdown"
+                      aria-expanded="false">
+                      <i class="fa fa-ellipsis-h"></i>
+                    </button>
+                    <!-- 下拉選單 -->
+                    <ul class="dropdown-menu" aria-labelledby="actionDropdown">
+                      <li>
+                        <a class="dropdown-item" href="#">
+                          <img src="./images/icon-ativate.svg">
+                          <span class="dropdown-mg fs-6"> 啟用</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="#">
+                          <img src="./images/icon-delete-red.svg">
+                          <span class="text-danger dropdown-mg fs-6"> 刪除</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="/model-manage-setup-assign.html">
+                          <img src="./images/icon-setup.svg">
+                          <span class="dropdown-mg fs-6"> 使用權限設定</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <a href="/agent-info-page.html" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                    data-bs-title="Hover tooltip 看全部AI應用名稱">
+                    <img class="me-1 cursor-pointer" src="./images/icon-open-page.svg">
+                    {AI應用名稱}
+                  </a>
+                </td>
+                <td data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Hover tooltip 看全部AI應用簡介">{AI應用簡介}
+                </td>
+                <td>{發行者}</td>
+                <td>10GB</td>
+                <td>啟用中 ... (<label>25%</label>)</td>
+                <td>開放</td>
+                <td>
+                  <div class="dropdown">
+                    <button class="btn btn-more-action" type="button" id="actionDropdown" data-bs-toggle="dropdown"
+                      aria-expanded="false">
+                      <i class="fa fa-ellipsis-h"></i>
+                    </button>
+                    <!-- 下拉選單 -->
+                    <ul class="dropdown-menu" aria-labelledby="actionDropdown">
+                      <li>
+                        <a class="dropdown-item" href="#">
+                          <img src="./images/icon-stop.svg">
+                          <span class="dropdown-mg fs-6"> 停用</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="/model-manage-setup-assign.html">
+                          <img src="./images/icon-setup.svg">
+                          <span class="dropdown-mg fs-6"> 使用權限設定</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <a href="/agent-info-page.html" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                    data-bs-title="Hover tooltip 看全部AI應用名稱">
+                    <img class="me-1 cursor-pointer" src="./images/icon-open-page.svg">
+                    {AI應用名稱}
+                  </a>
+                </td>
+                <td data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Hover tooltip 看全部AI應用簡介">{AI應用簡介}
+                </td>
+                <td>{發行者}</td>
+                <td>10GB</td>
+                <td>已啟用</td>
+                <td>開放</td>
+                <td>
+                  <div class="dropdown">
+                    <button class="btn btn-more-action" type="button" id="actionDropdown" data-bs-toggle="dropdown"
+                      aria-expanded="false">
+                      <i class="fa fa-ellipsis-h"></i>
+                    </button>
+                    <!-- 下拉選單 -->
+                    <ul class="dropdown-menu" aria-labelledby="actionDropdown">
+                      <li>
+                        <a class="dropdown-item" href="#">
+                          <img src="./images/icon-stop.svg">
+                          <span class="dropdown-mg fs-6"> 停用</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="/model-manage-setup-assign.html">
+                          <img src="./images/icon-setup.svg">
+                          <span class="dropdown-mg fs-6"> 使用權限設定</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </td>
+              </tr>
+
+            </table>
+          </div>
+
+        </section>
+
+      </main>
+
+    </div>
+  </div>
+  <script src="./js/bootstrap.bundle.min.js"></script>
+  <script src="./js/table.js"></script>
+
+  <!-- Custom JS for dropdown selection -->
+  <script src="./js/load-admin-header.js"></script>
+  <script src="./js/sidebar-admin.js"></script>
+  <script src="./js/parameter-setting.js"></script>
+  <script src="./js/tooltip.js"></script>
+
+  <!-- 密碼眼睛 -->
+  <script>
+    document.querySelector('.toggle-password').addEventListener('click', function () {
+      const passwordInput = document.querySelector('#password');
+      const icon = this.querySelector('i');
+      if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        icon.classList.remove('fa-eye');
+        icon.classList.add('fa-eye-slash');
+      } else {
+        passwordInput.type = 'password';
+        icon.classList.remove('fa-eye-slash');
+        icon.classList.add('fa-eye');
+      }
+    });
+  </script>
+
+  <!-- 在Card 的其他地方也可觸發 radio，並排除點擊下載按鈕 -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // 獲取所有 card-add-model-container 元素
+      const containers = document.querySelectorAll('.card-add-model-container');
+
+      containers.forEach(container => {
+        container.addEventListener('click', function (event) {
+          // 防止點擊 button 或其他特定元素時觸發 radio
+          // 如果點擊的是 button 或 radio 本身，則不處理
+          // const target = event.target;
+          // if (target.closest('.download-btn') || target.closest('.radio-btn'))|| target.closest('.radio-btn')) {
+          //     return; 
+          // }
+
+          // 如果點擊的是 disabled ，則不處理
+          const target = event.target;
+          if (target.closest('.disabled')) {
+            return;
+          }
+
+          // 找到容器內的 radio 按鈕
+          const radio = container.querySelector('.radio-btn');
+          if (radio) {
+            radio.checked = true; // 選中 radio
+          }
+        });
+      });
+    });
+  </script>
+
+
+</body>
+
+</html>

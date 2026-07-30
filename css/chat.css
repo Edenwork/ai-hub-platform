@@ -32,7 +32,7 @@
 .chat-user-message .message-content {
     background-color: #EBEBEB;
     border-radius: 22px;
-    padding: 0.875rem 1.8rem;
+    padding: 4px 16px; /* 0.875rem 1.8rem; */
     position: relative;
     display: inline-flex;
     align-items: center;
@@ -189,19 +189,16 @@
 
 
   .file-upload {
-    width: 80%;
+    /* width: 80%;
     max-width: 800px;
     padding: 20px;
     border: 2px dashed #ccc;
     border-radius: 10px;
     text-align: center;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.1); */
     position: relative;
   }
-  /* .file-upload.dragover {
-    border-color: #6200ea;
-    background: rgba(98, 0, 234, 0.1);
-  } */
+
   .question-dialog.dragover{
     border-color: #6200ea;
     background: rgba(98, 0, 234, 0.1);
@@ -313,5 +310,6 @@
     }
 
     .chat-collapse-content-text {
-      color: #292929;
+      color: var(--link-text-color) ; /* var(--primary); */
+      font-size: 0.95rem;
     }

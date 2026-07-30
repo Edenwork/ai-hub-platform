@@ -9,6 +9,7 @@
   <link href="./css/bootstrap.min.css" rel="stylesheet">
   <!-- <link href="./css/breadcrumbs.css" rel="stylesheet"> -->
   <link href="./css/style.css" rel="stylesheet">
+    <link href="./css/sidebar.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <!-- Custom styles -->
@@ -21,7 +22,7 @@
 <body>
 
   <!-- 動態載入 header -->
-  <header></header>
+  <!-- <header></header>
 
   <script>
     $(function () {
@@ -29,13 +30,13 @@
         initParameterModal();
       });
     });
-  </script>
+  </script> -->
 
   <div class="container-fluid">
     <div class="row">
 
       <!-- 動態載入 sidebar -->
-      <div id="sidebar-admin" class="col-md-4 col-lg-3 z-3"></div>
+      <div id="sidebar-admin" class="col-md-4- col-lg-3- z-3"></div>
 
       <script>
         $(function () {
@@ -44,11 +45,8 @@
         });
       </script>
 
-
-
-
-      <main class="col-md-8 ms-sm-auto col-lg-9 px-md-4 dashboard-round-bg">
-        <section class="container-chat">
+      <main class="px-md-4 dashboard-round-bg full-width-when-collapsed file-upload" id="content">
+        <section class="container-manage">
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb rounded-3">
               <!-- <li class="breadcrumb-item">
@@ -346,7 +344,7 @@
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header" class="">
-                  <div class="modal-title m-3 fw-bold text-decoration-none fs-4" id="smodal-extend-api-key">展延API金鑰
+                  <div class="modal-title m-3 fw-bold text-decoration-none fs-4" id="modal-extend-api-key">展延API金鑰
                   </div>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
@@ -436,7 +434,7 @@
 
   <!-- Custom JS for dropdown selection -->
   <script src="./js/load-admin-header.js"></script>
-  <script src="./js/load-admin-sidebar.js"></script>
+  <script src="./js/sidebar-admin.js"></script>
   <script src="./js/parameter-setting.js"></script>
   <script src="./js/tooltip.js"></script>
 

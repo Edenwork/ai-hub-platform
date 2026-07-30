@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <title>group-manage</title>
+  <link href="./css/bootstrap.min.css" rel="stylesheet">
+  <!-- <link href="./css/breadcrumbs.css" rel="stylesheet"> -->
+  <link href="./css/style.css" rel="stylesheet">
+  <link href="./css/global.css" rel="stylesheet">
+  <link href="./css/sidebar.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+
+  </style>
+
+  <!-- Custom styles -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="./css/dashboard.css" rel="stylesheet">
+  <!-- <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script> -->
+</head>
+
+<body>
+
+  <!-- 動態載入 header -->
+  <!-- <header></header>
+
+  <script>
+    $(function () {
+      $("header").load("header-admin.html", function () {
+        initParameterModal();
+      });
+    });
+  </script> -->
+
+
+  <div class="container-fluid">
+    <div class="row">
+
+      <!-- 動態載入 sidebar -->
+        <div id="sidebar"></div>
+
+       <script>
+        async function loadSidebar() {
+          try {
+            const response = await fetch('sidebar-admin.html');
+            const html = await response.text();
+            document.getElementById('sidebar').innerHTML = html;
+            initParameterModal();  // 你的初始化函式
+          } catch (err) {
+            console.error('載入 sidebar 失敗', err);
+          }
+        }
+        loadSidebar();
+      </script>
+
+      <!-- <div id="sidebar-admin" class="col-md-4- col-lg-3- z-3"></div>
+
+      <script>
+        $(function () {
+          $("#sidebar-admin").load("sidebar-admin.html", function () {
+          initParameterModal();
+          });
+        });
+      </script> -->
+
+      <main class="px-md-4 dashboard-round-bg full-width-when-collapsed file-upload" id="content">
+        <section class="section-max-width">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb rounded-3">
+              <!-- <li class="breadcrumb-item">
+                  <a class="link-body-emphasis fw-semibold text-decoration-none" href="index.html"><img
+                      src="./images/logo/icon-breadcrumb-logo.png"></a>
+                </li> -->
+              <li class="breadcrumb-item active">
+                <label class="link-body-default fw-bold text-decoration-none fs-4 mb-3">群組管理</label>
+              </li>
+              <!-- <li class="breadcrumb-item text-decoration-none " aria-current="page">
+                  新增模型
+                </li> -->
+            </ol>
+          </nav>
+
+
+        </section>
+
+
+
+        <section class="section-max-width">
+          <div class="d-flex flex-row justify-content-between align-items-center" style="">
+            <button class="btn btn-add-user">
+              <a href="./group-manage-new.html">
+                <i class="fa fa-plus me-2"></i> 新增群組</a>
+            </button>
+          </div>
+
+          <table id="modelmanageTable">
+            <tr class="header">
+              <th style="width:15%;">名稱</th>
+              <th style="width:15%;">描述</th>
+              <th style="width:10%;">人數</th>
+              <!-- <th style="width:20%;">建立者</th> -->
+              <th style="width:15%;">建立時間</th>
+              <th style="width:15%;">最後修改時間</th>
+              <th style="width:10%;">功能</th>
+            </tr>
+
+            <tr>
+              <td>非RD</td>
+              <td aria-expanded="false" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                data-bs-title=""></td>
+              <td>1</td>
+              <!-- <td aria-expanded="false" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                data-bs-title="顯示用戶輸入姓氏＋名字，滑鼠hover可查看完整描述">姓氏＋名字</td> -->
+              <td>2025-11-07 14:03:18</td>
+              <td> </td>
+              <td>
+                <div class="dropdown">
+                  <button class="btn btn-more-action" type="button" id="actionDropdown" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    <i class="fa fa-ellipsis-h"></i>
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="actionDropdown">
+                    <li>
+                      <a class="dropdown-item" href="./group-manage-edit.html">
+                        <img src="./images/icon-edit.svg">
+                        <span class="text-danger- dropdown-mg fs-6"> 修改</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#group-delete">
+                        <img src="./images/icon-delete-red.svg">
+                        <span class="text-danger dropdown-mg fs-6"> 刪除</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <td>開發部門</td>
+              <td aria-expanded="false" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                data-bs-title="RD修改">RD修改</td>
+              <td>3</td>
+              <!-- <td aria-expanded="false" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                data-bs-title="顯示用戶輸入姓氏＋名字，滑鼠hover可查看完整描述">姓氏＋名字</td> -->
+              <td>2025-10-14 13:56:05</td>
+              <td> </td>
+              <td>
+                <div class="dropdown">
+                  <button class="btn btn-more-action" type="button" id="actionDropdown" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    <i class="fa fa-ellipsis-h"></i>
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="actionDropdown">
+                    <li>
+                      <a class="dropdown-item" href="./group-manage-edit.html">
+                        <img src="./images/icon-edit.svg">
+                        <span class="text-danger- dropdown-mg fs-6"> 修改</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#group-delete-disable">
+                        <img src="./images/icon-delete-red.svg">
+                        <span class="text-danger dropdown-mg fs-6"> 刪除</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </td>
+            </tr>
+
+            <!-- <tr>
+              <td>群組1</td>
+              <td aria-expanded="false" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                data-bs-title="顯示用戶輸入全部描述，滑鼠hover可查看完整描述"> 顯示用戶輸入部分描述，滑鼠hover可查看完整描述</td>
+              <td>1</td>
+              <td>YYYY-MM-DD HH:MM:SS</td>
+              <td>YYYY-MM-DD HH:MM:SS</td>
+              <td>
+                <div class="dropdown">
+                  <button class="btn btn-more-action" type="button" id="actionDropdown" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    <i class="fa fa-ellipsis-h"></i>
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="actionDropdown">
+                    <li>
+                      <a class="dropdown-item" href="./group-manage-edit.html">
+                        <img src="./images/icon-edit.svg">
+                        <span class="text-danger- dropdown-mg fs-6"> 修改</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#group-delete">
+                        <img src="./images/icon-delete-red.svg">
+                        <span class="text-danger dropdown-mg fs-6"> 刪除</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </td>
+            </tr> -->
+
+          </table>
+
+        </section>
+
+
+        <!-- Modal 刪除群組 -->
+        <div class="modal fade" id="group-delete" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+          aria-labelledby="group-delete" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header text-center" style="padding-left: 38%;">
+                <div class="modal-title m-2 fw-bold text-decoration-none fs-4" id="group-delete">刪除群組</div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body align-items-center text-center">
+                <p class="text-danger">刪除後，將無法復原此群組，請確認是否要刪除？</p>
+              </div>
+
+
+              <div class="modal-footer d-flex justify-content-between">
+                <button type="button" class="btn btn-modal-outline fs-6" data-bs-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-modal-danger fs-6">刪除</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal 無法刪除群組 -->
+        <div class="modal fade" id="group-delete-disable" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+          aria-labelledby="group-delete-disable" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header text-center" style="padding-left: 38%;">
+                <div class="modal-title m-2 fw-bold text-decoration-none fs-4" id="group-delete-disable">無法刪除群組</div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body align-items-center text-center">
+                <p class="text-danger">請先至模型管理或Agent管理移除群組使用權限設定，再刪除群組</p>
+              </div>
+
+
+              <div class="modal-footer d-flex justify-content-center">
+                <button type="button" class="btn btn-modal-outline fs-6" data-bs-dismiss="modal">關閉視窗</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+      </main>
+
+    </div>
+  </div>
+  <script src="./js/bootstrap.bundle.min.js"></script>
+  <script src="./js/table.js"></script>
+
+  <!-- Custom JS for dropdown selection -->
+  <script src="./js/load-admin-header.js"></script>
+  <script src="./js/sidebar.js"></script>
+  <!-- <script src="./js/sidebar-admin.js"></script> -->
+  <script src="./js/parameter-setting.js"></script>
+  <script src="./js/tooltip.js"></script>
+  <script>
+    document.querySelectorAll('.dropdown-item').forEach(item => {
+      item.addEventListener('click', function (e) {
+        //e.preventDefault();
+        // 移除所有選項的 active 類別和勾勾
+        document.querySelectorAll('.dropdown-item').forEach(i => {
+          i.classList.remove('active');
+          i.querySelector('.checkmark').style.display = 'none';
+        });
+        // 為當前選項添加 active 類別和顯示勾勾
+        this.classList.add('active');
+        this.querySelector('.checkmark').style.display = 'inline-block';
+        // 更新按鈕文字
+        const selectedText = this.querySelector('span').textContent;
+        document.querySelector('#modelDropdown').textContent = selectedText;
+      });
+    });
+  </script>
+
+
+
+</body>
+
+</html>

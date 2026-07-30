@@ -1,0 +1,61 @@
+
+/* GLOBAL CSS VARIABLES
+   架構：Reference / Palette (底層：物理來源) -> Brand Palette (來源) -> System Tokens (語意化，最常使用) -> Component Tokens (元件專屬) */
+
+:root {
+  /* ── 1. Base / Palette ── 最底層物理顏色、中性名稱（客戶專屬原始色票） */
+  --base-black:      #222222;
+  --base-blue-dark:  #23237B;
+  --base-white:      #ffffff;
+  --base-red:        #ca0729;
+  --base-red-dark:   #ad001d;
+  --base-gray-50:    #f9fbff;     /* 內容區淡背景 */
+  --base-gray-200:   #e8e8e8;     /* hover、次要容器 */
+  --base-gray-300:   #e1e1e1;     /* 邊框基礎 */
+  --base-gray-600:   #555555;     /* 次要文字 */
+
+  /* ── 2. Brand ── 品牌角色映射（換客戶主要改這裡） */
+  /* Brand 品牌色 / Accent 原始色 */
+  /*  --main-color / --primary：穩重主品牌色 */
+  /* --second-color：較有活力的強調/次品牌色 */
+
+  --brand-primary:    var(--base-black);
+  --brand-secondary:  var(--base-blue-dark);
+  /* 如果 error 是品牌專屬才放這裡，否則建議直接在 system 引用 base */
+
+  /* ── 3. System ── 系統語意角色（開發者/元件主要使用這層） */
+  --sys-color-primary:            var(--brand-primary);
+  --sys-color-on-primary:         var(--base-white); /* 按鈕 */
+  --sys-color-primary-container:  color-mix(in srgb, var(--brand-primary) 12%, white);
+  --sys-color-on-primary-container: var(--base-black);
+  --sys-color-on-icon:            var(--brand-primary);
+
+  --sys-color-secondary:          var(--brand-secondary);
+  --sys-color-on-secondary:       var(--base-white);
+
+  --sys-color-surface:            var(--base-white);
+  --sys-color-surface-container:  var(--base-gray-50);
+  --sys-color-surface-container-high: var(--base-gray-200);
+  --sys-color-on-surface:         var(--base-black);
+  --sys-color-on-surface-variant: var(--base-gray-600);
+
+  --sys-color-outline:            var(--base-gray-300);
+  --sys-color-outline-variant:    var(--base-gray-300);
+
+  --sys-color-error:              var(--base-red);
+  --sys-color-on-error:           var(--base-white);
+  --sys-color-error-container:    color-mix(in srgb, var(--base-red) 15%, white);
+  --sys-color-on-error-container: var(--base-red-dark);
+
+  --sys-color-hover:              var(--base-gray-200);   /* 或用 color-mix 動態調整 */
+
+  /* ── 4. Component ── 元件專屬（必要時才定義，少用） */
+  --comp-card-radius:             30px;
+  --comp-card-shadow:             0 3px 5px rgba(0,0,0,0.05);
+  --comp-card-border:             1px solid var(--sys-color-outline-variant);
+
+  --comp-btn-primary-bg:          var(--sys-color-primary);
+  --comp-btn-primary-text:        var(--sys-color-on-primary);
+  --comp-btn-hover-bg:            var(--sys-color-primary-container);
+  --comp-btn-hover-text:          var(--sys-color-on-primary-container);
+}

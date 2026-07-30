@@ -2,7 +2,11 @@
   <link href="./css/modal.css" rel="stylesheet">
 </head>
 
-<header class="navbar sticky-top- navbar-expand-lg bg-body-tertiary rounded" aria-label="Thirteenth navbar example">
+<header class="topbar navbar sticky-top- navbar-expand-lg bg-body-tertiary rounded"
+  aria-label="Thirteenth navbar example">
+  <!-- <button class="menu-toggle" id="sidebarToggle">
+    <i class="bi bi-list"></i>
+  </button> -->
   <div class="container-fluid">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample11"
       aria-controls="navbarsExample11" aria-expanded="false" aria-label="Toggle navigation">
@@ -10,29 +14,17 @@
     </button>
 
     <div class="collapse navbar-collapse d-lg-flex" id="navbarsExample11">
-      <a class="navbar-brand col-lg-3 me-0 sidebar-pl" href="index.html">
-        <img src="./images/logo/ffm_logo.png">
-        <img src="./images/logo/ffm_hub.png">
+      <a class="navbar-brand col-lg-1 me-0 sidebar-pl" href="index.html">
+        <!-- <img src="./images/logo/ffm_logo.png"> -->
+        <img src="./images/logo/logo-sidebar.png">
       </a>
+
+      <button class="menu-toggle" id="sidebarToggle" >
+        <!-- <i class="bi bi-list"></i> -->
+        <img src="./images/icon-toggle.svg">
+      </button>
       <!-- <a class="navbar-brand col-lg-3 me-0 sidebar-pl" href="index.html"><img src="./images/logo/logo-new.svg"></a> -->
-      <ul class="navbar-nav col-lg-8 justify-content-lg-center- justify-content-lg-end">
-        <!-- <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-          </li> -->
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle-" href="#" data-bs-toggle="dropdown" aria-expanded="false"><img
-              src="./images/icon-language.png"></a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#"><!--<img src="./images/icon-manage.png">--> 中文</a></li>
-            <li><a class="dropdown-item" href="#"><!--<img src="./images/icon-password.png">--> English</a></li>
-          </ul>
-        </li>
+      <ul class="navbar-nav col-lg-11 justify-content-lg-center- justify-content-lg-end">
 
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle-" href="#" data-bs-toggle="dropdown" aria-expanded="false"><img
@@ -45,6 +37,14 @@
             </li>
           </ul>
         </li>
+
+        <!-- <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle-" href="#" data-bs-toggle="dropdown" aria-expanded="false"><img
+              src="./images/icon-agent.svg"></a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item gap-3" href="#" target="_blank"><img src="./images/icon-agent01.svg"> 醫生藥事</a></li>
+          </ul>
+        </li> -->
 
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">User Name</a>
@@ -86,148 +86,148 @@
       <div class="modal-body align-items-center">
         <form class="">
 
-        <!-- 請選擇模型 -->
-        <div class="row mb-3 align-items-center">
-          <label for="account" class="col-3 form-label">請選擇模型 <span class="text-danger-">*</span></label>
+          <!-- 請選擇模型 -->
+          <div class="row mb-3 align-items-center">
+            <label for="account" class="col-3 form-label">請選擇模型 <span class="text-danger-">*</span></label>
 
-          <div class="col-9">
+            <div class="col-9">
 
-            <div class="dropdown ms-3" style="left:110px;">
-              <button class="btn btn-select-model-outline dropdown-toggle fs-6" type="button" id="modelDropdown"
-                data-bs-toggle="dropdown" aria-expanded="false">
-                Llama3.1-FFM-8B
-              </button>
-              <ul class="dropdown-menu" aria-labelledby="modelDropdown" style="max-height: 500px;">
-                <li>
-                  <a class="dropdown-item active-" href="#">
-                    <div class="content-box">
-                      <span class="dropdown-text">Llama3.1-FFM-8B</span><br>
-                      <mediuam class="text-muted">繁中強化的語言模型</mediuam>
-                    </div>
-                    <br>
-                    <span class="checkmark ms-2">
-                      <img src="./images/icon-check.png">
-                    </span>
-                  </a>
-                </li>
-                <li>
-                  <a class="dropdown-item active-" href="#">
-                    <div class="content-box">
-                      <span class="dropdown-text">LLama3.2-FFM-11B</span><br>
-                      <mediuam class="text-muted">繁中強化的多模態模型</mediuam>
-                    </div>
-                    <br>
-                    <span class="checkmark ms-2">
-                      <img src="./images/icon-check.png">
-                    </span>
-                  </a>
-                </li>
-                <li>
-                  <a class="dropdown-item active-" href="#">
-                    <div class="content-box">
-                      <span class="dropdown-text">FFM-Mistral-Small-3.1-24B-Reasoning</span><br>
-                      <mediuam class="text-muted">繁中強化的推理模型</mediuam>
-                    </div>
-                    <br>
-                    <span class="checkmark ms-2">
-                      <img src="./images/icon-check.png">
-                    </span>
-                  </a>
-                </li>
-                <li>
-                  <hr class="dropdown-divider">
-                </li>
-                <li>
-                  <a class="dropdown-item active" href="#">
-                    <div class="content-box">
-                      <span class="dropdown-text">Qwen3-4B</span><br>
-                      <mediuam class="text-muted">多語推理模型</mediuam>
-                    </div>
-                    <br>
-                    <span class="checkmark ms-2">
-                      <img src="./images/icon-check.png">
-                    </span>
-                  </a>
-                </li>
-                <li>
-                  <a class="dropdown-item active-" href="#">
-                    <div class="content-box">
-                      <span class="dropdown-text">DeepSeek-R1-Distill-Qwen-1.5B</span><br>
-                      <mediuam class="text-muted">Qwen2.5-1.5B經知識蒸餾的推理模型</mediuam>
-                    </div>
-                    <br>
-                    <span class="checkmark ms-2">
-                      <img src="./images/icon-check.png">
-                    </span>
-                  </a>
-                </li>
-                <li>
-                  <a class="dropdown-item active-" href="#">
-                    <div class="content-box">
-                      <span class="dropdown-text">DeepSeek-R1-Distill-Qwen-7B</span><br>
-                      <mediuam class="text-muted">Qwen2.5-7B經知識蒸餾的推理模型</mediuam>
-                    </div>
-                    <br>
-                    <span class="checkmark ms-2">
-                      <img src="./images/icon-check.png">
-                    </span>
-                  </a>
-                </li>
+              <div class="dropdown ms-3" style="left:110px;">
+                <button class="btn btn-select-model-outline dropdown-toggle fs-6" type="button" id="modelDropdown"
+                  data-bs-toggle="dropdown" aria-expanded="false">
+                  Llama3.1-FFM-8B
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="modelDropdown" style="max-height: 500px;">
+                  <li>
+                    <a class="dropdown-item active-" href="#">
+                      <div class="content-box">
+                        <span class="dropdown-text">Llama3.1-FFM-8B</span><br>
+                        <mediuam class="text-muted">繁中強化的語言模型</mediuam>
+                      </div>
+                      <br>
+                      <span class="checkmark ms-2">
+                        <img src="./images/icon-check.png">
+                      </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item active-" href="#">
+                      <div class="content-box">
+                        <span class="dropdown-text">LLama3.2-FFM-11B</span><br>
+                        <mediuam class="text-muted">繁中強化的多模態模型</mediuam>
+                      </div>
+                      <br>
+                      <span class="checkmark ms-2">
+                        <img src="./images/icon-check.png">
+                      </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item active-" href="#">
+                      <div class="content-box">
+                        <span class="dropdown-text">FFM-Mistral-Small-3.1-24B-Reasoning</span><br>
+                        <mediuam class="text-muted">繁中強化的推理模型</mediuam>
+                      </div>
+                      <br>
+                      <span class="checkmark ms-2">
+                        <img src="./images/icon-check.png">
+                      </span>
+                    </a>
+                  </li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <li>
+                    <a class="dropdown-item active" href="#">
+                      <div class="content-box">
+                        <span class="dropdown-text">Qwen3-4B</span><br>
+                        <mediuam class="text-muted">多語推理模型</mediuam>
+                      </div>
+                      <br>
+                      <span class="checkmark ms-2">
+                        <img src="./images/icon-check.png">
+                      </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item active-" href="#">
+                      <div class="content-box">
+                        <span class="dropdown-text">DeepSeek-R1-Distill-Qwen-1.5B</span><br>
+                        <mediuam class="text-muted">Qwen2.5-1.5B經知識蒸餾的推理模型</mediuam>
+                      </div>
+                      <br>
+                      <span class="checkmark ms-2">
+                        <img src="./images/icon-check.png">
+                      </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item active-" href="#">
+                      <div class="content-box">
+                        <span class="dropdown-text">DeepSeek-R1-Distill-Qwen-7B</span><br>
+                        <mediuam class="text-muted">Qwen2.5-7B經知識蒸餾的推理模型</mediuam>
+                      </div>
+                      <br>
+                      <span class="checkmark ms-2">
+                        <img src="./images/icon-check.png">
+                      </span>
+                    </a>
+                  </li>
 
-                <li>
-                  <a class="dropdown-item active-" href="#">
-                    <div class="content-box">
-                      <span class="dropdown-text">Llama-3.2-11B-Vision-Instruct</span><br>
-                      <mediuam class="text-muted">Meta多模態模型，適用圖像推理問答</mediuam>
-                    </div>
-                    <br>
-                    <span class="checkmark ms-2">
-                      <img src="./images/icon-check.png">
-                    </span>
-                  </a>
-                </li>
-                <li>
-                  <a class="dropdown-item active-" href="#">
-                    <div class="content-box">
-                      <span class="dropdown-text">Qwen2.5-1.5B-Instruct</span><br>
-                      <mediuam class="text-muted">小型指令微調語言模型</mediuam>
-                    </div>
-                    <br>
-                    <span class="checkmark ms-2">
-                      <img src="./images/icon-check.png">
-                    </span>
-                  </a>
-                </li>
-                <li>
-                  <a class="dropdown-item active-" href="#">
-                    <div class="content-box">
-                      <span class="dropdown-text">TinyLlama-1.1B-Chat-v0.6</span><br>
-                      <mediuam class="text-muted">輕量語言模型，適合資源有限環境</mediuam>
-                    </div>
-                    <br>
-                    <span class="checkmark ms-2">
-                      <img src="./images/icon-check.png">
-                    </span>
-                  </a>
-                </li>
-                <li>
-                  <a class="dropdown-item active-" href="#">
-                    <div class="content-box">
-                      <span class="dropdown-text">TinyLlama-1.1B-Chat-v1.0</span><br>
-                      <mediuam class="text-muted">優化版輕量語言模型，提升多輪對話質量</mediuam>
-                    </div>
-                    <br>
-                    <span class="checkmark ms-2">
-                      <img src="./images/icon-check.png">
-                    </span>
-                  </a>
-                </li>
+                  <li>
+                    <a class="dropdown-item active-" href="#">
+                      <div class="content-box">
+                        <span class="dropdown-text">Llama-3.2-11B-Vision-Instruct</span><br>
+                        <mediuam class="text-muted">Meta多模態模型，適用圖像推理問答</mediuam>
+                      </div>
+                      <br>
+                      <span class="checkmark ms-2">
+                        <img src="./images/icon-check.png">
+                      </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item active-" href="#">
+                      <div class="content-box">
+                        <span class="dropdown-text">Qwen2.5-1.5B-Instruct</span><br>
+                        <mediuam class="text-muted">小型指令微調語言模型</mediuam>
+                      </div>
+                      <br>
+                      <span class="checkmark ms-2">
+                        <img src="./images/icon-check.png">
+                      </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item active-" href="#">
+                      <div class="content-box">
+                        <span class="dropdown-text">TinyLlama-1.1B-Chat-v0.6</span><br>
+                        <mediuam class="text-muted">輕量語言模型，適合資源有限環境</mediuam>
+                      </div>
+                      <br>
+                      <span class="checkmark ms-2">
+                        <img src="./images/icon-check.png">
+                      </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item active-" href="#">
+                      <div class="content-box">
+                        <span class="dropdown-text">TinyLlama-1.1B-Chat-v1.0</span><br>
+                        <mediuam class="text-muted">優化版輕量語言模型，提升多輪對話質量</mediuam>
+                      </div>
+                      <br>
+                      <span class="checkmark ms-2">
+                        <img src="./images/icon-check.png">
+                      </span>
+                    </a>
+                  </li>
 
-              </ul>
+                </ul>
+              </div>
+
             </div>
-
           </div>
-        </div>
 
           <div class="row col-md-12-">
             <label for="inputState" class="form-label mb-3">請輸入提示詞，以定義AI所需扮演的角色或回答的範圍。</label>
@@ -502,5 +502,3 @@
     </div>
   </div>
 </div>
-
-

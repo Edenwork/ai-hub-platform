@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <title>ldap-manage-new</title>
+  <link href="./css/bootstrap.min.css" rel="stylesheet">
+  <link href="./css/breadcrumbs.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+
+  </style>
+
+  <!-- Custom styles -->
+  <link href="./css/style.css" rel="stylesheet">
+    <link href="./css/global.css" rel="stylesheet">
+  <link href="./css/sidebar.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="./css/dashboard.css" rel="stylesheet">
+  <link href="./css/add-model.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="./js/parameter-setting.js"></script>
+</head>
+
+<body>
+
+  <!-- 動態載入 header -->
+  <!-- <header></header>
+
+  <script>
+    $(function () {
+      $("header").load("header-admin.html", function () {
+        initParameterModal();
+      });
+    });
+  </script> -->
+
+
+  <div class="container-fluid">
+    <div class="row">
+
+      <!-- 動態載入 sidebar -->
+      <div id="sidebar-admin" class="col-md-4- col-lg-3- z-3"></div>
+
+      <script>
+        $(function () {
+          $("#sidebar-admin").load("sidebar-admin.html", function () {
+          });
+        });
+      </script>
+
+      <main class="px-md-4 dashboard-round-bg full-width-when-collapsed file-upload" id="content">
+        <section class="container-manage">
+
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">
+                <a class="text-decoration-none fs-6 align-text-bottom" href="./ldap-manage.html">LDAP 設定</a>
+              </li>
+              <li class="breadcrumb-item active-" aria-current="page-">
+                <i class="fas fa-chevron-right me-2"></i>
+                <!-- <a class="link-body-default fw-bold text-decoration-none fs-4">新增 LDAP 設定</a> -->
+              </li>
+            </ol>
+            <label class="link-body-default fw-bold fs-4">新增 LDAP 設定</label>
+          </nav>
+
+        </section>
+
+
+
+
+
+
+        <section>
+          <form class="form-container">
+            <div class="row mb-3 align-items-center">
+              <label for="" class="col-3 form-label">名稱 <span class="">*</span>
+                <img class="ms-1 cursor-pointer" src="./images/icon-info.svg" data-bs-toggle="tooltip"
+                  data-bs-placement="bottom" title="在管理介面中顯示的名稱"></label>
+              <div class="col-6 position-relative d-flex align-items-center">
+                <input type="" class="form-control input-frame" id="" placeholder="ex: LDAP" required>
+              </div>
+            </div>
+            <div class="row mb-3 align-items-center">
+              <label for="" class="col-3 form-label">LDAP URL <span class="">*</span>
+                <img class="ms-1 cursor-pointer" src="./images/icon-info.svg" data-bs-toggle="tooltip"
+                  data-bs-placement="bottom" title="連線至您 LDAP 伺服器的 URL"></label>
+              <div class="col-6 position-relative d-flex align-items-center">
+                <input type="" class="form-control input-frame" id="" placeholder="ex: ldap://dc1.company.com" required>
+              </div>
+            </div>
+
+            <div class="row mb-3 align-items-center">
+              <label for="" class="col-3 form-label">StartTLS <span class="text-danger-">*</span>
+                <img class="ms-1 cursor-pointer" src="./images/icon-info.svg" data-bs-toggle="tooltip"
+                  data-bs-placement="bottom" title="使用 STARTTLS 加密與 LDAP 的連線"></label>
+
+              <div class="col-6 position-relative d-flex align-items-center form-switch form-switch-position">
+                <input class="form-check-input me-2" type="checkbox" id="flexSwitchCheckDefault">
+                <label class="form-check-label" for="flexSwitchCheckDefault">預設關閉，可自行開啟</label>
+
+              </div>
+              <!-- <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                <label class="form-check-label" for="flexSwitchCheckDefault"></label>
+              </div> -->
+            </div>
+
+            <div class="row mb-3 align-items-center">
+              <label for="" class="col-3 form-label">Bind DN <span class="">*</span>
+                <img class="ms-1 cursor-pointer" src="./images/icon-info.svg" data-bs-toggle="tooltip"
+                  data-bs-placement="bottom" title="LDAP 管理員的 DN，用於存取 LDAP 伺服器"></label>
+              <div class="col-6 position-relative d-flex align-items-center">
+                <input type="" class="form-control input-frame" id=""
+                  placeholder="ex: CN=Administrator,DC=company,DC=com" required>
+              </div>
+            </div>
+
+            <div class="row mb-3 align-items-center">
+              <label for="password" class="col-3 form-label">Bind credentials <span class="">*</span>
+                <img class="ms-1 cursor-pointer" src="./images/icon-info.svg" data-bs-toggle="tooltip"
+                  data-bs-placement="bottom" title="LDAP 管理員的密碼"></label>
+              <div class="col-6 position-relative d-flex align-items-center">
+                <input type="password" class="form-control password-frame" id="password" placeholder="" required>
+                <span class="position-absolute toggle-icon toggle-icon-position toggle-password-">
+                  <img src="./images/icon-eye.svg">
+                </span>
+              </div>
+            </div>
+
+            <div class="row mb-3 align-items-center">
+              <label for="" class="col-3 form-label">Users DN <span class="text-danger-">*</span>
+                <img class="ms-1 cursor-pointer" src="./images/icon-info.svg" data-bs-toggle="tooltip"
+                  data-bs-placement="bottom" title="包含使用者的 LDAP 樹狀結構完整 DN，用於 LDAP 搜尋"></label>
+              <div class="col-6 position-relative d-flex align-items-center">
+                <input type="" class="form-control input-frame" id="" placeholder="ex: CN=Users,DC=company,DC=com"
+                  required>
+              </div>
+            </div>
+
+          </form>
+
+          <div class="row mb-3 align-items-center">
+            <div class="d-flex flex-row align-items-center">
+              <button class="btn btn-add-user fs-6 mb-3">
+                <label>驗證</label>
+              </button>
+            </div>
+
+            <div class="hint-info d-flex mb-3 form-text text-primary">
+              <img class="m-2" src="./images/icon-input-hint-primary.svg">
+              <span>
+                驗證成功！
+              </span>
+            </div>
+
+            <div class="clear-fix"></div>
+
+            <div class="hint-info d-flex mb-3 form-text text-danger">
+              <img class="m-2" src="./images/icon-input-hint.svg">
+              <span>
+                { error message } API-1<br>
+                { error message } API-2
+              </span>
+            </div>
+
+          </div>
+
+
+        </section>
+
+
+
+        <section>
+          <div class="d-flex flex-row align-items-center" style="">
+            <button class="btn btn-default-outline fs-6">
+              <a href="./ldap-manage.html">返回LDAP設定</a>
+            </button>
+
+            <button class="btn btn-add-user fs-6 ms-5">
+              <label>確認新增</label>
+            </button>
+            <section>
+
+
+
+      </main>
+
+    </div>
+  </div>
+  <script src="./js/bootstrap.bundle.min.js"></script>
+  <script src="./js/table.js"></script>
+
+  <!-- Custom JS for dropdown selection -->
+  <script src="./js/load-admin-header.js"></script>
+  <script src="./js/sidebar-admin.js"></script>
+  <script src="./js/parameter-setting.js"></script>
+  <script src="./js/tooltip.js"></script>
+  <!-- 密碼眼睛 -->
+
+  <script>
+    document.querySelector('.toggle-password').addEventListener('click', function () {
+      const passwordInput = document.querySelector('#password');
+      const icon = this.querySelector('i');
+      if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        icon.classList.remove('fa-eye');
+        icon.classList.add('fa-eye-slash');
+      } else {
+        passwordInput.type = 'password';
+        icon.classList.remove('fa-eye-slash');
+        icon.classList.add('fa-eye');
+      }
+    });
+  </script>
+
+
+
+
+</body>
+
+</html>
