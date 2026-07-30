@@ -1,11 +1,70 @@
 // 切換 sidebar 狀態
+const SIDEBAR_MOBILE_BREAKPOINT = 768;
+
 function toggleSidebar() {
     const sidebar = document.getElementById('sidebarArea');
     if (!sidebar) return;
 
+    if (window.innerWidth <= SIDEBAR_MOBILE_BREAKPOINT) {
+        sidebar.classList.add('collapsed');
+        document.body.classList.add('sidebar-collapsed');
+        sidebar.dataset.mobileCollapsed = 'true';
+        return;
+    }
+
+    delete sidebar.dataset.mobileCollapsed;
     sidebar.classList.toggle('collapsed');
     document.body.classList.toggle('sidebar-collapsed');
 }
+
+function applyResponsiveSidebar() {
+    const sidebar = document.getElementById('sidebarArea');
+    if (!sidebar) return;
+
+    const isMobile = window.innerWidth <= SIDEBAR_MOBILE_BREAKPOINT;
+
+    if (isMobile) {
+        if (!sidebar.classList.contains('collapsed')) {
+            sidebar.dataset.mobileCollapsed = 'true';
+        }
+        sidebar.classList.add('collapsed');
+        document.body.classList.add('sidebar-collapsed');
+        return;
+    }
+
+    if (sidebar.dataset.mobileCollapsed === 'true') {
+        sidebar.classList.remove('collapsed');
+        document.body.classList.remove('sidebar-collapsed');
+        delete sidebar.dataset.mobileCollapsed;
+    }
+}
+
+document.addEventListener('DOMContentLoaded', applyResponsiveSidebar);
+window.addEventListener('load', applyResponsiveSidebar);
+window.addEventListener('resize', applyResponsiveSidebar);
+window.setTimeout(applyResponsiveSidebar, 0);
+window.setTimeout(applyResponsiveSidebar, 300);
+
+function updateShowMoreText(isExpanded) {
+    const textEl = document.getElementById('showMoreText');
+    if (!textEl) return;
+
+    const label = isExpanded ? '顯示較少' : '顯示全部';
+    const icon = isExpanded ? 'fa-chevron-up' : 'fa-chevron-down';
+    textEl.innerHTML = `${label} <i class="fa ${icon} sidebar-toggle-icon"></i>`;
+}
+
+document.addEventListener('shown.bs.collapse', function (event) {
+    if (event.target?.id === 'moreAppsCollapse') {
+        updateShowMoreText(true);
+    }
+});
+
+document.addEventListener('hidden.bs.collapse', function (event) {
+    if (event.target?.id === 'moreAppsCollapse') {
+        updateShowMoreText(false);
+    }
+});
 
 // 點擊事件監聽
 document.addEventListener('click', function (e) {
@@ -37,6 +96,7 @@ document.addEventListener('click', function (e) {
         '[data-bs-toggle]',             // bootstrap dropdown、tooltip 等
         '.dropdown',                    // dropdown 容器
         '.dropdown-item',               // dropdown 選項
+        '.conversation-rename-input',   // 對話重新命名輸入
         '.btn-show-more',               // 顯示更多按鈕
         '.ai-app-title'                 // 如果有 AI 應用標題
     ].join(',');
@@ -51,4 +111,128 @@ document.addEventListener('click', function (e) {
     toggleSidebar();
 });
 
+function showSidebarSnackbar(message) {
+    let snackbar = document.querySelector('.sidebar-snackbar');
 
+    if (!snackbar) {
+        snackbar = document.createElement('div');
+        snackbar.className = 'sidebar-snackbar';
+        snackbar.setAttribute('role', 'status');
+        snackbar.setAttribute('aria-live', 'polite');
+        document.body.appendChild(snackbar);
+    }
+
+    snackbar.textContent = message;
+    snackbar.classList.add('show');
+
+    window.clearTimeout(snackbar._hideTimer);
+    snackbar._hideTimer = window.setTimeout(() => {
+        snackbar.classList.remove('show');
+    }, 3000);
+}
+
+function updateConversationEmptyState(list) {
+    const emptyState = list?.querySelector('.conversation-empty-state');
+    if (!emptyState) return;
+
+    const hasConversation = !!list.querySelector('.conversation-item');
+    emptyState.classList.toggle('d-none', hasConversation);
+}
+
+function setConversationTitle(titleEl, value) {
+    titleEl.textContent = value;
+    titleEl.setAttribute('data-bs-title', value);
+    titleEl.setAttribute('title', value);
+
+    if (window.bootstrap?.Tooltip) {
+        const tooltip = bootstrap.Tooltip.getInstance(titleEl);
+        if (tooltip) {
+            tooltip.dispose();
+        }
+        new bootstrap.Tooltip(titleEl);
+    }
+}
+
+function startConversationRename(item) {
+    const titleEl = item.querySelector('.conversation-title');
+    if (!titleEl || item.querySelector('.conversation-rename-input')) return;
+
+    const originalTitle = titleEl.textContent.trim();
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.className = 'conversation-rename-input';
+    input.value = originalTitle;
+    input.setAttribute('aria-label', '重新命名對話');
+
+    titleEl.replaceWith(input);
+    input.focus();
+    input.select();
+
+    let isRenameFinished = false;
+
+    const finishRename = (shouldSave) => {
+        if (isRenameFinished) return;
+        isRenameFinished = true;
+
+        const nextTitle = input.value.trim();
+        const restoredTitle = document.createElement('span');
+        restoredTitle.className = titleEl.className;
+        restoredTitle.setAttribute('data-bs-toggle', 'tooltip');
+        restoredTitle.setAttribute('data-bs-placement', 'bottom');
+
+        input.replaceWith(restoredTitle);
+        setConversationTitle(restoredTitle, shouldSave && nextTitle ? nextTitle : originalTitle);
+
+        if (shouldSave && nextTitle && nextTitle !== originalTitle) {
+            showSidebarSnackbar('已重新命名對話');
+        }
+    };
+
+    input.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            finishRename(true);
+        }
+
+        if (event.key === 'Escape') {
+            event.preventDefault();
+            finishRename(false);
+        }
+    });
+
+    input.addEventListener('blur', () => {
+        if (document.body.contains(input)) {
+            finishRename(true);
+        }
+    });
+}
+
+document.addEventListener('click', function (e) {
+    const renameAction = e.target.closest('.conversation-rename-action');
+    if (renameAction) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const item = renameAction.closest('.conversation-item');
+        if (item) {
+            startConversationRename(item);
+        }
+        return;
+    }
+
+    const deleteAction = e.target.closest('.conversation-delete-action');
+    if (deleteAction) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const item = deleteAction.closest('.conversation-item');
+        const list = deleteAction.closest('.conversation-history-list');
+        const title = item?.querySelector('.conversation-title')?.textContent.trim() || '對話';
+
+        if (item) {
+            item.remove();
+            updateConversationEmptyState(list);
+            showSidebarSnackbar(`已刪除「${title}」`);
+        }
+    }
+});

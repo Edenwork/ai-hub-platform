@@ -32,7 +32,7 @@
   </div>
 
   <!-- 選單區塊移出來，獨立 -->
-  <ul class="nav flex-column mb-auto-">
+  <ul class="nav flex-column mb-auto- conversation-history-list" id="conversationHistoryList">
     <li class="nav-item">
       <a href="chat.html" class="nav-link d-flex align-items-center gap-3" data-bs-toggle="tooltip"
         data-bs-placement="bottom" data-bs-title="新對話">
@@ -125,25 +125,24 @@
       對話歷史</span>
     <!-- </li> -->
 
-    <li class="nav-item">
-      <div class="nav-link d-flex- align-items-center gap-2 justify-content-between" href="#">
-        <div class="dropdown">
-          <!-- <img src="./images/icon-history.png"> -->
-          <span class="sidebar-history" data-bs-toggle="tooltip" data-bs-placement="bottom"
-            data-bs-title="完整對話">Onboarding AI Features Playbook</span>
-          <button class="btn btn-history" type="button" id="actionDropdown" data-bs-toggle="dropdown"
-            aria-expanded="false">
+    <li class="nav-item conversation-item" data-conversation-id="conversation-1">
+      <div class="nav-link conversation-history-row align-items-center gap-2 justify-content-between" href="#">
+        <div class="dropdown conversation-history-menu">
+          <span class="sidebar-history conversation-title" data-bs-toggle="tooltip" data-bs-placement="bottom"
+            data-bs-title="Onboarding AI Features Playbook">Onboarding AI Features Playbook</span>
+          <button class="btn btn-history" type="button" id="conversationActionDropdown1" data-bs-toggle="dropdown"
+            aria-expanded="false" aria-label="對話操作">
             <i class="fa fa-ellipsis-v"></i>
           </button>
-          <ul class="dropdown-menu dropdown-menu-end-" aria-labelledby="actionDropdown">
+          <ul class="dropdown-menu dropdown-menu-end-" aria-labelledby="conversationActionDropdown1">
             <li>
-              <a class="dropdown-item" href="#">
+              <a class="dropdown-item conversation-rename-action" href="#">
                 <img src="./images/icon_edit.png">
                 <span class="dropdown-mg"> 重新命名</span>
               </a>
             </li>
             <li>
-              <a class="dropdown-item" href="#">
+              <a class="dropdown-item conversation-delete-action" href="#">
                 <img src="./images/icon-delete-red.svg">
                 <span class="text-danger dropdown-mg"> 刪除對話</span>
               </a>
@@ -153,24 +152,23 @@
       </div>
 
     </li>
-    <li class="nav-item">
-      <div class="nav-link d-flex- align-items-center gap-2" href="#">
-        <div class="dropdown">
-          <!-- <img src="./images/icon-history.png"> -->
-          <span class="sidebar-history">前端 OCR 實作範例</span>
-          <button class="btn btn-history" type="button" id="actionDropdown" data-bs-toggle="dropdown"
-            aria-expanded="false-">
+    <li class="nav-item conversation-item" data-conversation-id="conversation-2">
+      <div class="nav-link conversation-history-row align-items-center gap-2" href="#">
+        <div class="dropdown conversation-history-menu">
+          <span class="sidebar-history conversation-title">前端 OCR 實作範例</span>
+          <button class="btn btn-history" type="button" id="conversationActionDropdown2" data-bs-toggle="dropdown"
+            aria-expanded="false" aria-label="對話操作">
             <i class="fa fa-ellipsis-v"></i>
           </button>
-          <ul class="dropdown-menu" aria-labelledby="actionDropdown">
+          <ul class="dropdown-menu" aria-labelledby="conversationActionDropdown2">
             <li>
-              <a class="dropdown-item" href="#">
+              <a class="dropdown-item conversation-rename-action" href="#">
                 <img src="./images/icon_edit.png">
                 <span class="dropdown-mg"> 重新命名</span>
               </a>
             </li>
             <li>
-              <a class="dropdown-item" href="#">
+              <a class="dropdown-item conversation-delete-action" href="#">
                 <img src="./images/icon-delete-red.svg">
                 <span class="text-danger dropdown-mg"> 刪除對話</span>
               </a>
@@ -180,24 +178,23 @@
       </div>
 
     </li>
-    <li class="nav-item">
-      <div class="nav-link d-flex- align-items-center gap-2" href="#">
-        <div class="dropdown">
-          <!-- <img src="./images/icon-history.png"> -->
-          <span class="sidebar-history">S3 SDK 多檔案斷點續傳</span>
-          <button class="btn btn-history" type="button" id="actionDropdown" data-bs-toggle="dropdown"
-            aria-expanded="false-">
+    <li class="nav-item conversation-item" data-conversation-id="conversation-3">
+      <div class="nav-link conversation-history-row align-items-center gap-2" href="#">
+        <div class="dropdown conversation-history-menu">
+          <span class="sidebar-history conversation-title">S3 SDK 多檔案斷點續傳</span>
+          <button class="btn btn-history" type="button" id="conversationActionDropdown3" data-bs-toggle="dropdown"
+            aria-expanded="false" aria-label="對話操作">
             <i class="fa fa-ellipsis-v"></i>
           </button>
-          <ul class="dropdown-menu" aria-labelledby="actionDropdown">
+          <ul class="dropdown-menu" aria-labelledby="conversationActionDropdown3">
             <li>
-              <a class="dropdown-item" href="#">
+              <a class="dropdown-item conversation-rename-action" href="#">
                 <img src="./images/icon_edit.png">
                 <span class="dropdown-mg"> 重新命名</span>
               </a>
             </li>
             <li>
-              <a class="dropdown-item" href="#">
+              <a class="dropdown-item conversation-delete-action" href="#">
                 <img src="./images/icon-delete-red.svg">
                 <span class="text-danger dropdown-mg"> 刪除對話</span>
               </a>
@@ -206,6 +203,7 @@
         </div>
       </div>
     </li>
+    <li class="conversation-empty-state px-3 py-2 d-none">尚無對話歷史</li>
 
 
   </ul>
@@ -727,22 +725,15 @@ document.addEventListener('DOMContentLoaded', function () {
   const collapseEl = document.getElementById('moreAppsCollapse');
   const textEl     = document.getElementById('showMoreText');
 
-  console.log('DOMContentLoaded 已觸發');
-  console.log('collapseEl:', collapseEl);   // 應該印出 <div> 元素
-  console.log('textEl:', textEl);           // 應該印出 <span> 元素
-
   if (!collapseEl || !textEl) {
-    console.error('元素找不到！請檢查 id 是否正確');
     return;
   }
 
   collapseEl.addEventListener('shown.bs.collapse', function () {
-    console.log('→ 已展開 (shown.bs.collapse 觸發)');
-    textEl.innerHTML = '顯示更少 <i class="fa fa-chevron-down sidebar-toggle-icon"></i>';
+    textEl.innerHTML = '顯示較少 <i class="fa fa-chevron-up sidebar-toggle-icon"></i>';
   });
 
   collapseEl.addEventListener('hidden.bs.collapse', function () {
-    console.log('→ 已收合 (hidden.bs.collapse 觸發)');
     textEl.innerHTML = '顯示全部 <i class="fa fa-chevron-down sidebar-toggle-icon"></i>';
   });
 
