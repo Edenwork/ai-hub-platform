@@ -1185,6 +1185,34 @@ span.sidebar-history {
   background-color: #fff;
 }
 
+.chat-model-selector {
+  width: 190px;
+  max-width: 190px;
+}
+
+.chat-model-selector .btn-select-model-outline {
+  width: 100%;
+  min-width: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+}
+
+.chat-model-selector .dropdown-button-label {
+  display: block;
+  min-width: 0;
+  flex: 1 1 auto;
+  overflow: hidden;
+  text-align: left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.chat-model-selector .fa-chevron-down {
+  flex: 0 0 auto;
+}
+
 .btn-select-thinking-outline:focus,
 .btn-select-thinking-outline:clicked,
 .btn-select-thinking-outline:hover,

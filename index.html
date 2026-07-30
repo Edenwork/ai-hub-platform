@@ -11,9 +11,9 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3"> -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="./css/bootstrap.min.css" rel="stylesheet">
-  <link href="./css/style.css" rel="stylesheet">
+  <link href="./css/style.css?v=20260730-4" rel="stylesheet">
   <link href="./css/global.css" rel="stylesheet">
-  <link href="./css/sidebar.css" rel="stylesheet">
+  <link href="./css/sidebar.css?v=20260730-6" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="icon" type="image/gif" href="/images/logo/favicon.ico">
 
@@ -53,7 +53,7 @@
 <script>
   async function loadSidebar() {
     try {
-      const response = await fetch('sidebar-user.html');
+      const response = await fetch('sidebar-user.html?v=20260730-8', { cache: 'no-store' });
       const html = await response.text();
       document.getElementById('sidebar').innerHTML = html;
       initParameterModal();
@@ -167,7 +167,7 @@
 
 
           <div class="container mt-5">
-            <div class="question-dialog p-3 file-upload mx-auto" id="">
+            <div class="question-dialog p-3 file-upload mx-auto" id="dropZone">
 
               <div id="dragModal">
                 <span id="hintText" style="">
@@ -181,10 +181,11 @@
                 <textarea class="form-control-chat mb-3" placeholder="詢問任何問題" aria-label="Question" rows="3"></textarea>
 
                 <div class="d-flex justify-content-start align-items-end- gap-3 mt-4 justify-content-between-">
-                  <input type="file" id="fileInput-" multiple style="display: none;">
+                  <input type="file" id="fileInput" accept="image/png,image/jpeg" multiple style="display: none;">
                   <!-- 
-                  <button class="import-file-btn file-upload" id="" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                    data-bs-title="上傳圖檔，支援 png/jpg" onclick="document.getElementById('fileInput').click()">
+                  <button class="import-file-btn file-upload" type="button" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                    data-bs-title="上傳圖檔，支援 png/jpg" aria-label="上傳圖檔，支援 png/jpg"
+                    onclick="document.getElementById('fileInput').click()">
                     <img class="icon-inside filter-grey" style=""
                       src="./images/upload-image.svg">
                   </button> -->
@@ -196,8 +197,9 @@
 
 
 
-                  <button class="import-file-btn file-upload" id="" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                    data-bs-title="上傳圖檔，支援 png/jpg" onclick="document.getElementById('fileInput').click()">
+                  <button class="import-file-btn file-upload" type="button" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                    data-bs-title="上傳圖檔，支援 png/jpg" aria-label="上傳圖檔，支援 png/jpg"
+                    onclick="document.getElementById('fileInput').click()">
                     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
                     class="icon-inside filter-grey">
                       <line x1="5.1" y1="11.4" x2="18.9" y2="11.4" stroke="currentColor" stroke-width="1.2"
@@ -248,11 +250,11 @@
 
                   <div class="dropdown ms-3 position-absolute-" style="left: 0%;">
                     <button class="btn btn-select-thinking-outline dropdown-toggle- fs-6- fs-15px" type="button"
-                      id="modelDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                      思考強度 - 中
+                      id="thinkingDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                      <span class="dropdown-button-label">思考強度 - 中</span>
                       <i class="fa fa-chevron-down ms-2"></i>
                     </button>
-                    <ul class="dropdown-menu" aria-labelledby="modelDropdown"
+                    <ul class="dropdown-menu" aria-labelledby="thinkingDropdown"
                       style="max-height: 200px;overflow-y: auto;">
                       <li>
                         <a class="dropdown-item active-" href="#">
@@ -294,7 +296,7 @@
                     </ul>
                   </div>
 
-                  <!-- <div id="thumbnails"></div>
+                  <div id="thumbnails"></div>
                     <div id="errorContainer"></div>
 
 
@@ -303,15 +305,15 @@
                         <span class="close-btn">×</span>
                         <img class="modal-image" id="modalImage" src="">
                       </div>
-                    </div> -->
+                    </div>
 
-                  <div class="dropdown ms-3 position-absolute" style="right: 10%;">
+                  <div class="dropdown chat-model-selector ms-3 position-absolute" style="right: 10%;">
                     <button class="btn btn-select-model-outline dropdown-toggle- fs-6- fs-15px me-3" type="button"
-                      id="modelDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                      Llama3.1-FFM-8B
+                      id="chatModelDropdown" data-bs-toggle="dropdown" aria-expanded="false" title="Llama3.1-FFM-8B">
+                      <span class="dropdown-button-label">Llama3.1-FFM-8B</span>
                       <i class="fa fa-chevron-down ms-2"></i>
                     </button>
-                    <ul class="dropdown-menu" aria-labelledby="modelDropdown"
+                    <ul class="dropdown-menu" aria-labelledby="chatModelDropdown"
                       style="max-height: 200px;overflow-y: auto;">
                       <li>
                         <a class="dropdown-item active-" href="#">
@@ -724,7 +726,7 @@
 
   <!-- Custom JS for dropdown selection -->
   <!-- <script src="./js/load-admin-header.js"></script> -->
-  <script src="./js/sidebar.js"></script>
+  <script src="./js/sidebar.js?v=20260730-8"></script>
   <script src="./js/tooltip.js"></script>
   <script src="./js/file-upload.js"></script>
 
@@ -739,20 +741,35 @@
 
 
   <script>
-    document.querySelectorAll('.dropdown-item').forEach(item => {
-      item.addEventListener('click', function (e) {
-        //e.preventDefault();
-        // 移除所有選項的 active 類別和勾勾
-        document.querySelectorAll('.dropdown-item').forEach(i => {
-          i.classList.remove('active');
-          i.querySelector('.checkmark').style.display = 'none';
+    document.querySelectorAll('.dropdown').forEach(dropdown => {
+      const button = dropdown.querySelector('[data-bs-toggle="dropdown"]');
+      const label = button?.querySelector('.dropdown-button-label');
+      const items = dropdown.querySelectorAll('.dropdown-item');
+
+      items.forEach(item => {
+        item.addEventListener('click', function (e) {
+          e.preventDefault();
+
+          items.forEach(i => {
+            i.classList.remove('active');
+            const checkmark = i.querySelector('.checkmark');
+            if (checkmark) {
+              checkmark.style.display = 'none';
+            }
+          });
+
+          this.classList.add('active');
+          const currentCheckmark = this.querySelector('.checkmark');
+          if (currentCheckmark) {
+            currentCheckmark.style.display = 'inline-block';
+          }
+
+          const selectedText = this.querySelector('.dropdown-text')?.textContent.trim();
+          if (label && selectedText) {
+            label.textContent = selectedText;
+            button.setAttribute('title', selectedText);
+          }
         });
-        // 為當前選項添加 active 類別和顯示勾勾
-        this.classList.add('active');
-        this.querySelector('.checkmark').style.display = 'inline-block';
-        // 更新按鈕文字
-        const selectedText = this.querySelector('span').textContent;
-        document.querySelector('#modelDropdown').textContent = selectedText;
       });
     });
   </script>
@@ -765,7 +782,10 @@
       const textarea = document.querySelector('textarea.form-control-chat');
 
       if (fileInput && dropZone && textarea) {
-        zoominImg.style.display = 'none';
+        const zoominImg = document.getElementById('zoominImg');
+        if (zoominImg) {
+          zoominImg.style.display = 'none';
+        }
 
         fileInput.addEventListener('change', () => {
           console.log('File input changed, files:', fileInput.files.length);
