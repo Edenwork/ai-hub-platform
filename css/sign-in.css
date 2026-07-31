@@ -114,3 +114,208 @@
 .text-forgot-pwd{
   color: #015BBF
 }
+
+.demo-entry-link,
+.demo-entry-signin {
+  color: var(--sys-color-on-surface-variant, #555);
+  font-size: 0.875rem;
+  text-decoration: none;
+}
+
+.demo-entry-link:hover,
+.demo-entry-signin:hover {
+  color: var(--sys-color-on-surface, #222);
+  text-decoration: underline;
+}
+
+.demo-entry-page {
+  min-height: 100%;
+}
+
+.demo-entry-main {
+  align-items: center;
+  display: flex;
+  min-height: 100vh;
+  padding: 48px 20px;
+}
+
+.demo-entry-hero {
+  margin: 0 auto;
+  max-width: 760px;
+  text-align: center;
+  width: 100%;
+}
+
+.demo-entry-logo {
+  height: auto;
+  margin-bottom: 28px;
+  max-width: 220px;
+}
+
+.demo-entry-hero h1 {
+  color: var(--sys-color-primary, #222);
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.35;
+  margin-bottom: 16px;
+}
+
+.demo-entry-hero p {
+  color: #3f4b5f;
+  font-size: 1.0625rem;
+  line-height: 1.9;
+  margin: 0 auto 32px !important;
+  max-width: 680px;
+}
+
+.demo-entry-actions {
+  display: grid;
+  gap: 12px;
+  margin: 0 auto 20px;
+  max-width: 520px;
+}
+
+.demo-entry-button {
+  align-items: center;
+  background: var(--sys-color-surface, #fff);
+  border: 1px solid var(--sys-color-outline, #E1E1E1);
+  border-radius: 999px;
+  box-shadow: 0 8px 26px rgba(22, 39, 76, 0.08);
+  color: var(--sys-color-on-surface, #222);
+  display: flex;
+  gap: 14px;
+  justify-content: space-between;
+  min-height: 62px;
+  padding: 11px 24px;
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
+  width: 100%;
+}
+
+.demo-entry-button:hover,
+.demo-entry-button:focus {
+  border-color: var(--sys-color-primary, #222);
+  box-shadow: 0 12px 34px rgba(22, 39, 76, 0.14);
+  outline: none;
+  transform: translateY(-1px);
+}
+
+.demo-entry-button.is-primary {
+  background: var(--sys-color-primary, #222);
+  color: var(--sys-color-on-primary, #fff);
+}
+
+.demo-entry-button span {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.demo-entry-button small {
+  color: inherit;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  opacity: 0.72;
+  text-align: right;
+}
+
+.signin-message {
+  border: 1px solid color-mix(in srgb, var(--sys-color-error, #CA0729) 18%, white);
+  border-radius: 4px;
+  background: color-mix(in srgb, var(--sys-color-error, #CA0729) 8%, white);
+  color: var(--sys-color-error, #CA0729);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin-bottom: 12px;
+  padding: 10px 12px;
+}
+
+.demo-login-section {
+  margin-top: 24px;
+}
+
+.demo-login-divider {
+  align-items: center;
+  color: var(--sys-color-on-surface-variant, #555);
+  display: flex;
+  font-size: 0.8125rem;
+  gap: 12px;
+  justify-content: center;
+  line-height: 1.4;
+  margin-bottom: 14px;
+}
+
+.demo-login-divider::before,
+.demo-login-divider::after {
+  background: var(--sys-color-outline, #E1E1E1);
+  content: "";
+  flex: 1;
+  height: 1px;
+}
+
+.demo-role-list {
+  display: grid;
+  gap: 10px;
+}
+
+.demo-role-button {
+  align-items: flex-start;
+  background: var(--sys-color-surface, #fff);
+  border: 1px solid var(--sys-color-outline, #E1E1E1);
+  border-radius: 6px;
+  color: var(--sys-color-on-surface, #222);
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 12px 14px;
+  text-align: left;
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
+  width: 100%;
+}
+
+.demo-role-button:hover,
+.demo-role-button:focus {
+  border-color: var(--sys-color-primary, #222);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  outline: none;
+  transform: translateY(-1px);
+}
+
+.demo-role-title {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.demo-role-desc {
+  color: var(--sys-color-on-surface-variant, #555);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 480px) {
+  .signin-bg {
+    padding: 12% 7%;
+  }
+
+  .demo-entry-hero h1 {
+    font-size: 1.625rem;
+  }
+
+  .demo-entry-button {
+    align-items: flex-start;
+    border-radius: 18px;
+    flex-direction: column;
+    gap: 4px;
+    min-height: auto;
+    padding: 14px 18px;
+  }
+
+  .demo-entry-button span {
+    white-space: normal;
+  }
+
+  .demo-entry-button small {
+    text-align: left;
+  }
+}

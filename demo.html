@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="zh-Hant" data-bs-theme="auto">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <title>FFM Hub Demo</title>
+  <link href="./css/bootstrap.min.css" rel="stylesheet">
+  <link href="./css/style.css" rel="stylesheet">
+  <link href="./css/global.css" rel="stylesheet">
+  <link href="./css/sign-in.css" rel="stylesheet">
+</head>
+
+<body class="demo-entry-page bg-login">
+  <main class="demo-entry-main">
+    <section class="demo-entry-hero" aria-labelledby="demoEntryTitle">
+      <img class="demo-entry-logo" src="./images/logo/login_logo.png" alt="FFM Hub">
+      <h1 id="demoEntryTitle">歡迎體驗 AI Hub Demo</h1>
+      <p>
+        選擇一種 Demo 身分即可開始體驗使用者介面、提示詞庫、AI 應用與平台管理流程。
+      </p>
+
+      <div class="demo-entry-actions" aria-label="Demo 身分選擇">
+        <button class="demo-entry-button is-primary" type="button" data-demo-login="debug">
+          <span>Debug 體驗</span>
+          <small>可查看所有頁面與功能</small>
+        </button>
+        <button class="demo-entry-button" type="button" data-demo-login="admin">
+          <span>Admin 體驗</span>
+          <small>可查看所有頁面與管理功能</small>
+        </button>
+        <button class="demo-entry-button" type="button" data-demo-login="user">
+          <span>User 體驗</span>
+          <small>僅可查看使用者介面</small>
+        </button>
+      </div>
+
+      <a class="demo-entry-signin" href="sign-in.html">使用帳號密碼登入</a>
+    </section>
+  </main>
+
+  <script src="./js/bootstrap.bundle.min.js"></script>
+  <script src="./js/demo-auth.js"></script>
+</body>
+
+</html>
