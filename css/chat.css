@@ -3,7 +3,7 @@
 .button-to-end {
     position: fixed;
     bottom: 60px; /* 距離底部 60px */
-    right: 50px; /* 距離右邊 50px */
+    right: 36px; /* 距離右邊 50px */
     padding: 10px;
     font-size: 16px;
     cursor: pointer;
@@ -16,6 +16,42 @@
 
 .chat-window {
     padding: 20px;
+}
+
+.chat-page .section-max-width-770 {
+    padding-bottom: 240px;
+}
+
+.chat-composer {
+    position: fixed;
+    left: calc(304px + ((100vw - 304px - min(770px, calc(100vw - 304px - 48px))) / 2));
+    bottom: 0px;/* 24px;*/
+    z-index: 1020;
+    width: min(770px, calc(100vw - 304px - 48px));
+    max-width: 770px;
+    margin-top: 0 !important;
+    background-color: #f9fbff;
+    padding-bottom: 24px;
+}
+
+body.sidebar-collapsed .chat-composer {
+    left: calc(80px + ((100vw - 80px - min(770px, calc(100vw - 80px - 48px))) / 2));
+    width: min(770px, calc(100vw - 80px - 48px));
+}
+
+@media (max-width: 768px) {
+    .chat-page .section-max-width-770 {
+        padding-bottom: 220px;
+    }
+
+    .chat-composer,
+    body.sidebar-collapsed .chat-composer {
+        left: 96px;
+        right: 16px;
+        bottom: 16px;
+        width: auto;
+        max-width: none;
+    }
 }
 
 .message {
