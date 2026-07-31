@@ -9,6 +9,7 @@
     cursor: pointer;
     border: none;
     background-color: transparent;
+    z-index: 1030;
 }
 .button-to-end.hidden {
     display: none; /* 隱藏按鈕 */

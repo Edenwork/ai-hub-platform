@@ -856,25 +856,33 @@
 
 
   <!-- 滑到最底btn -->
-  <script>
-    function scrollToBottom() {
-      window.scrollTo({
-        top: document.body.scrollHeight,
-        behavior: 'smooth' // 平滑滾動
+<script>
+  function scrollToBottom() {
+    const scrollContainer = document.getElementById('content');
+    const chatWindow = document.querySelector('.chat-window');
+
+    if (scrollContainer) {
+      scrollContainer.scrollTo({
+        top: scrollContainer.scrollHeight,
+        behavior: 'smooth'
       });
+      return;
     }
 
-    // 監聽滾動事件
-    window.addEventListener('scroll', function () {
-      const button = document.getElementById('scrollBtn');
-      // 檢查是否距離頁面底部 80px 以下
-      if (window.scrollY + window.innerHeight >= document.body.scrollHeight - 80) {
-        button.classList.add('hidden'); // 隱藏按鈕
-      } else {
-        button.classList.remove('hidden'); // 顯示按鈕
-      }
+    if (chatWindow) {
+      chatWindow.scrollIntoView({
+        behavior: 'smooth',
+        block: 'end'
+      });
+      return;
+    }
+
+    window.scrollTo({
+      top: document.documentElement.scrollHeight,
+      behavior: 'smooth'
     });
-  </script>
+  }
+</script>
 
 
 
