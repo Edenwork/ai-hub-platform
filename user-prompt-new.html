@@ -208,9 +208,11 @@
   <!-- 密碼眼睛 -->
 
   <script>
-    document.querySelector('.toggle-password').addEventListener('click', function () {
+    const togglePassword = document.querySelector('.toggle-password');
+    togglePassword?.addEventListener('click', function () {
       const passwordInput = document.querySelector('#password');
       const icon = this.querySelector('i');
+      if (!passwordInput || !icon) return;
       if (passwordInput.type === 'password') {
         passwordInput.type = 'text';
         icon.classList.remove('fa-eye');
