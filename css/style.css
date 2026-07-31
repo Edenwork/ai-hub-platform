@@ -1586,9 +1586,9 @@ span.sidebar-history {
 }
 
 .container-chat{
-  padding-top: 16vh;
+  /* padding-top: 16vh;
   width: 770px !important;
-  margin: 0 auto !important;
+  margin: 0 auto !important; */
 }
 
 .container-manage{
