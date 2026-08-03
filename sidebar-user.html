@@ -31,15 +31,16 @@
     </div>
   </div>
 
-  <!-- 選單區塊移出來，獨立 -->
-  <ul class="nav flex-column mb-auto- conversation-history-list" id="conversationHistoryList">
-    <li class="nav-item">
-      <a href="index.html?demoRole=debug" class="nav-link d-flex align-items-center gap-3" data-demo-reset data-bs-toggle="tooltip"
-        data-bs-placement="bottom" data-bs-title="新對話">
-        <img src="./images/icon-newchat-b.svg" width="24" height="24" alt="新對話">
-        <span class="sidebar-text">開始新的對話</span>
-      </a>
-    </li>
+  <div class="sidebar-scroll-area">
+    <!-- 選單區塊移出來，獨立 -->
+    <ul class="nav flex-column mb-auto- conversation-history-list" id="conversationHistoryList">
+      <li class="nav-item">
+        <a href="index.html?demoRole=debug" class="nav-link d-flex align-items-center gap-3" data-demo-reset data-bs-toggle="tooltip"
+          data-bs-placement="bottom" data-bs-title="新對話">
+          <img src="./images/icon-newchat-b.svg" width="24" height="24" alt="新對話">
+          <span class="sidebar-text">開始新的對話</span>
+        </a>
+      </li>
 
     <li class="nav-item">
       <a href="user-prompt.html" class="nav-link d-flex align-items-center gap-3" data-bs-toggle="tooltip"
@@ -113,17 +114,17 @@
   </span>
 </button>
     </li>
-  </ul>
+    </ul>
 
 
 
-  <hr class="my-3">
+    <hr class="my-3">
 
-  <ul class="nav flex-column mb-auto-">
-    <!-- <li class="nav-item"> -->
-    <span class="nav-title align-items-center gap-2 ms-3 mb-2">
-      對話歷史</span>
-    <!-- </li> -->
+    <ul class="nav flex-column mb-auto-">
+      <!-- <li class="nav-item"> -->
+      <span class="nav-title align-items-center gap-2 ms-3 mb-2">
+        對話歷史</span>
+      <!-- </li> -->
 
     <li class="nav-item conversation-item" data-conversation-id="conversation-1">
       <div class="nav-link conversation-history-row align-items-center gap-2 justify-content-between" href="#">
@@ -206,7 +207,8 @@
     <li class="conversation-empty-state px-3 py-2 d-none">尚無對話歷史</li>
 
 
-  </ul>
+    </ul>
+  </div>
 
 
   <ul class="nav sidebar-footer flex-column pt-2 pb-2 border-top-">
