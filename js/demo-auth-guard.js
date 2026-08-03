@@ -1,6 +1,21 @@
 (function () {
-  const role = localStorage.getItem('ffmHubDemoRole');
   const validRoles = ['debug', 'admin', 'user'];
+  const demoLabels = {
+    debug: 'Debug',
+    admin: 'Admin',
+    user: 'User'
+  };
+
+  const params = new URLSearchParams(window.location.search);
+  const requestedRole = params.get('demoRole');
+
+  if (validRoles.includes(requestedRole)) {
+    localStorage.setItem('ffmHubDemoRole', requestedRole);
+    localStorage.setItem('ffmHubDemoAccount', requestedRole);
+    localStorage.setItem('ffmHubDemoLabel', demoLabels[requestedRole]);
+  }
+
+  const role = localStorage.getItem('ffmHubDemoRole');
   const adminPages = [
     'dashboard.html',
     'install-nemoclaw.html',
