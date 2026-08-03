@@ -25,11 +25,74 @@
   <link href="./css/sidebar.css?v=20260730-5" rel="stylesheet">
 
   <style>
+    .demo-code-intro,
+    .demo-code-outro {
+      margin-bottom: 18px;
+      color: #1f2933;
+      font-size: 16px;
+      line-height: 1.7;
+    }
 
+    .demo-code-panel {
+      margin: 0 0 16px;
+      border-radius: 10px;
+      background: #eef2f8;
+      color: #1f2933;
+      overflow: hidden;
+    }
+
+    .demo-code-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 46px;
+      padding: 0 16px 0 28px;
+      border-bottom: 1px solid #fff;
+      font-size: 14px;
+      letter-spacing: 0;
+    }
+
+    .demo-code-copy {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      border: 0;
+      border-radius: 4px;
+      padding: 6px 8px;
+      background: #fff;
+      color: #1f2933;
+      font-size: 12px;
+    }
+
+    .demo-code-block {
+      margin: 0;
+      padding: 24px 28px 28px;
+      overflow-x: auto;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .demo-code-block code {
+      display: block;
+      white-space: pre;
+      font-family: Consolas, Monaco, 'Courier New', monospace;
+    }
+
+    @media (max-width: 767.98px) {
+      .demo-code-toolbar {
+        padding-left: 18px;
+      }
+
+      .demo-code-block {
+        padding: 20px 18px 22px;
+        font-size: 14px;
+      }
+    }
   </style>
 
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="./js/parameter-setting.js"></script>
+  <script src="./js/demo-reset.js?v=20260803-1"></script>
 
 </head>
 
@@ -78,7 +141,7 @@
               <!-- 第一個對話：問題（置右） -->
               <div class="message chat-user-message">
                 <div class="message-content">
-                  <p>請解釋什麼是「數位孿生」？</p>
+                  <p id="initialUserQuestion">請解釋什麼是「數位孿生」？</p>
                 </div>
                 <div class="message-actions">
                   <button class="btn btn-action" aria-label="編輯" data-bs-toggle="tooltip" data-bs-placement="bottom"
@@ -92,7 +155,6 @@
                   </button>
                 </div>
               </div>
-  <script src="./js/demo-reset.js?v=20260803-1"></script>
 
 
               <!--Loading...思考中 -->
@@ -781,80 +843,177 @@
 
   <!-- ai 回答之逐行文字效果 -->
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const lines = document.querySelectorAll('.text-line');
+    function initializeChatTypewriter() {
+      const lines = document.querySelectorAll('.chat-window .chat-assistant-message p, .chat-window .chat-assistant-message code');
       let charDelay = 0;
 
-      // 初始化動畫
-      function initializeAnimation() {
-        charDelay = 0;
-        lines.forEach((line, lineIndex) => {
-          // 移除重置樣式（如果存在）
-          line.classList.remove('reset');
-          const text = line.textContent;
-          line.innerHTML = ''; // 清空原始內容
-          const chars = text.split('').map(char => `<span class="char">${char}</span>`).join('');
-          line.innerHTML = chars;
+      lines.forEach((line) => {
+        if (line.dataset.typewriterReady === 'true') {
+          return;
+        }
 
-          // 為每行設置延遲
-          line.style.animationDelay = `${lineIndex * 0.2}s`;
+        line.dataset.typewriterReady = 'true';
+        line.classList.add('text-line');
+        line.classList.remove('reset');
 
-          // 為每個字元設置逐字顯示延遲
-          const charElements = line.querySelectorAll('.char');
-          charElements.forEach((char, charIndex) => {
-            char.classList.remove('reset');
-            char.style.animationDelay = `${charDelay + charIndex * 0.02}s`;
-          });
+        const text = line.textContent;
+        line.dataset.rawText = text;
+        line.textContent = '';
 
-          // 更新總延遲時間
-          charDelay += charElements.length * 0.02 + 0.2;
+        text.split('').forEach((char) => {
+          if (char === '\n') {
+            line.appendChild(document.createElement('br'));
+            return;
+          }
+
+          const span = document.createElement('span');
+          span.className = 'char';
+          span.textContent = char === ' ' ? '\u00a0' : char;
+          span.style.animationDelay = `${charDelay}s`;
+          line.appendChild(span);
+          charDelay += 0.012;
         });
+      });
+    }
 
-        // 綁定最後一個字元的 animationend 事件
-        bindAnimationEnd();
-      }
-
-      // 重置並重新觸發動畫
-      function resetAndReplay() {
-        lines.forEach(line => {
-          line.classList.add('reset');
-          line.querySelectorAll('.char').forEach(char => {
-            char.classList.add('reset');
-          });
-        });
-
-        // 等待一小段時間後重新初始化動畫
-        setTimeout(() => {
-          initializeAnimation();
-        }, 50); // 50ms 確保重置完成
-      }
-
-      // 綁定 animationend 事件
-      function bindAnimationEnd() {
-        const lastLine = lines[lines.length - 1];
-        const lastChars = lastLine.querySelectorAll('.char');
-        const lastChar = lastChars[lastChars.length - 1];
-
-        // 移除舊的事件監聽（防止重複綁定）
-        lastChar.removeEventListener('animationend', handleAnimationEnd);
-
-        // 綁定新的事件監聽
-        lastChar.addEventListener('animationend', handleAnimationEnd);
-      }
-
-      // 處理 animationend 事件
-      function handleAnimationEnd() {
-        // 在動畫結束後等待 1 秒，然後重置並重新播放
-        setTimeout(() => {
-          resetAndReplay();
-        }, 1000); // 1 秒停頓
-      }
-
-      // 首次初始化
-      initializeAnimation();
-    });
+    document.addEventListener('DOMContentLoaded', initializeChatTypewriter);
   </script>
 
+
+  <script>
+    const chatParams = new URLSearchParams(window.location.search);
+    const initialQuestion = chatParams.get('question');
+    const responseType = chatParams.get('response');
+
+    if (initialQuestion && initialQuestion.trim()) {
+      const question = initialQuestion.trim();
+      const initialUserQuestion = document.getElementById('initialUserQuestion');
+      const thinkingText = document.querySelector('.chat-collapse-content-text');
+      const firstAssistantTextContainer = document.querySelector('.chat-assistant-message .message-content .text-container');
+      const chatMessages = document.querySelectorAll('.chat-window > .message');
+      const continueConversation = document.querySelector('.continue-conversation');
+
+      initialUserQuestion.textContent = question;
+
+      if (thinkingText) {
+        thinkingText.textContent = `針對您的問題「${question}」，AI Hub 正在思考最佳解決方案...`;
+      }
+
+      if (firstAssistantTextContainer) {
+        firstAssistantTextContainer.innerHTML = '';
+
+        if (responseType === 'delphi') {
+          const intro = document.createElement('p');
+          intro.className = 'demo-code-intro text-line';
+          intro.textContent = '以下是 Delphi 轉檔程式範例，可將 CSV 資料轉成指定 JSON 格式：';
+
+          const codePanel = document.createElement('div');
+          codePanel.className = 'demo-code-panel';
+
+          const codeToolbar = document.createElement('div');
+          codeToolbar.className = 'demo-code-toolbar';
+
+          const languageLabel = document.createElement('span');
+          languageLabel.textContent = 'DELPHI';
+
+          const copyButton = document.createElement('button');
+          copyButton.className = 'demo-code-copy';
+          copyButton.type = 'button';
+          copyButton.innerHTML = '<i class="fa fa-clone"></i> 複製';
+
+          const codeBlock = document.createElement('pre');
+          codeBlock.className = 'demo-code-block';
+
+          const code = document.createElement('code');
+          code.className = 'text-line';
+          code.textContent = `program CsvToJsonDemo;
+
+{$APPTYPE CONSOLE}
+
+uses
+  System.SysUtils,
+  System.Classes,
+  System.JSON;
+
+function CsvLineToJson(const HeaderLine, DataLine: string): TJSONObject;
+var
+  Headers: TArray<string>;
+  Values: TArray<string>;
+  I: Integer;
+begin
+  Result := TJSONObject.Create;
+  Headers := HeaderLine.Split([',']);
+  Values := DataLine.Split([',']);
+
+  for I := 0 to High(Headers) do
+  begin
+    if I <= High(Values) then
+      Result.AddPair(Headers[I].Trim, Values[I].Trim)
+    else
+      Result.AddPair(Headers[I].Trim, '');
+  end;
+end;
+
+var
+  Csv: TStringList;
+  JsonArray: TJSONArray;
+  I: Integer;
+begin
+  Csv := TStringList.Create;
+  JsonArray := TJSONArray.Create;
+  try
+    Csv.LoadFromFile('input.csv', TEncoding.UTF8);
+
+    for I := 1 to Csv.Count - 1 do
+      JsonArray.AddElement(CsvLineToJson(Csv[0], Csv[I]));
+
+    TFile.WriteAllText('output.json', JsonArray.Format(2), TEncoding.UTF8);
+    Writeln('CSV 已成功轉換為 output.json');
+  finally
+    JsonArray.Free;
+    Csv.Free;
+  end;
+end.`;
+
+          copyButton.addEventListener('click', () => {
+            navigator.clipboard.writeText(code.dataset.rawText || code.textContent.replace(/\u00a0/g, ' '));
+            copyButton.innerHTML = '<i class="fa fa-check"></i> 已複製';
+          });
+
+          const outro = document.createElement('p');
+          outro.className = 'demo-code-outro text-line';
+          outro.textContent = '可依照實際欄位名稱與輸出格式調整 JSON 欄位對應。';
+
+          codeToolbar.append(languageLabel, copyButton);
+          codeBlock.append(code);
+          codePanel.append(codeToolbar, codeBlock);
+          firstAssistantTextContainer.append(intro, codePanel, outro);
+          initializeChatTypewriter();
+        } else {
+          const responseLine = document.createElement('p');
+          responseLine.className = 'text-line';
+          responseLine.textContent = `針對您的問題「${question}」，AI Hub 正在思考最佳解決方案...`;
+
+          const demoLine = document.createElement('p');
+          demoLine.className = 'text-line';
+          demoLine.textContent = '(這是展示版的回應)';
+
+          firstAssistantTextContainer.append(responseLine, demoLine);
+          initializeChatTypewriter();
+        }
+      }
+
+      chatMessages.forEach((message, index) => {
+        if (index > 1) {
+          message.classList.add('d-none');
+        }
+      });
+
+      if (continueConversation) {
+        continueConversation.classList.add('d-none');
+      }
+    }
+  </script>
 
   <!-- 滑到最底btn -->
 <script>

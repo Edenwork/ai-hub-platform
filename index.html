@@ -19,7 +19,54 @@
   <script src="./js/demo-auth-guard.js"></script>
 
   <style>
+    .home-prompt-examples {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 28px;
+    }
 
+    .home-prompt-example-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 52px;
+      padding: 0 22px;
+      border: 1px solid #e3e7ee;
+      border-radius: 999px;
+      background: #fff;
+      color: #3a4353;
+      font-size: 18px;
+      font-weight: 700;
+      box-shadow: 0 2px 8px rgba(23, 31, 56, 0.12);
+      transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    }
+
+    .home-prompt-example-btn:hover {
+      border-color: #cfd6e2;
+      background: #f8fafc;
+      box-shadow: 0 5px 14px rgba(23, 31, 56, 0.14);
+      transform: translateY(-1px);
+    }
+
+    .home-prompt-example-btn i {
+      color: #536071;
+      font-size: 20px;
+    }
+
+    @media (max-width: 767.98px) {
+      .home-prompt-examples {
+        justify-content: flex-start;
+        gap: 12px;
+      }
+
+      .home-prompt-example-btn {
+        width: 100%;
+        justify-content: center;
+        font-size: 16px;
+      }
+    }
   </style>
 
 
@@ -28,6 +75,7 @@
   <link href="./css/dashboard.css" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="./js/parameter-setting.js"></script>
+  <script src="./js/demo-reset.js?v=20260803-1"></script>
 </head>
 
 <body>
@@ -75,7 +123,6 @@
           $("#sidebar").load("sidebar-user.html", function () {
              initParameterModal();
           });
-  <script src="./js/demo-reset.js?v=20260803-1"></script>
         });
       </script> -->
 
@@ -183,7 +230,7 @@
               </div>
 
               <div class="d-flex flex-column h-100">
-                <textarea class="form-control-chat mb-3" placeholder="詢問任何問題" aria-label="Question" rows="3"></textarea>
+                <textarea class="form-control-chat mb-3" id="homeQuestionInput" placeholder="詢問任何問題" aria-label="Question" rows="3"></textarea>
 
                 <div class="d-flex justify-content-start align-items-end- gap-3 mt-4 justify-content-between-">
                   <input type="file" id="fileInput" accept="image/png,image/jpeg" multiple style="display: none;">
@@ -451,11 +498,9 @@
                   <!-- <button class="btn btn-chat-send position-absolute" style="right: 2%;">
                       <img src="./images/btn-send-chat.svg">
                     </button> -->
-                  <a href="chat.html">
-                    <button class="btn btn-chat-send position-absolute" style="right: 2%; bottom: 12px;">
-                      <img class="icon-inside filter-grey" style="" src="./images/btn-send-chat.svg">
-                    </button>
-                  </a>
+                  <button class="btn btn-chat-send position-absolute" id="homeSendBtn" type="button" style="right: 2%; bottom: 12px;">
+                    <img class="icon-inside filter-grey" style="" src="./images/btn-send-chat.svg">
+                  </button>
 
                 </div>
               </div>
@@ -463,6 +508,26 @@
             </div>
           </div>
 
+          <div class="container">
+            <div class="home-prompt-examples" aria-label="預設對話案例">
+              <button class="home-prompt-example-btn" type="button"
+                data-question="請協助檢查這張藥單是否有潛在交互作用或用藥風險">
+                <i class="bi bi-capsule"></i>
+                藥單風險檢查
+              </button>
+              <button class="home-prompt-example-btn" type="button"
+                data-question="請從技術規格文件中整理重點、專有名詞與待確認事項">
+                <i class="bi bi-file-earmark-text"></i>
+                整理技術文件
+              </button>
+              <button class="home-prompt-example-btn" type="button"
+                data-response="delphi"
+                data-question="請產生一段 Delphi 程式，將 CSV 資料轉成指定 JSON 格式">
+                <i class="bi bi-code-slash"></i>
+                產生轉檔程式
+              </button>
+            </div>
+          </div>
 
 
           <!-- Modal  選擇提示詞 -->
@@ -972,6 +1037,44 @@
         if ($(e.target).is('#zoominImg')) {
           $('#zoominImg').css('display', 'none');
         }
+      });
+    });
+  </script>
+
+  <script>
+    const homeQuestionInput = document.getElementById('homeQuestionInput');
+    const homeSendBtn = document.getElementById('homeSendBtn');
+    const homePromptExampleBtns = document.querySelectorAll('.home-prompt-example-btn');
+
+    function goToChatWithQuestion(questionText = homeQuestionInput.value, responseType = '') {
+      const question = questionText.trim();
+      const params = new URLSearchParams();
+
+      if (question) {
+        params.set('question', question);
+      }
+
+      if (responseType) {
+        params.set('response', responseType);
+      }
+
+      const targetUrl = params.toString() ? `chat.html?${params.toString()}` : 'chat.html';
+      window.location.href = targetUrl;
+    }
+
+    homeSendBtn.addEventListener('click', () => goToChatWithQuestion());
+    homeQuestionInput.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' && !event.shiftKey) {
+        event.preventDefault();
+        goToChatWithQuestion();
+      }
+    });
+
+    homePromptExampleBtns.forEach((button) => {
+      button.addEventListener('click', () => {
+        const question = button.dataset.question;
+        homeQuestionInput.value = question;
+        goToChatWithQuestion(question, button.dataset.response || '');
       });
     });
   </script>
