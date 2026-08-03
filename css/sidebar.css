@@ -336,13 +336,120 @@ body.sidebar-collapsed #content {
     #content {
         margin-left: 80px !important;
         width: calc(100% - 80px) !important;
-        padding: 1rem;
+        max-width: calc(100vw - 80px);
+        padding: 1rem !important;
+        overflow-x: hidden;
     }
 
     #sidebarArea {
         width: 80px !important;
         min-width: 80px !important;
         max-width: 80px !important;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 991.98px) {
+    #content {
+        padding: 1.5rem 2rem !important;
+        overflow-x: hidden;
+    }
+
+    .container-chat {
+        width: min(770px, 100%) !important;
+        padding-top: 10vh;
+    }
+}
+
+@media (max-width: 768px) {
+    html,
+    body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    body.sidebar-collapsed #content {
+        margin-left: 80px !important;
+        width: calc(100% - 80px) !important;
+    }
+
+    #content > .container,
+    #content > .container-fluid,
+    .section-max-width,
+    .section-max-width-770,
+    .container-chat,
+    .container-manage {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    .container-chat {
+        padding-top: 0 !important;
+    }
+
+    .dashboard-round-bg {
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .ai-card {
+        min-height: 76px;
+        height: auto;
+        border-radius: 12px;
+    }
+
+    .ai-card h6 {
+        overflow-wrap: anywhere;
+    }
+
+    .icon-wrapper img {
+        width: 52px;
+    }
+
+    .table-responsive {
+        max-width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .table-responsive > table {
+        min-width: 720px;
+    }
+
+    .form-container,
+    .modal-footer {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+    .modal-dialog {
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+    .btn-select-outline,
+    .btn-select-thinking-outline,
+    .btn-select-model-outline {
+        max-width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}
+
+@media (max-width: 480px) {
+    #content {
+        padding-left: 0.5rem !important;
+        padding-right: 0.5rem !important;
+    }
+
+    #content h1,
+    #content .h1,
+    #content h2,
+    #content .h2 {
+        font-size: 1.5rem;
     }
 }
 
