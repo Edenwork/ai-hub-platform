@@ -316,7 +316,7 @@
     margin-left: 280px;
     margin-top: 0;
     /* 60px; */
-    padding: 2rem;
+    padding: 2rem 2rem 2rem 3rem;
     height: calc(100vh - 0px);
     /* calc(100vh - 60px) */
     overflow-y: auto;
@@ -336,13 +336,424 @@ body.sidebar-collapsed #content {
     #content {
         margin-left: 80px !important;
         width: calc(100% - 80px) !important;
-        padding: 1rem;
+        max-width: calc(100vw - 80px);
+        padding: 1rem 1rem 1rem 2rem !important;
+        overflow-x: hidden;
     }
 
     #sidebarArea {
         width: 80px !important;
         min-width: 80px !important;
         max-width: 80px !important;
+    }
+
+    #sidebarArea:not(.collapsed) {
+        width: min(304px, 72vw) !important;
+        min-width: min(280px, 72vw) !important;
+        max-width: min(304px, 72vw) !important;
+        z-index: 1040;
+        box-shadow: 8px 0 24px rgba(23, 31, 56, 0.16);
+    }
+
+}
+
+@media (min-width: 769px) and (max-width: 991.98px) {
+    #content {
+        padding: 1.5rem 2rem !important;
+        overflow-x: hidden;
+    }
+
+    .container-chat {
+        width: min(770px, 100%) !important;
+        padding-top: 10vh;
+    }
+
+    .question-dialog {
+        max-width: 100%;
+        min-width: 0;
+    }
+
+    .question-dialog .d-flex.justify-content-start {
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 12px !important;
+    }
+
+    .question-dialog .dropdown {
+        min-width: 0;
+    }
+
+    .question-dialog .dropdown.position-absolute,
+    .question-dialog .position-absolute- {
+        position: static !important;
+        left: auto !important;
+        right: auto !important;
+    }
+
+    .chat-model-selector {
+        width: min(220px, 100%);
+        max-width: 100%;
+    }
+
+    .btn-select-thinking-outline,
+    .btn-select-model-outline {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .form-container {
+        padding: 2rem 0;
+    }
+
+    .form-container .row,
+    .tab-body .row {
+        row-gap: 1rem;
+    }
+
+    .form-container .form-label,
+    .tab-body .form-label {
+        margin-bottom: 0.35rem;
+    }
+
+    .form-container [class*="col-md-12"],
+    .tab-body [class*="col-md-12"] {
+        min-width: 0;
+    }
+
+    .form-container .d-flex,
+    .tab-body .d-flex {
+        min-width: 0;
+        flex-wrap: wrap;
+    }
+
+    .btn-select-model-outline-form,
+    .picker-trigger,
+    #tableSearchInput,
+    .search-input {
+        min-width: 0 !important;
+        max-width: 100%;
+    }
+
+    .section-card-list {
+        gap: 1.25rem;
+    }
+
+    .card-agent {
+        width: calc(50% - 0.75rem);
+        min-width: 0 !important;
+        margin-right: 0 !important;
+        margin-bottom: 1.25rem !important;
+    }
+
+    .card-agent > .d-flex:last-child {
+        flex-wrap: wrap;
+        gap: 0.75rem;
+    }
+
+    .card-agent .btn-agentCard-default,
+    .card-agent .btn-agentCard-inactive,
+    .card-agent .btn-default-outline {
+        justify-content: center;
+        white-space: nowrap;
+    }
+
+    .chart-placeholder img,
+    .agent-info-page img,
+    .model-info-page img {
+        max-width: 100%;
+        height: auto !important;
+    }
+
+    .scene-box {
+        min-width: 0;
+    }
+
+    .modal-dialog {
+        max-width: min(720px, calc(100vw - 112px));
+    }
+
+    .modal-footer {
+        gap: 0.75rem;
+    }
+}
+
+@media (max-width: 768px) {
+    html,
+    body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    body.sidebar-collapsed #content {
+        margin-left: 80px !important;
+        width: calc(100% - 80px) !important;
+    }
+
+    #content > .container,
+    #content > .container-fluid,
+    .section-max-width,
+    .section-max-width-770,
+    .container-chat,
+    .container-manage {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    .container-chat {
+        padding-top: 0 !important;
+    }
+
+    .question-dialog {
+        max-width: 100%;
+        min-width: 0;
+        border-radius: 22px;
+        padding: 12px !important;
+    }
+
+    .question-dialog .form-control-chat,
+    .question-dialog .chat-textarea {
+        min-width: 0;
+    }
+
+    .question-dialog .d-flex.justify-content-start {
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 10px !important;
+        margin-top: 0.75rem !important;
+    }
+
+    .question-dialog .dropdown.position-absolute,
+    .question-dialog .position-absolute- {
+        position: static !important;
+        left: auto !important;
+        right: auto !important;
+    }
+
+    .question-dialog .dropdown {
+        min-width: 0;
+        margin-left: 0 !important;
+    }
+
+    .question-dialog .btn-reasoning-thinking {
+        min-width: 0;
+        flex: 1 1 150px;
+    }
+
+    .question-dialog .btn-reasoning-thinking,
+    .question-dialog .btn-select-thinking-outline,
+    .question-dialog .btn-select-model-outline {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .question-dialog .btn-select-thinking-outline,
+    .question-dialog .chat-model-selector {
+        width: 100%;
+        max-width: 100%;
+        flex: 1 1 180px;
+    }
+
+    .question-dialog .chat-model-selector .btn-select-model-outline {
+        width: 100%;
+        margin-right: 0 !important;
+    }
+
+    .question-dialog .dropdown-button-label {
+        min-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .question-dialog .import-file-btn {
+        flex: 0 0 44px;
+        width: 44px;
+        height: 44px;
+    }
+
+    .dashboard-round-bg {
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .ai-card {
+        min-height: 76px;
+        height: auto;
+        border-radius: 12px;
+    }
+
+    .ai-card h6 {
+        overflow-wrap: anywhere;
+    }
+
+    .icon-wrapper img {
+        width: 52px;
+    }
+
+    .table-responsive {
+        max-width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .table-responsive > table {
+        min-width: 720px;
+    }
+
+    .form-container,
+    .modal-footer {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+    .form-container {
+        padding-top: 1.25rem !important;
+        padding-bottom: 1.25rem !important;
+    }
+
+    .form-container .row,
+    .tab-body .row {
+        row-gap: 0.875rem;
+    }
+
+    .form-container .form-label,
+    .tab-body .form-label {
+        margin-bottom: 0.35rem;
+    }
+
+    .form-container .d-flex,
+    .tab-body .d-flex {
+        min-width: 0;
+        flex-wrap: wrap;
+    }
+
+    .btn-select-model-outline-form,
+    .picker-trigger,
+    #tableSearchInput,
+    .search-input {
+        min-width: 200px !important;
+        max-width: 100%;
+        margin-top: 16px;
+    }
+
+    .modal-dialog {
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+    .modal-content {
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    .modal-body {
+        overflow-x: hidden;
+    }
+
+    .modal-footer {
+        gap: 0.75rem;
+        justify-content: stretch !important;
+    }
+
+    .modal-footer .btn,
+    .modal-footer button,
+    .modal-footer a {
+        flex: 1 1 140px;
+        justify-content: center;
+    }
+
+    .btn-select-outline,
+    .btn-select-thinking-outline,
+    .btn-select-model-outline {
+        max-width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .section-card-list {
+        display: flex;
+        gap: 1rem;
+    }
+
+    .card-agent {
+        width: 100%;
+        min-width: 0 !important;
+        margin-right: 0 !important;
+        margin-bottom: 1rem !important;
+    }
+
+    .card-agent > .d-flex:last-child {
+        flex-wrap: wrap;
+        gap: 0.75rem;
+    }
+
+    .card-agent .btn-agentCard-default,
+    .card-agent .btn-agentCard-inactive,
+    .card-agent .btn-default-outline {
+        flex: 1 1 130px;
+        justify-content: center;
+        white-space: nowrap;
+    }
+
+    .status-badge-default,
+    .card-icon-more-info {
+        position: static;
+        margin-left: auto;
+    }
+
+    .chart-placeholder img,
+    .agent-info-page img,
+    .model-info-page img {
+        max-width: 100%;
+        height: auto !important;
+    }
+
+    .scene-box {
+        min-width: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    #content {
+        padding-left: 0.5rem !important;
+        padding-right: 0.5rem !important;
+    }
+
+    #content h1,
+    #content .h1,
+    #content h2,
+    #content .h2 {
+        font-size: 1.5rem;
+    }
+
+    .question-dialog .btn-reasoning-thinking,
+    .question-dialog .btn-select-thinking-outline,
+    .question-dialog .chat-model-selector {
+        flex-basis: 100%;
+        width: 100%;
+    }
+
+    .modal-dialog {
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+    }
+
+    .modal-footer .btn,
+    .modal-footer button,
+    .modal-footer a,
+    .card-agent .btn-agentCard-default,
+    .card-agent .btn-agentCard-inactive,
+    .card-agent .btn-default-outline {
+        flex-basis: 100%;
+        width: 100%;
     }
 }
 

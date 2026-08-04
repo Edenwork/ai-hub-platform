@@ -88,111 +88,113 @@
             </div>
           </div>
 
-          <table id="modelmanageTable">
-            <tr class="header">
-              <th style="width:20%;">名稱</th>
-              <th style="width:15%;">描述</th>
-              <th style="width:10%;">建立時間</th>
-              <th style="width:20%;">最後修改時間</th>
-              <th style="width:10%;">功能</th>
-            </tr>
+          <div class="table-responsive prompt-table-responsive">
+            <table id="modelmanageTable">
+              <tr class="header">
+                <th style="width:20%;">名稱</th>
+                <th style="width:15%;">描述</th>
+                <th style="width:10%;">建立時間</th>
+                <th style="width:20%;">最後修改時間</th>
+                <th style="width:10%;">功能</th>
+              </tr>
 
-            <tr>
-              <td aria-expanded="false" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                data-bs-title="產品經理PRD">產品經理PRD</td>
-              <td aria-expanded="false" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                data-bs-title="如何撰寫一個產品PRD">如何撰寫一個產品PRD</td>
-              <td>2025-10-27 17:50:54</td>
-              <td>2025-10-31 15:55:10</td>
-              <td>
-                <div class="dropdown">
-                  <button class="btn btn-more-action" type="button" id="actionDropdown" data-bs-toggle="dropdown"
-                    aria-expanded="false">
-                    <i class="fa fa-ellipsis-h"></i>
-                  </button>
-                  <ul class="dropdown-menu" aria-labelledby="actionDropdown">
-                    <li>
-                      <a class="dropdown-item" href="./user-prompt-edit.html">
-                        <img src="./images/icon-edit.svg">
-                        <span class="text-danger- dropdown-mg fs-6"> 修改</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modal-delete-prompt">
-                        <img src="./images/icon-delete-red.svg">
-                        <span class="text-danger dropdown-mg fs-6"> 刪除</span>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </td>
-            </tr>
+              <tr>
+                <td aria-expanded="false" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                  data-bs-title="產品經理PRD">產品經理PRD</td>
+                <td aria-expanded="false" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                  data-bs-title="如何撰寫一個產品PRD">如何撰寫一個產品PRD</td>
+                <td>2025-10-27 17:50:54</td>
+                <td>2025-10-31 15:55:10</td>
+                <td>
+                  <div class="dropdown">
+                    <button class="btn btn-more-action" type="button" id="actionDropdown" data-bs-toggle="dropdown"
+                      aria-expanded="false">
+                      <i class="fa fa-ellipsis-h"></i>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="actionDropdown">
+                      <li>
+                        <a class="dropdown-item" href="./user-prompt-edit.html">
+                          <img src="./images/icon-edit.svg">
+                          <span class="text-danger- dropdown-mg fs-6"> 修改</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modal-delete-prompt">
+                          <img src="./images/icon-delete-red.svg">
+                          <span class="text-danger dropdown-mg fs-6"> 刪除</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </td>
+              </tr>
 
-            <tr>
-              <td aria-expanded="false" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                data-bs-title="你是一位{工程師}">你是一位{工程師}</td>
-              <td aria-expanded="false" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                data-bs-title="設定環境變數教學">設定環境變數教學</td>
-              <td>2026-02-26 17:37:28</td>
-              <td>2026-02-26 17:37:28</td>
-              <td>
-                <div class="dropdown">
-                  <button class="btn btn-more-action" type="button" id="actionDropdown" data-bs-toggle="dropdown"
-                    aria-expanded="false">
-                    <i class="fa fa-ellipsis-h"></i>
-                  </button>
-                  <!-- 下拉選單 -->
-                  <ul class="dropdown-menu" aria-labelledby="actionDropdown">
-                    <li>
-                      <a class="dropdown-item" href="./user-prompt-edit.html">
-                        <img src="./images/icon-edit.svg">
-                        <span class="text-danger- dropdown-mg fs-6"> 修改</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modal-delete-prompt">
-                        <img src="./images/icon-delete-red.svg">
-                        <span class="text-danger dropdown-mg fs-6"> 刪除</span>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </td>
-            </tr>
+              <tr>
+                <td aria-expanded="false" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                  data-bs-title="你是一位{工程師}">你是一位{工程師}</td>
+                <td aria-expanded="false" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                  data-bs-title="設定環境變數教學">設定環境變數教學</td>
+                <td>2026-02-26 17:37:28</td>
+                <td>2026-02-26 17:37:28</td>
+                <td>
+                  <div class="dropdown">
+                    <button class="btn btn-more-action" type="button" id="actionDropdown" data-bs-toggle="dropdown"
+                      aria-expanded="false">
+                      <i class="fa fa-ellipsis-h"></i>
+                    </button>
+                    <!-- 下拉選單 -->
+                    <ul class="dropdown-menu" aria-labelledby="actionDropdown">
+                      <li>
+                        <a class="dropdown-item" href="./user-prompt-edit.html">
+                          <img src="./images/icon-edit.svg">
+                          <span class="text-danger- dropdown-mg fs-6"> 修改</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modal-delete-prompt">
+                          <img src="./images/icon-delete-red.svg">
+                          <span class="text-danger dropdown-mg fs-6"> 刪除</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </td>
+              </tr>
 
-            <tr>
-              <td aria-expanded="false" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                data-bs-title="顯示用戶輸入全部描述，滑鼠hover可查看完整描述">Name，Hover可查看完整描述</td>
-              <td aria-expanded="false" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                data-bs-title="Description，Hover可查看完整描述">Description，Hover可查看完整描述</td>
-              <td>YYYY-MM-DD HH:MM:SS</td>
-              <td>YYYY-MM-DD HH:MM:SS</td>
-              <td>
-                <div class="dropdown">
-                  <button class="btn btn-more-action" type="button" id="actionDropdown" data-bs-toggle="dropdown"
-                    aria-expanded="false">
-                    <i class="fa fa-ellipsis-h"></i>
-                  </button>
-                  <!-- 下拉選單 -->
-                  <ul class="dropdown-menu" aria-labelledby="actionDropdown">
-                    <li>
-                      <a class="dropdown-item" href="./user-prompt-edit.html">
-                        <img src="./images/icon-edit.svg">
-                        <span class="text-danger- dropdown-mg fs-6"> 修改</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modal-delete-prompt">
-                        <img src="./images/icon-delete-red.svg">
-                        <span class="text-danger dropdown-mg fs-6"> 刪除</span>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </td>
-            </tr>
+              <tr>
+                <td aria-expanded="false" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                  data-bs-title="顯示用戶輸入全部描述，滑鼠hover可查看完整描述">Name，Hover可查看完整描述</td>
+                <td aria-expanded="false" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                  data-bs-title="Description，Hover可查看完整描述">Description，Hover可查看完整描述</td>
+                <td>YYYY-MM-DD HH:MM:SS</td>
+                <td>YYYY-MM-DD HH:MM:SS</td>
+                <td>
+                  <div class="dropdown">
+                    <button class="btn btn-more-action" type="button" id="actionDropdown" data-bs-toggle="dropdown"
+                      aria-expanded="false">
+                      <i class="fa fa-ellipsis-h"></i>
+                    </button>
+                    <!-- 下拉選單 -->
+                    <ul class="dropdown-menu" aria-labelledby="actionDropdown">
+                      <li>
+                        <a class="dropdown-item" href="./user-prompt-edit.html">
+                          <img src="./images/icon-edit.svg">
+                          <span class="text-danger- dropdown-mg fs-6"> 修改</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modal-delete-prompt">
+                          <img src="./images/icon-delete-red.svg">
+                          <span class="text-danger dropdown-mg fs-6"> 刪除</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </td>
+              </tr>
 
-          </table>
+            </table>
+          </div>
 
         </section>
 

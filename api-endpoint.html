@@ -16,7 +16,7 @@
   <!-- Custom styles -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
   <link href="./css/dashboard.css" rel="stylesheet">
-  <link href="./css/modal.css" rel="stylesheet">
+  <link href="./css/modal.css?v=20260804-1" rel="stylesheet">
   <link href="./css/api-endpoint.css" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
@@ -110,43 +110,45 @@
           </div>
 
 
-          <table id="modelmanageTable">
-            <tr class="header">
-              <th style="width:30%;">API名稱</th>
-              <th style="width:15%;">API類型</th>
-              <th style="width:25%;">API端點</th>
-              <th style="width:30%;">說明</th>
-            </tr>
+          <div class="table-responsive responsive-table-wrap">
+            <table id="modelmanageTable">
+              <tr class="header">
+                <th style="width:30%;">API名稱</th>
+                <th style="width:15%;">API類型</th>
+                <th style="width:25%;">API端點</th>
+                <th style="width:30%;">說明</th>
+              </tr>
 
-            <tr>
-              <td>此階段必要-Chat Completion</td>
-              <td>POST</td>
-              <td>/v1/chat/completions</td>
-              <td>根據歷史對話生成下一句回答</td>
-            </tr>
+              <tr>
+                <td>此階段必要-Chat Completion</td>
+                <td>POST</td>
+                <td>/v1/chat/completions</td>
+                <td>根據歷史對話生成下一句回答</td>
+              </tr>
 
-            <tr>
-              <td>List Running Models</td>
-              <td>GET</td>
-              <td>/v1/models</td>
-              <td>取得可用模型清單</td>
-            </tr>
+              <tr>
+                <td>List Running Models</td>
+                <td>GET</td>
+                <td>/v1/models</td>
+                <td>取得可用模型清單</td>
+              </tr>
 
-            <tr>
-              <td>Completion</td>
-              <td>POST</td>
-              <td>/v1/completions</td>
-              <td>根據提示詞生成下一個token</td>
-            </tr>
+              <tr>
+                <td>Completion</td>
+                <td>POST</td>
+                <td>/v1/completions</td>
+                <td>根據提示詞生成下一個token</td>
+              </tr>
 
-            <tr>
-              <td>Embedding</td>
-              <td>POST</td>
-              <td>/v1/embeddings</td>
-              <td>根據輸入文字生成向量</td>
-            </tr>
+              <tr>
+                <td>Embedding</td>
+                <td>POST</td>
+                <td>/v1/embeddings</td>
+                <td>根據輸入文字生成向量</td>
+              </tr>
 
-          </table>
+            </table>
+          </div>
 
 
 
