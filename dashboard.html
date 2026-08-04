@@ -15,12 +15,12 @@
   </style>
 
   <!-- Custom styles -->
-  <link href="./css/style.css" rel="stylesheet">
+  <link href="./css/style.css?v=20260804-1" rel="stylesheet">
   <link href="./css/global.css" rel="stylesheet">
   <link href="./css/sidebar.css?v=20260730-5" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
   <link href="./css/dashboard.css" rel="stylesheet">
-  <link href="./css/dashboard-new.css" rel="stylesheet">
+  <link href="./css/dashboard-new.css?v=20260804-4" rel="stylesheet">
   <link href="./css/add-model.css" rel="stylesheet">
   <link href="./css/echart.css" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
@@ -238,7 +238,7 @@
                     <div id="alert-bar">
                       <div style="display:flex; align-items:center; gap:10px;">
                         <div class="icon-alert">
-                          <span style="color:#fff; font-size:13px; font-weight:700;">!</span>
+                          <span style="color:#fff; font-size:13px; font-weight:700;padding: 4px;">!</span>
                         </div>
                         <span style="font-size:14px; color:#333;">
                           偵測到異常用量 — Key Name3 過去 1 小時超出正常範圍 340%。
@@ -254,7 +254,8 @@
                       });
                     </script>
 
-                    <div class="section-filter d-flex flex-row justify-content-between align-items-center gap-4">
+                    <div
+                      class="section-filter dashboard-control-filter d-flex flex-row justify-content-between align-items-center gap-4">
                       <div class="row">
                         <div class="col-6">
                           <div class="dropdown" style="">
@@ -333,7 +334,7 @@
 
                         </div>
 
-                        <div class="col-4 ms-2 text-center">
+                        <div class="col-4 ms-2">
                           <div
                             class="reportrange picker-trigger btn btn-select-model-outline-form fs-15px d-flex justify-content-between align-items-center"
                             data-default="最近 1 小時">
@@ -343,7 +344,7 @@
                         </div>
 
                       </div>
-                      <div class=" ">
+                      <div class="dashboard-refresh-action">
                         <button class="btn fs-6 ms-2" type="button" aria-expanded="false" data-bs-toggle="tooltip"
                           data-bs-placement="bottom" data-bs-title="重新整理">
                           <img class="" src="./images/icon-refresh.svg">
@@ -821,7 +822,7 @@
                     <div id="alert-bar">
                       <div style="display:flex; align-items:center; gap:10px;">
                         <div class="icon-alert">
-                          <span style="color:#fff; font-size:13px; font-weight:700;">!</span>
+                          <span style="color:#fff; font-size:13px; font-weight:700;padding: 4px;">!</span>
                         </div>
                         <span style="font-size:14px; color:#333;">
                           偵測到異常 — Model Name3 回應速度大幅超出正常範圍 140%。(TTFT P99 首字延遲超出310%)
@@ -837,7 +838,8 @@
                       });
                     </script>
 
-                    <div class="section-filter d-flex flex-row justify-content-between align-items-center gap-4">
+                    <div
+                      class="section-filter dashboard-control-filter d-flex flex-row justify-content-between align-items-center gap-4">
                       <div class="row">
                         <div class="col-6">
                           <div class="dropdown" style="">
@@ -912,7 +914,7 @@
 
                         </div>
 
-                        <div class="col-4 ms-2 text-center">
+                        <div class="col-4 ms-2">
                           <div
                             class="reportrange picker-trigger btn btn-select-model-outline-form fs-15px d-flex justify-content-between align-items-center"
                             data-default="最近 1 小時">
@@ -922,7 +924,7 @@
                         </div>
 
                       </div>
-                      <div class=" ">
+                      <div class="dashboard-refresh-action">
                         <button class="btn fs-6 ms-2" type="button" aria-expanded="false" data-bs-toggle="tooltip"
                           data-bs-placement="bottom" data-bs-title="重新整理">
                           <img class="" src="./images/icon-refresh.svg">
