@@ -346,6 +346,18 @@ body.sidebar-collapsed #content {
         min-width: 80px !important;
         max-width: 80px !important;
     }
+
+    #sidebarArea:not(.collapsed) {
+        width: min(304px, 72vw) !important;
+        min-width: min(280px, 72vw) !important;
+        max-width: min(304px, 72vw) !important;
+    }
+
+    body:not(.sidebar-collapsed) #content {
+        margin-left: min(304px, 72vw) !important;
+        width: calc(100% - min(304px, 72vw)) !important;
+        max-width: calc(100vw - min(304px, 72vw));
+    }
 }
 
 @media (min-width: 769px) and (max-width: 991.98px) {
