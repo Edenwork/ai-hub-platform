@@ -393,6 +393,81 @@ body.sidebar-collapsed #content {
         align-items: center;
         justify-content: space-between;
     }
+
+    .form-container {
+        padding: 2rem 0;
+    }
+
+    .form-container .row,
+    .tab-body .row {
+        row-gap: 1rem;
+    }
+
+    .form-container .form-label,
+    .tab-body .form-label {
+        margin-bottom: 0.35rem;
+    }
+
+    .form-container [class*="col-md-12"],
+    .tab-body [class*="col-md-12"] {
+        min-width: 0;
+    }
+
+    .form-container .d-flex,
+    .tab-body .d-flex {
+        min-width: 0;
+        flex-wrap: wrap;
+    }
+
+    .btn-select-model-outline-form,
+    .picker-trigger,
+    #tableSearchInput,
+    .search-input {
+        min-width: 0 !important;
+        max-width: 100%;
+    }
+
+    .section-card-list {
+        gap: 1.25rem;
+    }
+
+    .card-agent {
+        width: calc(50% - 0.75rem);
+        min-width: 0 !important;
+        margin-right: 0 !important;
+        margin-bottom: 1.25rem !important;
+    }
+
+    .card-agent > .d-flex:last-child {
+        flex-wrap: wrap;
+        gap: 0.75rem;
+    }
+
+    .card-agent .btn-agentCard-default,
+    .card-agent .btn-agentCard-inactive,
+    .card-agent .btn-default-outline {
+        justify-content: center;
+        white-space: nowrap;
+    }
+
+    .chart-placeholder img,
+    .agent-info-page img,
+    .model-info-page img {
+        max-width: 100%;
+        height: auto !important;
+    }
+
+    .scene-box {
+        min-width: 0;
+    }
+
+    .modal-dialog {
+        max-width: min(720px, calc(100vw - 112px));
+    }
+
+    .modal-footer {
+        gap: 0.75rem;
+    }
 }
 
 @media (max-width: 768px) {
@@ -529,9 +604,59 @@ body.sidebar-collapsed #content {
         padding-right: 0 !important;
     }
 
+    .form-container {
+        padding-top: 1.25rem !important;
+        padding-bottom: 1.25rem !important;
+    }
+
+    .form-container .row,
+    .tab-body .row {
+        row-gap: 0.875rem;
+    }
+
+    .form-container .form-label,
+    .tab-body .form-label {
+        margin-bottom: 0.35rem;
+    }
+
+    .form-container .d-flex,
+    .tab-body .d-flex {
+        min-width: 0;
+        flex-wrap: wrap;
+    }
+
+    .btn-select-model-outline-form,
+    .picker-trigger,
+    #tableSearchInput,
+    .search-input {
+        min-width: 0 !important;
+        max-width: 100%;
+    }
+
     .modal-dialog {
         margin-left: 1rem;
         margin-right: 1rem;
+    }
+
+    .modal-content {
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    .modal-body {
+        overflow-x: hidden;
+    }
+
+    .modal-footer {
+        gap: 0.75rem;
+        justify-content: stretch !important;
+    }
+
+    .modal-footer .btn,
+    .modal-footer button,
+    .modal-footer a {
+        flex: 1 1 140px;
+        justify-content: center;
     }
 
     .btn-select-outline,
@@ -541,6 +666,48 @@ body.sidebar-collapsed #content {
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
+    }
+
+    .section-card-list {
+        display: flex;
+        gap: 1rem;
+    }
+
+    .card-agent {
+        width: 100%;
+        min-width: 0 !important;
+        margin-right: 0 !important;
+        margin-bottom: 1rem !important;
+    }
+
+    .card-agent > .d-flex:last-child {
+        flex-wrap: wrap;
+        gap: 0.75rem;
+    }
+
+    .card-agent .btn-agentCard-default,
+    .card-agent .btn-agentCard-inactive,
+    .card-agent .btn-default-outline {
+        flex: 1 1 130px;
+        justify-content: center;
+        white-space: nowrap;
+    }
+
+    .status-badge-default,
+    .card-icon-more-info {
+        position: static;
+        margin-left: auto;
+    }
+
+    .chart-placeholder img,
+    .agent-info-page img,
+    .model-info-page img {
+        max-width: 100%;
+        height: auto !important;
+    }
+
+    .scene-box {
+        min-width: 0;
     }
 }
 
@@ -560,6 +727,21 @@ body.sidebar-collapsed #content {
     .question-dialog .btn-reasoning-thinking,
     .question-dialog .btn-select-thinking-outline,
     .question-dialog .chat-model-selector {
+        flex-basis: 100%;
+        width: 100%;
+    }
+
+    .modal-dialog {
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+    }
+
+    .modal-footer .btn,
+    .modal-footer button,
+    .modal-footer a,
+    .card-agent .btn-agentCard-default,
+    .card-agent .btn-agentCard-inactive,
+    .card-agent .btn-default-outline {
         flex-basis: 100%;
         width: 100%;
     }
