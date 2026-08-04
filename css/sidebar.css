@@ -355,12 +355,6 @@ body.sidebar-collapsed #content {
         box-shadow: 8px 0 24px rgba(23, 31, 56, 0.16);
     }
 
-
-    body:not(.sidebar-collapsed) #content {
-        margin-left: min(304px, 72vw) !important;
-        width: calc(100% - min(304px, 72vw)) !important;
-        max-width: calc(100vw - min(304px, 72vw));
-    }
 }
 
 @media (min-width: 769px) and (max-width: 991.98px) {
@@ -759,10 +753,6 @@ body.sidebar-collapsed #content {
     .card-agent .btn-default-outline {
         flex-basis: 100%;
         width: 100%;
-=======
-        z-index: 1040;
-        box-shadow: 8px 0 24px rgba(23, 31, 56, 0.16);
->>>>>>> main
     }
 }
 
