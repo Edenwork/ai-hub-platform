@@ -47,6 +47,17 @@ window.addEventListener('resize', applyResponsiveSidebar);
 window.setTimeout(applyResponsiveSidebar, 0);
 window.setTimeout(applyResponsiveSidebar, 300);
 
+const sidebarMountObserver = new MutationObserver(function () {
+    if (document.getElementById('sidebarArea')) {
+        applyResponsiveSidebar();
+    }
+});
+
+sidebarMountObserver.observe(document.body, {
+    childList: true,
+    subtree: true
+});
+
 // 點擊事件監聽
 document.addEventListener('click', function (e) {
     const sidebar = document.getElementById('sidebarArea');
@@ -90,4 +101,3 @@ document.addEventListener('click', function (e) {
     // → 都觸發 toggle（展開 → 收合；收合 → 展開）
     toggleSidebar();
 });
-
