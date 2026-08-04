@@ -8,7 +8,7 @@
   <title>model-manage</title>
   <link href="./css/bootstrap.min.css" rel="stylesheet">
   <!-- <link href="./css/breadcrumbs.css" rel="stylesheet"> -->
-  <link href="./css/style.css" rel="stylesheet">
+  <link href="./css/style.css?v=20260804-1" rel="stylesheet">
     <link href="./css/global.css" rel="stylesheet">
   <link href="./css/sidebar.css?v=20260804-1" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -83,7 +83,7 @@
 
 
         <section>
-          <div class="d-flex flex-row justify-content-between align-items-center" style="">
+          <div class="manage-toolbar d-flex flex-row justify-content-between align-items-center" style="">
             <button class="btn btn-add-user">
               <a href="./add-model-1-key.html">
                 <i class="fa fa-plus me-2"></i> 新增模型</a>
@@ -99,10 +99,11 @@
                 data-bs-toggle="dropdown" data-popper-placement="right-end" aria-expanded="false">
                 近7天操作紀錄
               </button>
-              <div class="dropdown-menu dropdown-menu-start p-0 overflow-y-scroll shadow"
+              <div class="dropdown-menu dropdown-menu-start p-0 overflow-y-scroll shadow ai-agent-log-menu"
                 data-popper-placement="right-end-"
                 style="transform: translate(-360px, 0px) !important; background-color:#f8f9fa !important" ;
                 style="min-height: 300px;overflow: auto">
+                <div class="table-responsive">
                 <table class="table table-log">
                   <thead class="table-light sticky-top">
                     <tr>
@@ -144,6 +145,7 @@
                     <td>啟用模型失敗 - 儲存可用空間不足...</td>
                   </tr>
                 </table>
+                </div>
 
 
               </div>

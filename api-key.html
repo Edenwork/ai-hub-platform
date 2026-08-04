@@ -15,7 +15,7 @@
   <!-- Custom styles -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
   <link href="./css/dashboard.css" rel="stylesheet">
-  <link href="./css/modal.css" rel="stylesheet">
+  <link href="./css/modal.css?v=20260804-1" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 
@@ -87,16 +87,17 @@
 
           </div>
 
-          <table id="modelmanageTable">
-            <tr class="header">
-              <th style="width:20%;">金鑰名稱</th>
-              <th style="width:25%;">描述</th>
-              <th style="width:15%;">建立者</th>
-              <th style="width:10%;">建立時間</th>
-              <th style="width:10%;">最後使用時間</th>
-              <th style="width:10%;">到期時間</th>
-              <th style="width:10%;">功能</th>
-            </tr>
+          <div class="table-responsive responsive-table-wrap">
+            <table id="modelmanageTable">
+              <tr class="header">
+                <th style="width:20%;">金鑰名稱</th>
+                <th style="width:25%;">描述</th>
+                <th style="width:15%;">建立者</th>
+                <th style="width:10%;">建立時間</th>
+                <th style="width:10%;">最後使用時間</th>
+                <th style="width:10%;">到期時間</th>
+                <th style="width:10%;">功能</th>
+              </tr>
 
             <tr>
               <td>Key1</td>
@@ -226,7 +227,8 @@
               </td>
             </tr>
 
-          </table>
+            </table>
+          </div>
 
 
           <!-- Modal 新增API金鑰 -->
