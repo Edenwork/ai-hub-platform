@@ -351,7 +351,10 @@ body.sidebar-collapsed #content {
         width: min(304px, 72vw) !important;
         min-width: min(280px, 72vw) !important;
         max-width: min(304px, 72vw) !important;
+        z-index: 1040;
+        box-shadow: 8px 0 24px rgba(23, 31, 56, 0.16);
     }
+
 
     body:not(.sidebar-collapsed) #content {
         margin-left: min(304px, 72vw) !important;
@@ -756,6 +759,10 @@ body.sidebar-collapsed #content {
     .card-agent .btn-default-outline {
         flex-basis: 100%;
         width: 100%;
+=======
+        z-index: 1040;
+        box-shadow: 8px 0 24px rgba(23, 31, 56, 0.16);
+>>>>>>> main
     }
 }
 

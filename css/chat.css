@@ -2,7 +2,7 @@
 /* 滑到最底btn */
 .button-to-end {
     position: fixed;
-    bottom: 60px; /* 距離底部 60px */
+    bottom: 240px; /* 距離底部 60px */
     right: 36px; /* 距離右邊 50px */
     padding: 10px;
     font-size: 16px;
