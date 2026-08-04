@@ -6,9 +6,8 @@ function toggleSidebar() {
     if (!sidebar) return;
 
     if (window.innerWidth <= SIDEBAR_MOBILE_BREAKPOINT) {
-        sidebar.classList.add('collapsed');
-        document.body.classList.add('sidebar-collapsed');
-        sidebar.dataset.mobileCollapsed = 'true';
+        sidebar.classList.toggle('collapsed');
+        document.body.classList.toggle('sidebar-collapsed', sidebar.classList.contains('collapsed'));
         return;
     }
 
@@ -24,18 +23,18 @@ function applyResponsiveSidebar() {
     const isMobile = window.innerWidth <= SIDEBAR_MOBILE_BREAKPOINT;
 
     if (isMobile) {
-        if (!sidebar.classList.contains('collapsed')) {
-            sidebar.dataset.mobileCollapsed = 'true';
+        if (sidebar.dataset.mobileReady !== 'true') {
+            sidebar.classList.add('collapsed');
+            document.body.classList.add('sidebar-collapsed');
+            sidebar.dataset.mobileReady = 'true';
         }
-        sidebar.classList.add('collapsed');
-        document.body.classList.add('sidebar-collapsed');
         return;
     }
 
-    if (sidebar.dataset.mobileCollapsed === 'true') {
+    if (sidebar.dataset.mobileReady === 'true') {
         sidebar.classList.remove('collapsed');
         document.body.classList.remove('sidebar-collapsed');
-        delete sidebar.dataset.mobileCollapsed;
+        delete sidebar.dataset.mobileReady;
     }
 }
 

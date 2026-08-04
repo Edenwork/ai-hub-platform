@@ -344,6 +344,14 @@ body.sidebar-collapsed #content {
         min-width: 80px !important;
         max-width: 80px !important;
     }
+
+    #sidebarArea:not(.collapsed) {
+        width: min(304px, 72vw) !important;
+        min-width: min(280px, 72vw) !important;
+        max-width: min(304px, 72vw) !important;
+        z-index: 1040;
+        box-shadow: 8px 0 24px rgba(23, 31, 56, 0.16);
+    }
 }
 
 /* AI 應用相關 */
