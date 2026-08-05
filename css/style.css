@@ -416,9 +416,9 @@ fieldset:disabled .btn,
 }
 
 .form-check-input:checked {
-  background-color: #27A4BC;
+  background-color: var(--second-color);
   /*#0d6efd; */
-  border-color: #27A4BC;
+  border-color: var(--second-color);
   /*#0d6efd; */
 }
 
@@ -692,6 +692,15 @@ button a {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+.btn-reasoning-thinking:hover, .btn-select-thinking-outline:hover, .btn-select-model-outline:hover {
+  color: #fff;
+  background: var(--sys-color-primary);
+}
+
+.btn-reasoning-thinking:hover .icon-reasoning,
+.btn-reasoning-thinking:focus .icon-reasoning {
+  filter: brightness(0) invert(1) !important;
 }
 
 .btn-reasoning-collapse {

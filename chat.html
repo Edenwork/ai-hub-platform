@@ -883,6 +883,13 @@
     const chatParams = new URLSearchParams(window.location.search);
     const initialQuestion = chatParams.get('question');
     const responseType = chatParams.get('response');
+    const selectedModel = chatParams.get('model') || localStorage.getItem('selectedChatModel');
+    const currentChatModel = document.getElementById('currentChatModel');
+
+    if (selectedModel && currentChatModel) {
+      currentChatModel.textContent = `${selectedModel} `;
+      localStorage.setItem('selectedChatModel', selectedModel);
+    }
 
     if (initialQuestion && initialQuestion.trim()) {
       const question = initialQuestion.trim();

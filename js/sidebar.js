@@ -389,3 +389,16 @@ document.addEventListener('click', function (e) {
         }
     }
 });
+
+document.addEventListener('keydown', function (e) {
+    const conversationRow = e.target.closest('.conversation-history-row');
+    if (!conversationRow || e.target.closest('.conversation-rename-input')) return;
+
+    if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        const item = conversationRow.closest('.conversation-item');
+        if (item) {
+            goToConversation(item);
+        }
+    }
+});
