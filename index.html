@@ -790,6 +790,10 @@
           if (label && selectedText) {
             label.textContent = selectedText;
             button.setAttribute('title', selectedText);
+
+            if (button.id === 'chatModelDropdown') {
+              localStorage.setItem(selectedChatModelStorageKey, selectedText);
+            }
           }
         });
       });
@@ -994,14 +998,25 @@
   <script>
     const homeQuestionInput = document.getElementById('homeQuestionInput');
     const homeSendBtn = document.getElementById('homeSendBtn');
-    const homePromptExampleBtns = document.querySelectorAll('.home-prompt-example-btn');
+
+    function getSelectedChatModel() {
+      const modelLabel = document.querySelector('#chatModelDropdown .dropdown-button-label')?.textContent.trim();
+      return modelLabel && modelLabel !== '請選擇模型'
+        ? modelLabel
+        : localStorage.getItem('selectedChatModel') || '';
+    }
 
     function goToChatWithQuestion(questionText = homeQuestionInput.value, responseType = '') {
       const question = questionText.trim();
+      const selectedModel = getSelectedChatModel();
       const params = new URLSearchParams();
 
       if (question) {
         params.set('question', question);
+      }
+
+      if (selectedModel) {
+        params.set('model', selectedModel);
       }
 
       if (responseType) {
