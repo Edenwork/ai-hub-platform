@@ -52,15 +52,110 @@ function applyResponsiveSidebar() {
     }
 }
 
-document.addEventListener('DOMContentLoaded', applyResponsiveSidebar);
-window.addEventListener('load', applyResponsiveSidebar);
+let sharedSidebarModalsPromise;
+
+function removeLegacySidebarModals() {
+    ['modal-system-prompt', 'modal-parameter-setting'].forEach((id) => {
+        const modals = document.querySelectorAll(`#${id}`);
+        const sharedModal = Array.from(modals).find((modal) => modal.dataset.sharedSidebarModal === 'true');
+
+        if (sharedModal) {
+            modals.forEach((modal) => {
+                if (modal !== sharedModal) modal.remove();
+            });
+        }
+    });
+    initializeSidebarModelSelectors();
+}
+
+function setSidebarModelSelectorValue(dropdown, selectedText) {
+    if (!dropdown || !selectedText) return;
+
+    const button = dropdown.querySelector('[data-bs-toggle="dropdown"]');
+    const label = button?.querySelector('.dropdown-button-label');
+    if (!button || !label) return;
+
+    if (label.textContent.trim() !== selectedText) {
+        label.textContent = selectedText;
+    }
+    button.setAttribute('title', selectedText);
+
+    dropdown.querySelectorAll('.dropdown-item').forEach((item) => {
+        const isSelected = item.querySelector('.dropdown-text')?.textContent.trim() === selectedText;
+        item.classList.toggle('active', isSelected);
+
+        const checkmark = item.querySelector('.checkmark');
+        if (checkmark) {
+            checkmark.style.display = isSelected ? 'inline-block' : 'none';
+        }
+    });
+}
+
+function initializeSidebarModelSelectors(root = document) {
+    const storedModel = localStorage.getItem('selectedChatModel');
+
+    root.querySelectorAll('.modal-model-selector, .chat-model-selector').forEach((dropdown) => {
+        const activeText = dropdown.querySelector('.dropdown-item.active .dropdown-text')?.textContent.trim();
+        const selectedText = storedModel || activeText;
+        if (selectedText) {
+            setSidebarModelSelectorValue(dropdown, selectedText);
+        }
+    });
+}
+
+function ensureSharedSidebarModals() {
+    if (sharedSidebarModalsPromise) {
+        return sharedSidebarModalsPromise;
+    }
+
+    sharedSidebarModalsPromise = fetch('sidebar-user.html')
+        .then((response) => {
+            if (!response.ok) throw new Error('無法載入共用 sidebar modal');
+            return response.text();
+        })
+        .then((html) => {
+            const sourceDocument = new DOMParser().parseFromString(html, 'text/html');
+            const modalIds = ['modal-system-prompt', 'modal-parameter-setting'];
+
+            modalIds.forEach((id) => {
+                const sourceModal = sourceDocument.getElementById(id);
+                if (!sourceModal) throw new Error(`共用 modal 不存在：${id}`);
+
+                document.querySelectorAll(`#${id}`).forEach((modal) => modal.remove());
+                const sharedModal = document.importNode(sourceModal, true);
+                sharedModal.dataset.sharedSidebarModal = 'true';
+                document.body.appendChild(sharedModal);
+                initializeSidebarModelSelectors(sharedModal);
+            });
+
+            removeLegacySidebarModals();
+        })
+        .catch((error) => {
+            sharedSidebarModalsPromise = null;
+            console.error(error);
+            throw error;
+        });
+
+    return sharedSidebarModalsPromise;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    applyResponsiveSidebar();
+    ensureSharedSidebarModals();
+});
+window.addEventListener('load', () => {
+    applyResponsiveSidebar();
+    ensureSharedSidebarModals();
+});
 window.addEventListener('resize', applyResponsiveSidebar);
 window.setTimeout(applyResponsiveSidebar, 0);
 window.setTimeout(applyResponsiveSidebar, 300);
 
 const sidebarMountObserver = new MutationObserver(function () {
     if (document.getElementById('sidebarArea')) {
+        sidebarMountObserver.disconnect();
         applyResponsiveSidebar();
+        ensureSharedSidebarModals();
     }
 });
 
