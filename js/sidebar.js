@@ -236,10 +236,18 @@ function showSidebarSnackbar(message) {
         snackbar.className = 'sidebar-snackbar';
         snackbar.setAttribute('role', 'status');
         snackbar.setAttribute('aria-live', 'polite');
+        snackbar.setAttribute('aria-atomic', 'true');
+        snackbar.innerHTML = '<span class="sidebar-snackbar-icon"></span><span class="sidebar-snackbar-message"></span>';
         document.body.appendChild(snackbar);
     }
 
-    snackbar.textContent = message;
+    let messageEl = snackbar.querySelector('.sidebar-snackbar-message');
+    if (!messageEl) {
+        snackbar.innerHTML = '<span class="sidebar-snackbar-icon"></span><span class="sidebar-snackbar-message"></span>';
+        messageEl = snackbar.querySelector('.sidebar-snackbar-message');
+    }
+
+    messageEl.textContent = message;
     snackbar.classList.add('show');
 
     window.clearTimeout(snackbar._hideTimer);
