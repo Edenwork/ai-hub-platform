@@ -55,6 +55,9 @@ function moveSidebarModalsToBody() {
         if (modal.parentElement !== document.body) {
             document.body.appendChild(modal);
         }
+        if (modal.id === 'modal-parameter-setting') {
+            initializeSidebarParameterModal(modal);
+        }
     });
     initializeSidebarModelSelectors();
 }
@@ -90,6 +93,13 @@ function initializeSidebarModelSelectors(root = document) {
             setSidebarModelSelectorValue(dropdown, selectedText);
         }
     });
+}
+
+function initializeSidebarParameterModal(root = document) {
+    if (typeof window.initParameterModal === 'function') {
+        window.initParameterModal(root);
+    }
+    document.dispatchEvent(new CustomEvent('sidebar:modals-ready', { detail: { root } }));
 }
 
 document.addEventListener('DOMContentLoaded', () => {

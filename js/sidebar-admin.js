@@ -103,6 +103,13 @@ function initializeSidebarModelSelectors(root = document) {
     });
 }
 
+function initializeSidebarParameterModal(root = document) {
+    if (typeof window.initParameterModal === 'function') {
+        window.initParameterModal(root);
+    }
+    document.dispatchEvent(new CustomEvent('sidebar:modals-ready', { detail: { root } }));
+}
+
 function ensureSharedSidebarModals() {
     if (sharedSidebarModalsPromise) {
         return sharedSidebarModalsPromise;
@@ -126,6 +133,9 @@ function ensureSharedSidebarModals() {
                 sharedModal.dataset.sharedSidebarModal = 'true';
                 document.body.appendChild(sharedModal);
                 initializeSidebarModelSelectors(sharedModal);
+                if (id === 'modal-parameter-setting') {
+                    initializeSidebarParameterModal(sharedModal);
+                }
             });
 
             removeLegacySidebarModals();
