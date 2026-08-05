@@ -18,12 +18,11 @@
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 1020;
+    z-index: 1040;
     transition: width 0.35s ease;
     display: flex;
     flex-direction: column;
-    overflow-y: hidden;
-    overflow-x: hidden;
+    overflow: visible;
     overscroll-behavior: contain;
     cursor: w-resize;
     padding-right: 2px;
@@ -1241,6 +1240,19 @@ body.sidebar-collapsed #content {
     position: relative;
     display: block;
     width: 100%;
+    overflow: visible;
+    z-index: 1041;
+}
+
+.sidebar-footer .account-settings-dropdown .dropdown-menu {
+    left: calc(100% + 12px) !important;
+    right: auto !important;
+    bottom: 0 !important;
+    top: auto !important;
+    transform: none !important;
+    min-width: 220px;
+    max-width: min(280px, calc(100vw - 320px));
+    z-index: 1045;
 }
 
 #sidebarArea > .sidebar-footer {
@@ -1285,7 +1297,7 @@ body.sidebar-collapsed #content {
     transform: none !important;
     min-width: 220px;
     max-width: min(280px, calc(100vw - 104px));
-    z-index: 1060;
+    z-index: 1045;
 }
 
 #sidebarArea.collapsed .sidebar-footer .whatever {
