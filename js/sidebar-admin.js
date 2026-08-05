@@ -164,6 +164,43 @@ sidebarMountObserver.observe(document.body, {
     subtree: true
 });
 
+document.addEventListener('click', async function (e) {
+    const modelItem = e.target.closest('.modal-model-selector .dropdown-item, .chat-model-selector .dropdown-item');
+    if (modelItem) {
+        const dropdown = modelItem.closest('.modal-model-selector, .chat-model-selector');
+        const selectedText = modelItem.querySelector('.dropdown-text')?.textContent.trim();
+
+        if (dropdown && selectedText) {
+            setSidebarModelSelectorValue(dropdown, selectedText);
+            localStorage.setItem('selectedChatModel', selectedText);
+        }
+    }
+
+    const modalTrigger = e.target.closest(
+        '[data-bs-toggle="modal"][data-bs-target="#modal-system-prompt"], ' +
+        '[data-bs-toggle="modal"][data-bs-target="#modal-parameter-setting"]'
+    );
+
+    if (!modalTrigger) return;
+
+    const targetSelector = modalTrigger.getAttribute('data-bs-target');
+    const targetModal = document.querySelector(targetSelector);
+    if (targetModal?.dataset.sharedSidebarModal === 'true') return;
+
+    e.preventDefault();
+    e.stopImmediatePropagation();
+
+    try {
+        await ensureSharedSidebarModals();
+        const sharedModal = document.querySelector(targetSelector);
+        if (sharedModal) {
+            bootstrap.Modal.getOrCreateInstance(sharedModal).show();
+        }
+    } catch (error) {
+        // ensureSharedSidebarModals already reports the loading error.
+    }
+}, true);
+
 let lastSidebarToggleTime = 0;
 
 function handleSidebarToggleEvent(e) {
