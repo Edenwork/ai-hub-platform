@@ -1380,3 +1380,12 @@ body.sidebar-collapsed #content {
   color: var(--bs-dropdown-link-hover-color);
   text-decoration: none;
 }
+
+.dropdown-menu .dropdown-item-static,
+.dropdown-menu .dropdown-item-static:hover,
+.dropdown-menu .dropdown-item-static:focus {
+  cursor: default !important;
+  background-color: transparent !important;
+  color: inherit !important;
+  text-decoration: none !important;
+}
