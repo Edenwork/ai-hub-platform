@@ -178,6 +178,22 @@ function showSidebarSnackbar(message) {
     }, 3000);
 }
 
+function goToConversation(item) {
+    const question = item?.dataset.question?.trim();
+    const responseType = item?.dataset.response?.trim();
+    const params = new URLSearchParams();
+
+    if (question) {
+        params.set('question', question);
+    }
+
+    if (responseType) {
+        params.set('response', responseType);
+    }
+
+    window.location.href = params.toString() ? `chat.html?${params.toString()}` : 'chat.html';
+}
+
 function updateConversationEmptyState(list) {
     const emptyState = list?.querySelector('.conversation-empty-state');
     if (!emptyState) return;
@@ -255,6 +271,18 @@ function startConversationRename(item) {
 }
 
 document.addEventListener('click', function (e) {
+    const conversationRow = e.target.closest('.conversation-history-row');
+    if (
+        conversationRow &&
+        !e.target.closest('.btn-history, .dropdown-menu, .conversation-rename-input, .conversation-rename-action, .conversation-delete-action')
+    ) {
+        const item = conversationRow.closest('.conversation-item');
+        if (item) {
+            goToConversation(item);
+        }
+        return;
+    }
+
     const renameAction = e.target.closest('.conversation-rename-action');
     if (renameAction) {
         e.preventDefault();

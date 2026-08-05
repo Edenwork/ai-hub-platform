@@ -120,17 +120,18 @@
 
     <hr class="my-3">
 
-    <ul class="nav flex-column mb-auto-">
+    <ul class="nav flex-column mb-auto- conversation-history-list">
       <!-- <li class="nav-item"> -->
       <span class="nav-title align-items-center gap-2 ms-3 mb-2">
         對話歷史</span>
       <!-- </li> -->
 
-    <li class="nav-item conversation-item" data-conversation-id="conversation-1">
-      <div class="nav-link conversation-history-row align-items-center gap-2 justify-content-between" href="#">
+    <li class="nav-item conversation-item" data-conversation-id="conversation-1"
+      data-question="請協助檢查這張藥單是否有潛在交互作用或用藥風險">
+      <div class="nav-link conversation-history-row align-items-center gap-2 justify-content-between" role="link" tabindex="0">
         <div class="dropdown conversation-history-menu">
-          <span class="sidebar-history conversation-title" data-bs-toggle="tooltip" data-bs-placement="bottom"
-            data-bs-title="Onboarding AI Features Playbook">Onboarding AI Features Playbook</span>
+          <span class="sidebar-history conversation-title conversation-history-link" data-bs-toggle="tooltip" data-bs-placement="bottom"
+            data-bs-title="藥單風險檢查">藥單風險檢查</span>
           <button class="btn btn-history" type="button" id="conversationActionDropdown1" data-bs-toggle="dropdown"
             aria-expanded="false" aria-label="對話操作">
             <i class="fa fa-ellipsis-v"></i>
@@ -153,10 +154,12 @@
       </div>
 
     </li>
-    <li class="nav-item conversation-item" data-conversation-id="conversation-2">
-      <div class="nav-link conversation-history-row align-items-center gap-2" href="#">
+    <li class="nav-item conversation-item" data-conversation-id="conversation-2"
+      data-question="請從技術規格文件中整理重點、專有名詞與待確認事項">
+      <div class="nav-link conversation-history-row align-items-center gap-2" role="link" tabindex="0">
         <div class="dropdown conversation-history-menu">
-          <span class="sidebar-history conversation-title">前端 OCR 實作範例</span>
+          <span class="sidebar-history conversation-title conversation-history-link" data-bs-toggle="tooltip"
+            data-bs-placement="bottom" data-bs-title="整理技術文件">整理技術文件</span>
           <button class="btn btn-history" type="button" id="conversationActionDropdown2" data-bs-toggle="dropdown"
             aria-expanded="false" aria-label="對話操作">
             <i class="fa fa-ellipsis-v"></i>
@@ -179,10 +182,12 @@
       </div>
 
     </li>
-    <li class="nav-item conversation-item" data-conversation-id="conversation-3">
-      <div class="nav-link conversation-history-row align-items-center gap-2" href="#">
+    <li class="nav-item conversation-item" data-conversation-id="conversation-3"
+      data-question="請產生一段 Delphi 程式，將 CSV 資料轉成指定 JSON 格式" data-response="delphi">
+      <div class="nav-link conversation-history-row align-items-center gap-2" role="link" tabindex="0">
         <div class="dropdown conversation-history-menu">
-          <span class="sidebar-history conversation-title">S3 SDK 多檔案斷點續傳</span>
+          <span class="sidebar-history conversation-title conversation-history-link" data-bs-toggle="tooltip"
+            data-bs-placement="bottom" data-bs-title="產生轉檔程式">產生轉檔程式</span>
           <button class="btn btn-history" type="button" id="conversationActionDropdown3" data-bs-toggle="dropdown"
             aria-expanded="false" aria-label="對話操作">
             <i class="fa fa-ellipsis-v"></i>
