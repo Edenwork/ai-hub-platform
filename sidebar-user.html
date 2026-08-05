@@ -297,138 +297,140 @@
 
             <div class="col-9">
 
-              <div class="dropdown ms-3" style="left:110px;">
-                <button class="btn btn-select-model-outline dropdown-toggle fs-6" type="button" id="modelDropdown"
-                  data-bs-toggle="dropdown" aria-expanded="false">
-                  Llama3.1-FFM-8B
+              <div class="dropdown chat-model-selector modal-model-selector ms-3">
+                <button class="btn btn-select-model-outline dropdown-toggle- fs-6- fs-15px me-3" type="button"
+                  id="systemPromptModelDropdown" data-bs-toggle="dropdown" aria-expanded="false" title="請選擇模型">
+                  <span class="dropdown-button-label">請選擇模型</span>
+                  <i class="fa fa-chevron-down ms-2"></i>
                 </button>
-                <ul class="dropdown-menu" aria-labelledby="modelDropdown" style="max-height: 500px;">
-                  <li>
-                    <a class="dropdown-item active-" href="#">
-                      <div class="content-box">
-                        <span class="dropdown-text">Llama3.1-FFM-8B</span><br>
-                        <mediuam class="text-muted">繁中強化的語言模型</mediuam>
-                      </div>
-                      <br>
-                      <span class="checkmark ms-2">
-                        <img src="./images/icon-check.png">
-                      </span>
-                    </a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item active-" href="#">
-                      <div class="content-box">
-                        <span class="dropdown-text">LLama3.2-FFM-11B</span><br>
-                        <mediuam class="text-muted">繁中強化的多模態模型</mediuam>
-                      </div>
-                      <br>
-                      <span class="checkmark ms-2">
-                        <img src="./images/icon-check.png">
-                      </span>
-                    </a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item active-" href="#">
-                      <div class="content-box">
-                        <span class="dropdown-text">FFM-Mistral-Small-3.1-24B-Reasoning</span><br>
-                        <mediuam class="text-muted">繁中強化的推理模型</mediuam>
-                      </div>
-                      <br>
-                      <span class="checkmark ms-2">
-                        <img src="./images/icon-check.png">
-                      </span>
-                    </a>
-                  </li>
-                  <li>
-                    <hr class="dropdown-divider">
-                  </li>
-                  <li>
-                    <a class="dropdown-item active" href="#">
-                      <div class="content-box">
-                        <span class="dropdown-text">Qwen3-4B</span><br>
-                        <mediuam class="text-muted">多語推理模型</mediuam>
-                      </div>
-                      <br>
-                      <span class="checkmark ms-2">
-                        <img src="./images/icon-check.png">
-                      </span>
-                    </a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item active-" href="#">
-                      <div class="content-box">
-                        <span class="dropdown-text">DeepSeek-R1-Distill-Qwen-1.5B</span><br>
-                        <mediuam class="text-muted">Qwen2.5-1.5B經知識蒸餾的推理模型</mediuam>
-                      </div>
-                      <br>
-                      <span class="checkmark ms-2">
-                        <img src="./images/icon-check.png">
-                      </span>
-                    </a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item active-" href="#">
-                      <div class="content-box">
-                        <span class="dropdown-text">DeepSeek-R1-Distill-Qwen-7B</span><br>
-                        <mediuam class="text-muted">Qwen2.5-7B經知識蒸餾的推理模型</mediuam>
-                      </div>
-                      <br>
-                      <span class="checkmark ms-2">
-                        <img src="./images/icon-check.png">
-                      </span>
-                    </a>
-                  </li>
+                <ul class="dropdown-menu" aria-labelledby="systemPromptModelDropdown"
+                                      style="max-height: 200px;overflow-y: auto;">
+                                      <li>
+                                        <a class="dropdown-item active-" href="#">
+                                          <div class="content-box">
+                                            <span class="dropdown-text">Llama3.3-FFM-70B</span><br>
+                                            <mediuam class="text-muted">繁中強化的語言模型</mediuam>
+                                          </div>
+                                          <br>
+                                          <span class="checkmark ms-2">
+                                            <img src="./images/icon-check.png" alt="check icon">
+                                          </span>
+                                        </a>
+                                      </li>
+                                      <li>
+                                        <a class="dropdown-item active-" href="#">
+                                          <div class="content-box">
+                                            <span class="dropdown-text">LLama3.2-FFM-11B</span><br>
+                                            <mediuam class="text-muted">繁中強化的多模態模型</mediuam>
+                                          </div>
+                                          <br>
+                                          <span class="checkmark ms-2">
+                                            <img src="./images/icon-check.png" alt="check icon">
+                                          </span>
+                                        </a>
+                                      </li>
+                                      <li>
+                                        <a class="dropdown-item active-" href="#">
+                                          <div class="content-box">
+                                            <span class="dropdown-text">Llama3.1-FFM-70B</span><br>
+                                            <mediuam class="text-muted">繁中強化的語言模型</mediuam>
+                                          </div>
+                                          <br>
+                                          <span class="checkmark ms-2">
+                                            <img src="./images/icon-check.png" alt="check icon">
+                                          </span>
+                                        </a>
+                                      </li>
+                                      <li>
+                                        <hr class="dropdown-divider">
+                                      </li>
+                                      <li>
+                                        <a class="dropdown-item active" href="#">
+                                          <div class="content-box">
+                                            <span class="dropdown-text">Llama3.1-FFM-8B</span><br>
+                                            <mediuam class="text-muted">繁中強化的語言模型</mediuam>
+                                          </div>
+                                          <br>
+                                          <span class="checkmark ms-2">
+                                            <img src="./images/icon-check.png" alt="check icon">
+                                          </span>
+                                        </a>
+                                      </li>
+                                      <li>
+                                        <a class="dropdown-item active-" href="#">
+                                          <div class="content-box">
+                                            <span class="dropdown-text">gpt-oss-20B</span><br>
+                                            <mediuam class="text-muted">OpenAI推理模型</mediuam>
+                                          </div>
+                                          <br>
+                                          <span class="checkmark ms-2">
+                                            <img src="./images/icon-check.png" alt="check icon">
+                                          </span>
+                                        </a>
+                                      </li>
+                                      <li>
+                                        <a class="dropdown-item active-" href="#">
+                                          <div class="content-box">
+                                            <span class="dropdown-text">gpt-oss-120B</span><br>
+                                            <mediuam class="text-muted">OpenAI推理模型</mediuam>
+                                          </div>
+                                          <br>
+                                          <span class="checkmark ms-2">
+                                            <img src="./images/icon-check.png" alt="check icon">
+                                          </span>
+                                        </a>
+                                      </li>
 
-                  <li>
-                    <a class="dropdown-item active-" href="#">
-                      <div class="content-box">
-                        <span class="dropdown-text">Llama-3.2-11B-Vision-Instruct</span><br>
-                        <mediuam class="text-muted">Meta多模態模型，適用圖像推理問答</mediuam>
-                      </div>
-                      <br>
-                      <span class="checkmark ms-2">
-                        <img src="./images/icon-check.png">
-                      </span>
-                    </a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item active-" href="#">
-                      <div class="content-box">
-                        <span class="dropdown-text">Qwen2.5-1.5B-Instruct</span><br>
-                        <mediuam class="text-muted">小型指令微調語言模型</mediuam>
-                      </div>
-                      <br>
-                      <span class="checkmark ms-2">
-                        <img src="./images/icon-check.png">
-                      </span>
-                    </a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item active-" href="#">
-                      <div class="content-box">
-                        <span class="dropdown-text">TinyLlama-1.1B-Chat-v0.6</span><br>
-                        <mediuam class="text-muted">輕量語言模型，適合資源有限環境</mediuam>
-                      </div>
-                      <br>
-                      <span class="checkmark ms-2">
-                        <img src="./images/icon-check.png">
-                      </span>
-                    </a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item active-" href="#">
-                      <div class="content-box">
-                        <span class="dropdown-text">TinyLlama-1.1B-Chat-v1.0</span><br>
-                        <mediuam class="text-muted">優化版輕量語言模型，提升多輪對話質量</mediuam>
-                      </div>
-                      <br>
-                      <span class="checkmark ms-2">
-                        <img src="./images/icon-check.png">
-                      </span>
-                    </a>
-                  </li>
+                                      <li>
+                                        <a class="dropdown-item active-" href="#">
+                                          <div class="content-box">
+                                            <span class="dropdown-text">FFM-Embedding-v2.1</span><br>
+                                            <mediuam class="text-muted">繁中強化的向量模型</mediuam>
+                                          </div>
+                                          <br>
+                                          <span class="checkmark ms-2">
+                                            <img src="./images/icon-check.png" alt="check icon">
+                                          </span>
+                                        </a>
+                                      </li>
+                                      <li>
+                                        <a class="dropdown-item active-" href="#">
+                                          <div class="content-box">
+                                            <span class="dropdown-text">Gemma3-4B</span><br>
+                                            <mediuam class="text-muted">輕量高效多模態模型</mediuam>
+                                          </div>
+                                          <br>
+                                          <span class="checkmark ms-2">
+                                            <img src="./images/icon-check.png" alt="check icon">
+                                          </span>
+                                        </a>
+                                      </li>
+                                      <li>
+                                        <a class="dropdown-item active-" href="#">
+                                          <div class="content-box">
+                                            <span class="dropdown-text">gemma-4-31B-it</span><br>
+                                            <mediuam class="text-muted">高效能稠密型多模態模型</mediuam>
+                                          </div>
+                                          <br>
+                                          <span class="checkmark ms-2">
+                                            <img src="./images/icon-check.png" alt="check icon">
+                                          </span>
+                                        </a>
+                                      </li>
+                                      <li>
+                                        <a class="dropdown-item active-" href="#">
+                                          <div class="content-box">
+                                            <span class="dropdown-text">llama-nemotron-embed-vl-1b-v2</span><br>
+                                            <mediuam class="text-muted">高效輕量文本向量模型</mediuam>
+                                          </div>
+                                          <br>
+                                          <span class="checkmark ms-2">
+                                            <img src="./images/icon-check.png" alt="check icon">
+                                          </span>
+                                        </a>
+                                      </li>
 
-                </ul>
+                                    </ul>
               </div>
 
             </div>
@@ -478,139 +480,141 @@
 
           <div class="col-9">
 
-            <div class="dropdown ms-3" style="left:110px;">
-              <button class="btn btn-select-model-outline dropdown-toggle fs-6" type="button" id="modelDropdown"
-                data-bs-toggle="dropdown" aria-expanded="false">
-                Llama3.1-FFM-8B
-              </button>
-              <ul class="dropdown-menu" aria-labelledby="modelDropdown" style="max-height: 500px;">
-                <li>
-                  <a class="dropdown-item active-" href="#">
-                    <div class="content-box">
-                      <span class="dropdown-text">Llama3.1-FFM-8B</span><br>
-                      <mediuam class="text-muted">繁中強化的語言模型</mediuam>
-                    </div>
-                    <br>
-                    <span class="checkmark ms-2">
-                      <img src="./images/icon-check.png">
-                    </span>
-                  </a>
-                </li>
-                <li>
-                  <a class="dropdown-item active-" href="#">
-                    <div class="content-box">
-                      <span class="dropdown-text">LLama3.2-FFM-11B</span><br>
-                      <mediuam class="text-muted">繁中強化的多模態模型</mediuam>
-                    </div>
-                    <br>
-                    <span class="checkmark ms-2">
-                      <img src="./images/icon-check.png">
-                    </span>
-                  </a>
-                </li>
-                <li>
-                  <a class="dropdown-item active-" href="#">
-                    <div class="content-box">
-                      <span class="dropdown-text">FFM-Mistral-Small-3.1-24B-Reasoning</span><br>
-                      <mediuam class="text-muted">繁中強化的推理模型</mediuam>
-                    </div>
-                    <br>
-                    <span class="checkmark ms-2">
-                      <img src="./images/icon-check.png">
-                    </span>
-                  </a>
-                </li>
-                <li>
-                  <hr class="dropdown-divider">
-                </li>
-                <li>
-                  <a class="dropdown-item active" href="#">
-                    <div class="content-box">
-                      <span class="dropdown-text">Qwen3-4B</span><br>
-                      <mediuam class="text-muted">多語推理模型</mediuam>
-                    </div>
-                    <br>
-                    <span class="checkmark ms-2">
-                      <img src="./images/icon-check.png">
-                    </span>
-                  </a>
-                </li>
-                <li>
-                  <a class="dropdown-item active-" href="#">
-                    <div class="content-box">
-                      <span class="dropdown-text">DeepSeek-R1-Distill-Qwen-1.5B</span><br>
-                      <mediuam class="text-muted">Qwen2.5-1.5B經知識蒸餾的推理模型</mediuam>
-                    </div>
-                    <br>
-                    <span class="checkmark ms-2">
-                      <img src="./images/icon-check.png">
-                    </span>
-                  </a>
-                </li>
-                <li>
-                  <a class="dropdown-item active-" href="#">
-                    <div class="content-box">
-                      <span class="dropdown-text">DeepSeek-R1-Distill-Qwen-7B</span><br>
-                      <mediuam class="text-muted">Qwen2.5-7B經知識蒸餾的推理模型</mediuam>
-                    </div>
-                    <br>
-                    <span class="checkmark ms-2">
-                      <img src="./images/icon-check.png">
-                    </span>
-                  </a>
-                </li>
+            <div class="dropdown chat-model-selector modal-model-selector ms-3">
+                <button class="btn btn-select-model-outline dropdown-toggle- fs-6- fs-15px me-3" type="button"
+                  id="parameterSettingModelDropdown" data-bs-toggle="dropdown" aria-expanded="false" title="請選擇模型">
+                  <span class="dropdown-button-label">請選擇模型</span>
+                  <i class="fa fa-chevron-down ms-2"></i>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="parameterSettingModelDropdown"
+                                      style="max-height: 200px;overflow-y: auto;">
+                                      <li>
+                                        <a class="dropdown-item active-" href="#">
+                                          <div class="content-box">
+                                            <span class="dropdown-text">Llama3.3-FFM-70B</span><br>
+                                            <mediuam class="text-muted">繁中強化的語言模型</mediuam>
+                                          </div>
+                                          <br>
+                                          <span class="checkmark ms-2">
+                                            <img src="./images/icon-check.png" alt="check icon">
+                                          </span>
+                                        </a>
+                                      </li>
+                                      <li>
+                                        <a class="dropdown-item active-" href="#">
+                                          <div class="content-box">
+                                            <span class="dropdown-text">LLama3.2-FFM-11B</span><br>
+                                            <mediuam class="text-muted">繁中強化的多模態模型</mediuam>
+                                          </div>
+                                          <br>
+                                          <span class="checkmark ms-2">
+                                            <img src="./images/icon-check.png" alt="check icon">
+                                          </span>
+                                        </a>
+                                      </li>
+                                      <li>
+                                        <a class="dropdown-item active-" href="#">
+                                          <div class="content-box">
+                                            <span class="dropdown-text">Llama3.1-FFM-70B</span><br>
+                                            <mediuam class="text-muted">繁中強化的語言模型</mediuam>
+                                          </div>
+                                          <br>
+                                          <span class="checkmark ms-2">
+                                            <img src="./images/icon-check.png" alt="check icon">
+                                          </span>
+                                        </a>
+                                      </li>
+                                      <li>
+                                        <hr class="dropdown-divider">
+                                      </li>
+                                      <li>
+                                        <a class="dropdown-item active" href="#">
+                                          <div class="content-box">
+                                            <span class="dropdown-text">Llama3.1-FFM-8B</span><br>
+                                            <mediuam class="text-muted">繁中強化的語言模型</mediuam>
+                                          </div>
+                                          <br>
+                                          <span class="checkmark ms-2">
+                                            <img src="./images/icon-check.png" alt="check icon">
+                                          </span>
+                                        </a>
+                                      </li>
+                                      <li>
+                                        <a class="dropdown-item active-" href="#">
+                                          <div class="content-box">
+                                            <span class="dropdown-text">gpt-oss-20B</span><br>
+                                            <mediuam class="text-muted">OpenAI推理模型</mediuam>
+                                          </div>
+                                          <br>
+                                          <span class="checkmark ms-2">
+                                            <img src="./images/icon-check.png" alt="check icon">
+                                          </span>
+                                        </a>
+                                      </li>
+                                      <li>
+                                        <a class="dropdown-item active-" href="#">
+                                          <div class="content-box">
+                                            <span class="dropdown-text">gpt-oss-120B</span><br>
+                                            <mediuam class="text-muted">OpenAI推理模型</mediuam>
+                                          </div>
+                                          <br>
+                                          <span class="checkmark ms-2">
+                                            <img src="./images/icon-check.png" alt="check icon">
+                                          </span>
+                                        </a>
+                                      </li>
 
-                <li>
-                  <a class="dropdown-item active-" href="#">
-                    <div class="content-box">
-                      <span class="dropdown-text">Llama-3.2-11B-Vision-Instruct</span><br>
-                      <mediuam class="text-muted">Meta多模態模型，適用圖像推理問答</mediuam>
-                    </div>
-                    <br>
-                    <span class="checkmark ms-2">
-                      <img src="./images/icon-check.png">
-                    </span>
-                  </a>
-                </li>
-                <li>
-                  <a class="dropdown-item active-" href="#">
-                    <div class="content-box">
-                      <span class="dropdown-text">Qwen2.5-1.5B-Instruct</span><br>
-                      <mediuam class="text-muted">小型指令微調語言模型</mediuam>
-                    </div>
-                    <br>
-                    <span class="checkmark ms-2">
-                      <img src="./images/icon-check.png">
-                    </span>
-                  </a>
-                </li>
-                <li>
-                  <a class="dropdown-item active-" href="#">
-                    <div class="content-box">
-                      <span class="dropdown-text">TinyLlama-1.1B-Chat-v0.6</span><br>
-                      <mediuam class="text-muted">輕量語言模型，適合資源有限環境</mediuam>
-                    </div>
-                    <br>
-                    <span class="checkmark ms-2">
-                      <img src="./images/icon-check.png">
-                    </span>
-                  </a>
-                </li>
-                <li>
-                  <a class="dropdown-item active-" href="#">
-                    <div class="content-box">
-                      <span class="dropdown-text">TinyLlama-1.1B-Chat-v1.0</span><br>
-                      <mediuam class="text-muted">優化版輕量語言模型，提升多輪對話質量</mediuam>
-                    </div>
-                    <br>
-                    <span class="checkmark ms-2">
-                      <img src="./images/icon-check.png">
-                    </span>
-                  </a>
-                </li>
+                                      <li>
+                                        <a class="dropdown-item active-" href="#">
+                                          <div class="content-box">
+                                            <span class="dropdown-text">FFM-Embedding-v2.1</span><br>
+                                            <mediuam class="text-muted">繁中強化的向量模型</mediuam>
+                                          </div>
+                                          <br>
+                                          <span class="checkmark ms-2">
+                                            <img src="./images/icon-check.png" alt="check icon">
+                                          </span>
+                                        </a>
+                                      </li>
+                                      <li>
+                                        <a class="dropdown-item active-" href="#">
+                                          <div class="content-box">
+                                            <span class="dropdown-text">Gemma3-4B</span><br>
+                                            <mediuam class="text-muted">輕量高效多模態模型</mediuam>
+                                          </div>
+                                          <br>
+                                          <span class="checkmark ms-2">
+                                            <img src="./images/icon-check.png" alt="check icon">
+                                          </span>
+                                        </a>
+                                      </li>
+                                      <li>
+                                        <a class="dropdown-item active-" href="#">
+                                          <div class="content-box">
+                                            <span class="dropdown-text">gemma-4-31B-it</span><br>
+                                            <mediuam class="text-muted">高效能稠密型多模態模型</mediuam>
+                                          </div>
+                                          <br>
+                                          <span class="checkmark ms-2">
+                                            <img src="./images/icon-check.png" alt="check icon">
+                                          </span>
+                                        </a>
+                                      </li>
+                                      <li>
+                                        <a class="dropdown-item active-" href="#">
+                                          <div class="content-box">
+                                            <span class="dropdown-text">llama-nemotron-embed-vl-1b-v2</span><br>
+                                            <mediuam class="text-muted">高效輕量文本向量模型</mediuam>
+                                          </div>
+                                          <br>
+                                          <span class="checkmark ms-2">
+                                            <img src="./images/icon-check.png" alt="check icon">
+                                          </span>
+                                        </a>
+                                      </li>
 
-              </ul>
-            </div>
+                                    </ul>
+              </div>
 
           </div>
         </div>

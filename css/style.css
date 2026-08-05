@@ -1490,7 +1490,10 @@ span.sidebar-history {
 
 .chat-model-selector {
   width: 190px;
-  max-width: 190px;
+  /* max-width: 190px; */
+}
+.modal-model-selector{
+  width: 300px;
 }
 
 .chat-model-selector .btn-select-model-outline {

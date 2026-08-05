@@ -50,8 +50,56 @@ function applyResponsiveSidebar() {
     }
 }
 
-document.addEventListener('DOMContentLoaded', applyResponsiveSidebar);
-window.addEventListener('load', applyResponsiveSidebar);
+function moveSidebarModalsToBody() {
+    document.querySelectorAll('#modal-system-prompt, #modal-parameter-setting').forEach((modal) => {
+        if (modal.parentElement !== document.body) {
+            document.body.appendChild(modal);
+        }
+    });
+    initializeSidebarModelSelectors();
+}
+
+function setSidebarModelSelectorValue(dropdown, selectedText) {
+    if (!dropdown || !selectedText) return;
+
+    const button = dropdown.querySelector('[data-bs-toggle="dropdown"]');
+    const label = button?.querySelector('.dropdown-button-label');
+    if (!button || !label) return;
+
+    label.textContent = selectedText;
+    button.setAttribute('title', selectedText);
+
+    dropdown.querySelectorAll('.dropdown-item').forEach((item) => {
+        const isSelected = item.querySelector('.dropdown-text')?.textContent.trim() === selectedText;
+        item.classList.toggle('active', isSelected);
+
+        const checkmark = item.querySelector('.checkmark');
+        if (checkmark) {
+            checkmark.style.display = isSelected ? 'inline-block' : 'none';
+        }
+    });
+}
+
+function initializeSidebarModelSelectors(root = document) {
+    const storedModel = localStorage.getItem('selectedChatModel');
+
+    root.querySelectorAll('.modal-model-selector, .chat-model-selector').forEach((dropdown) => {
+        const activeText = dropdown.querySelector('.dropdown-item.active .dropdown-text')?.textContent.trim();
+        const selectedText = storedModel || activeText;
+        if (selectedText) {
+            setSidebarModelSelectorValue(dropdown, selectedText);
+        }
+    });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    applyResponsiveSidebar();
+    moveSidebarModalsToBody();
+});
+window.addEventListener('load', () => {
+    applyResponsiveSidebar();
+    moveSidebarModalsToBody();
+});
 window.addEventListener('resize', applyResponsiveSidebar);
 window.setTimeout(applyResponsiveSidebar, 0);
 window.setTimeout(applyResponsiveSidebar, 300);
@@ -66,6 +114,28 @@ sidebarMountObserver.observe(document.body, {
     childList: true,
     subtree: true
 });
+
+document.addEventListener('click', function (e) {
+    const modelItem = e.target.closest('.modal-model-selector .dropdown-item, .chat-model-selector .dropdown-item');
+    if (modelItem) {
+        const dropdown = modelItem.closest('.modal-model-selector, .chat-model-selector');
+        const selectedText = modelItem.querySelector('.dropdown-text')?.textContent.trim();
+
+        if (dropdown && selectedText) {
+            setSidebarModelSelectorValue(dropdown, selectedText);
+            localStorage.setItem('selectedChatModel', selectedText);
+        }
+    }
+
+    const modalTrigger = e.target.closest(
+        '[data-bs-toggle="modal"][data-bs-target="#modal-system-prompt"], ' +
+        '[data-bs-toggle="modal"][data-bs-target="#modal-parameter-setting"]'
+    );
+
+    if (modalTrigger) {
+        moveSidebarModalsToBody();
+    }
+}, true);
 
 function updateShowMoreText(isExpanded) {
     const textEl = document.getElementById('showMoreText');

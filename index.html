@@ -310,7 +310,7 @@
                   <div class="dropdown chat-model-selector ms-3 position-absolute" style="right: 13%;">
                     <button class="btn btn-select-model-outline dropdown-toggle- fs-6- fs-15px me-3" type="button"
                       id="chatModelDropdown" data-bs-toggle="dropdown" aria-expanded="false" title="Llama3.1-FFM-8B">
-                      <span class="dropdown-button-label">Llama3.1-FFM-8B</span>
+                      <span class="dropdown-button-label">請選擇模型</span>
                       <i class="fa fa-chevron-down ms-2"></i>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="chatModelDropdown"
@@ -318,7 +318,7 @@
                       <li>
                         <a class="dropdown-item active-" href="#">
                           <div class="content-box">
-                            <span class="dropdown-text">Llama3.1-FFM-8B</span><br>
+                            <span class="dropdown-text">Llama3.3-FFM-70B</span><br>
                             <mediuam class="text-muted">繁中強化的語言模型</mediuam>
                           </div>
                           <br>
@@ -342,8 +342,8 @@
                       <li>
                         <a class="dropdown-item active-" href="#">
                           <div class="content-box">
-                            <span class="dropdown-text">FFM-Mistral-Small-3.1-24B-Reasoning</span><br>
-                            <mediuam class="text-muted">繁中強化的推理模型</mediuam>
+                            <span class="dropdown-text">Llama3.1-FFM-70B</span><br>
+                            <mediuam class="text-muted">繁中強化的語言模型</mediuam>
                           </div>
                           <br>
                           <span class="checkmark ms-2">
@@ -357,8 +357,8 @@
                       <li>
                         <a class="dropdown-item active" href="#">
                           <div class="content-box">
-                            <span class="dropdown-text">Qwen3-4B</span><br>
-                            <mediuam class="text-muted">多語推理模型</mediuam>
+                            <span class="dropdown-text">Llama3.1-FFM-8B</span><br>
+                            <mediuam class="text-muted">繁中強化的語言模型</mediuam>
                           </div>
                           <br>
                           <span class="checkmark ms-2">
@@ -369,8 +369,8 @@
                       <li>
                         <a class="dropdown-item active-" href="#">
                           <div class="content-box">
-                            <span class="dropdown-text">DeepSeek-R1-Distill-Qwen-1.5B</span><br>
-                            <mediuam class="text-muted">Qwen2.5-1.5B經知識蒸餾的推理模型</mediuam>
+                            <span class="dropdown-text">gpt-oss-20B</span><br>
+                            <mediuam class="text-muted">OpenAI推理模型</mediuam>
                           </div>
                           <br>
                           <span class="checkmark ms-2">
@@ -381,8 +381,8 @@
                       <li>
                         <a class="dropdown-item active-" href="#">
                           <div class="content-box">
-                            <span class="dropdown-text">DeepSeek-R1-Distill-Qwen-7B</span><br>
-                            <mediuam class="text-muted">Qwen2.5-7B經知識蒸餾的推理模型</mediuam>
+                            <span class="dropdown-text">gpt-oss-120B</span><br>
+                            <mediuam class="text-muted">OpenAI推理模型</mediuam>
                           </div>
                           <br>
                           <span class="checkmark ms-2">
@@ -394,8 +394,8 @@
                       <li>
                         <a class="dropdown-item active-" href="#">
                           <div class="content-box">
-                            <span class="dropdown-text">Llama-3.2-11B-Vision-Instruct</span><br>
-                            <mediuam class="text-muted">Meta多模態模型，適用圖像推理問答</mediuam>
+                            <span class="dropdown-text">FFM-Embedding-v2.1</span><br>
+                            <mediuam class="text-muted">繁中強化的向量模型</mediuam>
                           </div>
                           <br>
                           <span class="checkmark ms-2">
@@ -406,8 +406,8 @@
                       <li>
                         <a class="dropdown-item active-" href="#">
                           <div class="content-box">
-                            <span class="dropdown-text">Qwen2.5-1.5B-Instruct</span><br>
-                            <mediuam class="text-muted">小型指令微調語言模型</mediuam>
+                            <span class="dropdown-text">Gemma3-4B</span><br>
+                            <mediuam class="text-muted">輕量高效多模態模型</mediuam>
                           </div>
                           <br>
                           <span class="checkmark ms-2">
@@ -418,8 +418,8 @@
                       <li>
                         <a class="dropdown-item active-" href="#">
                           <div class="content-box">
-                            <span class="dropdown-text">TinyLlama-1.1B-Chat-v0.6</span><br>
-                            <mediuam class="text-muted">輕量語言模型，適合資源有限環境</mediuam>
+                            <span class="dropdown-text">gemma-4-31B-it</span><br>
+                            <mediuam class="text-muted">高效能稠密型多模態模型</mediuam>
                           </div>
                           <br>
                           <span class="checkmark ms-2">
@@ -746,7 +746,7 @@
   <!-- Custom JS for dropdown selection -->
   <!-- <script src="./js/load-admin-header.js"></script> -->
   <script src="./js/demo-role-ui.js"></script>
-  <script src="./js/sidebar.js?v=20260804-1"></script>
+  <script src="./js/sidebar.js?v=20260805-3"></script>
   <script src="./js/tooltip.js"></script>
   <script src="./js/file-upload.js"></script>
 
@@ -761,6 +761,8 @@
 
 
   <script>
+    const selectedChatModelStorageKey = 'selectedChatModel';
+
     document.querySelectorAll('.dropdown').forEach(dropdown => {
       const button = dropdown.querySelector('[data-bs-toggle="dropdown"]');
       const label = button?.querySelector('.dropdown-button-label');
