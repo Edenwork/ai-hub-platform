@@ -24,6 +24,31 @@
     outline: 0;
 }
 
+.modal-header {
+    align-items: center;
+    min-height: 94px;
+    padding: 24px 32px;
+}
+
+.modal-header .modal-title {
+    margin: 0 !important;
+}
+
+.modal-header .btn-close {
+    flex: 0 0 auto;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    margin: 0 0 0 auto;
+    background-size: 18px;
+    opacity: .65;
+}
+
+.modal-header .btn-close:hover,
+.modal-header .btn-close:focus {
+    opacity: .9;
+}
+
 .modal-dialog {
     max-width: min(585px, calc(100vw - 32px));
 }
