@@ -89,6 +89,51 @@
       box-shadow: 0 4px 14px rgba(15, 23, 42, 0.12);
     }
 
+    .chat-page {
+      position: relative;
+    }
+
+    .chat-session-header {
+      position: absolute;
+      top: 24px;
+      right: 32px;
+      z-index: 2;
+    }
+
+    .chat-session-reset {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 0;
+      border-radius: 6px;
+      padding: 8px 10px;
+      background: #f0f0f2;
+      color: #6f7b91;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 1;
+      cursor: pointer;
+      transition: color 0.2s ease, background-color 0.2s ease;
+    }
+
+    .chat-session-reset:hover,
+    .chat-session-reset:focus-visible {
+      color: #4f5d75;
+      background: #f3f5f8;
+    }
+
+    .chat-session-reset:focus-visible {
+      outline: 2px solid #8fa2c1;
+      outline-offset: 4px;
+      border-radius: 4px;
+    }
+
+    .chat-session-reset svg {
+      width: 18px;
+      height: 18px;
+      flex: 0 0 auto;
+    }
+
     @media (max-width: 767.98px) {
       .demo-code-toolbar {
         padding-left: 18px;
@@ -101,6 +146,16 @@
 
       .chat-attachment-preview {
         width: 120px;
+      }
+
+      .chat-session-header {
+        top: 16px;
+        right: 16px;
+      }
+
+      .chat-session-reset {
+        padding: 7px 8px;
+        font-size: 14px;
       }
     }
   </style>
@@ -149,6 +204,16 @@
       </script>
 
       <main class="px-md-4 dashboard-round-bg full-width-when-collapsed chat-page" id="content">
+        <div class="chat-session-header">
+          <button type="button" class="chat-session-reset" data-demo-reset aria-label="重新開始對話">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M3 12a9 9 0 1 0 3-6.7"></path>
+              <path d="M3 4v6h6"></path>
+            </svg>
+            <span>重新開始</span>
+          </button>
+        </div>
+
         <section class="section-max-width-770">
 
           <div class="container mt-5">
