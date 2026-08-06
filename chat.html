@@ -401,7 +401,8 @@
               </div>
 
               <div class="d-flex flex-column h-100">
-                <textarea class="form-control-chat mb-3" placeholder="詢問任何問題" aria-label="Question" rows="3"></textarea>
+                <textarea class="form-control-chat mb-3" id="chatMessageInput" placeholder="詢問任何問題"
+                  aria-label="Question" rows="3"></textarea>
 
                 <div class="d-flex justify-content-start align-items-end gap-3 position-relative">
                   <input type="file" id="fileInput" multiple style="display: none;">
@@ -547,7 +548,8 @@
                     </ul>
                   </div> -->
 
-                  <button class="btn btn-chat-send position-absolute" style="right: 0;">
+                  <button class="btn btn-chat-send position-absolute" id="chatSendBtn" type="button"
+                    style="right: 0;" disabled aria-disabled="true">
                     <img src="./images/btn-send-chat.svg">
                   </button>
 
@@ -1048,6 +1050,26 @@ end.`;
         continueConversation.classList.add('d-none');
       }
     }
+  </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const chatMessageInput = document.getElementById('chatMessageInput');
+      const chatSendBtn = document.getElementById('chatSendBtn');
+
+      if (!chatMessageInput || !chatSendBtn) {
+        return;
+      }
+
+      const updateSendButtonState = () => {
+        const hasMessage = chatMessageInput.value.trim().length > 0;
+        chatSendBtn.disabled = !hasMessage;
+        chatSendBtn.setAttribute('aria-disabled', String(!hasMessage));
+      };
+
+      chatMessageInput.addEventListener('input', updateSendButtonState);
+      updateSendButtonState();
+    });
   </script>
 
   <!-- 滑到最底btn -->

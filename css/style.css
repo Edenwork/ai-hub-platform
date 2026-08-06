@@ -444,6 +444,18 @@ fieldset:disabled .btn,
   /* filter: contrast(200%); */
 }
 
+.btn-chat-send:disabled {
+  background-color: transparent !important;
+  border-color: transparent !important;
+  cursor: not-allowed;
+  opacity: 0.45;
+  filter: grayscale(100%) contrast(1.5);
+}
+
+.btn-chat-send:disabled:hover {
+  filter: grayscale(100%) contrast(1.5);
+}
+
 .tag-admin {
   background-color: #27AFD8;
   color: #fff;
