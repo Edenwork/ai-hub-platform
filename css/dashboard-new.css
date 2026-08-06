@@ -245,29 +245,91 @@
 
 #announcement-bar {
     border-bottom: 1px solid #d9d9d9;
+    background: var(--content-area-bg, #F9FBFF);
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 304px;
+    z-index: 1035;
     width: auto;
     min-height: 50px;
     padding: 0 48px 0 16px;
-    margin-bottom: 30px;
+    margin: 0;
     font-size: 14px;
     color: #333;
     line-height: 1.5;
-    margin-top: -2rem !important;
-    margin-right: -2rem !important;
-    margin-left: -3rem !important;
-    /* margin-right: -150px !important;
-    margin-left: -150px !important; */
+}
+
+body.sidebar-collapsed #announcement-bar {
+    left: 80px;
+}
+
+.announcement-bar-spacer {
+    height: 50px;
+    margin-top: -3% !important;
+    margin-bottom: 30px;
+}
+
+.announcement-bar-close {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    background: none;
+    border: 0;
+    color: #555;
+    cursor: pointer;
+    font-size: 20px;
+    line-height: 1;
+    transform: translateY(-50%);
+}
+
+.announcement-bar-close:focus-visible {
+    outline: 2px solid var(--sys-color-secondary, #23237B);
+    outline-offset: 2px;
+}
+
+#content .modal-header {
+    align-items: center;
+    min-height: 94px;
+    padding: 24px 32px;
+}
+
+#content .modal-header .modal-title {
+    margin: 0 !important;
+}
+
+#content .modal-header .btn-close {
+    flex: 0 0 auto;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    margin: 0 0 0 auto;
+    background-size: 18px;
+    opacity: .65;
+}
+
+#content .modal-header .btn-close:hover,
+#content .modal-header .btn-close:focus {
+    opacity: .9;
 }
 
 @media (max-width: 991.98px) {
     #announcement-bar {
+        left: 304px;
+    }
+
+    body.sidebar-collapsed #announcement-bar {
+        left: 80px;
+    }
+
+    .announcement-bar-spacer {
         margin-top: -1.5rem !important;
-        margin-right: -2rem !important;
-        margin-left: -2rem !important;
     }
 
     .tab-header {
@@ -382,9 +444,11 @@
 
 @media (max-width: 768px) {
     #announcement-bar {
+        left: 80px;
+    }
+
+    .announcement-bar-spacer {
         margin-top: -1rem !important;
-        margin-right: -1rem !important;
-        margin-left: -2rem !important;
     }
 
     .container.mt-4 {
@@ -396,6 +460,12 @@
 
     .tab-body {
         padding: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    #announcement-bar {
+        left: 80px;
     }
 }
 
