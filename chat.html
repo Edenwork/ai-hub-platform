@@ -78,6 +78,17 @@
       font-family: Consolas, Monaco, 'Courier New', monospace;
     }
 
+    .chat-attachment-preview {
+      display: block;
+      width: 150px;
+      max-width: 100%;
+      margin: 0 0 12px auto;
+      border: 1px solid #e1e5ea;
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.12);
+    }
+
     @media (max-width: 767.98px) {
       .demo-code-toolbar {
         padding-left: 18px;
@@ -86,6 +97,10 @@
       .demo-code-block {
         padding: 20px 18px 22px;
         font-size: 14px;
+      }
+
+      .chat-attachment-preview {
+        width: 120px;
       }
     }
   </style>
@@ -141,7 +156,9 @@
               <!-- 第一個對話：問題（置右） -->
               <div class="message chat-user-message">
                 <div class="message-content">
-                  <p id="initialUserQuestion">請解釋什麼是「數位孿生」？</p>
+                  <div>
+                    <p id="initialUserQuestion">請解釋什麼是數位孿生？</p>
+                  </div>
                 </div>
                 <div class="message-actions">
                   <button class="btn btn-action" aria-label="編輯" data-bs-toggle="tooltip" data-bs-placement="bottom"
@@ -883,6 +900,7 @@
     const chatParams = new URLSearchParams(window.location.search);
     const initialQuestion = chatParams.get('question');
     const responseType = chatParams.get('response');
+    const attachmentType = chatParams.get('attachment');
     const selectedModel = chatParams.get('model') || localStorage.getItem('selectedChatModel');
     const currentChatModel = document.getElementById('currentChatModel');
 
@@ -900,6 +918,17 @@
       const continueConversation = document.querySelector('.continue-conversation');
 
       initialUserQuestion.textContent = question;
+
+      document.querySelectorAll('.chat-attachment-preview').forEach((preview) => preview.remove());
+
+      if (attachmentType === 'prescription') {
+        const initialUserBubble = initialUserQuestion.closest('.message-content');
+        const prescriptionPreview = document.createElement('img');
+        prescriptionPreview.className = 'chat-attachment-preview';
+        prescriptionPreview.src = './images/prescription-sample-thumb.png';
+        prescriptionPreview.alt = '藥單縮圖';
+        initialUserBubble.before(prescriptionPreview);
+      }
 
       if (thinkingText) {
         thinkingText.textContent = `針對您的問題「${question}」，AI Hub 正在思考最佳解決方案...`;

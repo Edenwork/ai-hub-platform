@@ -269,6 +269,7 @@ function showSidebarSnackbar(message) {
 function goToConversation(item) {
     const question = item?.dataset.question?.trim();
     const responseType = item?.dataset.response?.trim();
+    const attachmentType = item?.dataset.attachment?.trim();
     const params = new URLSearchParams();
 
     if (question) {
@@ -277,6 +278,10 @@ function goToConversation(item) {
 
     if (responseType) {
         params.set('response', responseType);
+    }
+
+    if (attachmentType) {
+        params.set('attachment', attachmentType);
     }
 
     window.location.href = params.toString() ? `chat.html?${params.toString()}` : 'chat.html';
