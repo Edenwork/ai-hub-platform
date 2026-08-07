@@ -1940,7 +1940,7 @@ span.sidebar-history {
 
 .container-chat{
   padding-top: 16vh;
-  width: 770px !important;
+  width: 700px !important; /* 770px */
   margin: 0 auto !important;
 }
 
