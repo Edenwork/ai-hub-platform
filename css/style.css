@@ -1747,7 +1747,7 @@ span.sidebar-history {
 
 
 .icon img {
-  width: 36px;
+  width: 40px; /* 36px; */
   height: auto;
 }
 
